@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-01-22T02:24:48Z" name="Suite" finished-at="2021-01-22T02:25:03Z" duration-ms="14673">
+    <groups>
+    </groups>
+    <test started-at="2021-01-22T02:24:48Z" name="Chrome Tests" finished-at="2021-01-22T02:25:03Z" duration-ms="14673">
+      <class name="web.tests.sculptnation.SNLogInOutTest">
+        <test-method is-config="true" signature="initializeTestBaseSetup(java.lang.String, java.lang.String)[pri:0, instance:web.tests.sculptnation.SNLogInOutTest@45394b31]" started-at="2021-01-22T02:24:48Z" name="initializeTestBaseSetup" finished-at="2021-01-22T02:24:51Z" duration-ms="3056" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://sculptnation.com/?qa_test=VSQAT&utm_source=testing&utm_content=testing&utm_medium=testing]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTestBaseSetup -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:web.tests.sculptnation.SNLogInOutTest@45394b31]" started-at="2021-01-22T02:24:51Z" name="setUp" finished-at="2021-01-22T02:24:51Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="loginLogoutTest()[pri:0, instance:web.tests.sculptnation.SNLogInOutTest@45394b31]" started-at="2021-01-22T02:24:51Z" name="loginLogoutTest" finished-at="2021-01-22T02:25:03Z" duration-ms="11427" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginLogoutTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:web.tests.sculptnation.SNLogInOutTest@45394b31]" started-at="2021-01-22T02:25:03Z" name="tearDown" finished-at="2021-01-22T02:25:03Z" duration-ms="97" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- web.tests.sculptnation.SNLogInOutTest -->
+    </test> <!-- Chrome Tests -->
+  </suite> <!-- Suite -->
+</testng-results>

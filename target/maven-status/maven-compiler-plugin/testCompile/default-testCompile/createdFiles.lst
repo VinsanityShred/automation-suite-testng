@@ -1,0 +1,8 @@
+web/pages/vshred/VshredHomePage.class
+web/pages/sculptnation/SNLoginPage.class
+web/pages/vshred/VshredLoginPage.class
+framework/testng/AllureScreenshots.class
+web/pages/sculptnation/SNLandingPage.class
+web/tests/sculptnation/SNLogInOutTest.class
+web/pages/sculptnation/SNHomePage.class
+web/tests/vshred/VSLoginTest.class

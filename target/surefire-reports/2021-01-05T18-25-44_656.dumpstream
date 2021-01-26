@@ -1,0 +1,15 @@
+# Created on 2021-01-05T18:25:44.656
+WARNING: An illegal reflective access operation has occurred
+
+# Created on 2021-01-05T18:25:44.656
+WARNING: Illegal reflective access by org.aspectj.weaver.loadtime.ClassLoaderWeavingAdaptor (file:/Users/CarlosRamirez/.m2/repository/org/aspectj/aspectjweaver/1.8.10/aspectjweaver-1.8.10.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+
+# Created on 2021-01-05T18:25:44.657
+WARNING: Please consider reporting this to the maintainers of org.aspectj.weaver.loadtime.ClassLoaderWeavingAdaptor
+
+# Created on 2021-01-05T18:25:44.657
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created on 2021-01-05T18:25:44.657
+WARNING: All illegal access operations will be denied in a future release
+
