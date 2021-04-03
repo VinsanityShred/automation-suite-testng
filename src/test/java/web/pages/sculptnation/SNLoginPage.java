@@ -8,10 +8,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import web.pages.BasePage;
-
 import java.time.Duration;
 
 public class SNLoginPage extends BasePage {
+
     //// Constructor ////
     public SNLoginPage(WebDriver driver) {
         super(driver);
@@ -27,26 +27,24 @@ public class SNLoginPage extends BasePage {
     @Step("Clicks on the Log in button")
     public void clickLoginButton() {
         final WebElement loginButton = driver.findElement(sNLoginPgLoginButtonLocator);
-            highlightElement(loginButton);
-            loginButton.click();
+        highlightElement(loginButton);
+        loginButton.click();
         Util.waitMilliseconds(2000);
     }
 
     //// Setters ////
-
     @Step("Set the Password")
     public void setPassword(String password){
         final WebElement passwordTextField = driver.findElement(sNLoginPgPasswordTextFieldLocator);
-            highlightElement(passwordTextField);
-            passwordTextField.sendKeys(password);
+        highlightElement(passwordTextField);
+        passwordTextField.sendKeys(password);
     }
 
     @Step("Set the Email Address")
     public void setEmailAddress(String emailAddress){
         final WebElement emailAddressTextField = driver.findElement(sNLoginPgEmailTextFieldLocator);
-            highlightElement(emailAddressTextField);
-            emailAddressTextField.sendKeys(emailAddress);
-
+        highlightElement(emailAddressTextField);
+        emailAddressTextField.sendKeys(emailAddress);
     }
 
     //// Getters ////
@@ -65,10 +63,10 @@ public class SNLoginPage extends BasePage {
     //// Verifiers ////
     @Step("Check: Verify Login Page Logo Is Displayed")
     public void verifyLoginLogoIsDisplayed() throws InterruptedException {
-        if (!getLoginLogo()) {
-            throw new InterruptedException("Login Page Logo NOT Displayed");
+        if (getLoginLogo()) {
+            System.out.println("Login Page Logo IS Displayed");
         } else {
-            System.out.println("Login Page Logo Displayed");
+            throw new InterruptedException("Login Page Logo NOT Displayed");
         }
     }
 }

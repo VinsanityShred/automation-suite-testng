@@ -1,13 +1,11 @@
-package web.tests.sculptnation;
+package web.tests.sculptnation.loginTests;
 
 import framework.Auth;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import web.pages.sculptnation.SNHomePage;
 import web.pages.sculptnation.SNLandingPage;
 import web.pages.sculptnation.SNLoginPage;
@@ -18,31 +16,29 @@ import web.tests.BaseTest;
 @Listeners( framework.testng.AllureScreenshots.class )
 public class SNLogInOutTest extends BaseTest {
 
-    private WebDriver driver;
-    SNLandingPage sNlndp;
+    SNLandingPage sNLndPg;
     SNLoginPage sNlp;
     SNHomePage sNhp;
 
     @BeforeMethod
     public void setUp() {
-        driver = getDriver();
+        WebDriver driver = getDriver();
+        sNLndPg = new SNLandingPage(driver);
+        sNhp = new SNHomePage(driver);
+        sNlp = new SNLoginPage(driver);
     }
 
     @Description("Verify Login Logout")
-    @Test(priority = 0)
+    @Test()//UUID=86C2680C-C15B-4F4D-9A01-208A3F97054D
     public void loginLogoutTest() throws Exception {
 
-        sNlndp = new SNLandingPage(driver);
-        sNhp = new SNHomePage(driver);
-        sNlp = new SNLoginPage(driver);
-
-        sNlndp.verifyLandingPgLogoIsDisplayed();
-        sNlndp.closeDiscountModalDisplayed();
-        sNlndp.clickMyAccountLink();
+        sNLndPg.verifyLandingPgLogoIsDisplayed();
+        sNLndPg.closeDiscountModalDisplayed();
+        sNLndPg.clickMyAccountLink();
         sNlp.setEmailAddress(Auth.mainUserEmail());
         sNlp.setPassword(Auth.mainUserPassword());
         sNlp.clickLoginButton();
-        sNhp.isHomePgAccountContainerDisplayed();
+        sNhp.verifyHomePgAccountContainerIsDisplayed();
         sNhp.clickLogoutButton();
     }
 }

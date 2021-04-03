@@ -10,7 +10,7 @@
     <!--//// Individual tests to run ////-->
         <classes>
 <!--            <class name="web.tests.vshred.VSLoginTest"/>-->
-            <class name="web.tests.sculptnation.SNLogInOutTest"/>
+            <class name="web.tests.sculptnation.loginTests.SNLogInOutTest"/>
         </classes>
     <!--//// Suite of tests to run ////-->
 <!--        <packages>-->

@@ -1,14 +1,8 @@
 package web.pages;
 
-import io.qameta.allure.Attachment;
 import org.openqa.selenium.*;
-
-import io.qameta.allure.Step;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
@@ -16,17 +10,30 @@ public class BasePage {
     public WebDriverWait wait;
 
     //// Constructor ////
-
     public BasePage(WebDriver driver){
         this.driver = driver;
     }
 
     //// Locators ////
-
     private By signInButton = By.linkText("Sign in");
     By homePageUserName = By.xpath("//table//tr[@class='heading3']");
 
     //// Methods ////
+    public void driverNavigateBack() {
+        driver.navigate().back();
+    }
+
+    public void driverNavigateForward() {
+        driver.navigate().forward();
+    }
+
+    public void driverRefresh() {
+        driver.navigate().refresh();
+    }
+
+    public void driverNavigateToUrl(String navigateToUrl) {
+        driver.navigate().to(navigateToUrl);
+    }
 
     public void switchToFrame(String id) {
         driver.switchTo().frame(id);
@@ -57,6 +64,11 @@ public class BasePage {
     public void highlightElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].setAttribute('style','background: Lime; border: 2px solid pink;');", element);
+    }
+
+    public String getPageUrl() {
+        String currentPageUrl = driver.getCurrentUrl();
+        return currentPageUrl;
     }
 
 //    @Attachment

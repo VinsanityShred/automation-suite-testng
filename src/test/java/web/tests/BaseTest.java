@@ -1,21 +1,10 @@
 package web.tests;
 
 import bsh.ConsoleInterface;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
 
 public class BaseTest {
     private WebDriver driver;
@@ -36,8 +25,8 @@ public class BaseTest {
                 driver = new FirefoxDriver();
                 break;
             default:
-                System.out.println("Launching Default browser: Firefox browser");
-                driver = new FirefoxDriver();
+                System.out.println("Launching Default browser: Chrome browser");
+                driver = new ChromeDriver();
         }
 
         driver.get(appURL);

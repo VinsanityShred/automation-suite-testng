@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import web.pages.BasePage;
 
 public class SNHomePage extends BasePage {
+
     //// Constructor ////
     public SNHomePage(WebDriver driver) {
         super(driver);
@@ -25,10 +26,10 @@ public class SNHomePage extends BasePage {
     }
 
     @Step("Is Account Container Displayed")
-    public void isHomePgAccountContainerDisplayed() {
+    public boolean isHomePgAccountContainerDisplayed() {
         final WebElement homePgAccountContainerDisplayed = driver.findElement(homePgAccountContainerLocator);
         highlightElement(homePgAccountContainerDisplayed);
-        homePgAccountContainerDisplayed.isDisplayed();
+        return homePgAccountContainerDisplayed.isDisplayed();
     }
 
     //// Setters ////
@@ -36,4 +37,12 @@ public class SNHomePage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
+    @Step("Check: Verify Account Container Is Displayed")
+    public void verifyHomePgAccountContainerIsDisplayed() throws InterruptedException {
+        if (isHomePgAccountContainerDisplayed()) {
+            System.out.println("Home Page Logo IS Displayed");
+        } else {
+            throw new InterruptedException("Home Page Logo NOT Displayed");
+        }
+    }
 }

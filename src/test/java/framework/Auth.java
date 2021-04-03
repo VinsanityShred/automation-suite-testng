@@ -3,7 +3,7 @@ package framework;
 public class Auth {
 
     public static String mainUserPassword() {
-        String testUserPassword = "password";
+        String testUserPassword = "password7373";
         return testUserPassword;
     }
 
