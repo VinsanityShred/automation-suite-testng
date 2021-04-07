@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import web.pages.BasePage;
 import java.time.Duration;
 
+import static org.testng.Assert.assertTrue;
+
 public class SNLoginPage extends BasePage {
 
     //// Constructor ////
@@ -18,7 +20,7 @@ public class SNLoginPage extends BasePage {
     }
 
     //// Locators ////
-    By sNLoginPgLogoLocator = By.cssSelector("#app > div > header > nav > div > a > img");
+    By sNLoginPgLogoLocator = By.xpath("//*[@itemprop='logo']");
     By sNLoginPgEmailTextFieldLocator = By.id("email");
     By sNLoginPgPasswordTextFieldLocator = By.id("password");
     By sNLoginPgLoginButtonLocator = By.xpath("//*[@dusk='loginButton']");
@@ -62,11 +64,7 @@ public class SNLoginPage extends BasePage {
 
     //// Verifiers ////
     @Step("Check: Verify Login Page Logo Is Displayed")
-    public void verifyLoginLogoIsDisplayed() throws InterruptedException {
-        if (getLoginLogo()) {
-            System.out.println("Login Page Logo IS Displayed");
-        } else {
-            throw new InterruptedException("Login Page Logo NOT Displayed");
-        }
+    public void verifyLoginLogoIsDisplayed() {
+        assertTrue(getLoginLogo(), "Login Page Logo NOT Displayed");
     }
 }

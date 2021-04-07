@@ -1,8 +1,12 @@
 package web.pages;
 
+import framework.utility.Util;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.testng.Assert.assertTrue;
 
 public class BasePage {
 
@@ -21,6 +25,7 @@ public class BasePage {
     //// Methods ////
     public void driverNavigateBack() {
         driver.navigate().back();
+        Util.waitMilliseconds(1000);
     }
 
     public void driverNavigateForward() {
@@ -82,5 +87,15 @@ public class BasePage {
     //// Setters ////
 
     //// Verifiers ////
+    @Step("Check: Verify current Page URL")
+    public void verifyCurrentPageURL(String currentURL) {
+        assertTrue(getPageUrl().equals(currentURL));
+    }
+
+    @Step("Check: Verify current Page URL")
+    public void verifyCurrentPageURLEndsWith(String urlEnd) {
+        Util.waitMilliseconds(1000);
+        assertTrue(getPageUrl().endsWith(urlEnd));
+    }
 
 }

@@ -30,8 +30,79 @@ public class SNLandingPage extends BasePage {
     By sNLdnPgContactUsLocator = By.xpath("//*[@class='fas fa-envelope']");
     By sNLdnPgPhoneIconLocator = By.xpath("//*[@class='fas fa-phone']");
     By sNLandPgCartIconLocator = By.xpath("//*[@class='fas fa-shopping-cart']");
+    By sNLandPgAboutUsLinkLocator = By.xpath("//*[@href='/about-us']");
+    By sNLandPgClothingLinkLocator = By.xpath("//*[@href='https://clothing.vshred.com']");
+    By sNLandPgSupplementGuideLinkLocator = By.id("__BVID__12__BV_toggle_");
+    By sNLandPgFemaleGuideLinkLocator = By.xpath("//*[@href='/supplement-guide-for-women']");
+    By sNLandPgMaleGuideLinkLocator = By.xpath("//*[@href='/supplement-guide-for-men']");
+    By sNLandPgSupplementsLinkLocator = By.xpath("//*[@href='/products']");
+    By sNLandPgHomeLinkLocator = By.xpath("//a[contains(text(),'Home') and contains(@class,'nav-link')]");
+    By sNLandPgWatchNowLinkLocator = By.className("burn-vsl-banner__cta");
 
     //// Methods ////
+    @Step("Is the Watch Video Link Displayed")
+    private boolean isWatchVideoLinkDisplayed() {
+        WebElement watchVideoLink = driver.findElement(sNLandPgWatchNowLinkLocator);
+        highlightElement(watchVideoLink);
+        return watchVideoLink.isDisplayed();
+    }
+
+    @Step("Click on the Supplements Link")
+    public void clickHomeLink() {
+        final WebElement homeLink = driver.findElement(sNLandPgHomeLinkLocator);
+        highlightElement(homeLink);
+        homeLink.isEnabled();
+        homeLink.click();
+    }
+
+    @Step("Click on the Supplements Link")
+    public void clickSupplementsLink() {
+        final WebElement supplementsLink = driver.findElement(sNLandPgSupplementsLinkLocator);
+        highlightElement(supplementsLink);
+        supplementsLink.isEnabled();
+        supplementsLink.click();
+    }
+
+    @Step("Click on the Male Supplement Guide Link")
+    public void clickMaleGuideLink() {
+        final WebElement MaleGuideLink = driver.findElement(sNLandPgMaleGuideLinkLocator);
+        highlightElement(MaleGuideLink);
+        MaleGuideLink.isEnabled();
+        MaleGuideLink.click();
+    }
+
+    @Step("Click on the Female Supplement Guide Link")
+    public void clickFemaleGuideLink() {
+        final WebElement femaleGuideLink = driver.findElement(sNLandPgFemaleGuideLinkLocator);
+        highlightElement(femaleGuideLink);
+        femaleGuideLink.isEnabled();
+        femaleGuideLink.click();
+    }
+
+    @Step("Click on the Supplement Guide Link")
+    public void clickSupplementGuideLink() {
+        final WebElement supplementGuideLink = driver.findElement(sNLandPgSupplementGuideLinkLocator);
+        highlightElement(supplementGuideLink);
+        supplementGuideLink.isEnabled();
+        supplementGuideLink.click();
+    }
+
+    @Step("Click on the Clothing Link")
+    public void clickClothingLink() {
+        final WebElement clothingLink = driver.findElement(sNLandPgClothingLinkLocator);
+        highlightElement(clothingLink);
+        clothingLink.isEnabled();
+        clothingLink.click();
+    }
+
+    @Step("Click on the About Us Link")
+    public void clickAboutUsLink() {
+        final WebElement aboutUsLink = driver.findElement(sNLandPgAboutUsLinkLocator);
+        highlightElement(aboutUsLink);
+        aboutUsLink.isEnabled();
+        aboutUsLink.click();
+    }
+
     @Step("Click on Cart icon")
     public void clickCartIcon() {
         final WebElement cartIcon = driver.findElement(sNLandPgCartIconLocator);
@@ -86,7 +157,7 @@ public class SNLandingPage extends BasePage {
     }
 
     @Step("Is the login page logo")
-    private boolean isLandingLogo(){
+    private boolean isLandingLogoDisplayed(){
         final WebElement landingLogo = driver.findElement(sNLdnPgLogoLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -97,8 +168,8 @@ public class SNLandingPage extends BasePage {
         return landingLogo.isDisplayed();
     }
 
-    @Step("Is Discount modal displayed")
-    public void closeDiscountModalDisplayed() {
+    @Step("Close Discount modal")
+    public void closeDiscountModal() {
         Util.waitMilliseconds(3000);
         switchToFrame("attentive_creative");
         System.out.println("Discount Modal IS Displayed ");
@@ -156,9 +227,9 @@ public class SNLandingPage extends BasePage {
     }
 
     //// Verifiers ////
-    @Step("Check: Verify current Page URL")
-    public void verifyCartPageURL() {
-        assertTrue(getPageUrl().endsWith("/cart"));
+    @Step("Check: Verify the Watch Video Link Is Displayed")
+    public void verifyWatchVideoLinkIsDisplayed() {
+        assertTrue(isWatchVideoLinkDisplayed(), "Watch Video Link NOT Displayed");
     }
 
     @Step("Check: Verify Instagram Page Logo Is Displayed")
@@ -173,7 +244,7 @@ public class SNLandingPage extends BasePage {
     @Step("Check: Verify Landing Page Logo Is Displayed")
     public void verifyLandingPgLogoIsDisplayed() throws InterruptedException {
         Util.waitMilliseconds(2000);
-        if (isLandingLogo()) {
+        if (isLandingLogoDisplayed()) {
             System.out.println("Landing Page Logo IS Displayed");
         } else {
             throw new InterruptedException("Landing Page Logo NOT Displayed");
