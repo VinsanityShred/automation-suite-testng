@@ -3,7 +3,10 @@ package web.tests;
 import bsh.ConsoleInterface;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.*;
 
 public class BaseTest {
@@ -16,6 +19,12 @@ public class BaseTest {
 
     public void setDriver(String browser, String appURL) {
         switch (browser) {
+            case "headless":
+                System.out.println("Headless Chrome browser");
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless", "--window-size=1200,900");
+                driver = new ChromeDriver(chromeOptions);
+                break;
             case "chrome":
                 System.out.println("Launching Chrome browser");
                 driver = new ChromeDriver();
@@ -23,6 +32,14 @@ public class BaseTest {
             case "firefox":
                 System.out.println("Launching Firefox browser");
                 driver = new FirefoxDriver();
+                break;
+            case "safari":
+                System.out.println("Launching Safari browser");
+                driver = new SafariDriver();
+                break;
+            case "edge":
+                System.out.println("Launching Edge browser");
+                driver = new EdgeDriver();
                 break;
             default:
                 System.out.println("Launching Default browser: Chrome browser");
