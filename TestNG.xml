@@ -3,14 +3,15 @@
 
     <test name="Chrome Tests">
     <!--//// Browser type ////-->
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="headless"/>
     <!--//// URL to test ////-->
 <!--        <parameter name="appURL" value="https://vshred.com/login?ref=home" />-->
         <parameter name="appURL" value="https://sculptnation.com/?qa_test=VSQAT&amp;utm_source=testing&amp;utm_content=testing&amp;utm_medium=testing"/>
     <!--//// Individual tests to run ////-->
         <classes>
 <!--            <class name="web.tests.vshred.VSLoginTest"/>-->
-            <class name="web.tests.sculptnation.loginTests.SNLogInOutTest"/>
+<!--            <class name="web.tests.sculptnation.loginTests.SNLogInOutTest"/>-->
+            <class name="web.tests.sculptnation.contactTests.ContactTests"/>
         </classes>
     <!--//// Suite of tests to run ////-->
 <!--        <packages>-->
