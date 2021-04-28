@@ -6,6 +6,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+
 import static org.testng.Assert.assertTrue;
 
 public class BasePage {
@@ -16,6 +18,7 @@ public class BasePage {
     //// Constructor ////
     public BasePage(WebDriver driver){
         this.driver = driver;
+        wait = new WebDriverWait(driver,15);
     }
 
     //// Locators ////
@@ -23,6 +26,16 @@ public class BasePage {
     By homePageUserName = By.xpath("//table//tr[@class='heading3']");
 
     //// Methods ////
+    public void closeWindow() {
+        driver.close();
+    }
+
+    public void driverSwitchToNewTab(int index) {
+        ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        driver.switchTo().window(tabs.get(index));
+    }
+
     public void driverNavigateBack() {
         driver.navigate().back();
         Util.waitMilliseconds(1000);
@@ -45,12 +58,10 @@ public class BasePage {
     }
 
     public void waitForVisibilityOfElement(WebElement element) {
-        wait = new WebDriverWait(driver,15);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void waitForInvisibilityOfElement(WebElement element) {
-        wait = new WebDriverWait(driver,15);
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
