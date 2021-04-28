@@ -40,6 +40,13 @@ public class SNLandingPage extends BasePage {
     By sNLandPgWatchNowLinkLocator = By.className("burn-vsl-banner__cta");
 
     //// Methods ////
+    @Step("Click on the Watch Now link")
+    public void clickWatchVideoLink() {
+        WebElement watchVideoLink = driver.findElement(sNLandPgWatchNowLinkLocator);
+        highlightElement(watchVideoLink);
+        watchVideoLink.click();
+    }
+
     @Step("Is the Watch Video Link Displayed")
     private boolean isWatchVideoLinkDisplayed() {
         WebElement watchVideoLink = driver.findElement(sNLandPgWatchNowLinkLocator);
