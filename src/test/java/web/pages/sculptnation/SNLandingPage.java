@@ -39,7 +39,16 @@ public class SNLandingPage extends BasePage {
     By sNLandPgHomeLinkLocator = By.xpath("//a[contains(text(),'Home') and contains(@class,'nav-link')]");
     By sNLandPgWatchNowLinkLocator = By.className("burn-vsl-banner__cta");
 
+
     //// Methods ////
+    @Step("Click on the Watch Now link")
+    public void clickProductSupplement(String productName) {
+        By productSupplementLocator = By.xpath("//*[contains(@href,'.com/products/"+productName+"')]");
+        WebElement productSupplement = driver.findElement(productSupplementLocator);
+        highlightElement(productSupplement);
+        productSupplement.click();
+    }
+
     @Step("Click on the Watch Now link")
     public void clickWatchVideoLink() {
         WebElement watchVideoLink = driver.findElement(sNLandPgWatchNowLinkLocator);
