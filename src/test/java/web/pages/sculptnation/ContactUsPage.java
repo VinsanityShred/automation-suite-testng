@@ -10,6 +10,8 @@ import web.pages.BasePage;
 
 import java.time.Duration;
 
+import static org.testng.Assert.assertTrue;
+
 public class ContactUsPage extends BasePage {
 
     //// Constructor ////
@@ -26,7 +28,7 @@ public class ContactUsPage extends BasePage {
 
     //// Getters ////
     @Step("Get the Contact Us page text")
-    public boolean getContactUsPageText() {
+    public boolean isContactUsPageTextDisplayed() {
         final WebElement contactUsPageText = driver.findElement(CUPgParagraphTextLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -40,11 +42,7 @@ public class ContactUsPage extends BasePage {
     //// Verifiers ////
     @Step("Check: Verify the Contact Us Page Text Is Displayed")
     public void verifyContactUsPgTextIsDisplayed() throws InterruptedException {
-        if (getContactUsPageText()) {
-            System.out.println("Contact Us Page Text IS Displayed");
-        } else {
-            throw new InterruptedException("Contact Us Page Text NOT Displayed");
-        }
+        assertTrue(isContactUsPageTextDisplayed(), "Contact Us Header NOT Displayed");
     }
 
 
