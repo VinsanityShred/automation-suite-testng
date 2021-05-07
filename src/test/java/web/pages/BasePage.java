@@ -24,6 +24,7 @@ public class BasePage {
     //// Locators ////
     private By signInButton = By.linkText("Sign in");
     By homePageUserName = By.xpath("//table//tr[@class='heading3']");
+    private By bodyOfPageLocator = By.tagName("body");
 
     //// Methods ////
     public void closeWindow() {
@@ -75,6 +76,12 @@ public class BasePage {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         String javascript = "arguments[0].scrollIntoView(true);";
         js.executeScript(javascript, element);
+    }
+
+    public void scrollToBottomOfPageByKeys() {
+        WebElement toTopOfPage = driver.findElement(bodyOfPageLocator);
+        toTopOfPage.sendKeys(Keys.END);
+        Util.waitMilliseconds(500);
     }
 
     public void highlightElement(WebElement element) {
