@@ -35,7 +35,7 @@ public class FooterTests extends BaseTest {
 
     }
 
-    @Description("Verify")
+    @Description("Verify the footer links are working as expected")
     @Test()//UUID=A26CFF22-44C7-4301-8B71-070ED80AD298
     public void footerTests() throws Exception {
 
