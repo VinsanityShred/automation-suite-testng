@@ -16,25 +16,29 @@ You need to have the following installed to run the Java/TestNG/Maven Framework
 
 * Intellij IDE => for code editing
 
-### 1. Install Selenium Client & WebDriver Langauge Bindings
+### 1. Install Java JDK 11:
+
+From:  https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=x86-64-bit&package=jdk&show-old-builds=true
+
+### 2. Install Selenium Client & WebDriver Langauge Bindings
 
 From: https://www.selenium.dev/downloads/
 
 On the right of the page there is a "Download Selenium" button click it to download
 
-### 2. Install Intellij (community edition)
+### 3. Install Intellij (community edition)
 
 From:  https://www.jetbrains.com/idea/
 
 The latest should be: `idealC-2020.3.3.dmg`
 
-### 3. Install Maven
+### 4. Install Maven
 
 From: https://maven.apache.org
 
 Download: `apache-maven-3.8.1-bin.zip`
 
-### 4. Install Chromedriver
+### 5. Install Chromedriver
 
 `brew tap homebrew/cask && brew cask install chromedriver`
 
@@ -44,7 +48,7 @@ From the terminal:$ `which chromedriver`
 
 You should see a path similar to this => `/usr/local/bin/chromedriver`
 
-### 5. Install Firefoxdriver
+### 6. Install Firefoxdriver
 
 Go to: https://github.com/mozilla/geckodriver/releases
 
