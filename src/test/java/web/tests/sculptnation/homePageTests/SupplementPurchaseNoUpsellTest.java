@@ -40,6 +40,7 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
+        sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("bcaas");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/bcaas");
         bcaasPg.clickBuyNowButton();

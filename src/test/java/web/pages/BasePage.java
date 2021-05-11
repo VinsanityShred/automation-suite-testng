@@ -117,8 +117,6 @@ public class BasePage {
 
     public void setTextBySendKeys(String textToSet) {
         new Actions(driver).sendKeys(textToSet).perform();
-//        WebElement textBySendKeys = driver.findElement(bodyOfPageLocator);
-//        textBySendKeys.sendKeys(textToSet);
         Util.waitMilliseconds(500);
     }
 

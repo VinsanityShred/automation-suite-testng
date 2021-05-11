@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import framework.utility.Util;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.pagefactory.ByChained;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import web.pages.BasePage;
@@ -27,9 +28,9 @@ public class CheckoutPage extends BasePage {
     String StreetAddress = faker.address().streetAddress();
     String City = faker.address().city();
     String State = faker.address().stateAbbr();
-    String Zip = faker.address().zipCodeByState(State);
+    String Zip = faker.address().zipCode();
     String PhoneNumber = faker.phoneNumber().cellPhone();
-    String Password = faker.animal().name();
+    String Password = faker.crypto().md5();
     String CardNumber = "4111 1111 1111 1111";
     String ExpirationMonth = "12";
     String ExpirationYear = "2023";
@@ -45,8 +46,7 @@ public class CheckoutPage extends BasePage {
     private By chckPgZipCodeFieldLocator = By.id("zip-code");
     private By chckPgPhoneNumberFieldLocator = By.id("phone-number-64_phone_number");
     private By chckPgPasswordFieldLocator = By.id("password");
-    private By chckPgIframeCardNumberLocator = By.xpath("//iframe[@name='braintree-hosted-field-number']");
-    private By chckPgCardNumberFieldLocator = By.id("credit-card-number");
+    private By chckPgCardNumberFieldLocator = By.xpath("//*[@name='braintree-hosted-field-number']");
     private By chckPgExpirationMonthFieldLocator = By.xpath("//*[@name='braintree-hosted-field-expirationMonth']");
     private By chckPgExpirationYearFieldLocator = By.xpath("//*[@name='braintree-hosted-field-expirationYear']");
     private By chckPgCVVFieldLocator = By.xpath("//*[@name='braintree-hosted-field-cvv']");
@@ -65,8 +65,10 @@ public class CheckoutPage extends BasePage {
         setPhoneNumber(PhoneNumber);
         setPassword(Password);
         scrollToBottomOfPageByKeys();
-        Util.waitMilliseconds(3000);
-        setCardNumber();
+        setCardNumber("4111 1111 1111 1111");
+        setExpirationMonth("12");
+        setExpirationYear("2023");
+        setCVV(CvvCode);
     }
 
     @Step("Click Place Oder Button")
@@ -83,29 +85,37 @@ public class CheckoutPage extends BasePage {
     @Step("Set CVV")
     public void setCVV(String strCVV) {
         WebElement cVV = driver.findElement(chckPgCVVFieldLocator);
-        highlightElement(cVV);
-        cVV.sendKeys(strCVV);
+        Actions action = new Actions(driver);
+        action.moveToElement(cVV).perform();
+        cVV.click();
+        setTextBySendKeys(strCVV);
     }
 
     @Step("Set Expiration Year")
     public void setExpirationYear(String strExpYear) {
         WebElement expirationYear = driver.findElement(chckPgExpirationYearFieldLocator);
-        highlightElement(expirationYear);
-        expirationYear.sendKeys(strExpYear);
+        Actions action = new Actions(driver);
+        action.moveToElement(expirationYear).perform();
+        expirationYear.click();
+        setTextBySendKeys(strExpYear);
     }
 
     @Step("Set Expiration Month")
     public void setExpirationMonth(String strExpMonth) {
         WebElement expirationMonth = driver.findElement(chckPgExpirationMonthFieldLocator);
-        highlightElement(expirationMonth);
-        expirationMonth.sendKeys(strExpMonth);
+        Actions action = new Actions(driver);
+        action.moveToElement(expirationMonth).perform();
+        expirationMonth.click();
+        setTextBySendKeys(strExpMonth);
     }
 
     @Step("Set Card Number")
-    public void setCardNumber() {
-        WebElement cardNumber = driver.findElement(chckPgIframeCardNumberLocator);
-        highlightElement(cardNumber);
+    public void setCardNumber(String strCardNumber) {
+        WebElement cardNumber = driver.findElement(chckPgCardNumberFieldLocator);
+        Actions action = new Actions(driver);
+        action.moveToElement(cardNumber).perform();
         cardNumber.click();
+        setTextBySendKeys(strCardNumber);
     }
 
     @Step("Set Password")

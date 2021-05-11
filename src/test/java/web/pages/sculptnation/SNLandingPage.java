@@ -38,9 +38,20 @@ public class SNLandingPage extends BasePage {
     By sNLandPgSupplementsLinkLocator = By.xpath("//*[@href='/products']");
     By sNLandPgHomeLinkLocator = By.xpath("//a[contains(text(),'Home') and contains(@class,'nav-link')]");
     By sNLandPgWatchNowLinkLocator = By.className("burn-vsl-banner__cta");
-
+    By sNLandPgOKButtonLocator = By.xpath("//*[text()='OK']");
 
     //// Methods ////
+    @Step("Click on the OK button")
+    public void clickOKButton() {
+        try {
+            WebElement oKButton = driver.findElement(sNLandPgOKButtonLocator);
+            highlightElement(oKButton);
+            oKButton.click();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
     @Step("Click on the Watch Now link")
     public void clickProductSupplement(String productName) {
         By productSupplementLocator = By.xpath("//*[contains(@href,'.com/products/"+productName+"')]");
@@ -188,7 +199,7 @@ public class SNLandingPage extends BasePage {
     public void closeDiscountModal() {
         Util.waitMilliseconds(3000);
         switchToFrame("attentive_creative");
-        System.out.println("Discount Modal IS Displayed ");
+        System.out.println("Discount Modal IS Displayed");
         clickDiscountModalCloseButton();
     }
 
