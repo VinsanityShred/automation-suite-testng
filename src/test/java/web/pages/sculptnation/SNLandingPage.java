@@ -45,6 +45,8 @@ public class SNLandingPage extends BasePage {
     By sNLandPgFooterTopSellingItemsLinkLocator = By.xpath("//*[@href='/products']//*[@class='fa fa-angle-double-right']");
     By sNLandPgFooterAboutUsLinkLocator = By.xpath("//*[@href='/about-us']//*[@class='fa fa-angle-double-right']");
     By sNLandPgFooterShopLinkLocator = By.xpath("//*[text()=' Shop']");
+    By sNLandPgFooterTermsConditionsLinkLocator = By.xpath("//*[@class='container mb-4']//*[@href='/terms-and-conditions']");
+    By sNLandPgFooterTermsConditionsLinkLocator2 = By.xpath("//*[@class='col-12']//*[@href='/terms-and-conditions']");
 
 
     //// Methods ////
@@ -139,6 +141,15 @@ public class SNLandingPage extends BasePage {
         final WebElement envelopIcon = driver.findElement(sNLdnPgContactUsLocator);
         highlightElement(envelopIcon);
         envelopIcon.click();
+    }
+
+    @Step("Click on the footers Terms and Conditions Link")
+    public void clickFooterTermsConditionsLink() {
+        Util.waitMilliseconds(1000);
+        final WebElement footerTermsConditionsLink = driver.findElement(sNLandPgFooterTermsConditionsLinkLocator2);
+        highlightElement(footerTermsConditionsLink);
+        footerTermsConditionsLink.isEnabled();
+        footerTermsConditionsLink.click();
     }
 
     @Step("Click on the footers Home Link")
@@ -241,9 +252,13 @@ public class SNLandingPage extends BasePage {
     @Step("Close Discount modal")
     public void closeDiscountModal() {
         Util.waitMilliseconds(3000);
-        switchToFrame("attentive_creative");
-        System.out.println("Discount Modal IS Displayed ");
-        clickDiscountModalCloseButton();
+        try {
+            switchToFrame("attentive_creative");
+            System.out.println("Discount Modal IS Displayed ");
+            clickDiscountModalCloseButton();
+        } catch (Exception e){
+            System.out.println("No Discount Modal Displayed: " + e);
+        }
     }
 
     //// Setters ////

@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Parameters;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,10 @@ public class BasePage {
     private By bodyOfPageLocator = By.tagName("body");
 
     //// Methods ////
+    public void gotoUrl(String endOfUrl){
+        driver.navigate().to(getBaseURLByServer("urlStageSN") + endOfUrl);
+    }
+
     public void closeWindow() {
         driver.close();
     }
@@ -92,6 +97,24 @@ public class BasePage {
     public String getPageUrl() {
         String currentPageUrl = driver.getCurrentUrl();
         return currentPageUrl;
+    }
+
+    public static String getBaseURLByServer(String strServer) {
+
+        String baseURL;
+
+        switch (strServer) {
+            case "urlProdSN":
+                return baseURL = "https://sculptnation.com";
+            case "urlStageSN":
+                return baseURL = "https://staging.sculptnation.com";
+            case "urlProdVS":
+                return baseURL = "https://vshred.com";
+            case "urlStageVS":
+                return baseURL = "https://staging.vshred.com";
+            default:
+                throw new IllegalArgumentException("System property server set but unknown.  Server was: "+ strServer +"  Unable to continue.");
+        }
     }
 
 //    @Attachment
