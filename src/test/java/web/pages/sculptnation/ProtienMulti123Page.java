@@ -18,7 +18,15 @@ public class ProtienMulti123Page extends BasePage {
     By protnPg123NoThanksLinkLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
 
     //// Methods ////
-    src/test/java/web/pages/sculptnation/ProtienMulti123Page.java 
+    @Step("Click on the No Thanks link")
+    public void clickNoThanksLink() {
+        WebElement noThanksLink = driver.findElement(protnPg123NoThanksLinkLocator);
+        wait.until(ExpectedConditions.visibilityOf(noThanksLink));
+        highlightElement(noThanksLink);
+        noThanksLink.click();
+        wait.until(ExpectedConditions.invisibilityOf(noThanksLink));
+    }
+
     //// Setters ////
 
     //// Getters ////
