@@ -12,7 +12,7 @@ You need to have the following installed to run the Java/TestNG/Maven Framework
 
 * Maven => to build Java projects
 
-* Java SE 15 => for the programming language
+* Java JDK 11.0.8 => for the programming language
 
 * Intellij IDE => for code editing
 
