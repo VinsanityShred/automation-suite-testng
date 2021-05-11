@@ -8,9 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import web.pages.sculptnation.CartPage;
-import web.pages.sculptnation.CheckoutPage;
-import web.pages.sculptnation.SNLandingPage;
+import web.pages.sculptnation.*;
 import web.pages.sculptnation.productPages.BcaasProductPage;
 import web.tests.BaseTest;
 
@@ -21,22 +19,31 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     BcaasProductPage bcaasPg;
-    CartPage crtPg;
+    CartPage cartPg;
     CheckoutPage chckPg;
+    BcaaUs120Page bcaaPg120;
+    BcaaUs121Page bcaaPg121;
+    CreatineCs122Page crtnPg122;
+    ProtienMulti123Page protnPg123;
+    Coupon218Page couponPg218;
 
     @BeforeMethod
     public void setUp() {
         WebDriver driver = getDriver();
         sNLndPg = new SNLandingPage(driver);
         bcaasPg = new BcaasProductPage(driver);
-        crtPg = new CartPage(driver);
+        cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
+        bcaaPg120 = new BcaaUs120Page(driver);
+        bcaaPg121 = new BcaaUs121Page(driver);
+        crtnPg122 = new CreatineCs122Page(driver);
+        protnPg123 = new ProtienMulti123Page(driver);
+        couponPg218 = new Coupon218Page(driver);
     }
 
     @Description("Verify supplement purchase no upsell")
     @Test()//UUID=03E0CE50-C719-463C-B2AF-E0A53F356C78
     public void purchaseBCAAsSupplement() throws Exception {
-
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -46,12 +53,28 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
         bcaasPg.clickBuyNowButton();
         bcaasPg.clickOneTimeDeliveryPriceLabel();
         bcaasPg.clickAddToCartLinkByIndex(0);
-        crtPg.verifyCurrentPageURLEndsWith("/cart?funnel=bcaa-us-bcaaFunnel");
-        crtPg.verifyCartTableIsDisplayed();
-        crtPg.clickProceedToCheckoutButton();
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=bcaa-us-bcaaFunnel");
+        cartPg.verifyCartTableIsDisplayed();
+        cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
+        bcaaPg120.verifyBcaaImageIsDisplayed();
+        bcaaPg120.scrollToBottomOfPageByKeys();
+        bcaaPg120.clickNoThanksLink();
+        bcaaPg121.verifyCurrentPageURLEndsWith("/bcaa-ds?f=121");
+        bcaaPg121.scrollToBottomOfPageByKeys();
+        bcaaPg121.clickNoThanksLink();
+        crtnPg122.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
+        crtnPg122.scrollToBottomOfPageByKeys();
+        crtnPg122.clickNoThanksLink();
+        protnPg123.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
+        protnPg123.scrollToBottomOfPageByKeys();
+        protnPg123.clickNoThanksLink();
+        couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
+        couponPg218.scrollToBottomOfPageByKeys();
+        couponPg218.clickNoThanksLink();
+        couponPg218.verifyCurrentPageURLEndsWith("/receipt");
         Util.waitMilliseconds(5000000);
     }
 

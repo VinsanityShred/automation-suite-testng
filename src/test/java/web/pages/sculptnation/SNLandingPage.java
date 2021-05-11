@@ -198,9 +198,13 @@ public class SNLandingPage extends BasePage {
     @Step("Close Discount modal")
     public void closeDiscountModal() {
         Util.waitMilliseconds(3000);
-        switchToFrame("attentive_creative");
-        System.out.println("Discount Modal IS Displayed");
-        clickDiscountModalCloseButton();
+        try {
+            switchToFrame("attentive_creative");
+            System.out.println("Discount Modal IS Displayed ");
+            clickDiscountModalCloseButton();
+        } catch (Exception e){
+            System.out.println("No Discount Modal Displayed: " + e);
+        }
     }
 
     //// Setters ////

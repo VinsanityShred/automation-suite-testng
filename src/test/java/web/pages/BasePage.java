@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 
 import static org.testng.Assert.assertTrue;
@@ -19,7 +20,7 @@ public class BasePage {
     //// Constructor ////
     public BasePage(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver,15);
+        wait = new WebDriverWait(driver,30);
     }
 
     //// Locators ////
@@ -149,6 +150,11 @@ public class BasePage {
     @Step("Check: Verify current Page URL")
     public void verifyCurrentPageURLEndsWith(String urlEnd) {
         Util.waitMilliseconds(1000);
+        new WebDriverWait(driver, 30).
+            pollingEvery(Duration.ofMillis(100)).
+            withMessage("Current URL Does NOT Contain: " + urlEnd).
+            withTimeout(Duration.ofSeconds(30)).
+            until(ExpectedConditions.urlContains(urlEnd));
         assertTrue(getPageUrl().endsWith(urlEnd));
     }
 
