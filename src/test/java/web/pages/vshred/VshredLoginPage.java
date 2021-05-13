@@ -12,6 +12,9 @@ import java.time.Duration;
 
 public class VshredLoginPage extends BasePage {
 
+    public static final String INVALID_EMAIL_PASS_MSG = "Your email and/or password were invalid.";
+    //public static final String FORM_ERRORS_MSG = "Please check the form below for errors.";
+
     public VshredLoginPage(WebDriver driver) {
         super(driver);
     }
@@ -23,6 +26,10 @@ public class VshredLoginPage extends BasePage {
     By vsLoginPageLogoLocator = By.cssSelector("#menu1 > div > div > div.col-md-2.col-sm-2.hidden-xs >" +
             " div > a > img.logo.logo-light");
     By vsLoginButtonLocator = By.xpath("//button[text()='Login']");
+    //By vsErrMsgLocator = By.cssSelector("#toast-container");
+    //By vsErrMsgLocator = By.className("toast-error");
+    By vsToastCloseButton = By.cssSelector(".toast-close-button");
+    By vsHelpBlockLocator = By.className("help-block");
 
     //// Methods ////
 
@@ -91,6 +98,41 @@ public class VshredLoginPage extends BasePage {
             System.out.println("Login Page Logo Displayed");
         }
     }
+
+    @Step("Is error message displayed")
+    public void verifyErrMsgIsDisplayed() throws InterruptedException {
+        Thread.sleep(2500); // Give time for error message box to appear
+        final WebElement toastCloseButton = driver.findElement(vsToastCloseButton);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Error Message Box Close Button").
+                withTimeout(Duration.ofSeconds(10)).
+                until(ExpectedConditions.elementToBeClickable(toastCloseButton));
+        highlightElement(toastCloseButton);
+
+        if (!toastCloseButton.isDisplayed()) {
+            throw new InterruptedException("Error message box NOT displayed");
+        }
+    }
+
+    @Step("Is help block message displayed")
+    public void verifyHelpBlockText(String aTextMsg) throws InterruptedException {
+        final WebElement loginPageHelpBlock = driver.findElement(vsHelpBlockLocator);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Help Block").
+                withTimeout(Duration.ofSeconds(10)).
+                until(ExpectedConditions.visibilityOf(loginPageHelpBlock));
+        highlightElement(loginPageHelpBlock);
+
+        // Verify help block text matches given parameter string
+        if (!loginPageHelpBlock.getText().equalsIgnoreCase(aTextMsg)) {
+            throw new InterruptedException("Login Page Help Block Text NOT expected text");
+        } else {
+            System.out.println("Login Page Help Block Text Displayed and Matching: " + loginPageHelpBlock.getText());
+        }
+    }
+
 
     public void waitForLoad() {
     }
