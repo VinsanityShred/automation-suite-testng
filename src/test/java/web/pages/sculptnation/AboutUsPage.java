@@ -22,6 +22,7 @@ public class AboutUsPage extends BasePage {
     @Step("Is About Us Header Displayed")
     private boolean isAboutUsHeaderDisplayed() {
         final WebElement aboutUsHeader = driver.findElement(sNLandPgAboutUSHeaderLocator);
+        highlightElement(aboutUsHeader);
         return aboutUsHeader.isDisplayed();
     }
 

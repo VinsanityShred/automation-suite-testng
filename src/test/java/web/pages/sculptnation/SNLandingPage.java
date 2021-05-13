@@ -39,7 +39,15 @@ public class SNLandingPage extends BasePage {
     By sNLandPgHomeLinkLocator = By.xpath("//a[contains(text(),'Home') and contains(@class,'nav-link')]");
     By sNLandPgWatchNowLinkLocator = By.className("burn-vsl-banner__cta");
     By sNLandPgOKButtonLocator = By.xpath("//*[text()='OK']");
+    By sNLandPgFooterHomeLinkLocator = By.xpath("//*[@href='/']//*[@class='fa fa-angle-double-right']");
+    By sNLandPgFooterContactUsLinkLocator = By.xpath("//*[@href='/contact-us']//*[@class='fa fa-angle-double-right']");
+    By sNLandPgFooterShippingReturnsLinkLocator = By.xpath("//*[@href='/shipping-and-returns']");
+    By sNLandPgFooterPrivacyCookiePolicyLinkLocator = By.xpath("//*[@href='/privacy-policy']//*[@class='fa fa-angle-double-right']");
+    By sNLandPgFooterTopSellingItemsLinkLocator = By.xpath("//*[@href='/products']//*[@class='fa fa-angle-double-right']");
+    By sNLandPgFooterAboutUsLinkLocator = By.xpath("//*[@href='/about-us']//*[@class='fa fa-angle-double-right']");
+    By sNLandPgFooterShopLinkLocator = By.xpath("//*[text()=' Shop']");
 
+    
     //// Methods ////
     @Step("Click on the OK button")
     public void clickOKButton() {
@@ -74,7 +82,7 @@ public class SNLandingPage extends BasePage {
         return watchVideoLink.isDisplayed();
     }
 
-    @Step("Click on the Supplements Link")
+    @Step("Click on the Home Link")
     public void clickHomeLink() {
         final WebElement homeLink = driver.findElement(sNLandPgHomeLinkLocator);
         highlightElement(homeLink);
@@ -151,6 +159,61 @@ public class SNLandingPage extends BasePage {
         final WebElement envelopIcon = driver.findElement(sNLdnPgContactUsLocator);
         highlightElement(envelopIcon);
         envelopIcon.click();
+    }
+
+    @Step("Click on the footers Home Link")
+    public void clickFooterHomeLink() {
+        final WebElement footerHomeLink = driver.findElement(sNLandPgFooterHomeLinkLocator);
+        highlightElement(footerHomeLink);
+        footerHomeLink.isEnabled();
+        footerHomeLink.click();
+    }
+
+    @Step("Click on the footers Shop Link")
+    public void clickFooterShopLink() {
+        final WebElement footerShopLink = driver.findElement(sNLandPgFooterShopLinkLocator);
+        highlightElement(footerShopLink);
+        footerShopLink.isEnabled();
+        footerShopLink.click();
+    }
+
+    @Step("Click on the footers About Us Link")
+    public void clickFooterAboutUsLink() {
+        final WebElement footerAboutUsLink = driver.findElement(sNLandPgFooterAboutUsLinkLocator);
+        highlightElement(footerAboutUsLink);
+        footerAboutUsLink.isEnabled();
+        footerAboutUsLink.click();
+    }
+
+    @Step("Click on the footers Top Selling Items Link")
+    public void clickFooterTopSellingItemsLink() {
+        final WebElement footerTopSellingItemsLink = driver.findElement(sNLandPgFooterTopSellingItemsLinkLocator);
+        highlightElement(footerTopSellingItemsLink);
+        footerTopSellingItemsLink.isEnabled();
+        footerTopSellingItemsLink.click();
+    }
+
+    @Step("Click on the footers Privacy and Cookie Policy Link")
+    public void clickFooterPrivacyCookiePolicyLink() {
+        final WebElement footerPrivacyCookiePolicyLink = driver.findElement(sNLandPgFooterPrivacyCookiePolicyLinkLocator);
+        highlightElement(footerPrivacyCookiePolicyLink);
+        footerPrivacyCookiePolicyLink.isEnabled();
+        footerPrivacyCookiePolicyLink.click();
+    }
+
+    @Step("Click on the footers Shipping and Returns Link")
+    public void clickFooterShippingReturnsLink() {
+        final WebElement footerShippingReturnsLink = driver.findElement(sNLandPgFooterShippingReturnsLinkLocator);
+        highlightElement(footerShippingReturnsLink);
+        footerShippingReturnsLink.isEnabled();
+        footerShippingReturnsLink.click();
+    }
+
+    @Step("Click on Contact Us footer link")
+    public void clickFooterContactUsLink() {
+        final WebElement footerContactUsLink = driver.findElement(sNLandPgFooterContactUsLinkLocator);
+        highlightElement(footerContactUsLink);
+        footerContactUsLink.click();
     }
 
     @Step("Click on Instagram social media link")

@@ -25,7 +25,9 @@ public class BasePage {
 
     //// Locators ////
     private By signInButton = By.linkText("Sign in");
+
     private By homePageUserName = By.xpath("//table//tr[@class='heading3']");
+
     private By bodyOfPageLocator = By.tagName("body");
 
     //// Methods ////
