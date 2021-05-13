@@ -1,6 +1,5 @@
 package web.tests.sculptnation.homePageTests;
 
-import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -26,6 +25,7 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
     CreatineCs122Page crtnPg122;
     ProtienMulti123Page protnPg123;
     Coupon218Page couponPg218;
+    ReceiptPage RcptPg;
 
     @BeforeMethod
     public void setUp() {
@@ -39,9 +39,10 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
         crtnPg122 = new CreatineCs122Page(driver);
         protnPg123 = new ProtienMulti123Page(driver);
         couponPg218 = new Coupon218Page(driver);
+        RcptPg = new ReceiptPage(driver);
     }
 
-    @Description("Verify supplement purchase no upsell")
+    @Description("Verify BCAAs -supplement purchase no upsell")
     @Test()//UUID=03E0CE50-C719-463C-B2AF-E0A53F356C78
     public void purchaseBCAAsSupplement() throws Exception {
 
@@ -74,9 +75,8 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
         couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         couponPg218.scrollToBottomOfPageByKeys();
         couponPg218.clickNoThanksLink();
-        couponPg218.verifyCurrentPageURLEndsWith("/receipt");
-        Util.waitMilliseconds(5000000);
+        RcptPg.verifyCurrentPageURLEndsWith("/receipt");
+        RcptPg.verifyReceiptPgHeaderIsDisplayed();
+        RcptPg.verifyReceiptPgTotalsMatch("$46.95");
     }
-
-
 }
