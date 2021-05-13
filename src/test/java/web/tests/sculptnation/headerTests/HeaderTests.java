@@ -17,7 +17,7 @@ public class HeaderTests extends BaseTest {
 
     SNLandingPage sNLndPg;
     SNLoginPage sNlp;
-    CartPage cpg;
+    CartPage cartPg;
     AboutUsPage aUPg;
     SupplementGuideForWomenPage sGWPg;
     SupplementGuideForMenPage sGMPg;
@@ -27,7 +27,7 @@ public class HeaderTests extends BaseTest {
     public void setUp() {
         WebDriver driver = getDriver();
         sNLndPg = new SNLandingPage(driver);
-        cpg = new CartPage(driver);
+        cartPg = new CartPage(driver);
         sNlp = new SNLoginPage(driver);
         aUPg = new AboutUsPage(driver);
         sGWPg = new SupplementGuideForWomenPage(driver);
@@ -43,7 +43,7 @@ public class HeaderTests extends BaseTest {
         sNLndPg.closeDiscountModal();
         sNLndPg.clickCartIcon();
         sNLndPg.verifyCurrentPageURLEndsWith("/cart");
-        cpg.verifyEmptyCartLogoIsDisplayed();
+        cartPg.verifyEmptyCartLogoIsDisplayed();
         sNLndPg.clickMyAccountLink();
         sNLndPg.verifyCurrentPageURLEndsWith("/login");
         sNlp.verifyLoginLogoIsDisplayed();
