@@ -3,9 +3,11 @@ package web.pages;
 import framework.utility.Util;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 
 import static org.testng.Assert.assertTrue;
@@ -18,12 +20,14 @@ public class BasePage {
     //// Constructor ////
     public BasePage(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver,15);
+        wait = new WebDriverWait(driver,30);
     }
 
     //// Locators ////
     private By signInButton = By.linkText("Sign in");
-    By homePageUserName = By.xpath("//table//tr[@class='heading3']");
+
+    private By homePageUserName = By.xpath("//table//tr[@class='heading3']");
+
     private By bodyOfPageLocator = By.tagName("body");
 
     //// Methods ////
@@ -74,13 +78,48 @@ public class BasePage {
 
     public void scrollToTop(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        String javascript = "arguments[0].scrollIntoView(true);";
+        String javascript = "window.scrollTo(document.body.scrollHeight, 0)";
+        js.executeScript(javascript, element);
+    }
+
+    public void scrollToBottom(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        String javascript = "window.scrollTo(0, -document.body.scrollHeight)";
         js.executeScript(javascript, element);
     }
 
     public void scrollToBottomOfPageByKeys() {
         WebElement toTopOfPage = driver.findElement(bodyOfPageLocator);
         toTopOfPage.sendKeys(Keys.END);
+        Util.waitMilliseconds(500);
+    }
+
+    public void scrollToTopOfPageByKeys() {
+        WebElement toTopOfPage = driver.findElement(bodyOfPageLocator);
+        toTopOfPage.sendKeys(Keys.HOME);
+        Util.waitMilliseconds(500);
+    }
+
+    public void tabToElement() {
+        WebElement toElement = driver.findElement(bodyOfPageLocator);
+        toElement.sendKeys(Keys.TAB);
+        Util.waitMilliseconds(500);
+    }
+
+    public void enterOnElement() {
+        WebElement enterElement = driver.findElement(bodyOfPageLocator);
+        enterElement.sendKeys(Keys.ENTER);
+        Util.waitMilliseconds(500);
+    }
+
+    public void escapeOnElement() {
+        WebElement escapeElement = driver.findElement(bodyOfPageLocator);
+        escapeElement.sendKeys(Keys.ESCAPE);
+        Util.waitMilliseconds(500);
+    }
+
+    public void setTextBySendKeys(String textToSet) {
+        new Actions(driver).sendKeys(textToSet).perform();
         Util.waitMilliseconds(500);
     }
 
@@ -113,6 +152,11 @@ public class BasePage {
     @Step("Check: Verify current Page URL")
     public void verifyCurrentPageURLEndsWith(String urlEnd) {
         Util.waitMilliseconds(1000);
+        new WebDriverWait(driver, 30).
+            pollingEvery(Duration.ofMillis(100)).
+            withMessage("Current URL Does NOT Contain: " + urlEnd).
+            withTimeout(Duration.ofSeconds(30)).
+            until(ExpectedConditions.urlContains(urlEnd));
         assertTrue(getPageUrl().endsWith(urlEnd));
     }
 
