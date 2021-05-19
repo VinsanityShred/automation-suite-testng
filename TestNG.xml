@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite parallel="classes" thread-count="1" name="Suite">
+
+    <test name="Testing-2 Chrome Tests">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/login?ref=home" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSLoginTest"/>
+            <!--class name="web.tests.vshred.VSPurchaseTest"/-->
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
 
     <test name="Chrome Tests">
     <!--//// Browser type ////-->
@@ -11,7 +29,7 @@
         <classes>
 <!--            <class name="web.tests.vshred.VSLoginTest"/>-->
 <!--            <class name="web.tests.sculptnation.loginTests.SNLogInOutTest"/>-->
-            <class name="web.tests.sculptnation.contactTests.ContactTests"/>
+            <!--class name="web.tests.sculptnation.contactTests.ContactTests"/>-->
         </classes>
     <!--//// Suite of tests to run ////-->
 <!--        <packages>-->
@@ -38,3 +56,4 @@
 <!--    </test>-->
 
 </suite>
+

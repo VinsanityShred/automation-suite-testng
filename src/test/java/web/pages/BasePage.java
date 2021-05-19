@@ -31,9 +31,7 @@ public class BasePage {
     private By bodyOfPageLocator = By.tagName("body");
 
     //// Methods ////
-    public void closeWindow() {
-        driver.close();
-    }
+    public void closeWindow() { driver.close(); }
 
     public void driverSwitchToNewTab(int index) {
         ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
