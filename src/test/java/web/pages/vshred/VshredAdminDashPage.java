@@ -1,9 +1,7 @@
 package web.pages.vshred;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import web.pages.BasePage;
@@ -14,17 +12,29 @@ public class VshredAdminDashPage extends BasePage {
 
     public static final String ADMIN_DROPDOWN_TEXT = "Admin";
     public static final String ADMIN_LOGOUT_TEXT = "Logout";
-    public static final String ADMIN_DASH_URL = "https://testing-2.vshred.com/admin";
+
+    public static VshredAdminDashPage vsAdminPage;
 
     public VshredAdminDashPage(WebDriver driver) {
         super(driver);
     }
 
-    //// Locators ////
+    public static void createAdminDashPage(WebDriver driver) {
+        vsAdminPage = new VshredAdminDashPage(driver);
+    }
 
+    public static void verifyAdminDashPage() throws Exception {
+        //// Verify admin dash page logo ////
+        vsAdminPage.verifyAdminDashLogoIsDisplayed();
+
+        //// Verify admin dropdown menu displays ////
+        vsAdminPage.verifyAdminDropdownMenuDisplayed();
+    }
+
+    //// Locators ////
     By vsAdminDashLogoLocator = By.cssSelector("#page-wrapper > div.row.border-bottom > nav > ul > li.logo-element.p-0.nav-item > img");
     By vsAdminDashDropdownLocator = By.cssSelector("#dropdownMenuLink > span > span.text-muted.text-xs.block");
-    By vsAdminDashLogoutLocator = By.cssSelector("#page-wrapper > div.row.border-bottom > nav > ul > li:nth-child(2) > a");
+    By vsAdminDashLogoutLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[1]/nav/ul/li[2]/a");
 
     //// Methods ////
     @Step("Click on logout button")

@@ -12,11 +12,38 @@ import java.time.Duration;
 
 public class VshredLoginPage extends BasePage {
 
+    public static VshredLoginPage vsLoginPage;
+
     public static final String INVALID_EMAIL_PASS_MSG = "Your email and/or password were invalid.";
     //public static final String FORM_ERRORS_MSG = "Please check the form below for errors.";
 
     public VshredLoginPage(WebDriver driver) {
         super(driver);
+    }
+
+    public static void createLoginPage(WebDriver driver) {
+        //// Create Login Page objects to test ////
+        vsLoginPage = new VshredLoginPage(driver);
+    }
+
+    public static void verifyLoginPage() throws Exception {
+        //// Verify login page logo ////
+        vsLoginPage.verifyLoginLogoIsDisplayed();
+    }
+
+    public static void loginUserPassword(String aUser, String aPassword) throws  Exception {
+        //// login to application ////
+        vsLoginPage.setEmailAddress(aUser);
+        vsLoginPage.setUserPassword(aPassword);
+        vsLoginPage.clickLoginButton();
+    }
+
+    public static void verifyErrorDlgAndHelpText(String aHelpText) throws Exception {
+        // Verify temporary red message box indicating login error
+        vsLoginPage.verifyErrMsgIsDisplayed();
+
+        // Verify help-block below username field reads "Your email and/or password were invalid."
+        vsLoginPage.verifyHelpBlockText(aHelpText);
     }
 
     //// Locators ////
