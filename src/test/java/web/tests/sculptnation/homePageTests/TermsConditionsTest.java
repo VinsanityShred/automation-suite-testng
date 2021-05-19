@@ -31,7 +31,9 @@ public class TermsConditionsTest extends BaseTest {
     public void TermsConditionsHeadersTests() throws Exception {
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
+        sNLndPg.clickOKButton();
         sNLndPg.gotoUrl( "/terms-and-conditions");
+        sNLndPg.closeDiscountModal();
         sNLndPg.verifyCurrentPageURLEndsWith("/terms-and-conditions");
         trmsPg.verifyTermsPgHeaderIsDisplayed();
         trmsPg.verifyTermsPgHeader1To34IsDisplayed();
