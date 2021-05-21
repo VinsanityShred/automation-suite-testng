@@ -33,15 +33,13 @@ public class VshredHomePage extends BasePage {
     }
 
     //// Locators ////
-
-    By homepageLogoLocator = By.cssSelector("#menu1 > div > div > div.col-md-2.col-sm-2.hidden-xs > div > a > img.logo.logo-dark");
-    By homepageHeaderTextLocator = By.xpath("//h2[text()='Your Programs']");
-    By homepageCircleAvatarLocator = By.className("circle-avatar");
-    By homepageLogoutLinkLocator = By.cssSelector("body > div.main-container > section > div > div > div.col-md-4 > div > div:nth-child(3) > ul > li:nth-child(6) > a");
-    By gymWorkoutPlayerLocator = By.xpath("//*[@class='embed-responsive-item']");
+    private By homepageLogoLocator = By.cssSelector("#menu1 > div > div > div.col-md-2.col-sm-2.hidden-xs > div > a > img.logo.logo-dark");
+    private By homepageHeaderTextLocator = By.xpath("//h2[text()='Your Programs']");
+    private By homepageCircleAvatarLocator = By.className("circle-avatar");
+    private By homepageLogoutLinkLocator = By.cssSelector("body > div.main-container > section > div > div > div.col-md-4 > div > div:nth-child(3) > ul > li:nth-child(6) > a");
+    private By gymWorkoutPlayerLocator = By.xpath("//*[@class='embed-responsive-item']");
 
     //// Methods ////
-
     @Step("Click Logout link")
     public void clickLogoutLink() {
         Util.waitMilliseconds(1000);
@@ -94,7 +92,6 @@ public class VshredHomePage extends BasePage {
     //// Setters ////
 
     //// Getters ////
-
     @Step("Get Home Page Header Text")
     public String getHomepageHeaderText() {
         final WebElement homepageHeaderText = driver.findElement(homepageHeaderTextLocator);
@@ -109,7 +106,6 @@ public class VshredHomePage extends BasePage {
     }
 
     //// Verifiers ////
-
     @Step("Check: Verify Gym Workout Player Is Displayed")
     public void verifyGymWorkoutPlayerIsDisplayed() throws Exception {
         if (isGymWorkoutPlayerDisplayed() == true) {

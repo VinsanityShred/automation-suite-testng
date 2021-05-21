@@ -11,15 +11,24 @@ import web.pages.BasePage;
 import java.time.Duration;
 
 public class VshredMemberHomePage extends BasePage {
-
-    public static final String MEMBER_HOME_URL = "https://testing-2.vshred.com/member";
+    public static VshredMemberHomePage vsMemberHomePage;
 
     public VshredMemberHomePage(WebDriver driver) {
         super(driver);
     }
+
+    public static void createVSMemberHomePage(WebDriver driver) {
+        vsMemberHomePage = new VshredMemberHomePage(driver);
+    }
+
+    public static void verifyVSMemberHomePage() throws Exception {
+        vsMemberHomePage.verifyEditProfileIsDisplayed();
+    }
+
     //// Locators ////
-    By vsMemberHomeEditProfileLocator = By.cssSelector("body > div.main-container > section.py-4 > div > div > div.col-xs-8 > a");
-    By vsMemberHomeProgramsLocator = By.cssSelector("#menu1 > div > div > div.col-md-10.col-sm-10.text-right.text-left-xs.text-left-sm > div > ul > li:nth-child(2) > a");
+    private By vsMemberHomeEditProfileLocator = By.cssSelector("body > div.main-container > section.py-4 > div > div > div.col-xs-8 > a");
+    //private By vsMemberHomeEditProfileLocator = By.xpath("/html/body/div[4]/section[1]/div/div/div[2]/a");
+    private By vsMemberHomeProgramsLocator = By.xpath("//*[@id=\"menu1\"]/div/div/div[2]/div/ul/li[2]/a");
 
     //// Methods ////
     @Step("Click on programs link")
@@ -68,7 +77,6 @@ public class VshredMemberHomePage extends BasePage {
     }
 
     //// Verifiers ////
-
     @Step("Check: Verify Member Home Page Edit Profile Is Displayed")
     public void verifyEditProfileIsDisplayed() throws InterruptedException {
         if (!getMemberHomeEditProfileBtn()) {
