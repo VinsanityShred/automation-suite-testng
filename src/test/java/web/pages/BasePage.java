@@ -180,6 +180,7 @@ public class BasePage {
             withTimeout(Duration.ofSeconds(30)).
             until(ExpectedConditions.urlContains(urlEnd));
         assertTrue(getPageUrl().endsWith(urlEnd));
+        Util.waitMilliseconds(1000);
     }
 
 }
