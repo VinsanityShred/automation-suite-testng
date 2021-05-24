@@ -15,9 +15,21 @@ import java.time.Duration;
 
 public class VshredHomePage extends BasePage {
 
+    public static VshredHomePage vsHomePage;
+
     //// Constructor ////
     public VshredHomePage(WebDriver driver) {
         super(driver);
+    }
+
+    public static void createVSHomePage(WebDriver driver) {
+        //// Create Login Page objects to test ////
+        vsHomePage = new VshredHomePage(driver);
+    }
+
+    public static void verifyVSHomePage(WebDriver driver) throws Exception {
+        //// Verify login page logo ////
+        vsHomePage.verifyHomepageLogoIsDisplayed();
     }
 
     //// Locators ////
@@ -112,7 +124,7 @@ public class VshredHomePage extends BasePage {
         if (getHomepageHeaderText().equals("YOUR PROGRAMS")) {
             System.out.println("Home Page Header Text IS A Match");
         } else {
-            throw new InterruptedException("Home Page Header Text IS A Match");
+            throw new InterruptedException("Home Page Header Text Is NOT A Match");
         }
     }
 
