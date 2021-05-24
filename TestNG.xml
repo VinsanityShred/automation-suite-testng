@@ -1,59 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite parallel="classes" thread-count="1" name="Suite">
 
-    <test name="Testing-2 Chrome Tests">
-        <!--//// Browser type ////-->
-        <parameter name="browser" value="headless"/>
-        <!--//// URL to test ////-->
-        <parameter name="appURL" value="https://testing-2.vshred.com/login?ref=home" />
-        <!--//// Individual tests to run ////-->
-        <classes>
-            <class name="web.tests.vshred.VSLoginTest"/>
-            <!--class name="web.tests.vshred.VSPurchaseTest"/-->
-        </classes>
-        <!--//// Suite of tests to run ////-->
-        <!--        <packages>-->
-        <!--            <package name="web.tests.vshred"/>-->
-        <!--            <package name="web.tests.sculptnation"/>-->
-        <!--        </packages>-->
-    </test>
-
-    <test name="Chrome Tests">
-    <!--//// Browser type ////-->
-        <parameter name="browser" value="headless"/>
-    <!--//// URL to test ////-->
-<!--        <parameter name="appURL" value="https://vshred.com/login?ref=home" />-->
+/////////////////////////////////////////////////////SCULPTNATION///////////////////////////////////////////////
+    <test name="SculptNATION Regression Tests">
+        <parameter name="browser" value="chrome"/>
+---------------------------------------------------------------------------------------------------
+                                ////SculptNATION Production URL////
         <parameter name="appURL" value="https://sculptnation.com/?qa_test=VSQAT&amp;utm_source=testing&amp;utm_content=testing&amp;utm_medium=testing"/>
-    <!--//// Individual tests to run ////-->
+
+---------------------------------------------------------------------------------------------------
+                                ////SculptNATION Staging URL////
+
+<!--        <parameter name="appURL" value="https://staging.sculptnation.com/"/>-->
+---------------------------------------------------------------------------------------------------
+                                //// Individual tests to run ////
+
         <classes>
-<!--            <class name="web.tests.vshred.VSLoginTest"/>-->
-<!--            <class name="web.tests.sculptnation.loginTests.SNLogInOutTest"/>-->
-            <!--class name="web.tests.sculptnation.contactTests.ContactTests"/>-->
+            <class name="web.tests.sculptnation.homePageTests.SupplementPurchaseNoUpsellTest"/>
         </classes>
-    <!--//// Suite of tests to run ////-->
+---------------------------------------------------------------------------------------------------
+                                //// Suite of tests to run ////
+
 <!--        <packages>-->
-<!--            <package name="web.tests.vshred"/>-->
 <!--            <package name="web.tests.sculptnation"/>-->
 <!--        </packages>-->
+----------------------------------------------------------------------------------------------------
     </test>
+/////////////////////////////////////////////////////VSHRED///////////////////////////////////////////////
+<!--    <test name="VShred Regression Tests">-->
+<!--        <parameter name="browser" value="chrome"/>-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--                                ////VShred Production URL////-->
 
-<!--    <test name="Firefox Tests">-->
-<!--    &lt;!&ndash;//// Browser type ////&ndash;&gt;-->
-<!--        <parameter name="browser" value="firefox"/>-->
-<!--    &lt;!&ndash;//// URL to test ////&ndash;&gt;-->
-<!--        <parameter name="appURL" value="https://vshred.com/login?ref=home" />-->
-<!--        <parameter name="appURL" value="https://sculptnation.com/" />-->
-<!--    &lt;!&ndash;//// Individual tests to run ////&ndash;&gt;-->
+<!--                <parameter name="appURL" value="https://vshred.com/login?ref=home" />-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--                                ////VShred Staging URL////-->
+
+<!--        &lt;!&ndash;        <parameter name="appURL" value="https://staging.vshred.com/"/>&ndash;&gt;-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--                                //// Individual tests to run ////-->
 <!--        <classes>-->
 <!--            <class name="web.tests.vshred.VSLoginTest"/>-->
 <!--        </classes>-->
-<!--    &lt;!&ndash;//// Suite of tests to run ////&ndash;&gt;-->
-<!--        <packages>-->
-<!--            <package name="web.tests.vshred"/>-->
-<!--            <package name="web.tests.sculptnation"/>-->
-<!--        </packages>-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--                                //// Suite of tests to run ////-->
+
+<!--        &lt;!&ndash;        <packages>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <package name="web.tests.vshred"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </packages>&ndash;&gt;-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
 <!--    </test>-->
 
 </suite>
-

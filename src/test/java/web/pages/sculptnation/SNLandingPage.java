@@ -46,6 +46,7 @@ public class SNLandingPage extends BasePage {
     By sNLandPgFooterTopSellingItemsLinkLocator = By.xpath("//*[@href='/products']//*[@class='fa fa-angle-double-right']");
     By sNLandPgFooterAboutUsLinkLocator = By.xpath("//*[@href='/about-us']//*[@class='fa fa-angle-double-right']");
     By sNLandPgFooterShopLinkLocator = By.xpath("//*[text()=' Shop']");
+    By sNLandPgFooterTermsConditionsLinkLocator = By.xpath("/html/body/footer/div[1]/div/a[1]");
 
     
     //// Methods ////
@@ -159,6 +160,15 @@ public class SNLandingPage extends BasePage {
         final WebElement envelopIcon = driver.findElement(sNLdnPgContactUsLocator);
         highlightElement(envelopIcon);
         envelopIcon.click();
+    }
+
+    @Step("Click on the footers Terms and Conditions Link")
+    public void clickFooterTermsConditionsLink() {
+        Util.waitMilliseconds(1000);
+        final WebElement footerTermsConditionsLink = driver.findElement(sNLandPgFooterTermsConditionsLinkLocator);
+        highlightElement(footerTermsConditionsLink);
+        footerTermsConditionsLink.isEnabled();
+        footerTermsConditionsLink.click();
     }
 
     @Step("Click on the footers Home Link")
