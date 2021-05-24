@@ -32,12 +32,10 @@ public class TermsConditionsTest extends BaseTest {
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
-        sNLndPg.gotoUrl( "/terms-and-conditions");
-        sNLndPg.closeDiscountModal();
+        sNLndPg.clickFooterTermsConditionsLink();
         sNLndPg.verifyCurrentPageURLEndsWith("/terms-and-conditions");
         trmsPg.verifyTermsPgHeaderIsDisplayed();
         trmsPg.verifyTermsPgHeader1To34IsDisplayed();
-        Util.waitMilliseconds(5000000);
     }
 
 

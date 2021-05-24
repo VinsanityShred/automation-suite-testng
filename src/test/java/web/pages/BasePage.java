@@ -32,7 +32,7 @@ public class BasePage {
 
     //// Methods ////
     public void gotoUrl(String endOfUrl){
-        driver.navigate().to(getBaseURLByServer("urlStageSN") + endOfUrl);
+        driver.navigate().to(getBaseURLByServer("urlProdSN") + endOfUrl);
     }
 
     public void closeWindow() {
