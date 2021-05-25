@@ -19,8 +19,19 @@ public class BcaasProductPage extends BasePage {
     private By bcaasBuyNowButtonLocator = By.xpath("//*[text()='BUY NOW']");
     private By bcaasOneTimePriceLocator = By.className("au-a1-1");
     private By bcaasAddToCartLocator = By.xpath("//a[text()='Add To Cart']");
+    private By burnEvolvedAddToCartLocator = By.xpath("//a[text()='Speed Up My Metabolism']");
 
     //// Methods ////
+    @Step("Click on the Speed Up My Metabolism link")
+    public void clickSpeedUpMyMetabolismLinkByIndex(int index){
+        Util.waitMilliseconds(1500);
+        WebElement speedUpMyMetabolismLink = driver.findElements(burnEvolvedAddToCartLocator).get(index);
+        highlightElement(speedUpMyMetabolismLink);
+        scrollToBottom(speedUpMyMetabolismLink);
+        speedUpMyMetabolismLink.click();
+        wait.until(ExpectedConditions.invisibilityOf(speedUpMyMetabolismLink));
+    }
+
     @Step("Click on the Add To Cart link")
     public void clickAddToCartLinkByIndex(int index){
         Util.waitMilliseconds(1500);
@@ -36,6 +47,7 @@ public class BcaasProductPage extends BasePage {
         Util.waitMilliseconds(1000);
         WebElement oneTimeDeliveryPriceLabel = driver.findElement(bcaasOneTimePriceLocator);
         wait.until(ExpectedConditions.visibilityOf(oneTimeDeliveryPriceLabel));
+        highlightElement(oneTimeDeliveryPriceLabel);
         oneTimeDeliveryPriceLabel.click();
     }
 

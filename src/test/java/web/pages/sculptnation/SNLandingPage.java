@@ -47,9 +47,17 @@ public class SNLandingPage extends BasePage {
     By sNLandPgFooterAboutUsLinkLocator = By.xpath("//*[@href='/about-us']//*[@class='fa fa-angle-double-right']");
     By sNLandPgFooterShopLinkLocator = By.xpath("//*[text()=' Shop']");
     By sNLandPgFooterTermsConditionsLinkLocator = By.xpath("/html/body/footer/div[1]/div/a[1]");
+    By sNLandPgFooterCopyRightLogoLocator = By.xpath("//*[@class='copyright']");
 
     
     //// Methods ////
+    @Step("Click on the Copy Right Logo")
+    public void clickCopyRightLogo() {
+        WebElement copyRightLogo = driver.findElement(sNLandPgFooterCopyRightLogoLocator);
+        highlightElement(copyRightLogo);
+        copyRightLogo.click();
+    }
+
     @Step("Click on the OK button")
     public void clickOKButton() {
         try {
