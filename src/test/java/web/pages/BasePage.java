@@ -25,12 +25,58 @@ public class BasePage {
 
     //// Locators ////
     private By signInButton = By.linkText("Sign in");
-
     private By homePageUserName = By.xpath("//table//tr[@class='heading3']");
-
+    private By addToCartLocator = By.xpath("//a[text()='Add To Cart']");
+    private By speedUpMetabolismLinkLocator = By.xpath("//a[text()='Speed Up My Metabolism']");
+    private By oneTimePriceLocator = By.className("au-a1-1");
+    private By buyNowButtonLocator = By.xpath("//*[text()='BUY NOW']");
     private By bodyOfPageLocator = By.tagName("body");
+    private By yesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
 
     //// Methods ////
+    @Step("Click on the Add To Cart link")
+    public void clickAddToCartLinkByIndex(int index){
+        Util.waitMilliseconds(1500);
+        WebElement addToCartLink = driver.findElements(addToCartLocator).get(index);
+        highlightElement(addToCartLink);
+        scrollToBottom(addToCartLink);
+        addToCartLink.click();
+        wait.until(ExpectedConditions.invisibilityOf(addToCartLink));
+    }
+
+    @Step("Click on the Speed Up My Metabolism link")
+    public void clickSpeedUpMyMetabolismLinkByIndex(int index){
+        Util.waitMilliseconds(1500);
+        WebElement speedUpMyMetabolismLink = driver.findElements(speedUpMetabolismLinkLocator).get(index);
+        highlightElement(speedUpMyMetabolismLink);
+        scrollToBottom(speedUpMyMetabolismLink);
+        speedUpMyMetabolismLink.click();
+        wait.until(ExpectedConditions.invisibilityOf(speedUpMyMetabolismLink));
+    }
+
+    @Step("Click on the One Time Delivery Price option")
+    public void clickOneTimeDeliveryPriceLabel(){
+        Util.waitMilliseconds(1000);
+        WebElement oneTimeDeliveryPriceLabel = driver.findElement(oneTimePriceLocator);
+        wait.until(ExpectedConditions.visibilityOf(oneTimeDeliveryPriceLabel));
+        highlightElement(oneTimeDeliveryPriceLabel);
+        oneTimeDeliveryPriceLabel.click();
+    }
+
+    @Step("Click on the Buy Now button")
+    public void clickBuyNowButton(){
+        WebElement buyNowButton = driver.findElement(buyNowButtonLocator);
+        highlightElement(buyNowButton);
+        buyNowButton.click();
+    }
+
+    @Step("Click Yes Upgrade button")
+    public void clickYesUpgradeButton() {
+        WebElement yesUpgradeButton = driver.findElement(yesUpgradeButtonLocator);
+        highlightElement(yesUpgradeButton);
+        yesUpgradeButton.click();
+    }
+
     public void gotoUrl(String endOfUrl){
         driver.navigate().to(getBaseURLByServer("urlProdSN") + endOfUrl);
     }
