@@ -51,9 +51,9 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("bcaas");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/bcaas");
-        bcaasPg.clickBuyNowButton();
-        bcaasPg.clickOneTimeDeliveryPriceLabel();
-        bcaasPg.clickAddToCartLinkByIndex(0);
+        sNLndPg.clickBuyNowButton();
+        sNLndPg.clickOneTimeDeliveryPriceLabel();
+        sNLndPg.clickAddToCartLinkByIndex(0);
         cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=bcaa-us-bcaaFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();

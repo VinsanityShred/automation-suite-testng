@@ -1,6 +1,5 @@
 package web.tests.sculptnation.homePageTests;
 
-import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -62,9 +61,9 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("burn-evolved");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-evolved");
-        bcaasPg.clickBuyNowButton();
-        bcaasPg.clickOneTimeDeliveryPriceLabel();
-        bcaasPg.clickSpeedUpMyMetabolismLinkByIndex(0);
+        sNLndPg.clickBuyNowButton();
+        sNLndPg.clickOneTimeDeliveryPriceLabel();
+        sNLndPg.clickSpeedUpMyMetabolismLinkByIndex(0);
         cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-us-burnFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();

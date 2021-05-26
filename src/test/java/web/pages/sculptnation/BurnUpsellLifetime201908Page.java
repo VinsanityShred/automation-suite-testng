@@ -18,16 +18,8 @@ public class BurnUpsellLifetime201908Page extends BasePage {
 
     //// Locators ////
     By burnUpsellPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-    By burnUpsellPgYesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
 
     //// Methods ////
-    @Step("Click Yes Upgrade button")
-    public void clickYesUpgradeButton() {
-        WebElement yesUpgradeButton = driver.findElement(burnUpsellPgYesUpgradeButtonLocator);
-        highlightElement(yesUpgradeButton);
-        yesUpgradeButton.click();
-    }
-
     @Step("Is Burn Video Displayed")
     private boolean isBurnUpsellVideoDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(burnUpsellPgVideoLocator));
