@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
-import web.pages.sculptnation.productPages.BcaasProductPage;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
@@ -17,14 +16,8 @@ import web.tests.BaseTest;
 public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
 
     SNLandingPage sNLndPg;
-    BcaasProductPage bcaasPg;
     CartPage cartPg;
     CheckoutPage chckPg;
-    BcaaUs120Page bcaaPg120;
-    BcaaUs121Page bcaaPg121;
-    CreatineCs122Page crtnPg122;
-    ProtienMulti123Page protnPg123;
-    Coupon218Page couponPg218;
     ReceiptPage RcptPg;
     BurnUpsellLifetime201908Page burnUpSlPg;
     BurnDownsellLifetime201908Page burnDwnSlPg;
@@ -36,14 +29,8 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
     public void setUp() {
         WebDriver driver = getDriver();
         sNLndPg = new SNLandingPage(driver);
-        bcaasPg = new BcaasProductPage(driver);
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
-        bcaaPg120 = new BcaaUs120Page(driver);
-        bcaaPg121 = new BcaaUs121Page(driver);
-        crtnPg122 = new CreatineCs122Page(driver);
-        protnPg123 = new ProtienMulti123Page(driver);
-        couponPg218 = new Coupon218Page(driver);
         RcptPg = new ReceiptPage(driver);
         burnUpSlPg = new BurnUpsellLifetime201908Page(driver);
         burnDwnSlPg = new BurnDownsellLifetime201908Page(driver);
@@ -78,9 +65,9 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
         burnUpSlPg.clickYesUpgradeButton();
         burnDwnSlPg.verifyCurrentPageURLEndsWith("/burn-ds?f=35");
         burnDwnSlPg.verifyBurnDownsellVideoIsDisplayed();
-        burnUpSlPg.scrollToBottomOfPageByKeys();
+        burnDwnSlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        burnUpSlPg.scrollToBottomOfPageByKeys();
+        burnDwnSlPg.scrollToBottomOfPageByKeys();
         burnDwnSlPg.clickYesUpgradeButton();
         burnCrss2Pg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v1?f=36");
         burnCrss2Pg.verifyBurnCross2VideoIsDisplayed();
@@ -101,6 +88,4 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$411.95");
     }
-
-
 }
