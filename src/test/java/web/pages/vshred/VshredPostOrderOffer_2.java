@@ -11,32 +11,32 @@ import web.pages.BasePage;
 
 import java.time.Duration;
 
-public class VshredPostOrderOffer_2 extends BasePage {
-    public static VshredPostOrderOffer_2 vsPostOrderOfferTwo;
+public class VshredPostOrderOffer_1_1 extends BasePage {
+    public static VshredPostOrderOffer_1_1 vsPostOrderOfferOneOne;
 
-    public VshredPostOrderOffer_2(WebDriver driver) {
+    public VshredPostOrderOffer_1_1(WebDriver driver) {
         super(driver);
     }
 
-    public static void createVSPostOrderOfferTwo(WebDriver driver) {
-        vsPostOrderOfferTwo = new VshredPostOrderOffer_2(driver);
+    public static void createVSPostOrderOfferOneOne(WebDriver driver) {
+        vsPostOrderOfferOneOne = new VshredPostOrderOffer_1_1(driver);
     }
 
-    public static void verifyVSPostOrderOfferTwoPage() throws Exception {
-        //// Verify name entry field ////
-        vsPostOrderOfferTwo.verifyCouponOfferIsDisplayed();
+    public static void verifyVSPostOrderOfferOneOnePage() throws Exception {
+        //// Verify warning message is displayed ////
+        vsPostOrderOfferOneOne.verifyProductOptIsDisplayed();
     }
 
     //// Locators ////
-    private By vsCouponOfferSelector = By.xpath("/html/body/main/div/div/div/section[1]/div/div/div");
-    private By vsNoThanksLinkSelector = By.xpath("//*[@id=\"option-area\"]/div[2]/div/a");
+    private By vsProductOptSelector = By.xpath("/html/body/div[2]/section/div/div/ul/li[2]/a");
+    private By vsNoThanksLinkSelector = By.xpath("/html/body/div[2]/div/section[7]/div/p/a");
 
     //// Methods ////
     @Step("Click on No Thanks message and link")
     public void clickNoThanks() {
         // Page design requires a long wait for the "no thanks" link to appear
-        System.out.println("Looking for offer two 'no thanks' link");
-        //Util.waitMilliseconds(30000); // Give time for field to appear in DOM
+        System.out.println("Waiting 30 sec for offer one one 'no thanks' link to appear");
+        Util.waitMilliseconds(30000); // Give time for field to appear in DOM
         final WebElement linkNoThanks = driver.findElement(vsNoThanksLinkSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -44,31 +44,32 @@ public class VshredPostOrderOffer_2 extends BasePage {
                 withTimeout(Duration.ofSeconds(5)).
                 until(ExpectedConditions.elementToBeClickable(linkNoThanks));
         highlightElement(linkNoThanks);
-        System.out.println("Clicking offer two 'no thanks' link");
+        System.out.println("Clicking offer one one 'no thanks' link");
         linkNoThanks.click();
     }
 
     //// Getters ////
-    @Step("Get coupon offer")
-    private boolean getWarningMessage(){
-        System.out.println("Looking for offer two coupon");
-        final WebElement couponOffer = driver.findElement(vsCouponOfferSelector);
+    @Step("Get warning message")
+    private boolean getProductOpt(){
+        System.out.println("Looking for product options");
+        Util.waitMilliseconds(1000); // Give time for field to appear in DOM
+        final WebElement productOpt = driver.findElement(vsProductOptSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
-                withMessage("Could Not Find Coupon Offer").
+                withMessage("Could Not Find Product Options").
                 withTimeout(Duration.ofSeconds(10)).
-                until(ExpectedConditions.visibilityOf(couponOffer));
-        highlightElement(couponOffer);
-        return couponOffer.isDisplayed();
+                until(ExpectedConditions.visibilityOf(productOpt));
+        highlightElement(productOpt);
+        return productOpt.isDisplayed();
     }
 
     //// Verifiers ////
-    @Step("Check: Verify Coupon Offer Is Displayed")
-    public void verifyCouponOfferIsDisplayed() throws InterruptedException {
-        if (!getWarningMessage()) {
-            throw new InterruptedException("Offer Two Coupon NOT Displayed");
+    @Step("Check: Verify Warning Message Is Displayed")
+    public void verifyProductOptIsDisplayed() throws InterruptedException {
+        if (!getProductOpt()) {
+            throw new InterruptedException("Offer One product options NOT Displayed");
         } else {
-            System.out.println("Offer Two Coupon Is Displayed");
+            System.out.println("Offer One product options Is Displayed");
         }
     }
 }
