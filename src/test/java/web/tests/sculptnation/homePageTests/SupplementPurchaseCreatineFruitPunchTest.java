@@ -1,5 +1,6 @@
 package web.tests.sculptnation.homePageTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -12,9 +13,9 @@ import web.pages.sculptnation.productPages.BcaasProductPage;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Burn PM Test")
+@Story("Supplement Purchase Creatine Fruit Punch Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseBurnPmTest extends BaseTest {
+public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     BcaasProductPage bcaasPg;
@@ -25,6 +26,9 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
     BurnPmUsF101Page burnPm101Pg;
     BurnCsF103Page burnCs103Pg;
     TurmericCsF104Page trmrcCs104Pg;
+    CreatineUsF112Page crtnUs112Pg;
+    BcaaCsF114Page bcaaCs114Pg;
+    ProteinMultiCsF115Page PrtnMultCs115Pg;
 
     @BeforeMethod
     public void setUp() {
@@ -38,47 +42,44 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         burnPm101Pg = new BurnPmUsF101Page(driver);
         burnCs103Pg = new BurnCsF103Page(driver);
         trmrcCs104Pg = new TurmericCsF104Page(driver);
+        crtnUs112Pg = new CreatineUsF112Page(driver);
+        bcaaCs114Pg = new BcaaCsF114Page(driver);
+        PrtnMultCs115Pg = new ProteinMultiCsF115Page(driver);
     }
 
-    @Description("Verify BCAAs -supplement purchase no upsell")
-    @Test()//UUID=5BC1D1F6-06FE-43B8-9417-2A99778F2B63
-    public void purchaseBurnPMSupplement() throws Exception {
+    @Description("Verify Creatine Fruit Punch supplement purchase")
+    @Test()//UUID=17E9586F-D713-4E91-ADEF-FE24D7297987
+    public void purchaseCreatineFruitPunchSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
-        sNLndPg.clickProductSupplement("burn-pm");
-        sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-pm");
+        sNLndPg.clickProductSupplement("creatine");
+        sNLndPg.verifyCurrentPageURLEndsWith("/products/creatine");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
         sNLndPg.clickAddToCartLinkByIndex(0);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-pm-us-burnPMFunnel");
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=creatine-us-creatineFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        burnPm101Pg.verifyCurrentPageURLEndsWith("/burn-pm-us?f=101");
-        burnPm101Pg.verifyBurnPmIMageIsDisplayed();
-        burnPm101Pg.scrollToBottomOfPageByKeys();
-        burnPm101Pg.clickYesUpgradeButton();
-        burnCs103Pg.verifyCurrentPageURLEndsWith("/burn-cs?f=103");
-        burnCs103Pg.verifyBurnEvolvedImageIsDisplayed();
-        burnCs103Pg.scrollToBottomOfPageByKeys();
-        burnCs103Pg.clickOneTimeDeliveryPriceLabel();
-        burnCs103Pg.clickSpeedUpMyMetabolismLinkByIndex(0);
-        burnCs103Pg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=104");
-        trmrcCs104Pg.verifyTurmericCs104PgVideoIsDisplayed();
-        trmrcCs104Pg.scrollToBottomOfPageByKeys();
-        sNLndPg.clickCopyRightLogo();
-        trmrcCs104Pg.scrollToBottomOfPageByKeys();
-        trmrcCs104Pg.clickOneTimeDeliveryPriceLabel();
-        trmrcCs104Pg.clickAddToCartLinkByIndex(0);
-        cupnGrnsPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
-        cupnGrnsPg.scrollToBottomOfPageByKeys();
-        cupnGrnsPg.clickAddToCartLinkByIndex(0);
+        crtnUs112Pg.verifyCurrentPageURLEndsWith("/creatine-us?f=112");
+        crtnUs112Pg.verifyCreatineHeaderTextIsAMatch();
+        crtnUs112Pg.scrollToBottomOfPageByKeys();
+        crtnUs112Pg.clickYesUpgradeButton();
+        bcaaCs114Pg.verifyBcaasImageIsDisplayed();
+        bcaaCs114Pg.scrollToBottomOfPageByKeys();
+        bcaaCs114Pg.clickOneTimeDeliveryPriceLabel();
+        bcaaCs114Pg.clickAddToCartLinkByIndex(0);
+        PrtnMultCs115Pg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
+        PrtnMultCs115Pg.verifyProteinChocolateImageIsDisplayed();
+        PrtnMultCs115Pg.scrollToBottomOfPageByKeys();
+        PrtnMultCs115Pg.clickOneTimeDeliveryPriceLabel();
+        PrtnMultCs115Pg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$274.95");
     }
 }
