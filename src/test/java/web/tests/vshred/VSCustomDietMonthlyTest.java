@@ -14,19 +14,19 @@ import web.tests.vshred.*;
 import web.tests.BaseTest;
 
 @Feature("Purchase")
-@Story("Special custom diet plan test")
+@Story("Special custom diet plan monthly test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class VSCustomDietTest extends PurchaseTestBase {
-    @Description("Verify Purchase New Custom Diet Plan")
+public class VSCustomDietMonthlyTest extends PurchaseTestBase {
+    @Description("Verify Purchase New Custom Diet Plan Monthly")
     @Test(priority = 0)
-    public void purchaseNewCustomDietPlanTest() throws Exception {
+    public void purchaseNewCustomDietPlanMonthlyTest() throws Exception {
         // Going directly to custom plan page, so don't need to call loginMember();
 
-        purchaseVSPlan(PurchaseTestBase.Plan.CUSTOM_DIET_PLAN);
+        purchaseVSPlan(Plan.CUSTOM_DIET_MONTHLY);
 
-        completeCustomDietPlanOrderForm();
+        completeCustomDietPlanMonthlyOrderForm();
 
-        processPostSubmissionPages(PurchaseTestBase.Plan.CUSTOM_DIET_PLAN);
+        processPostSubmissionPages(Plan.CUSTOM_DIET_MONTHLY);
 
         VshredOrderConfirmPage.verifyVSOrderConfirmPage();
     }

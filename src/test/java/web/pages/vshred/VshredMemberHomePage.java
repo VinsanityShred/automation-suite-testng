@@ -1,5 +1,6 @@
 package web.pages.vshred;
 
+import framework.utility.Util;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,8 +27,8 @@ public class VshredMemberHomePage extends BasePage {
     }
 
     //// Locators ////
-    private By vsMemberHomeEditProfileLocator = By.cssSelector("body > div.main-container > section.py-4 > div > div > div.col-xs-8 > a");
-    //private By vsMemberHomeEditProfileLocator = By.xpath("/html/body/div[4]/section[1]/div/div/div[2]/a");
+    //private By vsMemberHomeEditProfileLocator = By.cssSelector("body > div.main-container > section.py-4 > div > div > div.col-xs-8 > a");
+    private By vsMemberHomeEditProfileLocator = By.xpath("/html/body/div[4]/section[1]/div/div/div[2]/a");
     private By vsMemberHomeProgramsLocator = By.xpath("//*[@id=\"menu1\"]/div/div/div[2]/div/ul/li[2]/a");
 
     //// Methods ////
@@ -54,6 +55,7 @@ public class VshredMemberHomePage extends BasePage {
     //// Getters ////
     @Step("Get the member home edit profile button")
     private boolean getMemberHomeEditProfileBtn(){
+        Util.waitMilliseconds(1000);
         final WebElement memberHomeEditProfile = driver.findElement(vsMemberHomeEditProfileLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).

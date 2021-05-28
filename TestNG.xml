@@ -19,41 +19,36 @@
         <!--        </packages>-->
     </test>
 
-    <test name="Chrome Tests">
-    <!--//// Browser type ////-->
+    <test name="Testing-2 Custom Diet Special Offer Chrome Test">
+        <!--//// Browser type ////-->
         <parameter name="browser" value="headless"/>
-    <!--//// URL to test ////-->
-<!--        <parameter name="appURL" value="https://vshred.com/login?ref=home" />-->
-        <parameter name="appURL" value="https://sculptnation.com/?qa_test=VSQAT&amp;utm_source=testing&amp;utm_content=testing&amp;utm_medium=testing"/>
-    <!--//// Individual tests to run ////-->
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/custom-diet-plan-special" />
+        <!--//// Individual tests to run ////-->
         <classes>
-<!--            <class name="web.tests.vshred.VSLoginTest"/>-->
-<!--            <class name="web.tests.sculptnation.loginTests.SNLogInOutTest"/>-->
-            <!--class name="web.tests.sculptnation.contactTests.ContactTests"/>-->
+            <class name="web.tests.vshred.VSCustomDietTest"/>
         </classes>
-    <!--//// Suite of tests to run ////-->
-<!--        <packages>-->
-<!--            <package name="web.tests.vshred"/>-->
-<!--            <package name="web.tests.sculptnation"/>-->
-<!--        </packages>-->
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
     </test>
 
-<!--    <test name="Firefox Tests">-->
-<!--    &lt;!&ndash;//// Browser type ////&ndash;&gt;-->
-<!--        <parameter name="browser" value="firefox"/>-->
-<!--    &lt;!&ndash;//// URL to test ////&ndash;&gt;-->
-<!--        <parameter name="appURL" value="https://vshred.com/login?ref=home" />-->
-<!--        <parameter name="appURL" value="https://sculptnation.com/" />-->
-<!--    &lt;!&ndash;//// Individual tests to run ////&ndash;&gt;-->
-<!--        <classes>-->
-<!--            <class name="web.tests.vshred.VSLoginTest"/>-->
-<!--        </classes>-->
-<!--    &lt;!&ndash;//// Suite of tests to run ////&ndash;&gt;-->
-<!--        <packages>-->
-<!--            <package name="web.tests.vshred"/>-->
-<!--            <package name="web.tests.sculptnation"/>-->
-<!--        </packages>-->
-<!--    </test>-->
-
+    <test name="Testing-2 Custom Diet Monthly Offer Chrome Test">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/custom-diet-plan-monthly" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSCustomDietMonthlyTest"/>
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
 </suite>
 
