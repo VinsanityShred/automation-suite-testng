@@ -17,7 +17,7 @@ public class BurnPmUsF101Page extends BasePage {
     }
 
     //// Locators ////
-    By burnPm101PgBurnPmImageLocator = By.xpath("//img[@alt='Burn PM 6 Bottle']");
+    private By burnPm101PgBurnPmImageLocator = By.xpath("//img[@alt='Burn PM 6 Bottle']");
 
     //// Methods ////
     @Step("Is Burn PM Image Displayed")
@@ -33,8 +33,8 @@ public class BurnPmUsF101Page extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
-        @Step("Verify the Burn PM image Is Displayed")
-        public void verifyBurnPmIMageIsDisplayed() {
-            assertTrue(isBurnPmImageDisplayed(), "Burn PM Image NOT Displayed");
-        }
+    @Step("Verify the Burn PM image Is Displayed")
+    public void verifyBurnPmIMageIsDisplayed() {
+        assertTrue(isBurnPmImageDisplayed(), "Burn PM Image NOT Displayed");
+    }
 }
