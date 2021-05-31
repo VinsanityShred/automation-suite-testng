@@ -1,6 +1,5 @@
 package web.tests.sculptnation.homePageTests;
 
-import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -9,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
-import web.pages.sculptnation.productPages.BcaasProductPage;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
@@ -18,14 +16,9 @@ import web.tests.BaseTest;
 public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
 
     SNLandingPage sNLndPg;
-    BcaasProductPage bcaasPg;
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    CouponGreensV2F217Page cupnGrnsPg;
-    BurnPmUsF101Page burnPm101Pg;
-    BurnCsF103Page burnCs103Pg;
-    TurmericCsF104Page trmrcCs104Pg;
     CreatineUsF112Page crtnUs112Pg;
     BcaaCsF114Page bcaaCs114Pg;
     ProteinMultiCsF115Page PrtnMultCs115Pg;
@@ -34,14 +27,9 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
     public void setUp() {
         WebDriver driver = getDriver();
         sNLndPg = new SNLandingPage(driver);
-        bcaasPg = new BcaasProductPage(driver);
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        cupnGrnsPg = new CouponGreensV2F217Page(driver);
-        burnPm101Pg = new BurnPmUsF101Page(driver);
-        burnCs103Pg = new BurnCsF103Page(driver);
-        trmrcCs104Pg = new TurmericCsF104Page(driver);
         crtnUs112Pg = new CreatineUsF112Page(driver);
         bcaaCs114Pg = new BcaaCsF114Page(driver);
         PrtnMultCs115Pg = new ProteinMultiCsF115Page(driver);
@@ -52,7 +40,7 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
     public void purchaseCreatineFruitPunchSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-        sNLndPg.closeDiscountModal();
+//        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("creatine");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/creatine");

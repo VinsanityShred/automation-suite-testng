@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import web.pages.BasePage;
@@ -37,8 +38,8 @@ public class SNLandingPage extends BasePage {
     By sNLandPgMaleGuideLinkLocator = By.xpath("//*[@href='/supplement-guide-for-men']");
     By sNLandPgSupplementsLinkLocator = By.xpath("//*[@href='/products']");
     By sNLandPgHomeLinkLocator = By.xpath("//a[contains(text(),'Home') and contains(@class,'nav-link')]");
-    By sNLandPgWatchNowLinkLocator = By.className("burn-vsl-banner__cta");
-    By sNLandPgOKButtonLocator = By.xpath("//*[text()='OK']");
+    By sNLandPgWatchNowLinkLocator = By.cssSelector("#app > div > section > div > div > a");
+    By sNLandPgOKButtonLocator = By.xpath("/html/body/div[1]/div/div[3]/div/div[2]/button");
     By sNLandPgFooterHomeLinkLocator = By.xpath("//*[@href='/']//*[@class='fa fa-angle-double-right']");
     By sNLandPgFooterContactUsLinkLocator = By.xpath("//*[@href='/contact-us']//*[@class='fa fa-angle-double-right']");
     By sNLandPgFooterShippingReturnsLinkLocator = By.xpath("//*[@href='/shipping-and-returns']");
@@ -60,10 +61,19 @@ public class SNLandingPage extends BasePage {
 
     @Step("Click on the OK button")
     public void clickOKButton() {
+        Util.waitMilliseconds(1000);
+//        try {
+//            WebElement oKButton = driver.findElement(sNLandPgOKButtonLocator);
+//            highlightElement(oKButton);
+//            oKButton.click();
+//        } catch (Exception e){
+//            System.out.println(e);
+//        }
         try {
-            WebElement oKButton = driver.findElement(sNLandPgOKButtonLocator);
-            highlightElement(oKButton);
-            oKButton.click();
+        WebElement cVV = driver.findElement(sNLandPgOKButtonLocator);
+        Actions action = new Actions(driver);
+        action.moveToElement(cVV).perform();
+        cVV.click();
         } catch (Exception e){
             System.out.println(e);
         }
@@ -73,6 +83,7 @@ public class SNLandingPage extends BasePage {
     public void clickProductSupplement(String productName) {
         By productSupplementLocator = By.xpath("//*[contains(@href,'.com/products/"+productName+"')]");
         WebElement productSupplement = driver.findElement(productSupplementLocator);
+        scrollToMiddle(productSupplement);
         highlightElement(productSupplement);
         productSupplement.click();
     }
@@ -281,7 +292,6 @@ public class SNLandingPage extends BasePage {
         Util.waitMilliseconds(3000);
         try {
             switchToFrame("attentive_creative");
-            System.out.println("Discount Modal IS Displayed ");
             clickDiscountModalCloseButton();
         } catch (Exception e){
             System.out.println("No Discount Modal Displayed: " + e);

@@ -47,7 +47,7 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
     public void purchaseBCAAsSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-        sNLndPg.closeDiscountModal();
+//        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("bcaas");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/bcaas");

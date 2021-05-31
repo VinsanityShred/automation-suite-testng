@@ -18,7 +18,7 @@ public class CouponGreensV2F217Page extends BasePage {
     }
 
     //// Locators ////
-    By cupnGrnsPgCouponLocator = By.xpath("//*[@class='coupon']");
+    private By cupnGrnsPgCouponLocator = By.xpath("//*[@class='coupon']");
     private By cupnGrnsPgAddToCartLocator = By.xpath("//a[text()='Add To Cart']");
 
     //// Methods ////
