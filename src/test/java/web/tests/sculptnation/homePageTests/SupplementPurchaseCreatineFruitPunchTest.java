@@ -40,7 +40,7 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
     public void purchaseCreatineFruitPunchSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-        sNLndPg.closeDiscountModal();
+//        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("creatine");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/creatine");

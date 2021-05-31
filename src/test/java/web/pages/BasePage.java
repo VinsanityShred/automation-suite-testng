@@ -150,6 +150,18 @@ public class BasePage {
         Util.waitMilliseconds(500);
     }
 
+    public void pageDownByKeys() {
+        WebElement pageDown = driver.findElement(bodyOfPageLocator);
+        pageDown.sendKeys(Keys.PAGE_DOWN);
+        Util.waitMilliseconds(1000);
+    }
+
+    public void pageUpByKeys() {
+        WebElement pageUp = driver.findElement(bodyOfPageLocator);
+        pageUp.sendKeys(Keys.PAGE_UP);
+        Util.waitMilliseconds(500);
+    }
+
     public void tabToElement() {
         WebElement toElement = driver.findElement(bodyOfPageLocator);
         toElement.sendKeys(Keys.TAB);

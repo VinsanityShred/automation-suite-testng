@@ -45,7 +45,7 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
     public void purchaseBurnPMSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-        sNLndPg.closeDiscountModal();
+//        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("burn-pm");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-pm");

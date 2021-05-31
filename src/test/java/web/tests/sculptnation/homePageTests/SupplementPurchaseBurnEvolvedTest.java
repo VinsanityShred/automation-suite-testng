@@ -44,7 +44,7 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
     public void purchaseBurnEvolvedSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-        sNLndPg.closeDiscountModal();
+//        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("burn-evolved");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-evolved");
