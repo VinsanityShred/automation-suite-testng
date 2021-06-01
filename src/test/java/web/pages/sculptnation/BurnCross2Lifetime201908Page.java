@@ -18,7 +18,7 @@ public class BurnCross2Lifetime201908Page extends BasePage {
     }
 
     //// Locators ////
-    By burnCross2PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
+    private By burnCross2PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnCross2OneTimePriceLocator = By.className("au-a1-1");
     private By burnCross2AddToCartLocator = By.xpath("//a[text()='Add To Cart']");
 

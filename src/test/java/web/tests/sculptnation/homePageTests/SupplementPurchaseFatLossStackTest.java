@@ -13,15 +13,12 @@ import web.tests.BaseTest;
 @Feature("Home Page Tests")
 @Story("Supplement Purchase Fat Loss Stack Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseFatLossStack extends BaseTest {
+public class SupplementPurchaseFatLossStackTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    CreatineUsF112Page crtnUs112Pg;
-    BcaaCsF114Page bcaaCs114Pg;
-    ProteinMultiCsF115Page PrtnMultCs115Pg;
     BurnUs109Page burnUs109Pg;
     HghCs111Page hghCs111Pg;
     GreensMultiCs110Page GrnsMulti110Pg;
@@ -34,9 +31,6 @@ public class SupplementPurchaseFatLossStack extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        crtnUs112Pg = new CreatineUsF112Page(driver);
-        bcaaCs114Pg = new BcaaCsF114Page(driver);
-        PrtnMultCs115Pg = new ProteinMultiCsF115Page(driver);
         burnUs109Pg = new BurnUs109Page(driver);
         hghCs111Pg = new HghCs111Page(driver);
         GrnsMulti110Pg = new GreensMultiCs110Page(driver);
