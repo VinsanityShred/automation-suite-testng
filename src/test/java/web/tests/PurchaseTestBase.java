@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import web.pages.vshred.*;
 import web.tests.vshred.VSPurchaseTest;
+import web.tests.*;
 
 public class PurchaseTestBase extends BaseTest {
     private WebDriver driver;
@@ -14,7 +15,8 @@ public class PurchaseTestBase extends BaseTest {
         FAT_LOSS_EXTREME_HIM,
         FAT_LOSS_EXTREME_HER, // **NOTE**: post order offer one page different than above programs
         CUSTOM_DIET_PLAN, // **NOTE**: Configured as separate test class in VSCustomDietTest rather than VSPurchaseTest
-        CUSTOM_DIET_MONTHLY
+        CUSTOM_DIET_MONTHLY,
+        PLATINUM_COACHING
     }
 
     @BeforeMethod
@@ -34,6 +36,7 @@ public class PurchaseTestBase extends BaseTest {
         VshredPostOrderOffer_3.createVSPostOrderOfferThree(driver);
         VshredOrderConfirmPage.createVSOrderConfirmPage(driver);
         VshredProgramQuestionnairePage.createVSQuestionnairePage(driver);
+        VshredOrderFormPlatinumCoachingPage.createVSPlatinumCoachingOrderFormPage(driver);
     }
 
     public void loginMember() throws Exception {
@@ -64,11 +67,12 @@ public class PurchaseTestBase extends BaseTest {
                 break;
             case CUSTOM_DIET_PLAN:
                 // NOTE: Going direct to URL that is the order form, so no verify of program page or click of purchase button
-                // TODO: Go to https://testing-2.vshred.com/order-form/custom-diet-plan-special
                 break;
             case CUSTOM_DIET_MONTHLY:
                 // NOTE: Going direct to URL that is the order form, so no verify of program page or click of purchase button
-                // TODO: Go to https://testing-2.vshred.com/order-form/custom-diet-plan-monthly
+                break;
+            case PLATINUM_COACHING:
+                // NOTE: Going direct to URL that is the order form, so no verify of program page or click of purchase button
                 break;
             default:
                 System.out.println("VSPurchaseTest.java: purchaseVSPlan: Invalid plan case value " + aPlan);
@@ -96,6 +100,15 @@ public class PurchaseTestBase extends BaseTest {
         VShredOrderFormCustomDietMonthlyPage.vsOrderFormPage.submitOrder();
     }
 
+    public void completePlatinumCoachingPlanOrderForm() throws Exception {
+        VshredOrderFormPlatinumCoachingPage.verifyVSOrderFormPage();
+        VshredOrderFormPlatinumCoachingPage.vsOrderFormPage.completeContactInfoAndNext();
+        VshredOrderFormPlatinumCoachingPage.vsOrderFormPage.completePlatinumCoachingPaymentDetailsAndNext();
+        // Check box to agree to terms
+        VshredOrderFormPlatinumCoachingPage.vsPlatinumCoachingOrderFormPage.clickAgreeToTermsAndConditions();
+        VshredOrderFormPlatinumCoachingPage.vsOrderFormPage.submitOrder();
+    }
+
     public void processPostSubmissionPages(PurchaseTestBase.Plan aPlan) throws Exception {
         switch (aPlan) {
             case BIG_ARMS:
@@ -109,6 +122,7 @@ public class PurchaseTestBase extends BaseTest {
                 break;
             case CUSTOM_DIET_PLAN:
             case CUSTOM_DIET_MONTHLY:
+            case PLATINUM_COACHING:
                 break; // Post order offer 1 does not appear for this plan
             default:
                 System.out.println("VSPurchaseTest.java: processPostSubmissionPages: Invalid plan case value " + aPlan);
@@ -126,6 +140,7 @@ public class PurchaseTestBase extends BaseTest {
                 break;
             case CUSTOM_DIET_PLAN:
             case CUSTOM_DIET_MONTHLY:
+            case PLATINUM_COACHING:
                 break; // Post order offer 3 does not appear for this plan
             default:
                 System.out.println("VSPurchaseTest.java: processPostSubmissionPages: Invalid plan case value " + aPlan);

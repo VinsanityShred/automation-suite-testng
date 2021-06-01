@@ -53,6 +53,7 @@ public class VshredOrderFormPage extends BasePage {
     private By vsPostalCodeSelector = By.xpath("//*[@name='braintree-hosted-field-postalCode']");
     protected By vsCustomDietPaymentNextStepSelector =        By.xpath("//*[@id=\"billing-form\"]/div[1]/div[3]/div[2]/div[2]/span");
     protected By vsCustomDietMonthlyPaymentNextStepSelector = By.xpath("//*[@id=\"billing-form\"]/div[2]/div[2]/span");
+    protected By vsPlatinumCoachingPaymentNextStepSelector =  By.xpath("//*[@id=\"billing-form\"]/div[1]/div[3]/div[2]/div[2]/span");
     private By vsPaymentNextStepSelector =                    By.xpath("//*[@id=\"billing-form\"]/div[1]/div[4]/div[1]/div[2]/span");
     private By vsOrderSummary = By.cssSelector("#order-summary"); // ORDER_SUMMARY_BOX
     //protected By vsSubmitOrderButton = By.cssSelector("#submit-order"); // SUBMIT_ORDER
@@ -88,6 +89,12 @@ public class VshredOrderFormPage extends BasePage {
     public void completeCustomDietMonthlyPaymentDetailsAndNext() {
         vsOrderFormPage.setPaymentDefaults();
         vsOrderFormPage.clickCustomDietMonthlyPaymentNextStep();
+    }
+
+    @Step("Fill in custom diet monthly payment details and click next step")
+    public void completePlatinumCoachingPaymentDetailsAndNext() {
+        vsOrderFormPage.setPaymentDefaults();
+        vsOrderFormPage.clickPlatinumCoachingPaymentNextStep();
     }
 
     public void submitOrder() throws Exception {
@@ -151,6 +158,20 @@ public class VshredOrderFormPage extends BasePage {
     protected void clickCustomDietMonthlyPaymentNextStep() {
         Util.waitMilliseconds(2000); // Give time for field to appear in DOM
         final WebElement paymentNextStep = driver.findElement(vsCustomDietMonthlyPaymentNextStepSelector);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Payment Next Step Button").
+                withTimeout(Duration.ofSeconds(5)).
+                until(ExpectedConditions.elementToBeClickable(paymentNextStep));
+        highlightElement(paymentNextStep);
+        paymentNextStep.click();
+        waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
+    }
+
+    @Step("Click on payment next step button")
+    protected void clickPlatinumCoachingPaymentNextStep() {
+        Util.waitMilliseconds(2000); // Give time for field to appear in DOM
+        final WebElement paymentNextStep = driver.findElement(vsPlatinumCoachingPaymentNextStepSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
                 withMessage("Could Not Find Payment Next Step Button").
