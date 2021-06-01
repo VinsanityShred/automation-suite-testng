@@ -33,7 +33,6 @@ public class VshredHomePage extends BasePage {
     }
 
     //// Locators ////
-
     By homepageLogoLocator = By.cssSelector("#menu1 > div > div > div.col-md-2.col-sm-2.hidden-xs > div > a > img.logo.logo-dark");
     By homepageHeaderTextLocator = By.xpath("//h2[text()='Your Programs']");
     By homepageCircleAvatarLocator = By.className("circle-avatar");
