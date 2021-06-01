@@ -51,14 +51,30 @@
         <!--        </packages>-->
     </test>
 
-    <test name="Testing-2 Platinum Coaching Chrome Test">
+    <test name="Testing-2 5K Platinum Coaching Chrome Test">
         <!--//// Browser type ////-->
         <parameter name="browser" value="headless"/>
         <!--//// URL to test ////-->
         <parameter name="appURL" value="https://testing-2.vshred.com/order-form/platinum-coaching-program-4-5k-6" />
         <!--//// Individual tests to run ////-->
         <classes>
-            <class name="web.tests.vshred.VS5KPlatinumCoachingTest"/>
+            <class name="web.tests.vshred.VSPlatinumCoachingTest"/>
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
+
+    <test name="Testing-2 12-week Platinum Coaching Chrome Test">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/platinum-coaching-program" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSPlatinumCoachingTest"/>
         </classes>
         <!--//// Suite of tests to run ////-->
         <!--        <packages>-->

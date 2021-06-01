@@ -9,12 +9,12 @@ import web.pages.vshred.*;
 import web.tests.PurchaseTestBase;
 
 @Feature("Purchase")
-@Story("Special 5K platinum coaching plan test")
+@Story("Special platinum coaching plan test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class VS5KPlatinumCoachingTest extends PurchaseTestBase {
-    @Description("Verify Purchase New 5K Platinum Coaching Plan Monthly")
+public class VSPlatinumCoachingTest extends PurchaseTestBase {
+    @Description("Verify Purchase New Platinum Coaching Plan")
     @Test(priority = 0)
-    public void purchaseNew5KPlatinumCoachingPlanTest() throws Exception {
+    public void purchaseNewPlatinumCoachingPlanTest() throws Exception {
         // Going directly to custom plan page, so don't need to call loginMember();
 
         purchaseVSPlan(Plan.PLATINUM_COACHING);
