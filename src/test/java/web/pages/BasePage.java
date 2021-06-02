@@ -141,7 +141,7 @@ public class BasePage {
     public void scrollToBottomOfPageByKeys() {
         WebElement toTopOfPage = driver.findElement(bodyOfPageLocator);
         toTopOfPage.sendKeys(Keys.END);
-        Util.waitMilliseconds(500);
+        Util.waitMilliseconds(1000);
     }
 
     public void scrollToTopOfPageByKeys() {
