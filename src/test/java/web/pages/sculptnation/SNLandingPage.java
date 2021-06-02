@@ -79,7 +79,7 @@ public class SNLandingPage extends BasePage {
         }
     }
 
-    @Step("Click on the Watch Now link")
+    @Step("Click on the product link by name")
     public void clickProductSupplement(String productName) {
         By productSupplementLocator = By.xpath("//*[contains(@href,'.com/products/"+productName+"')]");
         WebElement productSupplement = driver.findElement(productSupplementLocator);
@@ -289,12 +289,17 @@ public class SNLandingPage extends BasePage {
 
     @Step("Close Discount modal")
     public void closeDiscountModal() {
-        Util.waitMilliseconds(3000);
+        Util.waitMilliseconds(1500);
         try {
-            switchToFrame("attentive_creative");
-            clickDiscountModalCloseButton();
+            if (driver.findElement(By.xpath("//*[@id='attentive_creative']")).isDisplayed()){
+                switchToFrame("attentive_creative");
+                System.out.println("Discount Modal Displayed");
+                clickDiscountModalCloseButton();
+            } else {
+                System.out.println("No Discount Modal Displayed");
+            }
         } catch (Exception e){
-            System.out.println("No Discount Modal Displayed: " + e);
+            System.out.println("No Discount Modal Displayed: "+ e);
         }
     }
 
