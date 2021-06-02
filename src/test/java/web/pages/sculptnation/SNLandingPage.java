@@ -49,9 +49,16 @@ public class SNLandingPage extends BasePage {
     By sNLandPgFooterShopLinkLocator = By.xpath("//*[text()=' Shop']");
     By sNLandPgFooterTermsConditionsLinkLocator = By.xpath("/html/body/footer/div[1]/div/a[1]");
     By sNLandPgFooterCopyRightLogoLocator = By.xpath("//*[@class='copyright']");
+    By sNLandPgSkyrocketMyManhoodButtonLocator = By.xpath("//*[text()='SKYROCKET MY MANHOOD']");
 
-    
     //// Methods ////
+    @Step("Click on the Skyrocket My Manhood Button")
+    public void clickSkyrocketMyManhoodButton(int index) {
+        WebElement skyrocketMyManhoodButton = driver.findElements(sNLandPgSkyrocketMyManhoodButtonLocator).get(index);
+        highlightElement(skyrocketMyManhoodButton);
+        skyrocketMyManhoodButton.click();
+    }
+
     @Step("Click on the Copy Right Logo")
     public void clickCopyRightLogo() {
         WebElement copyRightLogo = driver.findElement(sNLandPgFooterCopyRightLogoLocator);
@@ -62,21 +69,21 @@ public class SNLandingPage extends BasePage {
     @Step("Click on the OK button")
     public void clickOKButton() {
         Util.waitMilliseconds(1000);
+        try {
+            WebElement oKButton = driver.findElement(sNLandPgOKButtonLocator);
+            highlightElement(oKButton);
+            oKButton.click();
+        } catch (Exception e){
+            System.out.println(e);
+        }
 //        try {
-//            WebElement oKButton = driver.findElement(sNLandPgOKButtonLocator);
-//            highlightElement(oKButton);
+//        WebElement oKButton = driver.findElement(sNLandPgOKButtonLocator);
+//        Actions action = new Actions(driver);
+//        action.moveToElement(oKButton).perform();
 //            oKButton.click();
 //        } catch (Exception e){
 //            System.out.println(e);
 //        }
-        try {
-        WebElement cVV = driver.findElement(sNLandPgOKButtonLocator);
-        Actions action = new Actions(driver);
-        action.moveToElement(cVV).perform();
-        cVV.click();
-        } catch (Exception e){
-            System.out.println(e);
-        }
     }
 
     @Step("Click on the product link by name")
