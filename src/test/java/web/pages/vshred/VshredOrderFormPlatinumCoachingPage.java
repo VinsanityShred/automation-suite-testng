@@ -25,15 +25,20 @@ public class VshredOrderFormPlatinumCoachingPage extends VshredOrderFormPage {
     @Step("Click on checkbox to agree to terms and conditions")
     public void clickAgreeToTermsAndConditions() {
         Util.waitMilliseconds(1000); // Wait for element to appear in DOM
-        final WebElement termsCheckbox = driver.findElement(vsTermsConditionsSelector);
-        new WebDriverWait(driver, 10).
-                pollingEvery(Duration.ofMillis(100)).
-                withMessage("Could Not Find Payment Next Step Button").
-                withTimeout(Duration.ofSeconds(5)).
-                until(ExpectedConditions.elementToBeClickable(termsCheckbox));
-        highlightElement(termsCheckbox);
-        termsCheckbox.click();
-        //waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
+        final WebElement termsCheckbox;
+        // If agree checkbox is NOT there, then don't bother with this step
+        if (driver.findElements(vsTermsConditionsSelector).size() > 0) {
+            // Terms checkbox does exist, so continue interaction with it
+            termsCheckbox = driver.findElement(vsTermsConditionsSelector);
+            new WebDriverWait(driver, 10).
+                    pollingEvery(Duration.ofMillis(100)).
+                    withMessage("Could Not Find Terms and Conditions Checkbox").
+                    withTimeout(Duration.ofSeconds(5)).
+                    until(ExpectedConditions.elementToBeClickable(termsCheckbox));
+            highlightElement(termsCheckbox);
+            termsCheckbox.click();
+            //waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
+        }
     }
 
     @Step("Click on platinum coaching payment next step button")

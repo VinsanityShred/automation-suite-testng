@@ -16,7 +16,8 @@ public class PurchaseTestBase extends BaseTest {
         FAT_LOSS_EXTREME_HER, // **NOTE**: post order offer one page different than above programs
         CUSTOM_DIET_PLAN, // **NOTE**: Configured as separate test class in VSCustomDietTest rather than VSPurchaseTest
         CUSTOM_DIET_MONTHLY,
-        PLATINUM_COACHING
+        PLATINUM_COACHING,
+        GOLD_COACHING
     }
 
     @BeforeMethod
@@ -37,6 +38,7 @@ public class PurchaseTestBase extends BaseTest {
         VshredOrderConfirmPage.createVSOrderConfirmPage(driver);
         VshredProgramQuestionnairePage.createVSQuestionnairePage(driver);
         VshredOrderFormPlatinumCoachingPage.createVSPlatinumCoachingOrderFormPage(driver);
+        VshredOrderFormGoldCoachingPage.createVSGoldCoachingOrderFormPage(driver);
     }
 
     public void loginMember() throws Exception {
@@ -66,12 +68,9 @@ public class PurchaseTestBase extends BaseTest {
                 VshredFatLossExtremeHerProgramPage.vsFatLossExtremeHerPage.clickPurchaseButton();
                 break;
             case CUSTOM_DIET_PLAN:
-                // NOTE: Going direct to URL that is the order form, so no verify of program page or click of purchase button
-                break;
             case CUSTOM_DIET_MONTHLY:
-                // NOTE: Going direct to URL that is the order form, so no verify of program page or click of purchase button
-                break;
             case PLATINUM_COACHING:
+            case GOLD_COACHING:
                 // NOTE: Going direct to URL that is the order form, so no verify of program page or click of purchase button
                 break;
             default:
@@ -109,6 +108,15 @@ public class PurchaseTestBase extends BaseTest {
         VshredOrderFormPlatinumCoachingPage.vsOrderFormPage.submitOrder();
     }
 
+    public void completeGoldCoachingPlanOrderForm() throws Exception {
+        VshredOrderFormGoldCoachingPage.verifyVSOrderFormPage();
+        VshredOrderFormGoldCoachingPage.vsOrderFormPage.completeContactInfoAndNext();
+        VshredOrderFormGoldCoachingPage.vsOrderFormPage.completeGoldCoachingPaymentDetailsAndNext();
+        // Check box to agree to terms
+        VshredOrderFormGoldCoachingPage.vsGoldCoachingOrderFormPage.clickAgreeToTermsAndConditions();
+        VshredOrderFormGoldCoachingPage.vsOrderFormPage.submitOrder();
+    }
+
     public void processPostSubmissionPages(PurchaseTestBase.Plan aPlan) throws Exception {
         switch (aPlan) {
             case BIG_ARMS:
@@ -123,6 +131,7 @@ public class PurchaseTestBase extends BaseTest {
             case CUSTOM_DIET_PLAN:
             case CUSTOM_DIET_MONTHLY:
             case PLATINUM_COACHING:
+            case GOLD_COACHING:
                 break; // Post order offer 1 does not appear for this plan
             default:
                 System.out.println("VSPurchaseTest.java: processPostSubmissionPages: Invalid plan case value " + aPlan);
@@ -141,6 +150,7 @@ public class PurchaseTestBase extends BaseTest {
             case CUSTOM_DIET_PLAN:
             case CUSTOM_DIET_MONTHLY:
             case PLATINUM_COACHING:
+            case GOLD_COACHING:
                 break; // Post order offer 3 does not appear for this plan
             default:
                 System.out.println("VSPurchaseTest.java: processPostSubmissionPages: Invalid plan case value " + aPlan);

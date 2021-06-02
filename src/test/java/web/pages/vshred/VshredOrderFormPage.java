@@ -7,11 +7,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.server.handler.FindElements;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import web.pages.BasePage;
 
 import java.time.Duration;
+import java.util.List;
 
 public class VshredOrderFormPage extends BasePage {
 
@@ -54,7 +56,8 @@ public class VshredOrderFormPage extends BasePage {
     protected By vsCustomDietPaymentNextStepSelector =        By.xpath("//*[@id=\"billing-form\"]/div[1]/div[3]/div[2]/div[2]/span");
     protected By vsCustomDietMonthlyPaymentNextStepSelector = By.xpath("//*[@id=\"billing-form\"]/div[2]/div[2]/span");
     protected By vsPlatinumCoachingPaymentNextStepSelector =  By.xpath("//*[@id=\"billing-form\"]/div[1]/div[3]/div[2]/div[2]/span");
-    private By vsPaymentNextStepSelector =                    By.xpath("//*[@id=\"billing-form\"]/div[1]/div[4]/div[1]/div[2]/span");
+    protected By vsGoldCoachingPaymentNextStepSelector =      By.xpath("//*[@id=\"billing-form\"]/div[1]/div[4]/div[1]/div[2]/span");
+    protected By vsPaymentNextStepSelector =                  By.xpath("//*[@id=\"billing-form\"]/div[1]/div[4]/div[1]/div[2]/span");
     private By vsOrderSummary = By.cssSelector("#order-summary"); // ORDER_SUMMARY_BOX
     //protected By vsSubmitOrderButton = By.cssSelector("#submit-order"); // SUBMIT_ORDER
     protected By vsSubmitOrderButton = By.xpath("//*[@id=\"submit-order\"]");
@@ -91,10 +94,16 @@ public class VshredOrderFormPage extends BasePage {
         vsOrderFormPage.clickCustomDietMonthlyPaymentNextStep();
     }
 
-    @Step("Fill in custom diet monthly payment details and click next step")
+    @Step("Fill in platinum coaching payment details and click next step")
     public void completePlatinumCoachingPaymentDetailsAndNext() {
         vsOrderFormPage.setPaymentDefaults();
         vsOrderFormPage.clickPlatinumCoachingPaymentNextStep();
+    }
+
+    @Step("Fill in platinum coaching payment details and click next step")
+    public void completeGoldCoachingPaymentDetailsAndNext() {
+        vsOrderFormPage.setPaymentDefaults();
+        vsOrderFormPage.clickGoldCoachingPaymentNextStep();
     }
 
     public void submitOrder() throws Exception {
@@ -182,6 +191,27 @@ public class VshredOrderFormPage extends BasePage {
         waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
     }
 
+    @Step("Click on payment next step button")
+    protected void clickGoldCoachingPaymentNextStep() {
+        Util.waitMilliseconds(2000); // Give time for field to appear in DOM
+        final WebElement paymentNextStep;
+        // Unique payment selector for "monthly" gold plan
+        if (driver.findElements(vsPlatinumCoachingPaymentNextStepSelector).size() == 0) {
+            // Standard next step selector found nothing, so use custom next step selector
+            paymentNextStep = driver.findElement(vsGoldCoachingPaymentNextStepSelector);
+        } else {
+            paymentNextStep = driver.findElement(vsPlatinumCoachingPaymentNextStepSelector);
+        }
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Payment Next Step Button").
+                withTimeout(Duration.ofSeconds(5)).
+                until(ExpectedConditions.elementToBeClickable(paymentNextStep));
+        highlightElement(paymentNextStep);
+        paymentNextStep.click();
+        waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
+    }
+
     @Step("Click on submit order button")
     public void clickSubmitOrder() throws Exception {
         Util.waitMilliseconds(1500); // Give time for field to appear in DOM
@@ -249,14 +279,24 @@ public class VshredOrderFormPage extends BasePage {
         setTextBySendKeys(strEmail);
     }
 
+    public Boolean contactPhoneFieldExists() {
+        List<WebElement> elements = driver.findElements(vsPhoneSelector);
+        return (elements.size() > 0);
+
+    }
+
     @Step("Set Contact Phone")
     public void setContactPhone(String strPhone) {
-        WebElement contactPhone = driver.findElement(vsPhoneSelector);
-        Actions action = new Actions(driver);
-        action.moveToElement(contactPhone).perform();
-        contactPhone.clear();
-        contactPhone.click();
-        setTextBySendKeys(strPhone);
+        //List<WebElement> elements = driver.findElements(vsPhoneSelector);
+        // Only try to set phone number field if one is there, such as gold training monthly that does NOT have the field
+        if (contactPhoneFieldExists()) {
+            WebElement contactPhone = driver.findElement(vsPhoneSelector);
+            Actions action = new Actions(driver);
+            action.moveToElement(contactPhone).perform();
+            contactPhone.clear();
+            contactPhone.click();
+            setTextBySendKeys(strPhone);
+        }
     }
 
     @Step("Set Card Number")

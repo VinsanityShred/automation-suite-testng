@@ -82,5 +82,53 @@
         <!--            <package name="web.tests.sculptnation"/>-->
         <!--        </packages>-->
     </test>
+
+    <test name="Testing-2 Gold Coaching OTP Chrome Test">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/gold-coaching-program-otp" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSGoldCoachingTest"/>
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
+
+    <test name="Testing-2 Gold Coaching MPP Chrome Test">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/gold-coaching-program-mpp" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSGoldCoachingTest"/>
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
+
+    <test name="Testing-2 Gold Coaching Monthly Chrome Test">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/gold-training-package-monthly" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSGoldCoachingTest"/>
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
 </suite>
 
