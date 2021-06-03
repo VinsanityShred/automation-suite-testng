@@ -42,7 +42,7 @@ public class CouponTurmeric221Page extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
-    @Step("Verify the Greens Page Coupon Is Displayed")
+    @Step("Verify the Turmeric Black Page Coupon Is Displayed")
     public void verifyTurmericBlackPgCouponIsDisplayed() {
         assertTrue(isTurmericBlackCouponDisplayed(), "Turmeric Black Page Coupon NOT Displayed");
     }
