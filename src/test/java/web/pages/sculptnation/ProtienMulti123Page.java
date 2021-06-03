@@ -17,10 +17,11 @@ public class ProtienMulti123Page extends BasePage {
     }
 
     //// Locators ////
-    By protnPg123NoThanksLinkLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
-    By protnPg123ChocolateBottleImageLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
+    private By protnPg123NoThanksLinkLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
+    private By protnPg123ChocolateBottleImageLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
 
     //// Methods ////
+
     @Step("Is Protein Multi CS Page 123 Bottle Image Displayed")
     public boolean isProteinChocolateBottleImageDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(protnPg123ChocolateBottleImageLocator));
