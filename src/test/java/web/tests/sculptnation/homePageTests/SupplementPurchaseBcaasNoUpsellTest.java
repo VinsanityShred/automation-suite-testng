@@ -14,7 +14,7 @@ import web.tests.BaseTest;
 @Feature("Home Page Tests")
 @Story("Supplement Purchase No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseNoUpsellTest extends BaseTest {
+public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     BcaasProductPage bcaasPg;
