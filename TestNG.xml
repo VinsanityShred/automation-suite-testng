@@ -58,7 +58,7 @@
         <parameter name="appURL" value="https://testing-2.vshred.com/order-form/platinum-coaching-program-4-5k-6" />
         <!--//// Individual tests to run ////-->
         <classes>
-            <class name="web.tests.vshred.VSPlatinumCoachingTest"/>
+            <class name="web.tests.vshred.VSPlatinumCoaching5KTest"/>
         </classes>
         <!--//// Suite of tests to run ////-->
         <!--        <packages>-->
@@ -90,7 +90,7 @@
         <parameter name="appURL" value="https://testing-2.vshred.com/order-form/gold-coaching-program-otp" />
         <!--//// Individual tests to run ////-->
         <classes>
-            <class name="web.tests.vshred.VSGoldCoachingTest"/>
+            <class name="web.tests.vshred.VSGoldCoachingOTPTest"/>
         </classes>
         <!--//// Suite of tests to run ////-->
         <!--        <packages>-->
@@ -106,7 +106,7 @@
         <parameter name="appURL" value="https://testing-2.vshred.com/order-form/gold-coaching-program-mpp" />
         <!--//// Individual tests to run ////-->
         <classes>
-            <class name="web.tests.vshred.VSGoldCoachingTest"/>
+            <class name="web.tests.vshred.VSGoldCoachingMPPTest"/>
         </classes>
         <!--//// Suite of tests to run ////-->
         <!--        <packages>-->
@@ -122,7 +122,39 @@
         <parameter name="appURL" value="https://testing-2.vshred.com/order-form/gold-training-package-monthly" />
         <!--//// Individual tests to run ////-->
         <classes>
-            <class name="web.tests.vshred.VSGoldCoachingTest"/>
+            <class name="web.tests.vshred.VSGoldCoachingMonthlyTest"/>
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
+
+    <test name="Testing-2 Diet 4-week Training Plan Chrome Test">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/diet-training-plan-4-week-soc" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSDietFourWeekTest"/>
+        </classes>
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
+    </test>
+
+    <test name="Testing-2 Diet 8-week Training Plan Chrome Test">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/order-form/diet-training-plan-8-week-soc" />
+        <!--//// Individual tests to run ////-->
+        <classes>
+            <class name="web.tests.vshred.VSDietEightWeekTest"/>
         </classes>
         <!--//// Suite of tests to run ////-->
         <!--        <packages>-->

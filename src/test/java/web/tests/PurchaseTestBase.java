@@ -17,7 +17,8 @@ public class PurchaseTestBase extends BaseTest {
         CUSTOM_DIET_PLAN, // **NOTE**: Configured as separate test class in VSCustomDietTest rather than VSPurchaseTest
         CUSTOM_DIET_MONTHLY,
         PLATINUM_COACHING,
-        GOLD_COACHING
+        GOLD_COACHING,
+        DIET_MULTI_WEEK,
     }
 
     @BeforeMethod
@@ -71,6 +72,7 @@ public class PurchaseTestBase extends BaseTest {
             case CUSTOM_DIET_MONTHLY:
             case PLATINUM_COACHING:
             case GOLD_COACHING:
+            case DIET_MULTI_WEEK:
                 // NOTE: Going direct to URL that is the order form, so no verify of program page or click of purchase button
                 break;
             default:
@@ -132,6 +134,7 @@ public class PurchaseTestBase extends BaseTest {
             case CUSTOM_DIET_MONTHLY:
             case PLATINUM_COACHING:
             case GOLD_COACHING:
+            case DIET_MULTI_WEEK:
                 break; // Post order offer 1 does not appear for this plan
             default:
                 System.out.println("VSPurchaseTest.java: processPostSubmissionPages: Invalid plan case value " + aPlan);
@@ -151,6 +154,7 @@ public class PurchaseTestBase extends BaseTest {
             case CUSTOM_DIET_MONTHLY:
             case PLATINUM_COACHING:
             case GOLD_COACHING:
+            case DIET_MULTI_WEEK:
                 break; // Post order offer 3 does not appear for this plan
             default:
                 System.out.println("VSPurchaseTest.java: processPostSubmissionPages: Invalid plan case value " + aPlan);
