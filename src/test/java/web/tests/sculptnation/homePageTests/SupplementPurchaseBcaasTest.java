@@ -1,6 +1,5 @@
 package web.tests.sculptnation.homePageTests;
 
-import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;

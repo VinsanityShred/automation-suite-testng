@@ -47,7 +47,7 @@ public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
     public void purchaseBCAAsSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("bcaas");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/bcaas");
@@ -60,7 +60,8 @@ public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        bcaaPg120.verifyBcaaImageIsDisplayed();
+        bcaaPg120.verifyCurrentPageURLEndsWith("/bcaa-us?f=120");
+        bcaaPg120.verifyBcaas6BottleImageIsDisplayed();
         bcaaPg120.scrollToBottomOfPageByKeys();
         bcaaPg120.clickNoThanksLink();
         bcaaPg121.verifyCurrentPageURLEndsWith("/bcaa-ds?f=121");
