@@ -32,8 +32,16 @@ public class BasePage {
     private By buyNowButtonLocator = By.xpath("//*[text()='BUY NOW']");
     private By bodyOfPageLocator = By.tagName("body");
     private By yesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
+    private By subscribeNowButtonLocator = By.xpath("//*[text()='Subscribe Now']");
 
     //// Methods ////
+    @Step("Click the Subscribe Now Button")
+    public void clickSubscribeNowButton() {
+        WebElement subscribeNowButton = driver.findElement(subscribeNowButtonLocator);
+        highlightElement(subscribeNowButton);
+        subscribeNowButton.click();
+    }
+
     @Step("Click on the Add To Cart link")
     public void clickAddToCartLinkByIndex(int index){
         Util.waitMilliseconds(1500);
