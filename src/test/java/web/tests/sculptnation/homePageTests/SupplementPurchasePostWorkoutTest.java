@@ -19,9 +19,9 @@ public class SupplementPurchasePostWorkoutTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    PostWorkoutUs78Page pstWrktUs78Pg;
-    PreWorkoutMultiCs77Page preWrktMultCs77Pg;
-    ProteinMultiCs80Page prtnMultCs80Pg;
+    PostWorkoutSalesFunnelPage pstWrktSlsFunlPg;
+    PreWorkoutSalesFunnelPage prWrktSlsFunlPg;
+    ProteinSalesFunnelPage prtnMultCs80Pg;
 
     @BeforeMethod
     public void setUp() {
@@ -30,9 +30,9 @@ public class SupplementPurchasePostWorkoutTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        pstWrktUs78Pg = new PostWorkoutUs78Page(driver);
-        preWrktMultCs77Pg = new PreWorkoutMultiCs77Page(driver);
-        prtnMultCs80Pg = new ProteinMultiCs80Page(driver);
+        pstWrktSlsFunlPg = new PostWorkoutSalesFunnelPage(driver);
+        prWrktSlsFunlPg = new PreWorkoutSalesFunnelPage(driver);
+        prtnMultCs80Pg = new ProteinSalesFunnelPage(driver);
     }
 
     @Description("Verify Post Workout Fruit Punch supplement purchase")
@@ -53,15 +53,15 @@ public class SupplementPurchasePostWorkoutTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        pstWrktUs78Pg.verifyCurrentPageURLEndsWith("/post-workout-us?f=78");
-        pstWrktUs78Pg.verifyPostWorkoutPg78ImageIsDisplayed();
-        pstWrktUs78Pg.scrollToBottomOfPageByKeys();
-        pstWrktUs78Pg.clickYesUpgradeButton();
-        pstWrktUs78Pg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=77");
-        preWrktMultCs77Pg.verifyPreWorkoutPg77ImageIsDisplayed();
-        preWrktMultCs77Pg.scrollToBottomOfPageByKeys();
-        preWrktMultCs77Pg.clickOneTimeDeliveryPriceLabel();
-        preWrktMultCs77Pg.clickAddToCartLinkByIndex(0);
+        pstWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/post-workout-us?f=78");
+        pstWrktSlsFunlPg.verifyPostWorkoutPg78ImageIsDisplayed();
+        pstWrktSlsFunlPg.scrollToBottomOfPageByKeys();
+        pstWrktSlsFunlPg.clickYesUpgradeButton();
+        pstWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=77");
+        prWrktSlsFunlPg.verifyPreWorkoutPg77ImageIsDisplayed();
+        prWrktSlsFunlPg.scrollToBottomOfPageByKeys();
+        prWrktSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        prWrktSlsFunlPg.clickAddToCartLinkByIndex(0);
         prtnMultCs80Pg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=80");
         prtnMultCs80Pg.verifyProteinMultiCsPg80ImageIsDisplayed();
         prtnMultCs80Pg.scrollToBottomOfPageByKeys();

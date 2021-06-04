@@ -19,10 +19,10 @@ public class SupplementPurchaseTestBoostMaxTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    TestBoostUs81Page tstBstUs81Pg;
-    HghVslCs83Page hghVslCs83Pg;
-    CreatineVslCsV284Page crtnVslCsV284Pg;
-    CouponBurn218Page cupnBrn218Pg;
+    TestBoostSalesFunnelPage tstBstUs81Pg;
+    HghSalesFunnelPage hghSlsFunlPg;
+    CreatineSalesFunnelPage crtnSlsFunlPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,10 +31,10 @@ public class SupplementPurchaseTestBoostMaxTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        tstBstUs81Pg = new TestBoostUs81Page(driver);
-        hghVslCs83Pg = new HghVslCs83Page(driver);
-        crtnVslCsV284Pg = new CreatineVslCsV284Page(driver);
-        cupnBrn218Pg = new CouponBurn218Page(driver);
+        tstBstUs81Pg = new TestBoostSalesFunnelPage(driver);
+        hghSlsFunlPg = new HghSalesFunnelPage(driver);
+        crtnSlsFunlPg = new CreatineSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Test Boost Max supplement purchase")
@@ -62,22 +62,22 @@ public class SupplementPurchaseTestBoostMaxTest extends BaseTest {
         sNLndPg.clickCopyRightLogo();
         tstBstUs81Pg.pageDownByKeys();
         tstBstUs81Pg.clickYesUpgradeButton();
-        hghVslCs83Pg.verifyCurrentPageURLEndsWith("/hgh-vsl-cs?f=83");
-        hghVslCs83Pg.verifyHghVslCsPg83VideoIsDisplayed();
-        hghVslCs83Pg.scrollToBottomOfPageByKeys();
+        hghSlsFunlPg.verifyCurrentPageURLEndsWith("/hgh-vsl-cs?f=83");
+        hghSlsFunlPg.verifyHghVslCsPg83VideoIsDisplayed();
+        hghSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        hghVslCs83Pg.pageDownByKeys();
-        hghVslCs83Pg.clickOneTimeDeliveryPriceLabel();
-        hghVslCs83Pg.clickAddToCartLinkByIndex(0);
-        crtnVslCsV284Pg.verifyCurrentPageURLEndsWith("/creatine-vsl-cs-v2?f=84");
-        crtnVslCsV284Pg.verifyCreatineVslCsV2Pg84VideoIsDisplayed();
-        crtnVslCsV284Pg.scrollToBottomOfPageByKeys();
+        hghSlsFunlPg.pageDownByKeys();
+        hghSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        hghSlsFunlPg.clickAddToCartLinkByIndex(0);
+        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-vsl-cs-v2?f=84");
+        crtnSlsFunlPg.verifyCreatineVslCsV2Pg84VideoIsDisplayed();
+        crtnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        crtnVslCsV284Pg.clickOneTimeDeliveryPriceLabel();
-        crtnVslCsV284Pg.clickAddToCartLinkByIndex(0);
-        cupnBrn218Pg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
-        cupnBrn218Pg.verifyBurnCouponPg218ImageIsDisplayed();
-        cupnBrn218Pg.clickYesUpgradeButton();
+        crtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        crtnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
+        cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$327.95");

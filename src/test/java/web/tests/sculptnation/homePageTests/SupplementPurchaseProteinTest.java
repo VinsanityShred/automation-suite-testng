@@ -19,10 +19,10 @@ public class SupplementPurchaseProteinTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    ProteinMultiUs73Page prtnMultUs73Pg;
-    PreWorkoutMultiCs75Page prWrktMultCs75Pg;
-    PostWorkoutCs76Page pstWrktCs76Pg;
-    CouponBurn218Page cupnBrn218Pg;
+    ProteinSalesFunnelPage prtnSlsFunlPg;
+    PreWorkoutSalesFunnelPage prWrktMultCs75Pg;
+    PostWorkoutSalesFunnelPage pstWrktCs76Pg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,10 +31,10 @@ public class SupplementPurchaseProteinTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        prtnMultUs73Pg = new ProteinMultiUs73Page(driver);
-        prWrktMultCs75Pg = new PreWorkoutMultiCs75Page(driver);
-        pstWrktCs76Pg = new PostWorkoutCs76Page(driver);
-        cupnBrn218Pg = new CouponBurn218Page(driver);
+        prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
+        prWrktMultCs75Pg = new PreWorkoutSalesFunnelPage(driver);
+        pstWrktCs76Pg = new PostWorkoutSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Protein supplement purchase")
@@ -56,14 +56,14 @@ public class SupplementPurchaseProteinTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        prtnMultUs73Pg.verifyCurrentPageURLEndsWith("/protein-multi-us?f=73");
-        prtnMultUs73Pg.verifyProteinMultiUsPg73ImageIsDisplayed();
-        prtnMultUs73Pg.pageDownByKeys();
-        prtnMultUs73Pg.pageDownByKeys();
-        prtnMultUs73Pg.pageDownByKeys();
-        prtnMultUs73Pg.pageDownByKeys();
-        prtnMultUs73Pg.selectFlavorFromDropDown("Vanilla");
-        prtnMultUs73Pg.clickYesUpgradeButton();
+        prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-us?f=73");
+        prtnSlsFunlPg.verifyProteinMultiUsPg73ImageIsDisplayed();
+        prtnSlsFunlPg.pageDownByKeys();
+        prtnSlsFunlPg.pageDownByKeys();
+        prtnSlsFunlPg.pageDownByKeys();
+        prtnSlsFunlPg.pageDownByKeys();
+        prtnSlsFunlPg.selectFlavorFromDropDown("Vanilla");
+        prtnSlsFunlPg.clickYesUpgradeButton();
         prWrktMultCs75Pg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=75");
         prWrktMultCs75Pg.verifyPreWorkoutPg75ImageIsDisplayed();
         prWrktMultCs75Pg.scrollToBottomOfPageByKeys();
@@ -74,10 +74,10 @@ public class SupplementPurchaseProteinTest extends BaseTest {
         pstWrktCs76Pg.scrollToBottomOfPageByKeys();
         pstWrktCs76Pg.clickOneTimeDeliveryPriceLabel();
         pstWrktCs76Pg.clickAddToCartLinkByIndex(0);
-        cupnBrn218Pg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
-        cupnBrn218Pg.verifyBurnCouponPg218ImageIsDisplayed();
-        cupnBrn218Pg.pageDownByKeys();
-        cupnBrn218Pg.clickYesUpgradeButton();
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
+        cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
+        cupnSlsFunlPg.pageDownByKeys();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$349.95");

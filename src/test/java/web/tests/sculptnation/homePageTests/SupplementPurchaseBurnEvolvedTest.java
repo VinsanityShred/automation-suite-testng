@@ -20,8 +20,8 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
     BurnSalesFunnelPage burnSlsFunlPg;
-    TurmericCsVsPage trmrcCsVsPg;
-    CouponGreensV2F217Page cupnGrnsPg;
+    TurmericSalesFunnelPage trmrcSlsFunlPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,8 +31,8 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
         burnSlsFunlPg = new BurnSalesFunnelPage(driver);
-        trmrcCsVsPg = new TurmericCsVsPage(driver);
-        cupnGrnsPg = new CouponGreensV2F217Page(driver);
+        trmrcSlsFunlPg = new TurmericSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify BCAAs -supplement purchase no upsell")
@@ -72,14 +72,14 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
         burnSlsFunlPg.clickAddToCartLinkByIndex(0);
-        trmrcCsVsPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=37");
-        trmrcCsVsPg.verifyTurmericCsVsPgVideoIsDisplayed();
-        trmrcCsVsPg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=37");
+        trmrcSlsFunlPg.verifyTurmericCsVsPgVideoIsDisplayed();
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        trmrcCsVsPg.clickOneTimeDeliveryPriceLabel();
-        trmrcCsVsPg.clickAddToCartLinkByIndex(0);
-        cupnGrnsPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
-        cupnGrnsPg.clickAddToCartLinkByIndex(0);
+        trmrcSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        trmrcSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
+        cupnSlsFunlPg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$411.95");

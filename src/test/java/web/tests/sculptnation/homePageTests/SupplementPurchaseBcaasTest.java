@@ -20,11 +20,10 @@ public class SupplementPurchaseBcaasTest extends BaseTest {
     BcaasProductPage bcaasPg;
     CartPage cartPg;
     CheckoutPage chckPg;
-    BcaaUs120Page bcaaPg120;
-    BcaaUs121Page bcaaPg121;
-    CreatineCs122Page crtnPg122;
-    ProtienMulti123Page protnPg123;
-    Coupon218Page couponPg218;
+    BcaasSalesFunnelPage bcaasSlsFunlPg;
+    CreatineSalesFunnelPage crtnSlsFunlPg;
+    ProteinSalesFunnelPage prtnSlsFunlPg;
+    CouponSalesFunnelPage couponPg218;
     ReceiptPage RcptPg;
 
     @BeforeMethod
@@ -34,11 +33,10 @@ public class SupplementPurchaseBcaasTest extends BaseTest {
         bcaasPg = new BcaasProductPage(driver);
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
-        bcaaPg120 = new BcaaUs120Page(driver);
-        bcaaPg121 = new BcaaUs121Page(driver);
-        crtnPg122 = new CreatineCs122Page(driver);
-        protnPg123 = new ProtienMulti123Page(driver);
-        couponPg218 = new Coupon218Page(driver);
+        bcaasSlsFunlPg = new BcaasSalesFunnelPage(driver);
+        crtnSlsFunlPg = new CreatineSalesFunnelPage(driver);
+        prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
+        couponPg218 = new CouponSalesFunnelPage(driver);
         RcptPg = new ReceiptPage(driver);
     }
 
@@ -60,20 +58,20 @@ public class SupplementPurchaseBcaasTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        bcaaPg120.verifyCurrentPageURLEndsWith("/bcaa-us?f=120");
-        bcaaPg120.verifyBcaas6BottleImageIsDisplayed();
-        bcaaPg120.scrollToBottomOfPageByKeys();
-        bcaaPg120.clickYesUpgradeButton();
-        crtnPg122.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
-        crtnPg122.verifyCreatineBottleImageIsDisplayed();
-        crtnPg122.scrollToBottomOfPageByKeys();
-        crtnPg122.clickOneTimeDeliveryPriceLabel();
-        crtnPg122.clickAddToCartLinkByIndex(0);
-        protnPg123.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
-        protnPg123.verifyProteinMultiPg123BottleImageIsDisplayed();
-        protnPg123.scrollToBottomOfPageByKeys();
-        protnPg123.clickOneTimeDeliveryPriceLabel();
-        protnPg123.clickAddToCartLinkByIndex(0);
+        bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-us?f=120");
+        bcaasSlsFunlPg.verifyBcaas6BottleImageIsDisplayed();
+        bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
+        bcaasSlsFunlPg.clickYesUpgradeButton();
+        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
+        crtnSlsFunlPg.verifyCreatineBottleImageIsDisplayed();
+        crtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        crtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        crtnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
+        prtnSlsFunlPg.verifyProteinMultiPg123BottleImageIsDisplayed();
+        prtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        prtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        prtnSlsFunlPg.clickAddToCartLinkByIndex(0);
         couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         couponPg218.verifyEvolvedPgCouponIsDisplayed();
         couponPg218.clickYesUpgradeButton();

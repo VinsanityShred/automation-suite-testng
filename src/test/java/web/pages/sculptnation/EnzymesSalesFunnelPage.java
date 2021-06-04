@@ -9,17 +9,26 @@ import web.pages.BasePage;
 
 import static org.testng.Assert.assertTrue;
 
-public class EnzymesCsProbiotics152Page extends BasePage {
+public class EnzymesSalesFunnelPage extends BasePage {
 
     //// Constructor ////
-    public EnzymesCsProbiotics152Page(WebDriver driver) {
+    public EnzymesSalesFunnelPage(WebDriver driver) {
         super(driver);
     }
 
     //// Locators ////
     private By enzymesCsProbioticsPg152VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
+    private By enymsUs157PgEnzymesImageLocator = By.xpath("//*[@alt='Enzymes 6 Bottles']");
 
     //// Methods ////
+    @Step("Is Enzymes Image Displayed")
+    private boolean isEnzymesImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(enymsUs157PgEnzymesImageLocator));
+        WebElement bcaasImage = driver.findElement(enymsUs157PgEnzymesImageLocator);
+        highlightElement(bcaasImage);
+        return bcaasImage.isDisplayed();
+    }
+
     @Step("Is Enzymes CS Probiotics Page 152 Video Displayed")
     private boolean isEnzymesCsProbioticsPg152VideoDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(enzymesCsProbioticsPg152VideoLocator));
@@ -33,6 +42,11 @@ public class EnzymesCsProbiotics152Page extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
+    @Step("Verify the Enzymes Image Is Displayed")
+    public void verifyEnzymesImageIsDisplayed() {
+        assertTrue(isEnzymesImageDisplayed(), "Enzymes Image NOT Displayed");
+    }
+
     @Step("Verify the Enzymes CS Probiotics Page 152 Video Is Displayed")
     public void verifyEnzymesCsProbioticsPg152VideoIsDisplayed() {
         assertTrue(isEnzymesCsProbioticsPg152VideoDisplayed(), "Enzymes CS Probiotics Page 152 Video NOT Displayed");

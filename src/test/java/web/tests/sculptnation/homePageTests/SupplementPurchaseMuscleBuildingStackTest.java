@@ -19,10 +19,10 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    TestBoostUs85Page tstBstUs85Pg;
-    HghVslCs87Page hghVslCs87Pg;
-    CreatineCs88Page crtnCs88Pg;
-    CouponBurn218Page cupnBurn218Pg;
+    TestBoostSalesFunnelPage tstBstSlsFunlPg;
+    HghSalesFunnelPage hghSlsFunlPg;
+    CreatineSalesFunnelPage crtnCs88Pg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,10 +31,10 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        tstBstUs85Pg = new TestBoostUs85Page(driver);
-        hghVslCs87Pg = new HghVslCs87Page(driver);
-        crtnCs88Pg = new CreatineCs88Page(driver);
-        cupnBurn218Pg = new CouponBurn218Page(driver);
+        tstBstSlsFunlPg = new TestBoostSalesFunnelPage(driver);
+        hghSlsFunlPg = new HghSalesFunnelPage(driver);
+        crtnCs88Pg = new CreatineSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Muscle Building Stack supplement purchase")
@@ -42,7 +42,7 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
     public void purchaseMuscleBuildingStackSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickProductSupplement("muscle-building-stack");
@@ -55,27 +55,27 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        tstBstUs85Pg.verifyCurrentPageURLEndsWith("/testboost-us?f=85");
-        tstBstUs85Pg.verifyTestBoostPg85VideoIsDisplayed();
-        tstBstUs85Pg.scrollToBottomOfPageByKeys();
+        tstBstSlsFunlPg.verifyCurrentPageURLEndsWith("/testboost-us?f=85");
+        tstBstSlsFunlPg.verifyTestBoostPg85VideoIsDisplayed();
+        tstBstSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        tstBstUs85Pg.scrollToBottomOfPageByKeys();
-        tstBstUs85Pg.clickYesUpgradeButton();
-        tstBstUs85Pg.verifyCurrentPageURLEndsWith("/hgh-vsl-cs?f=87");
-        hghVslCs87Pg.verifyHghVslCsPg87VideoIsDisplayed();
-        hghVslCs87Pg.scrollToBottomOfPageByKeys();
+        tstBstSlsFunlPg.scrollToBottomOfPageByKeys();
+        tstBstSlsFunlPg.clickYesUpgradeButton();
+        tstBstSlsFunlPg.verifyCurrentPageURLEndsWith("/hgh-vsl-cs?f=87");
+        hghSlsFunlPg.verifyHghVslCsPg87VideoIsDisplayed();
+        hghSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        hghVslCs87Pg.clickOneTimeDeliveryPriceLabel();
-        hghVslCs87Pg.clickAddToCartLinkByIndex(0);
+        hghSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        hghSlsFunlPg.clickAddToCartLinkByIndex(0);
         crtnCs88Pg.verifyCurrentPageURLEndsWith("/creatine-cs?f=88");
         crtnCs88Pg.verifyCreatinePg88ImageIsDisplayed();
         crtnCs88Pg.scrollToBottomOfPageByKeys();
         crtnCs88Pg.clickOneTimeDeliveryPriceLabel();
         crtnCs88Pg.clickAddToCartLinkByIndex(0);
-        cupnBurn218Pg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
-        cupnBurn218Pg.verifyBurnCouponPg218ImageIsDisplayed();
-        cupnBurn218Pg.pageDownByKeys();
-        cupnBurn218Pg.clickYesUpgradeButton();
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
+        cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
+        cupnSlsFunlPg.pageDownByKeys();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$388.95");

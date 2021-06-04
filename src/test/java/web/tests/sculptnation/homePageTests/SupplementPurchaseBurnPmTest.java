@@ -21,9 +21,9 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    CouponGreensV2F217Page cupnGrnsPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
     BurnSalesFunnelPage burnSlsFunlPg;
-    TurmericCsF104Page trmrcCs104Pg;
+    TurmericSalesFunnelPage trmrcSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -33,9 +33,9 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        cupnGrnsPg = new CouponGreensV2F217Page(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
         burnSlsFunlPg = new BurnSalesFunnelPage(driver);
-        trmrcCs104Pg = new TurmericCsF104Page(driver);
+        trmrcSlsFunlPg = new TurmericSalesFunnelPage(driver);
     }
 
     @Description("Verify BCAAs -supplement purchase no upsell")
@@ -66,15 +66,15 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
         burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=104");
-        trmrcCs104Pg.verifyTurmericCs104PgVideoIsDisplayed();
-        trmrcCs104Pg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.verifyTurmericCs104PgVideoIsDisplayed();
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        trmrcCs104Pg.scrollToBottomOfPageByKeys();
-        trmrcCs104Pg.clickOneTimeDeliveryPriceLabel();
-        trmrcCs104Pg.clickAddToCartLinkByIndex(0);
-        cupnGrnsPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
-        cupnGrnsPg.scrollToBottomOfPageByKeys();
-        cupnGrnsPg.clickAddToCartLinkByIndex(0);
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        trmrcSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
+        cupnSlsFunlPg.scrollToBottomOfPageByKeys();
+        cupnSlsFunlPg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$339.95");

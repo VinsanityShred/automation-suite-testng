@@ -19,10 +19,10 @@ public class SupplementPurchaseProbioticsTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    ProbioticsUs159Page prbtcsUs159Pg;
-    EnzymesCsProbiotics152Page enzymsCsPrbtcs152Pg;
-    GreensMultiCsPro154Page grnsMultCsPr154Pg;
-    CouponTurmeric221Page cupnTrmrc221Pg;
+    ProbioticsSalesFunnelPage prbtcsSlsFunlPg;
+    EnzymesSalesFunnelPage enzymsCsPrbtcs152Pg;
+    GreensSalesFunnelPage grnsSlsFunlPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,10 +31,10 @@ public class SupplementPurchaseProbioticsTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        prbtcsUs159Pg = new ProbioticsUs159Page(driver);
-        enzymsCsPrbtcs152Pg = new EnzymesCsProbiotics152Page(driver);
-        grnsMultCsPr154Pg = new GreensMultiCsPro154Page(driver);
-        cupnTrmrc221Pg = new CouponTurmeric221Page(driver);
+        prbtcsSlsFunlPg = new ProbioticsSalesFunnelPage(driver);
+        enzymsCsPrbtcs152Pg = new EnzymesSalesFunnelPage(driver);
+        grnsSlsFunlPg = new GreensSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Probiotics supplement purchase")
@@ -56,9 +56,9 @@ public class SupplementPurchaseProbioticsTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        prbtcsUs159Pg.verifyCurrentPageURLEndsWith("/probiotics-us?f=159");
-        prbtcsUs159Pg.verifyProbioticsUsPg159ImageIsDisplayed();
-        prbtcsUs159Pg.clickYesUpgradeButton();
+        prbtcsSlsFunlPg.verifyCurrentPageURLEndsWith("/probiotics-us?f=159");
+        prbtcsSlsFunlPg.verifyProbioticsUsPg159ImageIsDisplayed();
+        prbtcsSlsFunlPg.clickYesUpgradeButton();
         enzymsCsPrbtcs152Pg.verifyCurrentPageURLEndsWith("/enzymes-cs-probiotics?f=152");
         enzymsCsPrbtcs152Pg.verifyEnzymesCsProbioticsPg152VideoIsDisplayed();
         enzymsCsPrbtcs152Pg.scrollToBottomOfPageByKeys();
@@ -66,15 +66,15 @@ public class SupplementPurchaseProbioticsTest extends BaseTest {
         enzymsCsPrbtcs152Pg.pageDownByKeys();
         enzymsCsPrbtcs152Pg.clickOneTimeDeliveryPriceLabel();
         enzymsCsPrbtcs152Pg.clickAddToCartLinkByIndex(0);
-        grnsMultCsPr154Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs-pro?f=154");
-        grnsMultCsPr154Pg.verifyGreensPg154HeaderTextIsDisplayed();
-        grnsMultCsPr154Pg.scrollToBottomOfPageByKeys();
-        grnsMultCsPr154Pg.clickOneTimeDeliveryPriceLabel();
-        grnsMultCsPr154Pg.clickAddToCartLinkByIndex(0);
-        cupnTrmrc221Pg.verifyCurrentPageURLEndsWith("/coupon-turmeric?f=221");
-        cupnTrmrc221Pg.verifyTurmericBlackPgCouponIsDisplayed();
-        cupnTrmrc221Pg.pageDownByKeys();
-        cupnTrmrc221Pg.clickYesUpgradeButton();
+        grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs-pro?f=154");
+        grnsSlsFunlPg.verifyGreensPg154HeaderTextIsDisplayed();
+        grnsSlsFunlPg.scrollToBottomOfPageByKeys();
+        grnsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        grnsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-turmeric?f=221");
+        cupnSlsFunlPg.verifyTurmericBlackPgCouponIsDisplayed();
+        cupnSlsFunlPg.pageDownByKeys();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$339.95");
