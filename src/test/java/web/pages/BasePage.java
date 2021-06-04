@@ -20,7 +20,7 @@ public class BasePage {
     //// Constructor ////
     public BasePage(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver,30);
+        wait = new WebDriverWait(driver,60);
     }
 
     //// Locators ////
@@ -33,8 +33,16 @@ public class BasePage {
     private By bodyOfPageLocator = By.tagName("body");
     private By yesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
     private By subscribeNowButtonLocator = By.xpath("//*[text()='Subscribe Now']");
+    private By noThanksRedLinkLocator = By.xpath("//*[contains(text(),'No thanks')]");
 
     //// Methods ////
+    @Step("Click the No Thanks Red link")
+    public void clickNoThanksRedLink() {
+        WebElement noThanksRedLink = driver.findElement(noThanksRedLinkLocator);
+        highlightElement(noThanksRedLink);
+        noThanksRedLink.click();
+    }
+
     @Step("Click the Subscribe Now Button")
     public void clickSubscribeNowButton() {
         WebElement subscribeNowButton = driver.findElement(subscribeNowButtonLocator);

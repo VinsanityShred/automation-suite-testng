@@ -19,7 +19,7 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    BurnUs109Page burnUs109Pg;
+    BurnSalesFunnelPage burnSlsFunlPg;
     HghCs111Page hghCs111Pg;
     GreensMultiCs110Page GrnsMulti110Pg;
     CouponTestBoost219Page CupnTstBst219Pg;
@@ -31,7 +31,7 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        burnUs109Pg = new BurnUs109Page(driver);
+        burnSlsFunlPg = new BurnSalesFunnelPage(driver);
         hghCs111Pg = new HghCs111Page(driver);
         GrnsMulti110Pg = new GreensMultiCs110Page(driver);
         CupnTstBst219Pg = new CouponTestBoost219Page(driver);
@@ -55,10 +55,10 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        burnUs109Pg.verifyCurrentPageURLEndsWith("/burn-us?f=109");
-        burnUs109Pg.verifyBurnEvolved6BottleImageIsDisplayed();
-        burnUs109Pg.scrollToBottomOfPageByKeys();
-        burnUs109Pg.clickYesUpgradeButton();
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-us?f=109");
+        burnSlsFunlPg.verifyBurnEvolved6BottleImageIsDisplayed();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.clickYesUpgradeButton();
         hghCs111Pg.verifyCurrentPageURLEndsWith("/hgh-cs?f=111");
         hghCs111Pg.verifyHghBoostImageIsDisplayed();
         hghCs111Pg.scrollToBottomOfPageByKeys();

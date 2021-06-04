@@ -22,8 +22,7 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
     CouponGreensV2F217Page cupnGrnsPg;
-    BurnPmUsF101Page burnPm101Pg;
-    BurnCsF103Page burnCs103Pg;
+    BurnSalesFunnelPage burnSlsFunlPg;
     TurmericCsF104Page trmrcCs104Pg;
 
     @BeforeMethod
@@ -35,8 +34,7 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
         cupnGrnsPg = new CouponGreensV2F217Page(driver);
-        burnPm101Pg = new BurnPmUsF101Page(driver);
-        burnCs103Pg = new BurnCsF103Page(driver);
+        burnSlsFunlPg = new BurnSalesFunnelPage(driver);
         trmrcCs104Pg = new TurmericCsF104Page(driver);
     }
 
@@ -45,7 +43,7 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
     public void purchaseBurnPMSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("burn-pm");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-pm");
@@ -58,16 +56,16 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        burnPm101Pg.verifyCurrentPageURLEndsWith("/burn-pm-us?f=101");
-        burnPm101Pg.verifyBurnPmIMageIsDisplayed();
-        burnPm101Pg.scrollToBottomOfPageByKeys();
-        burnPm101Pg.clickYesUpgradeButton();
-        burnCs103Pg.verifyCurrentPageURLEndsWith("/burn-cs?f=103");
-        burnCs103Pg.verifyBurnEvolvedImageIsDisplayed();
-        burnCs103Pg.scrollToBottomOfPageByKeys();
-        burnCs103Pg.clickOneTimeDeliveryPriceLabel();
-        burnCs103Pg.clickSpeedUpMyMetabolismLinkByIndex(0);
-        burnCs103Pg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=104");
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-pm-us?f=101");
+        burnSlsFunlPg.verifyBurnPmIMageIsDisplayed();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.clickYesUpgradeButton();
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-cs?f=103");
+        burnSlsFunlPg.verifyBurnEvolvedImageIsDisplayed();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=104");
         trmrcCs104Pg.verifyTurmericCs104PgVideoIsDisplayed();
         trmrcCs104Pg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
