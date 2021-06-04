@@ -19,10 +19,10 @@ public class SupplementPurchasePreWorkoutTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    PreWorkoutMultiUs97Page prWrktMultUs97Pg;
-    BcaaCs99Page bcaaCs99Pg;
-    ProteinMultiCs100Page prtnMultCs100Pg;
-    CouponBurn218Page cupnBrn218Pg;
+    PreWorkoutSalesFunnelPage prWrktSlsFunlPg;
+    BcaasSalesFunnelPage bcaaCs99Pg;
+    ProteinSalesFunnelPage prtnSlsFunlPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,10 +31,10 @@ public class SupplementPurchasePreWorkoutTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        prWrktMultUs97Pg = new PreWorkoutMultiUs97Page(driver);
-        bcaaCs99Pg = new BcaaCs99Page(driver);
-        prtnMultCs100Pg = new ProteinMultiCs100Page(driver);
-        cupnBrn218Pg = new CouponBurn218Page(driver);
+        prWrktSlsFunlPg = new PreWorkoutSalesFunnelPage(driver);
+        bcaaCs99Pg = new BcaasSalesFunnelPage(driver);
+        prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Pre-Workout supplement purchase")
@@ -56,25 +56,25 @@ public class SupplementPurchasePreWorkoutTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        prWrktMultUs97Pg.verifyCurrentPageURLEndsWith("/pre-workout-multi-us?f=97");
-        prWrktMultUs97Pg.verifyPreWorkoutMultiUSPg97ImageIsDisplayed();
-        prWrktMultUs97Pg.scrollToBottomOfPageByKeys();
-        prWrktMultUs97Pg.selectFlavorFromDropDown("Peach");
-        prWrktMultUs97Pg.clickYesUpgradeButton();
+        prWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/pre-workout-multi-us?f=97");
+        prWrktSlsFunlPg.verifyPreWorkoutMultiUSPg97ImageIsDisplayed();
+        prWrktSlsFunlPg.scrollToBottomOfPageByKeys();
+        prWrktSlsFunlPg.selectFlavorFromDropDown("Peach");
+        prWrktSlsFunlPg.clickYesUpgradeButton();
         bcaaCs99Pg.verifyCurrentPageURLEndsWith("/bcaa-cs?f=99");
         bcaaCs99Pg.verifyBcaasPg99ImageIsDisplayed();
         bcaaCs99Pg.scrollToBottomOfPageByKeys();
         bcaaCs99Pg.clickOneTimeDeliveryPriceLabel();
         bcaaCs99Pg.clickAddToCartLinkByIndex(0);
-        prtnMultCs100Pg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=100");
-        prtnMultCs100Pg.verifyProteinMultiCsPg100ImageIsDisplayed();
-        prtnMultCs100Pg.scrollToBottomOfPageByKeys();
-        prtnMultCs100Pg.clickOneTimeDeliveryPriceLabel();
-        prtnMultCs100Pg.clickAddToCartLinkByIndex(0);
-        cupnBrn218Pg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
-        cupnBrn218Pg.verifyBurnCouponPg218ImageIsDisplayed();
-        cupnBrn218Pg.scrollToBottomOfPageByKeys();
-        cupnBrn218Pg.clickYesUpgradeButton();
+        prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=100");
+        prtnSlsFunlPg.verifyProteinMultiCsPg100ImageIsDisplayed();
+        prtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        prtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        prtnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
+        cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
+        cupnSlsFunlPg.scrollToBottomOfPageByKeys();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$313.95");

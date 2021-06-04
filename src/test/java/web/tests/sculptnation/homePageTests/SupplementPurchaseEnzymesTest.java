@@ -19,11 +19,10 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    CreatineUsF112Page crtnUs112Pg;
-    EnzymesUsF157Page enzymsUs157Pg;
-    ProbioticsCsEnzymes155Page prbtcsEnzyms155Pg;
-    GreensMultiCsEnz156Page GrnsMultiEnz156Pg;
-    CouponTurmeric221Page CupnTrmc221Page;
+    EnzymesSalesFunnelPage enzymsSlsFunlPg;
+    ProbioticsSalesFunnelPage prbtcsEnzyms155Pg;
+    GreensSalesFunnelPage grnsSlsFunlPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -32,11 +31,10 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        crtnUs112Pg = new CreatineUsF112Page(driver);
-        enzymsUs157Pg = new EnzymesUsF157Page(driver);
-        prbtcsEnzyms155Pg = new ProbioticsCsEnzymes155Page(driver);
-        GrnsMultiEnz156Pg = new GreensMultiCsEnz156Page(driver);
-        CupnTrmc221Page = new CouponTurmeric221Page(driver);
+        enzymsSlsFunlPg = new EnzymesSalesFunnelPage(driver);
+        prbtcsEnzyms155Pg = new ProbioticsSalesFunnelPage(driver);
+        grnsSlsFunlPg = new GreensSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Enzymes Fruit Punch supplement purchase")
@@ -57,9 +55,9 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        enzymsUs157Pg.verifyCurrentPageURLEndsWith("/enzymes-us?f=157");
-        enzymsUs157Pg.verifyEnzymesImageIsDisplayed();
-        crtnUs112Pg.clickYesUpgradeButton();
+        enzymsSlsFunlPg.verifyCurrentPageURLEndsWith("/enzymes-us?f=157");
+        enzymsSlsFunlPg.verifyEnzymesImageIsDisplayed();
+        enzymsSlsFunlPg.clickYesUpgradeButton();
         prbtcsEnzyms155Pg.verifyCurrentPageURLEndsWith("/probiotics-cs-enzymes?f=155");
         prbtcsEnzyms155Pg.verifyProbioticsEnzymesVideoIsDisplayed();
         prbtcsEnzyms155Pg.scrollToBottomOfPageByKeys();
@@ -67,15 +65,15 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         prbtcsEnzyms155Pg.scrollToBottomOfPageByKeys();
         prbtcsEnzyms155Pg.clickOneTimeDeliveryPriceLabel();
         prbtcsEnzyms155Pg.clickAddToCartLinkByIndex(0);
-        GrnsMultiEnz156Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs-enz?f=156");
-        GrnsMultiEnz156Pg.verifyGreensMultiEnzymesHeaderTextIsDisplayed();
-        GrnsMultiEnz156Pg.scrollToBottomOfPageByKeys();
-        GrnsMultiEnz156Pg.clickOneTimeDeliveryPriceLabel();
-        GrnsMultiEnz156Pg.clickAddToCartLinkByIndex(0);
-        CupnTrmc221Page.verifyCurrentPageURLEndsWith("/coupon-turmeric?f=221");
-        CupnTrmc221Page.verifyTurmericBlackPgCouponIsDisplayed();
-        CupnTrmc221Page.scrollToBottomOfPageByKeys();
-        CupnTrmc221Page.clickTurmericBlackYesButton();
+        grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs-enz?f=156");
+        grnsSlsFunlPg.verifyGreensMultiEnzymesHeaderTextIsDisplayed();
+        grnsSlsFunlPg.scrollToBottomOfPageByKeys();
+        grnsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        grnsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-turmeric?f=221");
+        cupnSlsFunlPg.verifyTurmericBlackPgCouponIsDisplayed();
+        cupnSlsFunlPg.scrollToBottomOfPageByKeys();
+        cupnSlsFunlPg.clickTurmericBlackYesButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$339.95");

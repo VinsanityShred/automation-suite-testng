@@ -19,10 +19,10 @@ public class SupplementPurchaseHghBoostTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    HghUs116Page hghUs116Pg;
+    HghSalesFunnelPage hghSlsFunlPg;
     BurnSalesFunnelPage burnSlsFunlPg;
-    PreWorkoutMultiCs119Page prWrktMltCs119Pg;
-    CouponBurnPm220Page cupnBrnPm220Pg;
+    PreWorkoutSalesFunnelPage prWrktSlsFunlPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,10 +31,10 @@ public class SupplementPurchaseHghBoostTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        hghUs116Pg = new HghUs116Page(driver);
+        hghSlsFunlPg = new HghSalesFunnelPage(driver);
         burnSlsFunlPg = new BurnSalesFunnelPage(driver);
-        prWrktMltCs119Pg = new PreWorkoutMultiCs119Page(driver);
-        cupnBrnPm220Pg = new CouponBurnPm220Page(driver);
+        prWrktSlsFunlPg = new PreWorkoutSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify HGH Boost supplement purchase")
@@ -55,24 +55,24 @@ public class SupplementPurchaseHghBoostTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        hghUs116Pg.verifyCurrentPageURLEndsWith("/hgh-us?f=116");
-        hghUs116Pg.verifyHghPg116ImageIsDisplayed();
-        hghUs116Pg.scrollToBottomOfPageByKeys();
-        hghUs116Pg.clickYesUpgradeButton();
+        hghSlsFunlPg.verifyCurrentPageURLEndsWith("/hgh-us?f=116");
+        hghSlsFunlPg.verifyHghPg116ImageIsDisplayed();
+        hghSlsFunlPg.scrollToBottomOfPageByKeys();
+        hghSlsFunlPg.clickYesUpgradeButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-cs?f=118");
         burnSlsFunlPg.verifyBurnPg118ImageIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
         burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
-        prWrktMltCs119Pg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=119");
-        prWrktMltCs119Pg.verifyPreWorkoutMultiPg119ImageIsDisplayed();
-        prWrktMltCs119Pg.scrollToBottomOfPageByKeys();
-        prWrktMltCs119Pg.clickOneTimeDeliveryPriceLabel();
-        prWrktMltCs119Pg.clickAddToCartLinkByIndex(0);
-        cupnBrnPm220Pg.verifyCurrentPageURLEndsWith("/coupon-burnpm?f=220");
-        cupnBrnPm220Pg.verifyBurnPmCouponPg220ImageIsDisplayed();
-        cupnBrnPm220Pg.scrollToBottomOfPageByKeys();
-        cupnBrnPm220Pg.clickYesUpgradeButton();
+        prWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=119");
+        prWrktSlsFunlPg.verifyPreWorkoutMultiPg119ImageIsDisplayed();
+        prWrktSlsFunlPg.scrollToBottomOfPageByKeys();
+        prWrktSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        prWrktSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burnpm?f=220");
+        cupnSlsFunlPg.verifyBurnPmCouponPg220ImageIsDisplayed();
+        cupnSlsFunlPg.scrollToBottomOfPageByKeys();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$327.95");

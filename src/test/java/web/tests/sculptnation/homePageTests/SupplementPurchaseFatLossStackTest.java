@@ -20,9 +20,9 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
     BurnSalesFunnelPage burnSlsFunlPg;
-    HghCs111Page hghCs111Pg;
-    GreensMultiCs110Page GrnsMulti110Pg;
-    CouponTestBoost219Page CupnTstBst219Pg;
+    HghSalesFunnelPage hghSlsFunlPg;
+    GreensSalesFunnelPage grnsSlsFunlPg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -32,9 +32,9 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
         burnSlsFunlPg = new BurnSalesFunnelPage(driver);
-        hghCs111Pg = new HghCs111Page(driver);
-        GrnsMulti110Pg = new GreensMultiCs110Page(driver);
-        CupnTstBst219Pg = new CouponTestBoost219Page(driver);
+        hghSlsFunlPg = new HghSalesFunnelPage(driver);
+        grnsSlsFunlPg = new GreensSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Fat Loss Stack supplement purchase")
@@ -42,7 +42,7 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
     public void purchaseFatLossStackSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.pageDownByKeys();
         sNLndPg.clickProductSupplement("fat-loss-stack");
@@ -59,20 +59,20 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
         burnSlsFunlPg.verifyBurnEvolved6BottleImageIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.clickYesUpgradeButton();
-        hghCs111Pg.verifyCurrentPageURLEndsWith("/hgh-cs?f=111");
-        hghCs111Pg.verifyHghBoostImageIsDisplayed();
-        hghCs111Pg.scrollToBottomOfPageByKeys();
-        hghCs111Pg.clickOneTimeDeliveryPriceLabel();
-        hghCs111Pg.clickAddToCartLinkByIndex(0);
-        hghCs111Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=110");
-        GrnsMulti110Pg.verifyGreenMultiImageIsDisplayed();
-        GrnsMulti110Pg.scrollToBottomOfPageByKeys();
-        GrnsMulti110Pg.clickOneTimeDeliveryPriceLabel();
-        GrnsMulti110Pg.clickAddToCartLinkByIndex(0);
-        CupnTstBst219Pg.verifyCurrentPageURLEndsWith("/coupon-testboost?f=219");
-        CupnTstBst219Pg.verifyTestBoostPgCouponIsDisplayed();
-        CupnTstBst219Pg.scrollToBottomOfPageByKeys();
-        CupnTstBst219Pg.clickYesUpgradeButton();
+        hghSlsFunlPg.verifyCurrentPageURLEndsWith("/hgh-cs?f=111");
+        hghSlsFunlPg.verifyHghBoostImageIsDisplayed();
+        hghSlsFunlPg.scrollToBottomOfPageByKeys();
+        hghSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        hghSlsFunlPg.clickAddToCartLinkByIndex(0);
+        hghSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=110");
+        grnsSlsFunlPg.verifyGreenMultiImageIsDisplayed();
+        grnsSlsFunlPg.scrollToBottomOfPageByKeys();
+        grnsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        grnsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-testboost?f=219");
+        cupnSlsFunlPg.verifyTestBoostPgCouponIsDisplayed();
+        cupnSlsFunlPg.scrollToBottomOfPageByKeys();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$400.95");

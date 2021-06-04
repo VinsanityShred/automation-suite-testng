@@ -19,9 +19,9 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    NeuroctaneUs105Page NurctnUs105Pg;
-    GreensMultCs107Page grnsMultCs107Pg;
-    HghCs108Page hghCs108Pg;
+    NeuroctaneSalesFunnelPage nurctnSlsFunlPg;
+    GreensSalesFunnelPage grnsMultCs107Pg;
+    HghSalesFunnelPage hghCs108Pg;
 
     @BeforeMethod
     public void setUp() {
@@ -30,9 +30,9 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        NurctnUs105Pg = new NeuroctaneUs105Page(driver);
-        grnsMultCs107Pg = new GreensMultCs107Page(driver);
-        hghCs108Pg = new HghCs108Page(driver);
+        nurctnSlsFunlPg = new NeuroctaneSalesFunnelPage(driver);
+        grnsMultCs107Pg = new GreensSalesFunnelPage(driver);
+        hghCs108Pg = new HghSalesFunnelPage(driver);
     }
 
     @Description("Verify Neurocatane supplement purchase")
@@ -53,10 +53,10 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        NurctnUs105Pg.verifyCurrentPageURLEndsWith("/neuroctane-us?f=105");
-        NurctnUs105Pg.verifyNeuroctanePg105ImageIsDisplayed();
-        NurctnUs105Pg.scrollToBottomOfPageByKeys();
-        NurctnUs105Pg.clickYesUpgradeButton();
+        nurctnSlsFunlPg.verifyCurrentPageURLEndsWith("/neuroctane-us?f=105");
+        nurctnSlsFunlPg.verifyNeuroctanePg105ImageIsDisplayed();
+        nurctnSlsFunlPg.scrollToBottomOfPageByKeys();
+        nurctnSlsFunlPg.clickYesUpgradeButton();
         grnsMultCs107Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=107");
         grnsMultCs107Pg.verifyGreensMultiCsPg107ImageIsDisplayed();
         grnsMultCs107Pg.scrollToBottomOfPageByKeys();

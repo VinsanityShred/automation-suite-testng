@@ -19,9 +19,9 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    TurmericUs67Page trmrcUs67Pg;
+    TurmericSalesFunnelPage trmrcSlsFunlPg;
     BurnSalesFunnelPage burnSlsFunlPg;
-    CouponGreensV2217Page cupnGrnsV2217Pg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -30,9 +30,9 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        trmrcUs67Pg = new TurmericUs67Page(driver);
+        trmrcSlsFunlPg = new TurmericSalesFunnelPage(driver);
         burnSlsFunlPg = new BurnSalesFunnelPage(driver);
-        cupnGrnsV2217Pg = new CouponGreensV2217Page(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Turmeric Black supplement purchase")
@@ -54,12 +54,12 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        trmrcUs67Pg.verifyCurrentPageURLEndsWith("/turmeric-us?f=67");
-        trmrcUs67Pg.verifyTurmericUsPg67VideoVideoIsDisplayed();
-        trmrcUs67Pg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-us?f=67");
+        trmrcSlsFunlPg.verifyTurmericUsPg67VideoVideoIsDisplayed();
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        trmrcUs67Pg.scrollToBottomOfPageByKeys();
-        trmrcUs67Pg.clickYesUpgradeButton();
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.clickYesUpgradeButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v5?f=69");
         burnSlsFunlPg.verifyBurnLgCs1V5Pg69VideoIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
@@ -74,10 +74,10 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
         burnSlsFunlPg.pageDownByKeys();
         burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
         burnSlsFunlPg.clickAddToCartLinkByIndex(0);
-        cupnGrnsV2217Pg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
-        cupnGrnsV2217Pg.verifyCouponGreensV2Pg217ImageIsDisplayed();
-        cupnGrnsV2217Pg.pageDownByKeys();
-        cupnGrnsV2217Pg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
+        cupnSlsFunlPg.verifyCouponGreensV2Pg217ImageIsDisplayed();
+        cupnSlsFunlPg.pageDownByKeys();
+        cupnSlsFunlPg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$339.95");

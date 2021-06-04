@@ -19,10 +19,10 @@ public class SupplementPurchaseGreensTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    GreensUsV5129Page grnsUsV5129Pg;
-    TurmericCs131Page trmrc131Pg;
-    Neuroctane132Page nuroctn132Pg;
-    CouponBurn218Page cupnBurn218Pg;
+    GreensSalesFunnelPage grnsSlsFunlPg;
+    TurmericSalesFunnelPage trmrc131Pg;
+    NeuroctaneSalesFunnelPage nuroctn132Pg;
+    CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -31,10 +31,10 @@ public class SupplementPurchaseGreensTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        grnsUsV5129Pg = new GreensUsV5129Page(driver);
-        trmrc131Pg = new TurmericCs131Page(driver);
-        nuroctn132Pg = new Neuroctane132Page(driver);
-        cupnBurn218Pg = new CouponBurn218Page(driver);
+        grnsSlsFunlPg = new GreensSalesFunnelPage(driver);
+        trmrc131Pg = new TurmericSalesFunnelPage(driver);
+        nuroctn132Pg = new NeuroctaneSalesFunnelPage(driver);
+        cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
     @Description("Verify Greens supplement purchase")
@@ -42,7 +42,7 @@ public class SupplementPurchaseGreensTest extends BaseTest {
     public void purchaseGreensSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.pageDownByKeys();
         sNLndPg.clickProductSupplement("greens");
@@ -56,12 +56,12 @@ public class SupplementPurchaseGreensTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        grnsUsV5129Pg.verifyCurrentPageURLEndsWith("/greens-us-v5?f=129");
-        grnsUsV5129Pg.verifyGreensVideoIsDisplayed();
-        grnsUsV5129Pg.scrollToBottomOfPageByKeys();
+        grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-us-v5?f=129");
+        grnsSlsFunlPg.verifyGreensVideoIsDisplayed();
+        grnsSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        grnsUsV5129Pg.selectFlavorFromDropDown("Original");
-        grnsUsV5129Pg.clickYesUpgradeButton();
+        grnsSlsFunlPg.selectFlavorFromDropDown("Original");
+        grnsSlsFunlPg.clickYesUpgradeButton();
         trmrc131Pg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=131");
         trmrc131Pg.verifyTurmericPg131VideoIsDisplayed();
         trmrc131Pg.scrollToBottomOfPageByKeys();
@@ -73,10 +73,10 @@ public class SupplementPurchaseGreensTest extends BaseTest {
         nuroctn132Pg.scrollToBottomOfPageByKeys();
         nuroctn132Pg.clickOneTimeDeliveryPriceLabel();
         nuroctn132Pg.clickAddToCartLinkByIndex(0);
-        cupnBurn218Pg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
-        cupnBurn218Pg.verifyBurnCouponPg218ImageIsDisplayed();
-        cupnBurn218Pg.scrollToBottomOfPageByKeys();
-        cupnBurn218Pg.clickYesUpgradeButton();
+        cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
+        cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
+        cupnSlsFunlPg.scrollToBottomOfPageByKeys();
+        cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$339.95");

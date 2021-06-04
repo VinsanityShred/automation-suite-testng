@@ -19,9 +19,9 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    CreatineUsF112Page crtnUs112Pg;
-    BcaaCsF114Page bcaaCs114Pg;
-    ProteinMultiCsF115Page PrtnMultCs115Pg;
+    CreatineSalesFunnelPage crtnSlsFunlPg;
+    BcaasSalesFunnelPage bcaasSlsFunlPg;
+    ProteinSalesFunnelPage prtnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
@@ -30,9 +30,9 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        crtnUs112Pg = new CreatineUsF112Page(driver);
-        bcaaCs114Pg = new BcaaCsF114Page(driver);
-        PrtnMultCs115Pg = new ProteinMultiCsF115Page(driver);
+        crtnSlsFunlPg = new CreatineSalesFunnelPage(driver);
+        bcaasSlsFunlPg = new BcaasSalesFunnelPage(driver);
+        prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
     }
 
     @Description("Verify Creatine Fruit Punch supplement purchase")
@@ -40,7 +40,7 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
     public void purchaseCreatineFruitPunchSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("creatine");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/creatine");
@@ -53,19 +53,19 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        crtnUs112Pg.verifyCurrentPageURLEndsWith("/creatine-us?f=112");
-        crtnUs112Pg.verifyCreatineHeaderTextIsAMatch();
-        crtnUs112Pg.scrollToBottomOfPageByKeys();
-        crtnUs112Pg.clickYesUpgradeButton();
-        bcaaCs114Pg.verifyBcaasImageIsDisplayed();
-        bcaaCs114Pg.scrollToBottomOfPageByKeys();
-        bcaaCs114Pg.clickOneTimeDeliveryPriceLabel();
-        bcaaCs114Pg.clickAddToCartLinkByIndex(0);
-        PrtnMultCs115Pg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
-        PrtnMultCs115Pg.verifyProteinChocolateImageIsDisplayed();
-        PrtnMultCs115Pg.scrollToBottomOfPageByKeys();
-        PrtnMultCs115Pg.clickOneTimeDeliveryPriceLabel();
-        PrtnMultCs115Pg.clickAddToCartLinkByIndex(0);
+        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-us?f=112");
+        crtnSlsFunlPg.verifyCreatineHeaderTextIsAMatch();
+        crtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        crtnSlsFunlPg.clickYesUpgradeButton();
+        bcaasSlsFunlPg.verifyBcaasImageIsDisplayed();
+        bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
+        bcaasSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        bcaasSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
+        prtnSlsFunlPg.verifyProteinChocolateImageIsDisplayed();
+        prtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        prtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        prtnSlsFunlPg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$274.95");
