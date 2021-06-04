@@ -20,7 +20,7 @@ public class SupplementPurchaseHghBoostTest extends BaseTest {
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
     HghUs116Page hghUs116Pg;
-    BurnCs118Page brnCs118Pg;
+    BurnSalesFunnelPage burnSlsFunlPg;
     PreWorkoutMultiCs119Page prWrktMltCs119Pg;
     CouponBurnPm220Page cupnBrnPm220Pg;
 
@@ -32,7 +32,7 @@ public class SupplementPurchaseHghBoostTest extends BaseTest {
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
         hghUs116Pg = new HghUs116Page(driver);
-        brnCs118Pg = new BurnCs118Page(driver);
+        burnSlsFunlPg = new BurnSalesFunnelPage(driver);
         prWrktMltCs119Pg = new PreWorkoutMultiCs119Page(driver);
         cupnBrnPm220Pg = new CouponBurnPm220Page(driver);
     }
@@ -59,11 +59,11 @@ public class SupplementPurchaseHghBoostTest extends BaseTest {
         hghUs116Pg.verifyHghPg116ImageIsDisplayed();
         hghUs116Pg.scrollToBottomOfPageByKeys();
         hghUs116Pg.clickYesUpgradeButton();
-        brnCs118Pg.verifyCurrentPageURLEndsWith("/burn-cs?f=118");
-        brnCs118Pg.verifyBurnPg118ImageIsDisplayed();
-        brnCs118Pg.scrollToBottomOfPageByKeys();
-        brnCs118Pg.clickOneTimeDeliveryPriceLabel();
-        brnCs118Pg.clickSpeedUpMyMetabolismLinkByIndex(0);
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-cs?f=118");
+        burnSlsFunlPg.verifyBurnPg118ImageIsDisplayed();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
         prWrktMltCs119Pg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=119");
         prWrktMltCs119Pg.verifyPreWorkoutMultiPg119ImageIsDisplayed();
         prWrktMltCs119Pg.scrollToBottomOfPageByKeys();

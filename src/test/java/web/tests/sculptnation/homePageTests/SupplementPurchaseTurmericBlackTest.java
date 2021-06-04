@@ -20,8 +20,7 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
     TurmericUs67Page trmrcUs67Pg;
-    BurnLgCs1V569Page brnLgCs1V569Pg;
-    BurnPmCs2V470Page burnPmCs2V470Pg;
+    BurnSalesFunnelPage burnSlsFunlPg;
     CouponGreensV2217Page cupnGrnsV2217Pg;
 
     @BeforeMethod
@@ -32,8 +31,7 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
         trmrcUs67Pg = new TurmericUs67Page(driver);
-        brnLgCs1V569Pg = new BurnLgCs1V569Page(driver);
-        burnPmCs2V470Pg = new BurnPmCs2V470Page(driver);
+        burnSlsFunlPg = new BurnSalesFunnelPage(driver);
         cupnGrnsV2217Pg = new CouponGreensV2217Page(driver);
     }
 
@@ -62,20 +60,20 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
         sNLndPg.clickCopyRightLogo();
         trmrcUs67Pg.scrollToBottomOfPageByKeys();
         trmrcUs67Pg.clickYesUpgradeButton();
-        brnLgCs1V569Pg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v5?f=69");
-        brnLgCs1V569Pg.verifyBurnLgCs1V5Pg69VideoIsDisplayed();
-        brnLgCs1V569Pg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v5?f=69");
+        burnSlsFunlPg.verifyBurnLgCs1V5Pg69VideoIsDisplayed();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        brnLgCs1V569Pg.scrollToBottomOfPageByKeys();
-        brnLgCs1V569Pg.clickOneTimeDeliveryPriceLabel();
-        brnLgCs1V569Pg.clickSpeedUpMyMetabolismLinkByIndex(0);
-        burnPmCs2V470Pg.verifyCurrentPageURLEndsWith("/burn-pm-cs2-v4?f=70");
-        burnPmCs2V470Pg.verifyBurnPmCs2V4Page70VideoIsDisplayed();
-        burnPmCs2V470Pg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-pm-cs2-v4?f=70");
+        burnSlsFunlPg.verifyBurnPmCs2V4Page70VideoIsDisplayed();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        burnPmCs2V470Pg.pageDownByKeys();
-        burnPmCs2V470Pg.clickOneTimeDeliveryPriceLabel();
-        burnPmCs2V470Pg.clickAddToCartLinkByIndex(0);
+        burnSlsFunlPg.pageDownByKeys();
+        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        burnSlsFunlPg.clickAddToCartLinkByIndex(0);
         cupnGrnsV2217Pg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
         cupnGrnsV2217Pg.verifyCouponGreensV2Pg217ImageIsDisplayed();
         cupnGrnsV2217Pg.pageDownByKeys();
