@@ -21,8 +21,8 @@ public class CheckoutPage extends BasePage {
     //// Variables ////
     Faker faker = new Faker();
     int randomSeven = new Random().nextInt(9999999);
-    int randomThree = new Random().nextInt(999);
-    String emailAddress = "automation-testing"+randomSeven+"@test.com";
+    long randomThree = Math.round(Math.random()*(999-100) + 100);
+    String emailAddress = "automation-testing"+randomSeven+"@vshred.com";
     String FirstName = faker.name().firstName();
     String LastName = faker.name().lastName();
     String StreetAddress = faker.address().streetAddress();

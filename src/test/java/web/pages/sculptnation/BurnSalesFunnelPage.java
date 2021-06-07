@@ -31,8 +31,26 @@ public class BurnSalesFunnelPage extends BasePage {
     private By burnLgCs1V5Pg69VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnDownsellPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnDownsellPgYesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
+    private By burnPm3BottleImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/17/Burn PM_three/Burn-PM_three.png?v=1623083960']");
+    private By burnEvolved1BottleImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?v=1623083960']");
 
     //// Methods ////
+    @Step("Is Burn Evolved 1 Bottle Image Displayed")
+    private boolean isBurnEvolved1BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnEvolved1BottleImageLocator));
+        WebElement burnEvolved1BottleImage = driver.findElement(burnEvolved1BottleImageLocator);
+        highlightElement(burnEvolved1BottleImage);
+        return burnEvolved1BottleImage.isDisplayed();
+    }
+
+    @Step("Is Burn PM Image Displayed")
+    private boolean isBurnPm3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnPm3BottleImageLocator));
+        WebElement burnPm3BottleImage = driver.findElement(burnPm3BottleImageLocator);
+        highlightElement(burnPm3BottleImage);
+        return burnPm3BottleImage.isDisplayed();
+    }
+
     @Step("Click Yes Upgrade button")
     public void clickYesUpgradeButton() {
         WebElement yesUpgradeButton = driver.findElement(burnDownsellPgYesUpgradeButtonLocator);
@@ -146,6 +164,16 @@ public class BurnSalesFunnelPage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
+    @Step("Verify the Burn Evolved 1 Bottle image Is Displayed")
+    public void verifyBurnEvolved1BottleImageIsDisplayed() {
+        assertTrue(isBurnEvolved1BottleImageDisplayed(), "Burn PM 3 Bottle Image NOT Displayed");
+    }
+
+    @Step("Verify the Burn PM 3 Bottle image Is Displayed")
+    public void verifyBurnPm3BottleImageIsDisplayed() {
+        assertTrue(isBurnPm3BottleImageDisplayed(), "Burn PM 3 Bottle Image NOT Displayed");
+    }
+
     @Step("Verify the Burn Downsell Video Is Displayed")
     public void verifyBurnDownsellVideoIsDisplayed() {
         assertTrue(isBurnDownsellVideoDisplayed(), "Burn Downsell Video NOT Displayed");

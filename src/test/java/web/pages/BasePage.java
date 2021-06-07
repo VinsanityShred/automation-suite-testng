@@ -34,10 +34,20 @@ public class BasePage {
     private By yesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
     private By subscribeNowButtonLocator = By.xpath("//*[text()='Subscribe Now']");
     private By noThanksRedLinkLocator = By.xpath("//*[contains(text(),'No thanks')]");
+    private By noThanksRedLinkLocator2 = By.xpath("//*[contains(text(),'No Thanks')]");
 
     //// Methods ////
     @Step("Click the No Thanks Red link")
+    public void clickNoThanksRedLink2() {
+        driver.findElement(By.xpath("//*[contains(text(),'No Thanks')]")).isDisplayed();
+        WebElement noThanksRedLink2 = driver.findElement(noThanksRedLinkLocator2);
+        highlightElement(noThanksRedLink2);
+        noThanksRedLink2.click();
+    }
+
+    @Step("Click the No thanks Red link")
     public void clickNoThanksRedLink() {
+        driver.findElement(By.xpath("//*[contains(text(),'No thanks')]")).isDisplayed();
         WebElement noThanksRedLink = driver.findElement(noThanksRedLinkLocator);
         highlightElement(noThanksRedLink);
         noThanksRedLink.click();
