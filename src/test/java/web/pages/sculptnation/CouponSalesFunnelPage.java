@@ -104,15 +104,6 @@ public class CouponSalesFunnelPage extends BasePage {
         return evolvedCoupon.isDisplayed();
     }
 
-    @Step("Click on the No Thanks link")
-    public void clickNoThanksLink() {
-        WebElement noThanksLink = driver.findElement(couponPg218NoThanksLinkLocator);
-        wait.until(ExpectedConditions.visibilityOf(noThanksLink));
-        highlightElement(noThanksLink);
-        noThanksLink.click();
-        wait.until(ExpectedConditions.invisibilityOf(noThanksLink));
-    }
-
     //// Setters ////
 
     //// Getters ////

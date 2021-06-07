@@ -73,7 +73,7 @@ public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
         prtnSlsFunlPg.clickNoThanksRedLink();
         couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         couponPg218.scrollToBottomOfPageByKeys();
-        couponPg218.clickNoThanksLink();
+        couponPg218.clickNoThanksRedLink();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$46.95");

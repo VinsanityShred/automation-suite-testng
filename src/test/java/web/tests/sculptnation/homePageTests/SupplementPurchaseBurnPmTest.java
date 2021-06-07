@@ -38,7 +38,7 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         trmrcSlsFunlPg = new TurmericSalesFunnelPage(driver);
     }
 
-    @Description("Verify BCAAs -supplement purchase no upsell")
+    @Description("Verify Burn PM supplement purchase")
     @Test()//UUID=5BC1D1F6-06FE-43B8-9417-2A99778F2B63
     public void purchaseBurnPMSupplement() throws Exception {
 
