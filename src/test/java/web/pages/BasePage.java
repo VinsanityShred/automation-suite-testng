@@ -20,18 +20,96 @@ public class BasePage {
     //// Constructor ////
     public BasePage(WebDriver driver){
         this.driver = driver;
-        wait = new WebDriverWait(driver,30);
+        wait = new WebDriverWait(driver,60);
     }
 
     //// Locators ////
     private By signInButton = By.linkText("Sign in");
-
     private By homePageUserName = By.xpath("//table//tr[@class='heading3']");
-
+    private By addToCartLocator = By.xpath("//a[text()='Add To Cart']");
+    private By speedUpMetabolismLinkLocator = By.xpath("//a[text()='Speed Up My Metabolism']");
+    private By oneTimePriceLocator = By.className("au-a1-1");
+    private By buyNowButtonLocator = By.xpath("//*[text()='BUY NOW']");
     private By bodyOfPageLocator = By.tagName("body");
+    private By yesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
+    private By subscribeNowButtonLocator = By.xpath("//*[text()='Subscribe Now']");
+    private By noThanksRedLinkLocator = By.xpath("//*[contains(text(),'No thanks')]");
+    private By noThanksRedLinkLocator2 = By.xpath("//*[contains(text(),'No Thanks')]");
 
     //// Methods ////
-    public void closeWindow() { driver.close(); }
+    @Step("Click the No Thanks Red link")
+    public void clickNoThanksRedLink2() {
+        driver.findElement(By.xpath("//*[contains(text(),'No Thanks')]")).isDisplayed();
+        WebElement noThanksRedLink2 = driver.findElement(noThanksRedLinkLocator2);
+        highlightElement(noThanksRedLink2);
+        noThanksRedLink2.click();
+    }
+
+    @Step("Click the No thanks Red link")
+    public void clickNoThanksRedLink() {
+        driver.findElement(By.xpath("//*[contains(text(),'No thanks')]")).isDisplayed();
+        WebElement noThanksRedLink = driver.findElement(noThanksRedLinkLocator);
+        highlightElement(noThanksRedLink);
+        noThanksRedLink.click();
+    }
+
+    @Step("Click the Subscribe Now Button")
+    public void clickSubscribeNowButton() {
+        WebElement subscribeNowButton = driver.findElement(subscribeNowButtonLocator);
+        highlightElement(subscribeNowButton);
+        subscribeNowButton.click();
+    }
+
+    @Step("Click on the Add To Cart link")
+    public void clickAddToCartLinkByIndex(int index){
+        Util.waitMilliseconds(1500);
+        WebElement addToCartLink = driver.findElements(addToCartLocator).get(index);
+        highlightElement(addToCartLink);
+        scrollToBottom(addToCartLink);
+        addToCartLink.click();
+        wait.until(ExpectedConditions.invisibilityOf(addToCartLink));
+    }
+
+    @Step("Click on the Speed Up My Metabolism link")
+    public void clickSpeedUpMyMetabolismLinkByIndex(int index){
+        Util.waitMilliseconds(1500);
+        WebElement speedUpMyMetabolismLink = driver.findElements(speedUpMetabolismLinkLocator).get(index);
+        highlightElement(speedUpMyMetabolismLink);
+        scrollToBottom(speedUpMyMetabolismLink);
+        speedUpMyMetabolismLink.click();
+        wait.until(ExpectedConditions.invisibilityOf(speedUpMyMetabolismLink));
+    }
+
+    @Step("Click on the One Time Delivery Price option")
+    public void clickOneTimeDeliveryPriceLabel(){
+        Util.waitMilliseconds(1000);
+        WebElement oneTimeDeliveryPriceLabel = driver.findElement(oneTimePriceLocator);
+        wait.until(ExpectedConditions.visibilityOf(oneTimeDeliveryPriceLabel));
+        highlightElement(oneTimeDeliveryPriceLabel);
+        oneTimeDeliveryPriceLabel.click();
+    }
+
+    @Step("Click on the Buy Now button")
+    public void clickBuyNowButton(){
+        WebElement buyNowButton = driver.findElement(buyNowButtonLocator);
+        highlightElement(buyNowButton);
+        buyNowButton.click();
+    }
+
+    @Step("Click Yes Upgrade button")
+    public void clickYesUpgradeButton() {
+        WebElement yesUpgradeButton = driver.findElement(yesUpgradeButtonLocator);
+        highlightElement(yesUpgradeButton);
+        yesUpgradeButton.click();
+    }
+
+    public void gotoUrl(String endOfUrl){
+        driver.navigate().to(getBaseURLByServer("urlProdSN") + endOfUrl);
+    }
+
+    public void closeWindow() {
+        driver.close();
+    }
 
     public void driverSwitchToNewTab(int index) {
         ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
@@ -89,12 +167,24 @@ public class BasePage {
     public void scrollToBottomOfPageByKeys() {
         WebElement toTopOfPage = driver.findElement(bodyOfPageLocator);
         toTopOfPage.sendKeys(Keys.END);
-        Util.waitMilliseconds(500);
+        Util.waitMilliseconds(1000);
     }
 
     public void scrollToTopOfPageByKeys() {
         WebElement toTopOfPage = driver.findElement(bodyOfPageLocator);
         toTopOfPage.sendKeys(Keys.HOME);
+        Util.waitMilliseconds(500);
+    }
+
+    public void pageDownByKeys() {
+        WebElement pageDown = driver.findElement(bodyOfPageLocator);
+        pageDown.sendKeys(Keys.PAGE_DOWN);
+        Util.waitMilliseconds(1000);
+    }
+
+    public void pageUpByKeys() {
+        WebElement pageUp = driver.findElement(bodyOfPageLocator);
+        pageUp.sendKeys(Keys.PAGE_UP);
         Util.waitMilliseconds(500);
     }
 
@@ -129,6 +219,24 @@ public class BasePage {
     public String getPageUrl() {
         String currentPageUrl = driver.getCurrentUrl();
         return currentPageUrl;
+    }
+
+    public static String getBaseURLByServer(String strServer) {
+
+        String baseURL;
+
+        switch (strServer) {
+            case "urlProdSN":
+                return baseURL = "https://sculptnation.com";
+            case "urlStageSN":
+                return baseURL = "https://staging.sculptnation.com";
+            case "urlProdVS":
+                return baseURL = "https://vshred.com";
+            case "urlStageVS":
+                return baseURL = "https://staging.vshred.com";
+            default:
+                throw new IllegalArgumentException("System property server set but unknown.  Server was: "+ strServer +"  Unable to continue.");
+        }
     }
 
 //    @Attachment
