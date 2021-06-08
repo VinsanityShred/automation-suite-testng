@@ -31,7 +31,7 @@ public class VideoBannerTest extends BaseTest {
     public void contactUsLinkTest() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-        sNLndPg.closeDiscountModal();
+//        sNLndPg.closeDiscountModal();
         sNLndPg.clickWatchVideoLink();
         sNLndPg.driverSwitchToNewTab(1);
         bVPg.verifyBurnVideoBannerIsDisplayed();
