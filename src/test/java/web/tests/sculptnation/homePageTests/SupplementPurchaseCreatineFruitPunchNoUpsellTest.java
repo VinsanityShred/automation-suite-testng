@@ -8,72 +8,71 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
-import web.pages.sculptnation.productPages.BcaasProductPage;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase No Upsell Test")
+@Story("Supplement Purchase Creatine Fruit Punch No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
+public class SupplementPurchaseCreatineFruitPunchNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
-    BcaasProductPage bcaasPg;
     CartPage cartPg;
     CheckoutPage chckPg;
-    BcaasSalesFunnelPage bcaasSlsFunlPg;
-    CreatineSalesFunnelPage crtnSlsFunlPg;
-    ProteinSalesFunnelPage prtnSlsFunlPg;
-    CouponSalesFunnelPage couponPg218;
     ReceiptPage RcptPg;
+    CreatineSalesFunnelPage crtnSlsFunlPg;
+    BcaasSalesFunnelPage bcaasSlsFunlPg;
+    ProteinSalesFunnelPage prtnSlsFunlPg;
 
     @BeforeMethod
     public void setUp() {
         WebDriver driver = getDriver();
         sNLndPg = new SNLandingPage(driver);
-        bcaasPg = new BcaasProductPage(driver);
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
-        bcaasSlsFunlPg = new BcaasSalesFunnelPage(driver);
-        crtnSlsFunlPg = new CreatineSalesFunnelPage(driver);
-        prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
-        couponPg218 = new CouponSalesFunnelPage(driver);
         RcptPg = new ReceiptPage(driver);
+        crtnSlsFunlPg = new CreatineSalesFunnelPage(driver);
+        bcaasSlsFunlPg = new BcaasSalesFunnelPage(driver);
+        prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
     }
 
-    @Description("Verify BCAAs -supplement purchase no upsell")
-    @Test()//UUID=03E0CE50-C719-463C-B2AF-E0A53F356C78
-    public void purchaseBCAAsSupplement() throws Exception {
+    @Description("Verify Creatine Fruit Punch supplement No Upsell purchase")
+    @Test()//UUID=AFFB0D9D-2E3C-4809-95DE-2FB9C7880BA6
+    public void purchaseCreatineFruitPunchSupplementNoUpsell() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
-        sNLndPg.clickProductSupplement("bcaas");
-        sNLndPg.verifyCurrentPageURLEndsWith("/products/bcaas");
+        sNLndPg.clickProductSupplement("creatine");
+        sNLndPg.verifyCurrentPageURLEndsWith("/products/creatine");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
         sNLndPg.clickAddToCartLinkByIndex(0);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=bcaa-us-bcaaFunnel");
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=creatine-us-creatineFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-us?f=120");
-        bcaasSlsFunlPg.verifyBcaas6BottleImageIsDisplayed();
-        bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
-        bcaasSlsFunlPg.clickNoThanksRedLink();
-        bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-ds?f=121");
-        bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
-        bcaasSlsFunlPg.clickNoThanksRedLink();
-        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
+        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-us?f=112");
+        crtnSlsFunlPg.verifyCreatineHeaderTextIsAMatch();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        crtnSlsFunlPg.pageDownByKeys();
         crtnSlsFunlPg.clickNoThanksRedLink();
-        prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
+        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-ds?f=113");
+        crtnSlsFunlPg.verifyCreatine113Pg3BottleImageIsDisplayed();
+        crtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        crtnSlsFunlPg.pageUpByKeys();
+        crtnSlsFunlPg.clickNoThanksRedLink();
+        bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-cs?f=114");
+        bcaasSlsFunlPg.verifyBcaasImageIsDisplayed();
+        bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
+        bcaasSlsFunlPg.pageUpByKeys();
+        bcaasSlsFunlPg.clickNoThanksRedLink2();
+        prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
+        prtnSlsFunlPg.verifyProteinChocolateImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
-        prtnSlsFunlPg.clickNoThanksRedLink();
-        couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
-        couponPg218.scrollToBottomOfPageByKeys();
-        couponPg218.clickNoThanksRedLink();
+        prtnSlsFunlPg.pageUpByKeys();
+        prtnSlsFunlPg.clickNoThanksRedLink2();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$46.95");

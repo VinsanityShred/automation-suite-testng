@@ -20,7 +20,7 @@ public class ProteinSalesFunnelPage extends BasePage {
     //// Locators ////
     private By proteinMultiCs80PgImageLocator = By.xpath("//*[@alt='protein']");
     private By proteinMultiCs100PgImageLocator = By.xpath("//*[@alt='protein']");
-    private By prtnMultCs115PgChocolateImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-cs/img/b-2.png?v=1621872093']");
+    private By prtnMultCs115PgChocolateImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-cs/img/b-2.png?')]");
     private By proteinMultiUsPg73ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-us/img/prod_protein_multi_6-v2.png?v=1622589211']");
     private By proteinMultiUsPg73FlavorDropDownLocator = By.xpath("//*[@id='__BVID__5']");
     private By protnPg123ChocolateBottleImageLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
@@ -50,7 +50,7 @@ public class ProteinSalesFunnelPage extends BasePage {
         return proteinMultiUsPg73Image.isDisplayed();
     }
 
-    @Step("Is Protein Chocolate Image Displayed")
+    @Step("Is Protein Chocolate 3 Bottles Image Displayed")
     private boolean isProteinChocolateImageDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(prtnMultCs115PgChocolateImageLocator));
         WebElement proteinChocolateImage = driver.findElement(prtnMultCs115PgChocolateImageLocator);
@@ -89,9 +89,9 @@ public class ProteinSalesFunnelPage extends BasePage {
         assertTrue(isProteinMultiUsPg73ImageDisplayed(), "Protein Multi US Page 73 Image NOT Displayed");
     }
 
-    @Step("Verify the Protein Chocolate Image Is Displayed")
+    @Step("Verify the Protein Chocolate 3 Bottles Image Is Displayed")
     public void verifyProteinChocolateImageIsDisplayed() {
-        assertTrue(isProteinChocolateImageDisplayed(), "Protein Chocolate Image NOT Displayed");
+        assertTrue(isProteinChocolateImageDisplayed(), "Protein Chocolate 3 Bottles Image NOT Displayed");
     }
 
     @Step("Verify the Protein Multi CS Page 100 Image Is Displayed")
