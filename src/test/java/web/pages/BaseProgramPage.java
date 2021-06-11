@@ -1,5 +1,6 @@
 package web.pages;
 
+import framework.utility.Util;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,11 +16,13 @@ public class BaseProgramPage extends BasePage {
     }
 
     //// Locators ////
-    public By vsClickToPurchaseLocator;
+    protected By vsClickToPurchaseLocator;
 
     //// Methods ////
     @Step("Click on program purchase button")
     public void clickPurchaseButton() {
+        System.out.println("Going to click program purchase button");
+        Util.waitMilliseconds(1000); // Give time for element to appear in DOM
         final WebElement clickToPurchase = driver.findElement(vsClickToPurchaseLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -37,6 +40,8 @@ public class BaseProgramPage extends BasePage {
     //// Getters ////
     @Step("Get click to purchase button")
     private boolean getClickToPurchase(){
+        System.out.println("Looking for program purchase button");
+        Util.waitMilliseconds(1000); // Give time for element to appear in DOM
         final WebElement clickToPurchase = driver.findElement(vsClickToPurchaseLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).

@@ -31,4 +31,19 @@ public class Auth {
         String valAdminUserPassword = "Password1!";
         return valAdminUserPassword;
     }
+
+    public static String validMemberUserName() {
+        String valAdminUserEmail = "Kurt Duerksen";
+        return valAdminUserEmail;
+    }
+
+    public static String validMemberUserEmail() {
+        String valAdminUserEmail = "kduerksen+vshred001@betabreakersbugs.com";
+        return valAdminUserEmail;
+    }
+
+    public static String validMemberUserPassword() {
+        String valAdminUserPassword = "Password1!";
+        return valAdminUserPassword;
+    }
 }

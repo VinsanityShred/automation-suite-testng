@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="classes" thread-count="1" name="Suite">
 
-/////////////////////////////////////////////////////SCULPTNATION///////////////////////////////////////////////
-    <test name="SculptNATION Regression Tests">
-        <parameter name="browser" value="chrome"/>
----------------------------------------------------------------------------------------------------
-                                ////SculptNATION Production URL////
-        <parameter name="appURL" value="https://sculptnation.com/?qa_test=VSQAT&amp;utm_source=testing&amp;utm_content=testing&amp;utm_medium=testing"/>
-
----------------------------------------------------------------------------------------------------
-                                ////SculptNATION Staging URL////
-
-<!--        <parameter name="appURL" value="https://staging.sculptnation.com/"/>-->
----------------------------------------------------------------------------------------------------
-                                //// Individual tests to run ////
-
+    <test name="Testing-2 Chrome Tests">
+        <!--//// Browser type ////-->
+        <parameter name="browser" value="headless"/>
+        <!--//// URL to test ////-->
+        <parameter name="appURL" value="https://testing-2.vshred.com/login?ref=home" />
+        <!--//// Individual tests to run ////-->
         <classes>
-            <class name="web.tests.sculptnation.homePageTests.SupplementPurchaseNoUpsellTest"/>
+            <class name="web.tests.vshred.VSLoginTest"/>
+            <class name="web.tests.vshred.VSPurchaseTest"/>
         </classes>
----------------------------------------------------------------------------------------------------
-                                //// Suite of tests to run ////
-
-<!--        <packages>-->
-<!--            <package name="web.tests.sculptnation"/>-->
-<!--        </packages>-->
-----------------------------------------------------------------------------------------------------
+        <!--//// Suite of tests to run ////-->
+        <!--        <packages>-->
+        <!--            <package name="web.tests.vshred"/>-->
+        <!--            <package name="web.tests.sculptnation"/>-->
+        <!--        </packages>-->
     </test>
+
 /////////////////////////////////////////////////////VSHRED///////////////////////////////////////////////
 <!--    <test name="VShred Regression Tests">-->
 <!--        <parameter name="browser" value="chrome"/>-->
