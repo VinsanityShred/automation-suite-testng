@@ -11,6 +11,7 @@
         <classes>
             <class name="web.tests.vshred.VSLoginTest"/>
             <class name="web.tests.vshred.VSPurchaseTest"/>
+            <class name="web.tests.vshred.VSQuestionnaireTest"/>
         </classes>
         <!--//// Suite of tests to run ////-->
         <!--        <packages>-->

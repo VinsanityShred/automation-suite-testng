@@ -71,7 +71,7 @@ public class VSLoginTest extends BaseTest {
             //logoutUser();
             VshredAdminDashPage.vsAdminPage.userLogOut();
             // Confirm after logout that the VShred homepage displays
-            VshredHomePage.verifyVSHomePage(driver);
+            VshredHomePage.verifyVSHomePage();
         }
     }
 

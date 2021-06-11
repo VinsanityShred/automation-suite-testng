@@ -1,13 +1,9 @@
 package web.tests.vshred;
 
-import framework.Auth;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.openqa.selenium.*;
 import org.testng.annotations.*;
-import web.pages.vshred.*;
-import web.tests.BaseTest;
 import web.tests.PurchaseTestBase;
 
 @Feature("Purchase")

@@ -46,4 +46,24 @@ public class Auth {
         String valAdminUserPassword = "Password1!";
         return valAdminUserPassword;
     }
+
+    public static String validTrainerUserEmail() {
+        String valAdminUserEmail = "kduerksen@gmail.com";
+        return valAdminUserEmail;
+    }
+
+    public static String validTrainerUserPassword() {
+        String valAdminUserPassword = "Password1!";
+        return valAdminUserPassword;
+    }
+
+    public static String validTrainingMgrUserEmail() {
+        String valTrainingMgrUserEmail = "trainermanager01@example.com";
+        return valTrainingMgrUserEmail;
+    }
+
+    public static String validTrainingMgrUserPassword() {
+        String valTrainingMgrUserPassword = "1234567";
+        return valTrainingMgrUserPassword;
+    }
 }

@@ -1,17 +1,12 @@
 package web.tests.vshred;
 
-import framework.Auth;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import web.pages.vshred.*;
 import web.tests.PurchaseTestBase;
-import web.tests.vshred.*;
-import web.tests.BaseTest;
 
 @Feature("Purchase")
 @Story("Special custom diet plan test")

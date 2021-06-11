@@ -14,7 +14,7 @@ public class PurchaseTestBase extends BaseTest {
         BIG_ARMS,
         FAT_LOSS_EXTREME_HIM,
         FAT_LOSS_EXTREME_HER, // **NOTE**: post order offer one page different than above programs
-        CUSTOM_DIET_PLAN, // **NOTE**: Configured as separate test class in VSCustomDietTest rather than VSPurchaseTest
+        CUSTOM_DIET_PLAN,
         CUSTOM_DIET_MONTHLY,
         PLATINUM_COACHING,
         GOLD_COACHING,
@@ -28,10 +28,11 @@ public class PurchaseTestBase extends BaseTest {
         VshredLoginPage.createLoginPage(driver);
         VshredHomePage.createVSHomePage(driver);
         VshredMemberHomePage.createVSMemberHomePage(driver);
+        VshredMemberProfilePage.createVSMemberProfilePage(driver);
         VshredProgramsPage.createVSProgramsPage(driver);
         VshredBigArmsProgramPage.createVSBigArmsPage(driver);
         VshredFatLossExtremeHimProgramPage.createVSFatLossExtremeHimPage(driver);
-        //VshredFatLossExtremeHerProgramPage.createVSFatLossExtremeHerPage(driver); // **NOTE**: post order offer one page different than above programs
+        VshredFatLossExtremeHerProgramPage.createVSFatLossExtremeHerPage(driver); // **NOTE**: post order offer one page different than above programs
         VshredOrderFormPage.createVSOrderFormPage(driver);
         VshredPostOrderOffer_1.createVSPostOrderOfferOne(driver);
         VshredPostOrderOffer_2.createVSPostOrderOfferTwo(driver);
@@ -42,6 +43,7 @@ public class PurchaseTestBase extends BaseTest {
         VshredOrderFormGoldCoachingPage.createVSGoldCoachingOrderFormPage(driver);
     }
 
+    //// Methods ////
     public void loginMember() throws Exception {
         VshredLoginPage.verifyLoginPage();
         VshredLoginPage.loginUserPassword(Auth.validMemberUserEmail(), Auth.validMemberUserPassword());
@@ -126,7 +128,7 @@ public class PurchaseTestBase extends BaseTest {
                 VshredPostOrderOffer_1.verifyVSPostOrderOfferOnePage();
                 VshredPostOrderOffer_1.vsPostOrderOfferOne.clickNoThanks();
                 break;
-            case FAT_LOSS_EXTREME_HER: // TODO: Need to create method to specify unique offer 1 locators
+            case FAT_LOSS_EXTREME_HER: // TODO: Need to create method to specify unique offer 1 locators for this plan to work
                 VshredPostOrderOffer_1.verifyVSPostOrderOfferOnePage();
                 VshredPostOrderOffer_1.vsPostOrderOfferOne.clickNoThanks();
                 break;
@@ -175,14 +177,5 @@ public class PurchaseTestBase extends BaseTest {
         processPostSubmissionPages(aPlan);
 
         VshredOrderConfirmPage.verifyVSOrderConfirmPage();
-
-        /* // **NOTE**: Questionnaire complex, so to be executed as a separate test
-        VshredOrderConfirmPage.vsOrderConfirmPage.clickQuestionnaireButton();
-
-        VshredProgramQuestionnairePage.verifyVSQuestionnairePage();
-        VshredProgramQuestionnairePage.vsQuestionnairePage.fillInRequiredData();
-        VshredProgramQuestionnairePage.vsQuestionnairePage.agreeToTermsConditions();
-        VshredProgramQuestionnairePage.vsQuestionnairePage.clickSubmitButton();
-        */
     }
 }

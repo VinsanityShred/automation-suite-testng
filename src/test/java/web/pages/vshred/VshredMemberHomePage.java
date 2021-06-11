@@ -22,12 +22,7 @@ public class VshredMemberHomePage extends BasePage {
         vsMemberHomePage = new VshredMemberHomePage(driver);
     }
 
-    public static void verifyVSMemberHomePage() throws Exception {
-        vsMemberHomePage.verifyEditProfileIsDisplayed();
-    }
-
     //// Locators ////
-    //private By vsMemberHomeEditProfileLocator = By.cssSelector("body > div.main-container > section.py-4 > div > div > div.col-xs-8 > a");
     private By vsMemberHomeEditProfileLocator = By.xpath("/html/body/div[4]/section[1]/div/div/div[2]/a");
     private By vsMemberHomeProgramsLocator = By.xpath("//*[@id=\"menu1\"]/div/div/div[2]/div/ul/li[2]/a");
 
@@ -44,6 +39,20 @@ public class VshredMemberHomePage extends BasePage {
         highlightElement(memberHomeProgramsLink);
         memberHomeProgramsLink.click();
         waitForInvisibilityOfElement(memberHomeProgramsLink);
+    }
+
+    @Step("Click on Edit Profile button")
+    public void clickEditProfile() {
+        final WebElement memberHomeEditProfile = driver.findElement(vsMemberHomeEditProfileLocator);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Edit Profile Button").
+                withTimeout(Duration.ofSeconds(5)).
+                until(ExpectedConditions.elementToBeClickable(memberHomeEditProfile));
+        scrollToTop(memberHomeEditProfile);
+        highlightElement(memberHomeEditProfile);
+        memberHomeEditProfile.click();
+        waitForInvisibilityOfElement(memberHomeEditProfile);
     }
 
     public void memberGoToPrograms() {
@@ -95,5 +104,9 @@ public class VshredMemberHomePage extends BasePage {
         } else {
             System.out.println("Member Home Page Programs Link Displayed");
         }
+    }
+
+    public static void verifyVSMemberHomePage() throws Exception {
+        vsMemberHomePage.verifyEditProfileIsDisplayed();
     }
 }

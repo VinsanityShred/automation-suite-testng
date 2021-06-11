@@ -22,7 +22,6 @@ public class VshredProgramsPage extends BasePage {
 
     //// Locators ////
     private By vsProgramBigArmsLocator = By.xpath("/html/body/div[4]/section/div/div/div[12]/div/a[1]/img");
-    //private By vsProgramMoveLocator = By.xpath("/html/body/div[4]/section/div/div/div[2]/div/a[1]/img");
     private By vsProgramFatLossExtremeHimLocator = By.xpath("/html/body/div[4]/section/div/div/div[6]/div/a[1]/img");
     private By vsProgramFatLossExtremeHerLocator = By.xpath("/html/body/div[4]/section/div/div/div[7]/div/a[1]/img");
 
