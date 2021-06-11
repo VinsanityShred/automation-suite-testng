@@ -12,31 +12,31 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Privacy Policy test")
+@Story("Terms and Conditions Page test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class PrivacyPolicyTest extends BaseTest {
+public class TermsConditionsTest extends BaseTest {
 
     SNLandingPage sNLndPg;
-    PrivacyPolicyPage prvcyPg;
+    TermsAndConditionsPage trmsPg;
 
     @BeforeMethod
     public void setUp() {
         WebDriver driver = getDriver();
         sNLndPg = new SNLandingPage(driver);
-        prvcyPg = new PrivacyPolicyPage(driver);
+        trmsPg = new TermsAndConditionsPage(driver);
     }
 
-    @Description("Verify all the Privacy and Policy page headers")
-    @Test()//UUID=41F671E0-AF01-4290-B74D-F82B71D938FF
-    public void privacyPolicyHeadersTests() throws Exception {
-
+    @Description("Verify Terms and Conditions page headers")
+    @Test()//UUID=6BC81A7C-2672-4F45-9635-2FD92DCABE5F
+    public void TermsConditionsHeadersTests() throws Exception {
         sNLndPg.verifyLandingPgLogoIsDisplayed();
 //        sNLndPg.closeDiscountModal();
-        sNLndPg.scrollToBottomOfPageByKeys();
-        sNLndPg.clickFooterPrivacyCookiePolicyLink();
-        sNLndPg.verifyCurrentPageURLEndsWith("/privacy-policy");
-        prvcyPg.verifyPrivacyPolicyHeaders1To12Displayed();
-        Util.waitMilliseconds(2000);
+        sNLndPg.clickOKButton();
+        sNLndPg.clickFooterTermsConditionsLink();
+        sNLndPg.verifyCurrentPageURLEndsWith("/terms-and-conditions");
+        trmsPg.verifyTermsPgHeaderIsDisplayed();
+        trmsPg.verifyTermsPgHeader1To34IsDisplayed();
     }
+
 
 }

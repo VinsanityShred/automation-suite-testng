@@ -40,7 +40,7 @@ public class FooterTests extends BaseTest {
     public void footerTests() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-        sNLndPg.closeDiscountModal();
+//        sNLndPg.closeDiscountModal();
         sNLndPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickFooterContactUsLink();
         sNLndPg.verifyCurrentPageURLEndsWith("/contact-us");
