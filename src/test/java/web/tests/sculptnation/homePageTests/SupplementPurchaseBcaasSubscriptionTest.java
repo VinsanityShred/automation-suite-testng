@@ -12,7 +12,7 @@ import web.pages.sculptnation.productPages.BcaasProductPage;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Bcaas Membership Test")
+@Story("Supplement Purchase Bcaas Subscription Test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class SupplementPurchaseBcaasSubscriptionTest extends BaseTest {
 
@@ -38,9 +38,9 @@ public class SupplementPurchaseBcaasSubscriptionTest extends BaseTest {
         RcptPg = new ReceiptPage(driver);
     }
 
-    @Description("Verify BCAAs supplement purchase")
+    @Description("Verify BCAAs supplement Subscription purchase")
     @Test()//UUID=6BBCDFF0-1683-4CE0-AA32-749615489FF5
-    public void purchaseBCAAsSupplementMembership() throws Exception {
+    public void purchaseBCAAsSupplementSubscription() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
