@@ -1,6 +1,7 @@
 package web.tests.vshred;
 
 import framework.Auth;
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -16,6 +17,7 @@ import web.tests.BaseTest;
 @Listeners( framework.testng.AllureScreenshots.class )
 public class VSQuestionnaireTest extends BaseTest {
     private WebDriver driver;
+    private String origSubmitDateTime;
 
     @BeforeMethod
     public void setUp() {
@@ -55,7 +57,6 @@ public class VSQuestionnaireTest extends BaseTest {
         qGold.setFieldValue(qGold.vsGoldMostImportantHelpToGoalsFieldSelector, "Help to achieve goals", "Keep me accountable");
         qGold.setFieldValue(qGold.vsGoldHoursSleepPerNightFieldSelector, "Hours sleep per night", "6");
         qGold.setFieldValue(qGold.vsGoldBiggestStressFactorsFieldSelector, "Biggest stress factors", "finances, time");
-        //qGold.setFieldValue(qGold.vsInjuryListFieldSelector, "Injury list", "low back, left knee");
         qGold.setFieldValue(qGold.vsGoldHealthConditionsFieldSelector, "Health conditions", "high blood pressure");
         qGold.setFieldValue(qGold.vsGoldHowHearAboutUsFieldSelector, "How heard about VShred", "friend recommendation");
         qGold.setFieldValue(qGold.vsGoldDecidingFactorFieldSelector, "Deciding factors", "good reputation, friend success");
@@ -77,18 +78,14 @@ public class VSQuestionnaireTest extends BaseTest {
         qGold.setFieldValue(qGold.vsGoldWeightFieldSelector, "Weight value", "85");
         // Change pounds to kilograms
         qGold.setCheckboxValue(qGold.vsGoldWeightLBCheckboxSelector, "Weight LB checkbox", false);
-        qGold.setCheckboxValue(qGold.vsGoldWeightKGCheckboxSelector, "Weight KB checkbox", true);
+        qGold.setCheckboxValue(qGold.vsGoldWeightKGCheckboxSelector, "Weight KG checkbox", true);
         qGold.setFieldValue(qGold.vsGoldMostFavFoodsFieldSelector, "Most Favorite foods", "Beer");
         qGold.setFieldValue(qGold.vsGoldLeastFavFoodsFieldSelector, "Least Favorite foods", "Broccoli");
         qGold.setFieldValue(qGold.vsGoldFoodsNotEatFieldSelector, "Not To Be Eaten Foods", "Brussels Sprouts");
-        // Change food allergies from yes to no
-        qGold.setCheckboxValue(qGold.vsGoldFoodAllergiesYesFieldSelector, "Yes Food Allergies checkbox", false);
-        qGold.setCheckboxValue(qGold.vsGoldFoodAllergiesNoFieldSelector, "No Food Allergies checkbox", true);
         qGold.setFieldValue(qGold.vsGoldFoodAllergiesListFieldSelector, "Foods allergic to", "N/A");
         qGold.setFieldValue(qGold.vsGoldMostImportantHelpToGoalsFieldSelector, "Help to achieve goals", "Keep me healthy");
         qGold.setFieldValue(qGold.vsGoldHoursSleepPerNightFieldSelector, "Hours sleep per night", "8");
         qGold.setFieldValue(qGold.vsGoldBiggestStressFactorsFieldSelector, "Biggest stress factors", "pain, sleep");
-        //qGold.setFieldValue(qGold.vsInjuryListFieldSelector, "Injury list", "low back, left knee");
         qGold.setFieldValue(qGold.vsGoldHealthConditionsFieldSelector, "Health conditions", "HBP, CVD");
         qGold.setFieldValue(qGold.vsGoldHowHearAboutUsFieldSelector, "How heard about VShred", "web search");
         qGold.setFieldValue(qGold.vsGoldDecidingFactorFieldSelector, "Deciding factors", "good rep, successes");
@@ -109,7 +106,6 @@ public class VSQuestionnaireTest extends BaseTest {
         // Put in Questionnaire data
         VshredQuestionnaireGoldPage.verifyVSQuestionnaireGoldPage();
         fillInQuestionnaireRequiredData();
-        //VshredQuestionnaireGoldPage.vsQuestionnaireGoldPage.fillInDefaultRequiredData();
         VshredQuestionnaireGoldPage.vsQuestionnaireGoldPage.agreeToTermsConditions();
         VshredQuestionnaireGoldPage.vsQuestionnaireGoldPage.clickSubmitButton();
         // Deal with pop-up confirming questionnaire submission
@@ -128,15 +124,18 @@ public class VSQuestionnaireTest extends BaseTest {
         // Navigate to Trainer Tools->Assigned Clients in left menu
         VshredTrainingMgrDashPage.vsTrainingMgrPage.clickTrainerTool();
         VshredTrainingMgrDashPage.vsTrainingMgrPage.clickAssignedClients();
+        Util.waitMilliseconds(2000);
         // Wait for results of assigned clients table to fill in
         VshredTrainingMgrDashPage.vsTrainingMgrPage.waitForAssignedClientsResults();
-
         // Enter customer name search edit field text and hit Enter
         VshredTrainingMgrDashPage.vsTrainingMgrPage.searchCustomerName(Auth.validMemberUserName());
         // Wait for results of search
         VshredTrainingMgrDashPage.vsTrainingMgrPage.waitForAssignedClientsResults();
 
         // Click the first questionnaire access icon to open/view it
+        // Grab and store date/time string of current question submit date
+        origSubmitDateTime = VshredTrainingMgrDashPage.vsTrainingMgrPage.questionnaireSubmitDateTime();
+        System.out.println("ORIGINAL SUBMIT DATE=" + origSubmitDateTime);
         VshredTrainingMgrDashPage.vsTrainingMgrPage.clickCustomerQuestionnaireIconLink();
         VshredTrainingMgrDashPage.vsTrainingMgrPage.verifyQuestionnaireModal();
         // Close questionnaire modal dialog window
@@ -149,8 +148,7 @@ public class VSQuestionnaireTest extends BaseTest {
 }
 
     @Description("Enter changed member questionnaire values")
-    // TODO: Enable this test when TT-31 work begins
-    //@Test(priority = 2)
+    @Test(priority = 2)
     public void enterMemberChangedQuestionnaireValues() throws Exception {
         // Log in as member, and put in changed values for questionnaire, log out member
         VshredLoginPage.verifyLoginPage();
@@ -163,12 +161,49 @@ public class VSQuestionnaireTest extends BaseTest {
         // Put in Questionnaire data
         VshredQuestionnaireGoldPage.verifyVSQuestionnaireGoldPage();
         fillInChangedRequiredData();
-        //VshredQuestionnaireGoldPage.vsQuestionnaireGoldPage.fillInChangedRequiredData();
         VshredQuestionnaireGoldPage.vsQuestionnaireGoldPage.agreeToTermsConditions();
         VshredQuestionnaireGoldPage.vsQuestionnaireGoldPage.clickSubmitButton();
         // Deal with pop-up confirming questionnaire submission
         VshredMemberProfilePage.vsMemberProfilePage.clearQuestionnaireSubmissionModal();
         // Log out member user
         VshredMemberProfilePage.vsMemberProfilePage.clickLogOut();
+    }
+
+    @Description("Verify member questionnaire values changed")
+    @Test(priority = 3)
+    public void confirmChangedQuestionnaireValues() throws Exception {
+        VshredLoginPage.verifyLoginPage();
+        VshredLoginPage.loginUserPassword(Auth.validTrainingMgrUserEmail(), Auth.validTrainingMgrUserPassword());
+
+        VshredTrainingMgrDashPage.verifyTrainerDashPage();
+        // Navigate to Trainer Tools->Assigned Clients in left menu
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.clickTrainerTool();
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.clickAssignedClients();
+        // Wait for results of assigned clients table to fill in
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.waitForAssignedClientsResults();
+        // Enter customer name search edit field text and hit Enter
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.searchCustomerName(Auth.validMemberUserName());
+        // Wait for results of search
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.waitForAssignedClientsResults();
+
+        // Click the first questionnaire access icon to open/view it
+        // Grab and compare date/time string of current question submit date to date stored in confirmInitialQuestionnaireValues
+        // Grab and store date/time string of current question submit date
+        String latestSubmitDateTime = VshredTrainingMgrDashPage.vsTrainingMgrPage.questionnaireSubmitDateTime();
+        System.out.println("UPDATED SUBMIT DATE=" + latestSubmitDateTime);
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.clickCustomerQuestionnaireIconLink();
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.verifyQuestionnaireModal();
+        // Close questionnaire modal dialog window
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.clickQuestionnaireClose();
+
+        // Logout trainer or training manager
+        VshredTrainingMgrDashPage.vsTrainingMgrPage.userLogOut();
+        // Confirm after logout that the VShred homepage displays
+        VshredHomePage.verifyVSHomePage();
+        if (origSubmitDateTime != latestSubmitDateTime) {
+            System.out.println("Questionnaire submit date properly changed, from " + origSubmitDateTime + " to " + latestSubmitDateTime);
+        } else {
+            throw new InterruptedException("Submit date/time of questionnaire did NOT change, remaining " + origSubmitDateTime);
+        }
     }
 }

@@ -33,7 +33,7 @@ public class VshredMemberProfilePage extends BasePage {
     //// Methods ////
     @Step("Click on close X for successful questionnaire submit modal dialog")
     public void clearQuestionnaireSubmissionModal() {
-        Util.waitMilliseconds(2000); // Give time for dialog to appear in DOM
+        Util.waitMilliseconds(3000); // Give time for dialog to appear in DOM
         final WebElement modalSubmitDialog = driver.findElement(vsModalDialogLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).

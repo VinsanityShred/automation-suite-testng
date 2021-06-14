@@ -134,16 +134,42 @@ public class VshredProgramQuestionnairePage extends BasePage {
         WebElement checkboxElement = driver.findElement(boxSelector);
         Actions action = new Actions(driver);
         action.moveToElement(checkboxElement).perform();
+        highlightElement(checkboxElement);
+        Boolean isChecked = checkboxElement.getAttribute("checked") != null;
+        if (isChecked) {
+            System.out.println("**** IS CHECKED ****");
+        } else {
+            System.out.println("**** NOT CHECKED ****");
 
-        if (aValue) {
+        }
+
+        if ((!checkboxElement.isSelected()) && aValue) {
+            System.out.println("CHECKBOX NOT SELECTED BUT SHOULD BE, SO CLICKED IT");
+            checkboxElement.click();
+        } else if ((checkboxElement.isSelected()) && !aValue) {
+            System.out.println("CHECKBOX IS SELECTED BUT SHOULD NOT BE, SO CLICKED IT");
+            checkboxElement.click();
+        } else {
+            System.out.println("LEAVE CHECKBOX IN CURRENT STATE");
+        }
+
+        /*if (aValue) {
             if (!checkboxElement.isSelected()) {
                 checkboxElement.click();
+                System.out.println("CHECKBOX NOT SELECTED, SO CLICKED IT");
+            } else {
+                System.out.println("CHECKBOX *IS* SELECTED AND VALUE True, SO DO NOTHING");
             }
         } else {
             if (checkboxElement.isSelected()) {
                 checkboxElement.click();
+                System.out.println("CHECKBOX *IS* SELECTED, SO CLICKED IT");
+            } else {
+                System.out.println("CHECKBOX *NOT* SELECTED AND VALUE False, SO DO NOTHING");
             }
         }
+
+         */
     }
 
     @Step("Set Drop-down Value")

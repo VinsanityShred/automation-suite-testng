@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import web.pages.BasePage;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
 
 public class VshredTrainerDashPage extends BasePage {
     public static final String TRAINER_DROPDOWN_TEXT = "Trainer";
@@ -33,7 +34,8 @@ public class VshredTrainerDashPage extends BasePage {
     By vsTrainerDashLogoutLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[1]/nav/ul/li[2]/a");
     By vsTrainerDashOrdersLocator = By.xpath("//*[@id=\"side-menu\"]/li[2]/a/span");
     By vsTrainerDashTableOfOrdersLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div/div/div[2]/div[1]/div/table");
-    By vsTrainerDashTableOfAssignedClientsLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div/div/div/div[2]/div[1]/div/table");
+    By vsTrainerDashTableOfAssignedClientsLocator = By.cssSelector("#page-wrapper > div.wrapper.wrapper-content > div > div > div > div.mb-4 > div:nth-child(1) > div > table");
+    //By vsTrainerDashTableOfAssignedClientsLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div/div/div/div[2]/div[1]/div/table");
     By vsTrainerDashCustomerNameSearchLocator = By.xpath("//*[@id=\"__BVID__15\"]");
     By vsTrainerDashCustomerNameLinkLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]/div/a");
     By vsTrainerDashAssignClientQuestionIconLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[7]/div/div/span/i");
@@ -41,46 +43,62 @@ public class VshredTrainerDashPage extends BasePage {
     By vsTrainerDashTrainerToolLocator = By.xpath("//*[@id=\"side-menu\"]/li[3]/a/span[1]");
     By vsTrainerDashQuestionnaireModalLocator = By.xpath("//*[@id=\"__BVID__34___BV_modal_content_\"]");
     By vsTrainerDashQuestionnaireModalCloseLocator = By.xpath("//*[@id=\"__BVID__34___BV_modal_footer_\"]/button");
+    By vsTrainerDashQuestionnaireDateTimeLocator = By.cssSelector("#page-wrapper > div.wrapper.wrapper-content > div > div > div > div.mb-4 > div:nth-child(1) > div > table > tbody > tr:nth-child(1) > td:nth-child(7) > div > span");
+    //By vsTrainerDashQuestionnaireDateTimeLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[7]/div/span");
+    By vsTrainerDashLoadingIconLocator = By.cssSelector("#page-wrapper > div.wrapper.wrapper-content > div > div > div > div.mb-4.base-table-filter-opacity > div.base-table-overlay > div");
+    //By vsTrainerDashLoadingIconLocator = By.xpath("//*[@id=\"page-wrapper\"]/div[2]/div/div/div/div[2]/div[1]/div");
 
     //// Methods ////
     @Step("Wait for order results to display")
     public void waitForOrderResults() {
         // TODO: Change code to look for actual table locator with max 45 second search
-        Util.waitMilliseconds(28000); // Give time for table to appear in DOM
+        Util.waitMilliseconds(2000); // Give time for table to appear in DOM
+        final WebElement loadingIcon = driver.findElement(vsTrainerDashLoadingIconLocator);
+        if (loadingIcon.isDisplayed()) {
+            System.out.println("Loading icon is displayed");
+        }
+        System.out.println("Waiting up to 60 seconds for table data to appear");
+        WebDriverWait waitLoad = new WebDriverWait(driver, 60);
+        waitLoad.until(ExpectedConditions.visibilityOfElementLocated(vsTrainerDashTableOfOrdersLocator));
+
         final WebElement ordersTable = driver.findElement(vsTrainerDashTableOfOrdersLocator);
-        new WebDriverWait(driver, 10).
-                pollingEvery(Duration.ofMillis(100)).
+        highlightElement(ordersTable);
+
+
+        //WebDriverWait wait = new WebDriverWait(driver, 60);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(vsTrainerDashTableOfOrdersLocator));
+       /* new WebDriverWait(driver, 60).
+                pollingEvery(Duration.ofMillis(1000)). //.ignoring(NoSuchElementException.class).
                 withMessage("Could Not Find Orders Table").
-                withTimeout(Duration.ofSeconds(5)).
+                withTimeout(Duration.ofSeconds(60)).
                 until(ExpectedConditions.visibilityOfElementLocated(vsTrainerDashTableOfOrdersLocator));
         highlightElement(ordersTable);
+
+        */
     }
 
     @Step("Wait for assigned clients to display")
     public void waitForAssignedClientsResults() {
-        // TODO: Change code to look for actual table locator with max 60 second search
-        Util.waitMilliseconds(45000); // Give time for table to appear in DOM
+        Util.waitMilliseconds(2000); // Give time for table to appear in DOM
+        final WebElement loadingIcon = driver.findElement(vsTrainerDashLoadingIconLocator);
+        if (loadingIcon.isDisplayed()) {
+            System.out.println("Loading icon is displayed");
+        }
+        System.out.println("Waiting up to 60 seconds for table data to appear");
+        WebDriverWait waitLoad = new WebDriverWait(driver, 60);
+        waitLoad.until(ExpectedConditions.visibilityOfElementLocated(vsTrainerDashTableOfAssignedClientsLocator));
+
         final WebElement clientsTable = driver.findElement(vsTrainerDashTableOfAssignedClientsLocator);
-        new WebDriverWait(driver, 10).
-                pollingEvery(Duration.ofMillis(100)).
-                withMessage("Could Not Find Assigned Clients Table").
-                withTimeout(Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOfElementLocated(vsTrainerDashTableOfAssignedClientsLocator));
         highlightElement(clientsTable);
     }
 
     @Step("Click on logout button")
     public void clickLogoutButton() {
-        final WebElement logoutButton = driver.findElement(vsTrainerDashLogoutLocator);
-        new WebDriverWait(driver, 10).
-                pollingEvery(Duration.ofMillis(100)).
-                withMessage("Could Not Find A Clickable Logout Button").
-                withTimeout(Duration.ofSeconds(5)).
-                until(ExpectedConditions.elementToBeClickable(logoutButton));
-        scrollToTop(logoutButton);
+        WebElement logoutButton = driver.findElement(vsTrainerDashLogoutLocator);
+        Actions action = new Actions(driver);
+        action.moveToElement(logoutButton).perform();
         highlightElement(logoutButton);
         logoutButton.click();
-        waitForInvisibilityOfElement(logoutButton);
     }
 
     @Step("Click on orders menu link")
@@ -145,6 +163,7 @@ public class VshredTrainerDashPage extends BasePage {
 
     @Step("Enter customer name and hit enter to search")
     public void searchCustomerName(String aCustName) {
+        System.out.println("Searching for customer name " + aCustName);
         WebElement customerNameEdit = driver.findElement(vsTrainerDashCustomerNameSearchLocator);
         Actions action = new Actions(driver);
         action.moveToElement(customerNameEdit).perform();
@@ -162,6 +181,17 @@ public class VshredTrainerDashPage extends BasePage {
 
     public void userLogOut() {
         clickLogoutButton();
+    }
+
+    public String questionnaireSubmitDateTime() {
+        Util.waitMilliseconds(1500); // Give time to appear in DOM
+
+        System.out.print("Looking for and retrieving questionnaire submit date/time...");
+        WebElement qSubmitDate = driver.findElement(vsTrainerDashQuestionnaireDateTimeLocator);
+        Actions action = new Actions(driver);
+        action.moveToElement(qSubmitDate).perform();
+        highlightElement(qSubmitDate);
+        return qSubmitDate.getText();
     }
 
     //// Setters ////
