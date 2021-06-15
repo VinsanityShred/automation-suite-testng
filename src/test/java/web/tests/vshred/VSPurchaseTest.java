@@ -30,5 +30,6 @@ public class VSPurchaseTest extends PurchaseTestBase {
     // TODO: Enable this code once offer 1 page locators can be specified by plan
     public void purchaseNewFatLossHerPlanTest() throws Exception {
         purchaseNewPlanTest(Plan.FAT_LOSS_EXTREME_HER);
+
     }*/
 }

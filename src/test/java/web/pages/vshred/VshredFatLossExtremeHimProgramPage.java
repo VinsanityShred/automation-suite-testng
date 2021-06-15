@@ -18,11 +18,6 @@ public class VshredFatLossExtremeHimProgramPage extends BaseProgramPage {
         vsFatLossExtremeHimPage = new VshredFatLossExtremeHimProgramPage(driver);
     }
 
-    public static void verifyVSFatLossExtremeHimPage() throws Exception {
-        //// Verify purchase button ////
-        vsFatLossExtremeHimPage.verifyPurchaseButtonIsDisplayed();
-    }
-
     //// Locators ////
 
     //// Methods ////
@@ -32,4 +27,8 @@ public class VshredFatLossExtremeHimProgramPage extends BaseProgramPage {
     //// Getters ////
 
     //// Verifiers ////
+    public static void verifyVSFatLossExtremeHimPage() throws Exception {
+        //// Verify purchase button ////
+        vsFatLossExtremeHimPage.verifyPurchaseButtonIsDisplayed();
+    }
 }
