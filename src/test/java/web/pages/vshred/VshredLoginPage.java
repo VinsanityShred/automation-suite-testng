@@ -28,7 +28,7 @@ public class VshredLoginPage extends BasePage {
 
     public static void verifyLoginPage() throws Exception {
         //// Verify login page logo ////
-        vsLoginPage.verifyLoginLogoIsDisplayed();
+        vsLoginPage.verifyLoginButtonIsDisplayed();
     }
 
     public static void loginUserPassword(String aUser, String aPassword) throws  Exception {
@@ -50,8 +50,8 @@ public class VshredLoginPage extends BasePage {
 
     By vsEmailAddressFieldLocator = By.id("email");
     By vsPasswordFieldLocator = By.id("password");
-    By vsLoginPageLogoLocator = By.cssSelector("#menu1 > div > div > div.col-md-2.col-sm-2.hidden-xs >" +
-            " div > a > img.logo.logo-light");
+    //By vsLoginPageLogoLocator = By.cssSelector("#menu1 > div > div > div.col-md-2.col-sm-2.hidden-xs > div > a > img.logo.logo-light");
+    //By vsLoginPageLogoLocator = By.xpath("//*[@id=\"menu1\"]/div/div/div[1]/div/a/img[2]");
     By vsLoginButtonLocator = By.xpath("//button[text()='Login']");
     //By vsErrMsgLocator = By.cssSelector("#toast-container");
     //By vsErrMsgLocator = By.className("toast-error");
@@ -103,26 +103,26 @@ public class VshredLoginPage extends BasePage {
 
     //// Getters ////
 
-    @Step("Get the login page title")
-    private boolean getLoginLogo(){
-        final WebElement loginLogo = driver.findElement(vsLoginPageLogoLocator);
+    @Step("Get the login button")
+    private boolean getLoginButton(){
+        final WebElement loginButton = driver.findElement(vsLoginButtonLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
-                withMessage("Could Not Find Logo Image").
+                withMessage("Could Not Find Login Button").
                 withTimeout(Duration.ofSeconds(10)).
-                until(ExpectedConditions.visibilityOf(loginLogo));
-        highlightElement(loginLogo);
-        return loginLogo.isDisplayed();
+                until(ExpectedConditions.visibilityOf(loginButton));
+        highlightElement(loginButton);
+        return loginButton.isDisplayed();
     }
 
     //// Verifiers ////
 
-    @Step("Check: Verify Login Page Logo Is Displayed")
-    public void verifyLoginLogoIsDisplayed() throws InterruptedException {
-        if (!getLoginLogo()) {
-            throw new InterruptedException("Login Page Logo NOT Displayed");
+    @Step("Check: Verify Login Page Button Is Displayed")
+    public void verifyLoginButtonIsDisplayed() throws InterruptedException {
+        if (!getLoginButton()) {
+            throw new InterruptedException("Login Page Button NOT Displayed");
         } else {
-            System.out.println("Login Page Logo Displayed");
+            System.out.println("Login Page Button IS Displayed");
         }
     }
 

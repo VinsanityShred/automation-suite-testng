@@ -40,19 +40,25 @@ public class VshredOrderFormPage extends BasePage {
     //// Locators ////
     // ** CONTACT INFORMATION **
     private By vsNameSelector = By.xpath("//*[@id=\"name\"]"); // NAME
-    //private By vsNameSelector = By.cssSelector("#name"); // NAME
     private By vsEmailSelector = By.cssSelector("#email"); // EMAIL
     private By vsPhoneSelector = By.cssSelector("#phone"); // PHONE
     private By vsContactNextStepSelector = By.cssSelector("#billing-form > div.checkout-product-details > div:nth-child(3) > div > div.expand-inputs > span"); // CONTACT NEXT STEP BUTTON
+    protected By vsCustomDietMonthlyContactNextStepSelector = By.cssSelector("#billing-form > div.expand-area.expand-area-1 > div.expand-inputs > span"); // CONTACT NEXT STEP BUTTON
+    //protected By vsCustomDietMonthlyContactNextStepSelector = By.xpath("//*[@id=\"billing-form\"]/div[1]/div[2]/span"); // CONTACT NEXT STEP BUTTON
+    
     // ** PAYMENT INFORMATION **
     private By vsCardSelector = By.xpath("//*[@name='braintree-hosted-field-number']");
     private By vsExpDtSelector = By.xpath("//*[@name='braintree-hosted-field-expirationDate']"); // EXP DATE
     private By vsCvvSelector = By.xpath("//*[@name='braintree-hosted-field-cvv']");
     private By vsPostalCodeSelector = By.xpath("//*[@name='braintree-hosted-field-postalCode']");
-    private By vsPaymentNextStepSelector = By.cssSelector("#billing-form > div.checkout-product-details > div:nth-child(4) > div.expand-area.expand-area-2 > div.expand-inputs.close-input.close-input > span"); // PAYMENT_NEXT_STEP
-    // Confirm presence of this element before submit
+    protected By vsCustomDietPaymentNextStepSelector =        By.xpath("//*[@id=\"billing-form\"]/div[1]/div[3]/div[2]/div[2]/span");
+    protected By vsCustomDietMonthlyPaymentNextStepSelector = By.xpath("//*[@id=\"billing-form\"]/div[2]/div[2]/span");
+    protected By vsPlatinumCoachingPaymentNextStepSelector =  By.xpath("//*[@id=\"billing-form\"]/div[1]/div[3]/div[2]/div[2]/span");
+    private By vsPaymentNextStepSelector =                    By.xpath("//*[@id=\"billing-form\"]/div[1]/div[4]/div[1]/div[2]/span");
     private By vsOrderSummary = By.cssSelector("#order-summary"); // ORDER_SUMMARY_BOX
-    private By vsSubmitOrderButton = By.cssSelector("#submit-order"); // SUBMIT_ORDER
+    //protected By vsSubmitOrderButton = By.cssSelector("#submit-order"); // SUBMIT_ORDER
+    protected By vsSubmitOrderButton = By.xpath("//*[@id=\"submit-order\"]");
+    private By vsErrorSubscribingMsgSelector = By.xpath("//*[@id=\"billing-form\"]/div[3]/div[2]/div[2]/div/span");
 
     //// Methods ////
     @Step("Fill in contact details and click next step")
@@ -61,19 +67,43 @@ public class VshredOrderFormPage extends BasePage {
         vsOrderFormPage.clickContactNextStep();
     }
 
+    @Step("Fill in custom diet monthly contact details and click next step")
+    public void completeCustomDietMonthlyContactInfoAndNext() {
+        vsOrderFormPage.setContactDefaults();
+        vsOrderFormPage.clickCustomDietMonthlyContactNextStep();
+    }
+
     @Step("Fill in payment details and click next step")
     public void completePaymentDetailsAndNext() {
         vsOrderFormPage.setPaymentDefaults();
         vsOrderFormPage.clickPaymentNextStep();
     }
 
+    @Step("Fill in custom diet payment details and click next step")
+    public void completeCustomDietPaymentDetailsAndNext() {
+        vsOrderFormPage.setPaymentDefaults();
+        vsOrderFormPage.clickCustomDietPaymentNextStep();
+    }
+
+    @Step("Fill in custom diet monthly payment details and click next step")
+    public void completeCustomDietMonthlyPaymentDetailsAndNext() {
+        vsOrderFormPage.setPaymentDefaults();
+        vsOrderFormPage.clickCustomDietMonthlyPaymentNextStep();
+    }
+
+    @Step("Fill in custom diet monthly payment details and click next step")
+    public void completePlatinumCoachingPaymentDetailsAndNext() {
+        vsOrderFormPage.setPaymentDefaults();
+        vsOrderFormPage.clickPlatinumCoachingPaymentNextStep();
+    }
+
     public void submitOrder() throws Exception {
-        vsOrderFormPage.verifyOrderSummaryIsDisplayed();
+        //vsOrderFormPage.verifyOrderSummaryIsDisplayed(); **NOTE** Not all cases have this displayed
         vsOrderFormPage.clickSubmitOrder();
     }
 
     @Step("Click on contact next step button")
-    public void clickContactNextStep() {
+    protected void clickContactNextStep() {
         final WebElement contactNextStep = driver.findElement(vsContactNextStepSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -84,8 +114,21 @@ public class VshredOrderFormPage extends BasePage {
         contactNextStep.click();
     }
 
+    @Step("Click on contact next step button")
+    protected void clickCustomDietMonthlyContactNextStep() {
+        final WebElement contactNextStep = driver.findElement(vsCustomDietMonthlyContactNextStepSelector);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Monthly Diet Plan Contact Next Step Button").
+                withTimeout(Duration.ofSeconds(5)).
+                until(ExpectedConditions.elementToBeClickable(contactNextStep));
+        highlightElement(contactNextStep);
+        contactNextStep.click();
+    }
+
     @Step("Click on payment next step button")
-    public void clickPaymentNextStep() {
+    protected void clickPaymentNextStep() {
+        Util.waitMilliseconds(2000); // Give time for field to appear in DOM
         final WebElement paymentNextStep = driver.findElement(vsPaymentNextStepSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -97,8 +140,51 @@ public class VshredOrderFormPage extends BasePage {
         waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
     }
 
+    @Step("Click on payment next step button")
+    protected void clickCustomDietPaymentNextStep() {
+        Util.waitMilliseconds(1500); // Give time for field to appear in DOM
+        final WebElement paymentNextStep = driver.findElement(vsCustomDietPaymentNextStepSelector);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Payment Next Step Button").
+                withTimeout(Duration.ofSeconds(5)).
+                until(ExpectedConditions.elementToBeClickable(paymentNextStep));
+        highlightElement(paymentNextStep);
+        paymentNextStep.click();
+        waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
+    }
+
+    @Step("Click on payment next step button")
+    protected void clickCustomDietMonthlyPaymentNextStep() {
+        Util.waitMilliseconds(2000); // Give time for field to appear in DOM
+        final WebElement paymentNextStep = driver.findElement(vsCustomDietMonthlyPaymentNextStepSelector);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Payment Next Step Button").
+                withTimeout(Duration.ofSeconds(5)).
+                until(ExpectedConditions.elementToBeClickable(paymentNextStep));
+        highlightElement(paymentNextStep);
+        paymentNextStep.click();
+        waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
+    }
+
+    @Step("Click on payment next step button")
+    protected void clickPlatinumCoachingPaymentNextStep() {
+        Util.waitMilliseconds(2000); // Give time for field to appear in DOM
+        final WebElement paymentNextStep = driver.findElement(vsPlatinumCoachingPaymentNextStepSelector);
+        new WebDriverWait(driver, 10).
+                pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could Not Find Payment Next Step Button").
+                withTimeout(Duration.ofSeconds(5)).
+                until(ExpectedConditions.elementToBeClickable(paymentNextStep));
+        highlightElement(paymentNextStep);
+        paymentNextStep.click();
+        waitForVisibilityOfElement(driver.findElement(vsSubmitOrderButton));
+    }
+
     @Step("Click on submit order button")
-    public void clickSubmitOrder() {
+    public void clickSubmitOrder() throws Exception {
+        Util.waitMilliseconds(1500); // Give time for field to appear in DOM
         final WebElement submitOrder = driver.findElement(vsSubmitOrderButton);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -106,8 +192,22 @@ public class VshredOrderFormPage extends BasePage {
                 withTimeout(Duration.ofSeconds(5)).
                 until(ExpectedConditions.elementToBeClickable(submitOrder));
         highlightElement(submitOrder);
-        submitOrder.click();
-        waitForInvisibilityOfElement(submitOrder);
+        try {
+            System.out.println("CLICKING SUBMIT ORDER");
+            submitOrder.click();
+            System.out.println("**DONE** CLICKING SUBMIT ORDER");
+            System.out.println("WAITING FOR SUBMIT INVISIBILITY...");
+            waitForInvisibilityOfElement(submitOrder);
+            System.out.println("**DONE** WAITING FOR INVISIBILITY");
+        } catch (Exception e) {
+            // Handle "error subscribing" by clicking submit again
+            System.out.println("RE-CLICKING SUBMIT ORDER");
+            submitOrder.click();
+            System.out.println("**DONE** RE-CLICKING SUBMIT ORDER");
+            System.out.println("WAITING AGAIN FOR SUBMIT INVISIBILITY...");
+            waitForInvisibilityOfElement(submitOrder);
+            System.out.println("**DONE** WAITING FOR INVISIBILITY");
+        }
     }
 
     //// Setters ////
