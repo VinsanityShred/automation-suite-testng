@@ -14,6 +14,39 @@ import web.pages.BasePage;
 import java.time.Duration;
 
 public class VshredProgramQuestionnairePage extends BasePage {
+    // Enumeration of questionnaire fields to relate to field selectors for questionnaire page variations
+    public enum QuestionnaireFields {
+        Q_FirstName,
+        Q_LastName,
+        Q_Email,
+        Q_DOB,
+        Q_Country,
+        Q_PhoneNum,
+        Q_HeightFeet,
+        Q_HeightInch,
+        Q_Weight,
+        Q_WeightUnit,
+        Q_MostFavFoods,
+        Q_LeastFavFoods,
+        Q_FoodsNotEat,
+        Q_AllergiesYN,
+        Q_FoodAllergiesList,
+        Q_ImportantHelpToGoals,
+        Q_HoursSleepPerNight,
+        Q_BiggestStressFactors,
+        Q_InjuryList,
+        Q_HealthConditions,
+        Q_HowHearAboutUs,
+        Q_DecidingFactor,
+        Q_AgreeToTerms
+    }
+
+    public enum WeightUnits {
+        Wt_LB,
+        Wt_KB
+    }
+
+
     public static VshredProgramQuestionnairePage vsQuestionnairePage;
 
     public VshredProgramQuestionnairePage(WebDriver driver) {
@@ -22,11 +55,6 @@ public class VshredProgramQuestionnairePage extends BasePage {
 
     public static void createVSQuestionnairePage(WebDriver driver) {
         vsQuestionnairePage = new VshredProgramQuestionnairePage(driver);
-    }
-
-    public static void verifyVSQuestionnairePage() throws Exception {
-        //// Verify name fields displayed ////
-        vsQuestionnairePage.verifyNameFieldsDisplayed();
     }
 
     //// Locators ////
@@ -66,35 +94,7 @@ public class VshredProgramQuestionnairePage extends BasePage {
 
     private By vsSubmitButton = By.xpath("/html/body/div[4]/div/main/div/div/div/div/form/div/div[49]/button");
 
-
     //// Methods ////
-    @Step("Fill in all required data fields")
-    public void fillInRequiredData() {
-        // Fill in required fields
-        setFieldValue(vsFirstNameFieldSelector, "First name", "Firstname");
-        setFieldValue(vsLastNameFieldSelector, "Last name", "Lastname");
-        setFieldValue(vsEmailFieldSelector, "E-mail", "email@email.com");
-        setFieldValue(vsDOBFieldSelector, "Date of birth", "01011970");
-        setFieldValue(vsCountryFieldSelector, "Country", "United States");
-        setFieldValue(vsPhoneNumFieldSelector, "Phone number", "7075558888");
-        setDropdownValue(vsHeightFeetFieldSelector, "Height feet", "5");
-        setDropdownValue(vsHeightInchFieldSelector, "Height inch", "11");
-        setFieldValue(vsWeightFieldSelector, "Weight value", "155");
-        setCheckboxValue(vsWeightLBCheckboxSelector, "Weight LB checkbox", true);
-        setFieldValue(vsMostFavFoodsFieldSelector, "Most Favorite foods", "Chocolate");
-        setFieldValue(vsLeastFavFoodsFieldSelector, "Least Favorite foods", "Brussels sprouts");
-        setFieldValue(vsFoodsNotEatFieldSelector, "Not To Be Eaten Foods", "Broccoli");
-        setCheckboxValue(vsFoodAllergiesYesFieldSelector, "Yes Food Allergies checkbox", true);
-        setFieldValue(vsFoodAllergiesListFieldSelector, "Foods allergic to", "Shellfish");
-        setFieldValue(vsMostImportantHelpToGoalsFieldSelector, "Help to achieve goals", "Keep me accountable");
-        setFieldValue(vsHoursSleepPerNightFieldSelector, "Hours sleep per night", "6");
-        setFieldValue(vsBiggestStressFactorsFieldSelector, "Biggest stress factors", "finances, time");
-        setFieldValue(vsInjuryListFieldSelector, "Injury list", "low back, left knee");
-        setFieldValue(vsHealthConditionsFieldSelector, "Health conditions", "high blood pressure");
-        setFieldValue(vsHowHearAboutUsFieldSelector, "How heard about VShred", "friend recommendation");
-        setFieldValue(vsDecidingFactorFieldSelector, "Deciding factors", "good reputation, friend success");
-    }
-
     @Step("Check box to agree to terms and conditions")
     public void agreeToTermsConditions() {
         // Check box for agree to terms and conditions
@@ -112,16 +112,17 @@ public class VshredProgramQuestionnairePage extends BasePage {
                 until(ExpectedConditions.elementToBeClickable(submitBtn));
         highlightElement(submitBtn);
         submitBtn.click();
+        System.out.println("Questionnaire Submitted");
     }
 
     //// Setters ////
     @Step("Set Field Value")
     public void setFieldValue(By fieldSelector, String strFieldName, String strValue) {
         System.out.println("Setting field " + strFieldName + " to value " + strValue);
-        //Util.waitMilliseconds(1000); // Give time for field to appear in DOM
         WebElement fieldElement = driver.findElement(fieldSelector);
         Actions action = new Actions(driver);
         action.moveToElement(fieldElement).perform();
+        highlightElement(fieldElement);
         fieldElement.clear();
         fieldElement.click();
         setTextBySendKeys(strValue);
@@ -130,34 +131,57 @@ public class VshredProgramQuestionnairePage extends BasePage {
     @Step("Set Checkbox Value")
     public void setCheckboxValue(By boxSelector, String strBoxName, boolean aValue) {
         System.out.println("Setting checkbox " + strBoxName + " to value " + aValue);
-        //Util.waitMilliseconds(1000); // Give time for field to appear in DOM
         WebElement checkboxElement = driver.findElement(boxSelector);
         Actions action = new Actions(driver);
         action.moveToElement(checkboxElement).perform();
+        highlightElement(checkboxElement);
+        Boolean isChecked = checkboxElement.getAttribute("checked") != null;
+        if (isChecked) {
+            System.out.println("**** IS CHECKED ****");
+        } else {
+            System.out.println("**** NOT CHECKED ****");
 
-        if (aValue == true) {
+        }
+
+        if ((!checkboxElement.isSelected()) && aValue) {
+            System.out.println("CHECKBOX NOT SELECTED BUT SHOULD BE, SO CLICKED IT");
+            checkboxElement.click();
+        } else if ((checkboxElement.isSelected()) && !aValue) {
+            System.out.println("CHECKBOX IS SELECTED BUT SHOULD NOT BE, SO CLICKED IT");
+            checkboxElement.click();
+        } else {
+            System.out.println("LEAVE CHECKBOX IN CURRENT STATE");
+        }
+
+        /*if (aValue) {
             if (!checkboxElement.isSelected()) {
                 checkboxElement.click();
+                System.out.println("CHECKBOX NOT SELECTED, SO CLICKED IT");
+            } else {
+                System.out.println("CHECKBOX *IS* SELECTED AND VALUE True, SO DO NOTHING");
             }
         } else {
             if (checkboxElement.isSelected()) {
                 checkboxElement.click();
+                System.out.println("CHECKBOX *IS* SELECTED, SO CLICKED IT");
+            } else {
+                System.out.println("CHECKBOX *NOT* SELECTED AND VALUE False, SO DO NOTHING");
             }
         }
+
+         */
     }
 
     @Step("Set Drop-down Value")
     public void setDropdownValue(By fieldSelector, String strFieldName, String strValue) {
         System.out.println("Setting field " + strFieldName + " to value " + strValue);
-        //Util.waitMilliseconds(1000); // Give time for field to appear in DOM
         Select fieldElement = new Select(driver.findElement(fieldSelector));
         fieldElement.selectByVisibleText(strValue);
-        //fieldElement.selectByValue(strValue);
     }
 
     //// Getters ////
     @Step("Get name fields")
-    private boolean getNameFields(){
+    public boolean getNameFields(){
         System.out.println("Looking for name fields");
         Util.waitMilliseconds(1000); // Give time for field to appear in DOM
         final WebElement firstName = driver.findElement(vsFirstNameFieldSelector);
