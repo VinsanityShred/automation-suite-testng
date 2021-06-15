@@ -23,20 +23,20 @@ public class VshredPostOrderOffer_2 extends BasePage {
     }
 
     public static void verifyVSPostOrderOfferTwoPage() throws Exception {
-        //// Verify name entry field ////
-        vsPostOrderOfferTwo.verifyCouponOfferIsDisplayed();
+        //// Verify product options is displayed ////
+        vsPostOrderOfferTwo.verifyProductOptIsDisplayed();
     }
 
     //// Locators ////
-    private By vsCouponOfferSelector = By.xpath("/html/body/main/div/div/div/section[1]/div/div/div");
-    private By vsNoThanksLinkSelector = By.xpath("//*[@id=\"option-area\"]/div[2]/div/a");
+    private By vsProductOptSelector = By.xpath("/html/body/div[2]/section/div/div/ul/li[2]/a");
+    private By vsNoThanksLinkSelector = By.xpath("/html/body/div[2]/div/section[7]/div/p/a");
 
     //// Methods ////
     @Step("Click on No Thanks message and link")
     public void clickNoThanks() {
         // Page design requires a long wait for the "no thanks" link to appear
-        System.out.println("Looking for offer two 'no thanks' link");
-        //Util.waitMilliseconds(30000); // Give time for field to appear in DOM
+        System.out.println("Waiting 30 sec for offer two 'no thanks' link to appear");
+        Util.waitMilliseconds(30000); // Give time for field to appear in DOM
         final WebElement linkNoThanks = driver.findElement(vsNoThanksLinkSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -49,26 +49,27 @@ public class VshredPostOrderOffer_2 extends BasePage {
     }
 
     //// Getters ////
-    @Step("Get coupon offer")
-    private boolean getWarningMessage(){
-        System.out.println("Looking for offer two coupon");
-        final WebElement couponOffer = driver.findElement(vsCouponOfferSelector);
+    @Step("Get product options")
+    private boolean getProductOpt(){
+        System.out.println("Looking for product options");
+        Util.waitMilliseconds(1500); // Give time for field to appear in DOM
+        final WebElement productOpt = driver.findElement(vsProductOptSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
-                withMessage("Could Not Find Coupon Offer").
+                withMessage("Could Not Find Product Options").
                 withTimeout(Duration.ofSeconds(10)).
-                until(ExpectedConditions.visibilityOf(couponOffer));
-        highlightElement(couponOffer);
-        return couponOffer.isDisplayed();
+                until(ExpectedConditions.visibilityOf(productOpt));
+        highlightElement(productOpt);
+        return productOpt.isDisplayed();
     }
 
     //// Verifiers ////
-    @Step("Check: Verify Coupon Offer Is Displayed")
-    public void verifyCouponOfferIsDisplayed() throws InterruptedException {
-        if (!getWarningMessage()) {
-            throw new InterruptedException("Offer Two Coupon NOT Displayed");
+    @Step("Check: Verify Product Options Is Displayed")
+    public void verifyProductOptIsDisplayed() throws InterruptedException {
+        if (!getProductOpt()) {
+            throw new InterruptedException("Offer Two product options NOT Displayed");
         } else {
-            System.out.println("Offer Two Coupon Is Displayed");
+            System.out.println("Offer Two product options Is Displayed");
         }
     }
 }
