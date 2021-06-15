@@ -19,13 +19,20 @@ public class CreatineSalesFunnelPage extends BasePage {
 
     //// Locators ////
     private By creatineCsPg88ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/21/Creatine_three/Creatine_three.png?v=1622589211']");
-    private By crtn122PgNoThanksLinkLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
     private By crtn122PgBottleImageLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
     private By creatineUsF112PgHeaderTextLocator = By.xpath("//h1[@class='text-center']");
     private By creatineVslCsV2Pg84VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-
+    private By creatineDS113Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/23/Creatine_three/Creatine_three.png?')]");
 
     //// Methods ////
+    @Step("Is Creatine Page 113 3 Bottle Image Displayed")
+    public boolean isCreatineDS113Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(creatineDS113Pg3BottleImageLocator));
+        WebElement creatineBottleImage = driver.findElement(creatineDS113Pg3BottleImageLocator);
+        wait.until(ExpectedConditions.visibilityOfAllElements(creatineBottleImage));
+        return creatineBottleImage.isDisplayed();
+    }
+
     @Step("Is Creatine VSL CS V2 Page 84 Video Displayed")
     private boolean isCreatineVslCsV2Pg84VideoDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(creatineVslCsV2Pg84VideoLocator));
@@ -40,15 +47,6 @@ public class CreatineSalesFunnelPage extends BasePage {
         WebElement creatineBottleImage = driver.findElement(crtn122PgBottleImageLocator);
         wait.until(ExpectedConditions.visibilityOfAllElements(creatineBottleImage));
         return creatineBottleImage.isDisplayed();
-    }
-
-    @Step("Click on the No Thanks link")
-    public void clickNoThanksLink() {
-        WebElement noThanksLink = driver.findElement(crtn122PgNoThanksLinkLocator);
-        wait.until(ExpectedConditions.visibilityOf(noThanksLink));
-        highlightElement(noThanksLink);
-        noThanksLink.click();
-        wait.until(ExpectedConditions.invisibilityOf(noThanksLink));
     }
 
     @Step("Is Creatine Page 88 Image Displayed")
@@ -69,6 +67,11 @@ public class CreatineSalesFunnelPage extends BasePage {
     }
 
     //// Verifiers ////
+    @Step("Verify the Creatine Page 113 3 Bottle Image Is Displayed")
+    public void verifyCreatine113Pg3BottleImageIsDisplayed() {
+        assertTrue(isCreatineDS113Pg3BottleImageDisplayed(), "Creatine Page 113 3 Bottle Image Is NOT Displayed");
+    }
+
     @Step("Verify the Creatine VSL CS V2 Page 84 Video Is Displayed")
     public void verifyCreatineVslCsV2Pg84VideoIsDisplayed() {
         assertTrue(isCreatineVslCsV2Pg84VideoDisplayed(), "Creatine VSL CS V2 Page 84 Video NOT Displayed");

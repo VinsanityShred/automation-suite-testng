@@ -32,7 +32,7 @@ public class BurnSalesFunnelPage extends BasePage {
     private By burnDownsellPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnDownsellPgYesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
     private By burnPm3BottleImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/17/Burn PM_three/Burn-PM_three.png?v=1623083960']");
-    private By burnEvolved1BottleImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?v=1623083960']");
+    private By burnEvolved1BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?')]");
 
     //// Methods ////
     @Step("Is Burn Evolved 1 Bottle Image Displayed")

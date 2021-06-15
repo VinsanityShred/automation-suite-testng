@@ -44,7 +44,6 @@ public class VshredOrderFormPage extends BasePage {
     private By vsPhoneSelector = By.cssSelector("#phone"); // PHONE
     private By vsContactNextStepSelector = By.cssSelector("#billing-form > div.checkout-product-details > div:nth-child(3) > div > div.expand-inputs > span"); // CONTACT NEXT STEP BUTTON
     protected By vsCustomDietMonthlyContactNextStepSelector = By.cssSelector("#billing-form > div.expand-area.expand-area-1 > div.expand-inputs > span"); // CONTACT NEXT STEP BUTTON
-    //protected By vsCustomDietMonthlyContactNextStepSelector = By.xpath("//*[@id=\"billing-form\"]/div[1]/div[2]/span"); // CONTACT NEXT STEP BUTTON
 
     // ** PAYMENT INFORMATION **
     private By vsCardSelector = By.xpath("//*[@name='braintree-hosted-field-number']");
@@ -55,7 +54,6 @@ public class VshredOrderFormPage extends BasePage {
     protected By vsCustomDietMonthlyPaymentNextStepSelector = By.xpath("//*[@id=\"billing-form\"]/div[2]/div[2]/span");
     private By vsPaymentNextStepSelector =                    By.xpath("//*[@id=\"billing-form\"]/div[1]/div[4]/div[1]/div[2]/span");
     private By vsOrderSummary = By.cssSelector("#order-summary"); // ORDER_SUMMARY_BOX
-    //protected By vsSubmitOrderButton = By.cssSelector("#submit-order"); // SUBMIT_ORDER
     protected By vsSubmitOrderButton = By.xpath("//*[@id=\"submit-order\"]");
     private By vsErrorSubscribingMsgSelector = By.xpath("//*[@id=\"billing-form\"]/div[3]/div[2]/div[2]/div/span");
 

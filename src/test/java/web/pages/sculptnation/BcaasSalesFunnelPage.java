@@ -18,9 +18,9 @@ public class BcaasSalesFunnelPage extends BasePage {
 
     //// Locators ////
     private By bcaaCsPg99ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?v=1622589211']");
-    private By bcaasCs114PgImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?v=1621872093']");
+    private By bcaasCs114PgImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?')]");
     private By bcca120PgBcaaImageLocator = By.xpath("//img[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAs - Back/BCAAs---Back.png?v=1620766109']");
-    private By bccaaUs120Pg6BottleImageLocator = By.xpath("//img[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAS_six/BCAAS_six.png?v=1622744888']");
+    private By bccaaUs120Pg6BottleImageLocator = By.xpath("//img[contains(@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAS_six/BCAAS_six.png?'])");
 
 
     //// Methods ////
@@ -38,7 +38,7 @@ public class BcaasSalesFunnelPage extends BasePage {
         return bcaas6BottleImage.isDisplayed();
     }
 
-    @Step("Is Bcaas Image Displayed")
+    @Step("Is Bcaas 3 Bottles Image Displayed")
     private boolean isBcaasImageDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(bcaasCs114PgImageLocator));
         WebElement bcaasImage = driver.findElement(bcaasCs114PgImageLocator);
@@ -69,9 +69,9 @@ public class BcaasSalesFunnelPage extends BasePage {
         assertTrue(bcaaImageIsDisplayed(), "Bcaa Image Is NOT Displayed");
     }
 
-    @Step("Verify the Bcaas Image Is Displayed")
+    @Step("Verify the Bcaas 3 Bottles Image Is Displayed")
     public void verifyBcaasImageIsDisplayed() {
-        assertTrue(isBcaasImageDisplayed(), "Bcaas Image NOT Displayed");
+        assertTrue(isBcaasImageDisplayed(), "Bcaas 3 Bottles Image NOT Displayed");
     }
 
     @Step("Verify the Bcaas Page 99 Image Is Displayed")
