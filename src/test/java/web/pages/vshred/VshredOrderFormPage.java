@@ -44,7 +44,6 @@ public class VshredOrderFormPage extends BasePage {
     private By vsPhoneSelector = By.cssSelector("#phone"); // PHONE
     private By vsContactNextStepSelector = By.cssSelector("#billing-form > div.checkout-product-details > div:nth-child(3) > div > div.expand-inputs > span"); // CONTACT NEXT STEP BUTTON
     protected By vsCustomDietMonthlyContactNextStepSelector = By.cssSelector("#billing-form > div.expand-area.expand-area-1 > div.expand-inputs > span"); // CONTACT NEXT STEP BUTTON
-    //protected By vsCustomDietMonthlyContactNextStepSelector = By.xpath("//*[@id=\"billing-form\"]/div[1]/div[2]/span"); // CONTACT NEXT STEP BUTTON
 
     // ** PAYMENT INFORMATION **
     private By vsCardSelector = By.xpath("//*[@name='braintree-hosted-field-number']");

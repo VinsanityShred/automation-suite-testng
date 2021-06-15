@@ -27,7 +27,6 @@ public class VshredMemberHomePage extends BasePage {
     }
 
     //// Locators ////
-    //private By vsMemberHomeEditProfileLocator = By.cssSelector("body > div.main-container > section.py-4 > div > div > div.col-xs-8 > a");
     private By vsMemberHomeEditProfileLocator = By.xpath("/html/body/div[4]/section[1]/div/div/div[2]/a");
     private By vsMemberHomeProgramsLocator = By.xpath("//*[@id=\"menu1\"]/div/div/div[2]/div/ul/li[2]/a");
 
