@@ -32,6 +32,7 @@ public class CartPage extends BasePage {
 
     @Step("Is Cart Table displayed")
     private boolean isCartTableDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(cartPgCartTableLocator));
         WebElement cartTableDisplayed = driver.findElement(cartPgCartTableLocator);
         highlightElement(cartTableDisplayed);
         return cartTableDisplayed.isDisplayed();

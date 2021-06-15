@@ -9,6 +9,7 @@ public class VshredBigArmsProgramPage extends BaseProgramPage {
 
     public VshredBigArmsProgramPage(WebDriver driver) {
         super(driver);
+        //// Locators ////
         // Set the purchase button locator specific to this program's page
         vsClickToPurchaseLocator = By.cssSelector("body > main > section.section-10 > div > div > div > div > a");
     }

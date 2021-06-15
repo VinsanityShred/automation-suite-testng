@@ -1,4 +1,4 @@
-package web.tests.sculptnation.homePageTests;
+package web.tests.sculptnation.homePageTests.PurchaseTests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -14,17 +14,16 @@ import web.tests.BaseTest;
 @Feature("Home Page Tests")
 @Story("Supplement Purchase No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseNoUpsellTest extends BaseTest {
+public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     BcaasProductPage bcaasPg;
     CartPage cartPg;
     CheckoutPage chckPg;
-    BcaaUs120Page bcaaPg120;
-    BcaaUs121Page bcaaPg121;
-    CreatineCs122Page crtnPg122;
-    ProtienMulti123Page protnPg123;
-    Coupon218Page couponPg218;
+    BcaasSalesFunnelPage bcaasSlsFunlPg;
+    CreatineSalesFunnelPage crtnSlsFunlPg;
+    ProteinSalesFunnelPage prtnSlsFunlPg;
+    CouponSalesFunnelPage couponPg218;
     ReceiptPage RcptPg;
 
     @BeforeMethod
@@ -34,11 +33,10 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
         bcaasPg = new BcaasProductPage(driver);
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
-        bcaaPg120 = new BcaaUs120Page(driver);
-        bcaaPg121 = new BcaaUs121Page(driver);
-        crtnPg122 = new CreatineCs122Page(driver);
-        protnPg123 = new ProtienMulti123Page(driver);
-        couponPg218 = new Coupon218Page(driver);
+        bcaasSlsFunlPg = new BcaasSalesFunnelPage(driver);
+        crtnSlsFunlPg = new CreatineSalesFunnelPage(driver);
+        prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
+        couponPg218 = new CouponSalesFunnelPage(driver);
         RcptPg = new ReceiptPage(driver);
     }
 
@@ -51,30 +49,31 @@ public class SupplementPurchaseNoUpsellTest extends BaseTest {
         sNLndPg.clickOKButton();
         sNLndPg.clickProductSupplement("bcaas");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/bcaas");
-        bcaasPg.clickBuyNowButton();
-        bcaasPg.clickOneTimeDeliveryPriceLabel();
-        bcaasPg.clickAddToCartLinkByIndex(0);
+        sNLndPg.clickBuyNowButton();
+        sNLndPg.clickOneTimeDeliveryPriceLabel();
+        sNLndPg.clickAddToCartLinkByIndex(0);
         cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=bcaa-us-bcaaFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        bcaaPg120.verifyBcaaImageIsDisplayed();
-        bcaaPg120.scrollToBottomOfPageByKeys();
-        bcaaPg120.clickNoThanksLink();
-        bcaaPg121.verifyCurrentPageURLEndsWith("/bcaa-ds?f=121");
-        bcaaPg121.scrollToBottomOfPageByKeys();
-        bcaaPg121.clickNoThanksLink();
-        crtnPg122.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
-        crtnPg122.scrollToBottomOfPageByKeys();
-        crtnPg122.clickNoThanksLink();
-        protnPg123.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
-        protnPg123.scrollToBottomOfPageByKeys();
-        protnPg123.clickNoThanksLink();
+        bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-us?f=120");
+        bcaasSlsFunlPg.verifyBcaas6BottleImageIsDisplayed();
+        bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
+        bcaasSlsFunlPg.clickNoThanksRedLink();
+        bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-ds?f=121");
+        bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
+        bcaasSlsFunlPg.clickNoThanksRedLink();
+        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
+        crtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        crtnSlsFunlPg.clickNoThanksRedLink();
+        prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
+        prtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        prtnSlsFunlPg.clickNoThanksRedLink();
         couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         couponPg218.scrollToBottomOfPageByKeys();
-        couponPg218.clickNoThanksLink();
+        couponPg218.clickNoThanksRedLink();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
         RcptPg.verifyReceiptPgTotalsMatch("$46.95");

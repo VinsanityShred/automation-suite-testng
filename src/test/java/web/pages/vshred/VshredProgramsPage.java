@@ -84,6 +84,11 @@ public class VshredProgramsPage extends BasePage {
         }
     }
 
+    /*public static void verifyVSProgramsPage() throws Exception {
+        //// Verify desired program is present ////
+        vsProgramsPage.verifyBigArmsProgramIsDisplayed();
+    }*/
+
     @Step("Check: Verify Big Arms Program Link Is Displayed")
     public void verifyBigArmsProgramIsDisplayed() throws InterruptedException {
         verifyProgramIsDisplayed("Big Arms", vsProgramBigArmsLocator);
