@@ -1,5 +1,6 @@
 package web.tests.vshred;
 
+import framework.Auth;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -13,100 +14,99 @@ import web.tests.BaseTest;
 @Listeners( framework.testng.AllureScreenshots.class )
 public class VSPurchaseTest extends BaseTest {
 
-    public static final String VALID_MEMBER_USER = "kduerksen+vshred001@betabreakersbugs.com";
-    public static final String VALID_MEMBER_PASSWORD = "Password1!";
-
     private WebDriver driver;
-    VshredLoginPage vlp;
-    VshredHomePage vhp;
-    VshredMemberHomePage vmhp;
-    VshredProgramsPage vprogpg;
-    VshredBigArmsPage vbigarmspg;
-    VshredOrderFormPage vorderpg;
+
+    public static final int PLAN_BIG_ARMS = 1;
+    public static final int PLAN_FAT_LOSS_EXTREME_HIM = 2;
+    // public static final int PLAN_FAT_LOSS_EXTREME_HER = 3; // **NOTE**: post order offer one page different than above programs
 
     @BeforeMethod
     public void setUp() {
         driver = getDriver();
+
+        VshredLoginPage.createLoginPage(driver);
+        VshredHomePage.createVSHomePage(driver);
+        VshredMemberHomePage.createVSMemberHomePage(driver);
+        VshredProgramsPage.createVSProgramsPage(driver);
+        VshredBigArmsProgramPage.createVSBigArmsPage(driver);
+        VshredFatLossExtremeHimProgramPage.createVSFatLossExtremeHimPage(driver);
+        //VshredFatLossExtremeHerProgramPage.createVSFatLossExtremeHerPage(driver); // **NOTE**: post order offer one page different than above programs
+        VshredOrderFormPage.createVSOrderFormPage(driver);
+        VshredPostOrderOffer_1.createVSPostOrderOfferOne(driver);
+        VshredPostOrderOffer_2.createVSPostOrderOfferTwo(driver);
+        VshredOrderConfirmPage.createVSOrderConfirmPage(driver);
+        VshredProgramQuestionnairePage.createVSQuestionnairePage(driver);
     }
 
-    @Description("Verify Purchase New Plan")
-    @Test(priority = 1)
-    public void purchaseNewPlanTest() throws Exception {
+    public void purchaseNewPlanTest(int aPlan) throws Exception {
         // Test purchase of new plan (TT-46)
         // Expected result: Login and plan purchase successful
-        createAndVerifyLoginPage();
-        loginUserPassword(VALID_MEMBER_USER, VALID_MEMBER_PASSWORD);
-        createAndVerifyMemberHomePage();
-        vmhp.clickProgramsLink();
-        createAndVerifyProgramsPage();
-        vprogpg.clickBigArmsProgram();
-        createAndVerifyBigArmsPage();
-        vbigarmspg.clickPurchaseButton();
-        createAndVerifyOrderFormPage();
-        //vorderpg.verifyProductDetailsIsDisplayed();
-        vorderpg.setContactDefaults();
-        vorderpg.clickContactNextStep();
-        vorderpg.setPaymentDefaults();
-        vorderpg.clickPaymentNextStep();
-        vorderpg.verifyOrderSummaryIsDisplayed();
-        //vorderpg.clickSubmitOrder();
+        VshredLoginPage.verifyLoginPage();
+        VshredLoginPage.loginUserPassword(Auth.validMemberUserEmail(), Auth.validMemberUserPassword());
+
+        VshredMemberHomePage.verifyVSMemberHomePage();
+        VshredMemberHomePage.vsMemberHomePage.clickProgramsLink();
+
+
+        switch (aPlan) {
+            case PLAN_BIG_ARMS:
+                VshredProgramsPage.vsProgramsPage.verifyBigArmsProgramIsDisplayed();
+                VshredProgramsPage.vsProgramsPage.clickBigArmsProgram();
+                VshredBigArmsProgramPage.verifyVSBigArmsPage();
+                VshredBigArmsProgramPage.vsBigArmsPage.clickPurchaseButton();
+                break;
+            case PLAN_FAT_LOSS_EXTREME_HIM:
+                VshredProgramsPage.vsProgramsPage.verifyFatLossExtremeHimProgramIsDisplayed();
+                VshredProgramsPage.vsProgramsPage.clickFatLossExtremeHimProgram();
+                VshredFatLossExtremeHimProgramPage.verifyVSFatLossExtremeHimPage();
+                VshredFatLossExtremeHimProgramPage.vsFatLossExtremeHimPage.clickPurchaseButton();
+                break;
+            /*case PLAN_FAT_LOSS_EXTREME_HER:  // **NOTE**: post order offer one page different than above programs
+                VshredProgramsPage.vsProgramsPage.verifyFatLossExtremeHerProgramIsDisplayed();
+                VshredProgramsPage.vsProgramsPage.clickFatLossExtremeHerProgram();
+                VshredFatLossExtremeHerProgramPage.verifyVSFatLossExtremeHerPage();
+                VshredFatLossExtremeHerProgramPage.vsFatLossExtremeHerPage.clickPurchaseButton();
+                break;*/
+            default:
+                System.out.println("VSPurchaseTest.java: purchaseNewPlanTest: Invalid plan case value " + aPlan);
+        }
+
+        VshredOrderFormPage.verifyVSOrderFormPage();
+        VshredOrderFormPage.vsOrderFormPage.completeContactInfoAndNext();
+        VshredOrderFormPage.vsOrderFormPage.completePaymentDetailsAndNext();
+        VshredOrderFormPage.vsOrderFormPage.submitOrder();
+
+        VshredPostOrderOffer_1.verifyVSPostOrderOfferOnePage();
+        VshredPostOrderOffer_1.vsPostOrderOfferOne.clickNoThanks();
+
+        VshredPostOrderOffer_2.verifyVSPostOrderOfferTwoPage();
+        VshredPostOrderOffer_2.vsPostOrderOfferTwo.clickNoThanks();
+
+        VshredOrderConfirmPage.verifyVSOrderConfirmPage();
+
+        /* // **NOTE**: Questionnaire complex, so to be executed as a separate test
+        VshredOrderConfirmPage.vsOrderConfirmPage.clickQuestionnaireButton();
+
+        VshredProgramQuestionnairePage.verifyVSQuestionnairePage();
+        VshredProgramQuestionnairePage.vsQuestionnairePage.fillInRequiredData();
+        VshredProgramQuestionnairePage.vsQuestionnairePage.agreeToTermsConditions();
+        VshredProgramQuestionnairePage.vsQuestionnairePage.clickSubmitButton();
+        */
     }
 
-
-
-    private void createAndVerifyVSHomePage() throws Exception {
-        //// Create Login Page objects to test ////
-        vhp = new VshredHomePage(driver);
-
-        //// Verify login page logo ////
-        vhp.verifyHomepageLogoIsDisplayed();
+    @Description("Verify Purchase New Big Arms Plan")
+    @Test(priority = 0)
+    public void purchaseNewBigArmsPlanTest() throws Exception {
+        purchaseNewPlanTest(PLAN_BIG_ARMS);
     }
 
-    private void createAndVerifyLoginPage() throws Exception {
-        //// Create Login Page objects to test ////
-        vlp = new VshredLoginPage(driver);
-
-        //// Verify login page logo ////
-        vlp.verifyLoginLogoIsDisplayed();
+    @Test(priority = 1)
+    public void purchaseNewFatLossHimPlanTest() throws Exception {
+        purchaseNewPlanTest(PLAN_FAT_LOSS_EXTREME_HIM);
     }
 
-    private void createAndVerifyMemberHomePage() throws Exception {
-        //// Create Member Home Page objects to test ////
-        vmhp = new VshredMemberHomePage(driver);
-
-        //// Verify member edit profile button ////
-        vmhp.verifyEditProfileIsDisplayed();
-    }
-
-    private void createAndVerifyProgramsPage() throws Exception {
-        //// Create Programs Page objects to test ////
-        vprogpg = new VshredProgramsPage(driver);
-
-        //// Verify programs page big arms option ////
-        vprogpg.verifyBigArmsProgramIsDisplayed();
-    }
-
-    private void createAndVerifyBigArmsPage() throws Exception {
-        //// Create big arms page to test ////
-        vbigarmspg = new VshredBigArmsPage(driver);
-
-        //// Verify big arms program page ////
-        vbigarmspg.verifyPurchaseButtonIsDisplayed();
-    }
-
-    private void createAndVerifyOrderFormPage() throws Exception {
-        //// Create order form page to test ////
-        vorderpg = new VshredOrderFormPage(driver);
-
-        //// Verify order form program page ////
-        vorderpg.verifyProductDetailsIsDisplayed();
-    }
-
-    private void loginUserPassword(String aUser, String aPassword) throws  Exception {
-        //// login to application ////
-        vlp.setEmailAddress(aUser);
-        vlp.setUserPassword(aPassword);
-        vlp.clickLoginButton();
-    }
-
+    /*@Test(priority = 2) // **NOTE**: post order offer one page different than above programs
+    public void purchaseNewFatLossHerPlanTest() throws Exception {
+        purchaseNewPlanTest(PLAN_FAT_LOSS_EXTREME_HER);
+    }*/
 }
