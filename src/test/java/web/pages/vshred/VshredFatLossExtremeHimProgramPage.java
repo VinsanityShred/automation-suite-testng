@@ -9,7 +9,6 @@ public class VshredFatLossExtremeHimProgramPage extends BaseProgramPage {
 
     public VshredFatLossExtremeHimProgramPage(WebDriver driver) {
         super(driver);
-        //// Locators ////
         // Set the purchase button locator specific to this program's page
         vsClickToPurchaseLocator = By.xpath("/html/body/div[4]/section[29]/div/div/div[2]/div/a");
     }
@@ -17,6 +16,8 @@ public class VshredFatLossExtremeHimProgramPage extends BaseProgramPage {
         //// Create Login Page objects to test ////
         vsFatLossExtremeHimPage = new VshredFatLossExtremeHimProgramPage(driver);
     }
+
+    //// Locators ////
 
     //// Methods ////
 

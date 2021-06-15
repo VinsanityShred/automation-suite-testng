@@ -22,9 +22,14 @@ public class VshredPostOrderOffer_1 extends BasePage {
         vsPostOrderOfferOne = new VshredPostOrderOffer_1(driver);
     }
 
+
     //// Locators ////
-    private By vsWarnMsgSelector = By.xpath("/html/body/header/div/div/h1");
-    private By vsNoThanksLinkSelector = By.xpath("/html/body/div[2]/section[3]/div[2]/div/div[2]/div[2]/p[6]/a");
+    // STANDARD
+    private By vsStdWarnMsgSelector = By.xpath("/html/body/header/div/div/h1");
+    private By vsStdNoThanksLinkSelector = By.xpath("/html/body/div[2]/section[3]/div[2]/div/div[2]/div[2]/p[6]/a");
+    // OTHER (fat loss for her)
+    private By vsOtherWarnMsgSelector = By.xpath("/html/body/section/div/div/div[1]/h1");
+    private By vsOtherNoThanksLinkSelector = By.xpath("//*[@id=\"purchase\"]/div/div/div[1]/div/a");
 
     //// Methods ////
     @Step("Click on No Thanks message and link")
@@ -32,7 +37,7 @@ public class VshredPostOrderOffer_1 extends BasePage {
         // Page design requires a long wait for the "no thanks" link to appear
         System.out.println("Waiting 30 sec for offer one 'no thanks' link to appear");
         Util.waitMilliseconds(30000); // Give time for field to appear in DOM
-        final WebElement linkNoThanks = driver.findElement(vsNoThanksLinkSelector);
+        final WebElement linkNoThanks = driver.findElement(vsStdNoThanksLinkSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
                 withMessage("Could Not Find No Thanks Link").
@@ -43,12 +48,13 @@ public class VshredPostOrderOffer_1 extends BasePage {
         linkNoThanks.click();
     }
 
+
     //// Getters ////
     @Step("Get warning message")
     private boolean getWarningMessage(){
         System.out.println("Looking for warning message");
         Util.waitMilliseconds(1000); // Give time for field to appear in DOM
-        final WebElement warningMsg = driver.findElement(vsWarnMsgSelector);
+        final WebElement warningMsg = driver.findElement(vsStdWarnMsgSelector);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
                 withMessage("Could Not Find Warning Message").

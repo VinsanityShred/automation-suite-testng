@@ -1,5 +1,6 @@
 package web.pages.vshred;
 
+import framework.utility.Util;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +28,7 @@ public class VshredProgramsPage extends BasePage {
 
     //// Methods ////
     public void clickProgramLink(String strProgramName, By aProgramLocator) {
+        Util.waitMilliseconds(1500); // Give time for field to appear in DOM
         final WebElement programLink = driver.findElement(aProgramLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -58,6 +60,7 @@ public class VshredProgramsPage extends BasePage {
 
     //// Getters ////
     private boolean getProgram(String strProgramName, By aProgramLocator){
+        Util.waitMilliseconds(1500); // Give time for field to appear in DOM
         final WebElement programLink = driver.findElement(aProgramLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
@@ -81,11 +84,6 @@ public class VshredProgramsPage extends BasePage {
             System.out.println("Program " + strProgramName + " Is Displayed");
         }
     }
-
-    /*public static void verifyVSProgramsPage() throws Exception {
-        //// Verify desired program is present ////
-        vsProgramsPage.verifyBigArmsProgramIsDisplayed();
-    }*/
 
     @Step("Check: Verify Big Arms Program Link Is Displayed")
     public void verifyBigArmsProgramIsDisplayed() throws InterruptedException {
