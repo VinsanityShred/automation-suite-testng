@@ -1,5 +1,6 @@
-package web.tests.sculptnation.homePageTests;
+package web.tests.sculptnation.homePageTests.PurchaseTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -11,9 +12,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Creatine Fruit Punch Test")
+@Story("Supplement Purchase Creatine Fruit Punch Subscription Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
+public class SupplementPurchaseCreatineFruitPunchSubscriptionTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +36,9 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
         prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
     }
 
-    @Description("Verify Creatine Fruit Punch supplement purchase")
-    @Test()//UUID=17E9586F-D713-4E91-ADEF-FE24D7297987
-    public void purchaseCreatineFruitPunchSupplement() throws Exception {
+    @Description("Verify Creatine Fruit Punch supplement Subscription purchase")
+    @Test()//UUID=1E7F6100-2E28-4AE1-A35B-AC420E845D43
+    public void purchaseCreatineFruitPunchSupplementSubscription() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -45,29 +46,25 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
         sNLndPg.clickProductSupplement("creatine");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/creatine");
         sNLndPg.clickBuyNowButton();
-        sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(0);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=creatine-us-creatineFunnel");
+        sNLndPg.clickSubscribeNowButton();
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=bcaa-cs-creatineFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-us?f=112");
-        crtnSlsFunlPg.verifyCreatineHeaderTextIsAMatch();
-        crtnSlsFunlPg.scrollToBottomOfPageByKeys();
-        crtnSlsFunlPg.clickYesUpgradeButton();
+        bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-cs?f=114");
         bcaasSlsFunlPg.verifyBcaasImageIsDisplayed();
         bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
-        bcaasSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        bcaasSlsFunlPg.clickAddToCartLinkByIndex(0);
+        bcaasSlsFunlPg.pageDownByKeys();
+        bcaasSlsFunlPg.clickSubscribeNowButton();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
         prtnSlsFunlPg.verifyProteinChocolateImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
-        prtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prtnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prtnSlsFunlPg.pageUpByKeys();
+        prtnSlsFunlPg.clickSubscribeNowButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$274.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$113.95");
     }
 }

@@ -1,4 +1,4 @@
-package web.tests.sculptnation.homePageTests;
+package web.tests.sculptnation.homePageTests.PurchaseTests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -11,16 +11,16 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Burn Evolved Test")
+@Story("Supplement Purchase Turmeric Black Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
+public class SupplementPurchaseTurmericBlackTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
-    BurnSalesFunnelPage burnSlsFunlPg;
     TurmericSalesFunnelPage trmrcSlsFunlPg;
+    BurnSalesFunnelPage burnSlsFunlPg;
     CouponSalesFunnelPage cupnSlsFunlPg;
 
     @BeforeMethod
@@ -30,58 +30,56 @@ public class SupplementPurchaseBurnEvolvedTest extends BaseTest {
         cartPg = new CartPage(driver);
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
-        burnSlsFunlPg = new BurnSalesFunnelPage(driver);
         trmrcSlsFunlPg = new TurmericSalesFunnelPage(driver);
+        burnSlsFunlPg = new BurnSalesFunnelPage(driver);
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Burn Evolved supplement")
-    @Test()//UUID=6726E6FC-9718-4DDF-BA2F-8A3C17944AB7
-    public void purchaseBurnEvolvedSupplement() throws Exception {
+    @Description("Verify Turmeric Black supplement purchase")
+    @Test()//UUID=E387AEF7-5A2E-4FA1-8894-38AF33D1B07D
+    public void purchaseTurmericBlackSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
-        sNLndPg.clickProductSupplement("burn-evolved");
-        sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-evolved");
+        sNLndPg.scrollToBottomOfPageByKeys();
+        sNLndPg.clickProductSupplement("turmeric-black");
+        sNLndPg.verifyCurrentPageURLEndsWith("/products/turmeric-black");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickSpeedUpMyMetabolismLinkByIndex(0);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-us-burnFunnel");
+        sNLndPg.clickAddToCartLinkByIndex(0);
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=turmeric-us-turmericFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/fl-burn-burn-lg-us-v2?f=34");
-        burnSlsFunlPg.verifyBurnUpsellVideoIsDisplayed();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-us?f=67");
+        trmrcSlsFunlPg.verifyTurmericUsPg67VideoVideoIsDisplayed();
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickYesUpgradeButton();
-        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-ds?f=35");
-        burnSlsFunlPg.verifyBurnDownsellVideoIsDisplayed();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        sNLndPg.clickCopyRightLogo();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickYesUpgradeButton();
-        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v1?f=36");
-        burnSlsFunlPg.verifyBurnCross2VideoIsDisplayed();
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.clickYesUpgradeButton();
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v5?f=69");
+        burnSlsFunlPg.verifyBurnLgCs1V5Pg69VideoIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        burnSlsFunlPg.clickAddToCartLinkByIndex(0);
-        trmrcSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=37");
-        trmrcSlsFunlPg.verifyTurmericCsVsPgVideoIsDisplayed();
-        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
+        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-pm-cs2-v4?f=70");
+        burnSlsFunlPg.verifyBurnPmCs2V4Page70VideoIsDisplayed();
+        burnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        trmrcSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        trmrcSlsFunlPg.clickAddToCartLinkByIndex(0);
+        burnSlsFunlPg.pageDownByKeys();
+        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        burnSlsFunlPg.clickAddToCartLinkByIndex(0);
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
+        cupnSlsFunlPg.verifyCouponGreensV2Pg217ImageIsDisplayed();
+        cupnSlsFunlPg.pageDownByKeys();
         cupnSlsFunlPg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$411.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
     }
 }
