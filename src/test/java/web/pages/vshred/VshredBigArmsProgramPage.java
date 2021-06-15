@@ -33,4 +33,8 @@ public class VshredBigArmsProgramPage extends BaseProgramPage {
     //// Getters ////
 
     //// Verifiers ////
+    public static void verifyVSBigArmsPage() throws Exception {
+        //// Verify purchase button ////
+        vsBigArmsPage.verifyPurchaseButtonIsDisplayed();
+    }
 }

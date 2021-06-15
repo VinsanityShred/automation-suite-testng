@@ -1,5 +1,6 @@
-package web.tests.sculptnation.homePageTests;
+package web.tests.sculptnation.homePageTests.PurchaseTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -12,9 +13,9 @@ import web.pages.sculptnation.productPages.BcaasProductPage;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Burn PM Test")
+@Story("Supplement Purchase Burn PM Subscription Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseBurnPmTest extends BaseTest {
+public class SupplementPurchaseBurnPmSubscriptionTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     BcaasProductPage bcaasPg;
@@ -39,8 +40,8 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
     }
 
     @Description("Verify Burn PM supplement purchase")
-    @Test()//UUID=5BC1D1F6-06FE-43B8-9417-2A99778F2B63
-    public void purchaseBurnPMSupplement() throws Exception {
+    @Test()//UUID=07AC4D28-3974-4B97-80EE-9DA70C516243
+    public void purchaseBurnPMSupplementSubscription() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -48,35 +49,30 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         sNLndPg.clickProductSupplement("burn-pm");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-pm");
         sNLndPg.clickBuyNowButton();
-        sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(0);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-pm-us-burnPMFunnel");
+        sNLndPg.clickSubscribeNowButton();
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-cs-burnPMFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-pm-us?f=101");
-        burnSlsFunlPg.verifyBurnPmIMageIsDisplayed();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickYesUpgradeButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-cs?f=103");
-        burnSlsFunlPg.verifyBurnEvolvedImageIsDisplayed();
+        burnSlsFunlPg.verifyBurnEvolved1BottleImageIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
+        burnSlsFunlPg.clickSubscribeNowButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=104");
         trmrcSlsFunlPg.verifyTurmericCs104PgVideoIsDisplayed();
         trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
-        trmrcSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        trmrcSlsFunlPg.clickAddToCartLinkByIndex(0);
+        trmrcSlsFunlPg.pageUpByKeys();
+        trmrcSlsFunlPg.clickSubscribeNowButton();
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
         cupnSlsFunlPg.scrollToBottomOfPageByKeys();
+        cupnSlsFunlPg.pageUpByKeys();
         cupnSlsFunlPg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$171.95");
     }
 }

@@ -13,14 +13,10 @@ public class VshredFatLossExtremeHimProgramPage extends BaseProgramPage {
         //vsClickToPurchaseLocator = By.cssSelector("body > div.main-container > section:nth-child(29) > div > div > div.col-sm-6.col-md-4.col-md-pull-1.col-xs-12 > div > a");
         vsClickToPurchaseLocator = By.xpath("/html/body/div[4]/section[29]/div/div/div[2]/div/a");
     }
+
     public static void createVSFatLossExtremeHimPage(WebDriver driver) {
         //// Create Login Page objects to test ////
         vsFatLossExtremeHimPage = new VshredFatLossExtremeHimProgramPage(driver);
-    }
-
-    public static void verifyVSFatLossExtremeHimPage() throws Exception {
-        //// Verify purchase button ////
-        vsFatLossExtremeHimPage.verifyPurchaseButtonIsDisplayed();
     }
 
     //// Locators ////
@@ -32,4 +28,8 @@ public class VshredFatLossExtremeHimProgramPage extends BaseProgramPage {
     //// Getters ////
 
     //// Verifiers ////
+    public static void verifyVSFatLossExtremeHimPage() throws Exception {
+        //// Verify purchase button ////
+        vsFatLossExtremeHimPage.verifyPurchaseButtonIsDisplayed();
+    }
 }

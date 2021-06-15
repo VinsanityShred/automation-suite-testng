@@ -22,11 +22,6 @@ public class VshredPostOrderOffer_1 extends BasePage {
         vsPostOrderOfferOne = new VshredPostOrderOffer_1(driver);
     }
 
-    public static void verifyVSPostOrderOfferOnePage() throws Exception {
-        //// Verify warning message is displayed ////
-        vsPostOrderOfferOne.verifyWarnMsgIsDisplayed();
-    }
-
     //// Locators ////
     // STANDARD
     private By vsStdWarnMsgSelector = By.xpath("/html/body/header/div/div/h1");
@@ -77,4 +72,10 @@ public class VshredPostOrderOffer_1 extends BasePage {
             System.out.println("Offer One Warning message Is Displayed");
         }
     }
+
+    public static void verifyVSPostOrderOfferOnePage() throws Exception {
+        //// Verify warning message is displayed ////
+        vsPostOrderOfferOne.verifyWarnMsgIsDisplayed();
+    }
+
 }

@@ -1,4 +1,4 @@
-package web.tests.sculptnation.homePageTests;
+package web.tests.sculptnation.homePageTests.PurchaseTests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -67,7 +67,7 @@ public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
         bcaasSlsFunlPg.clickNoThanksRedLink();
         crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
-        crtnSlsFunlPg.clickNoThanksLink();
+        crtnSlsFunlPg.clickNoThanksRedLink();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
         prtnSlsFunlPg.clickNoThanksRedLink();
