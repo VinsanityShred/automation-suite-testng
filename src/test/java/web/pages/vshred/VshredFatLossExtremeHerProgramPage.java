@@ -10,6 +10,7 @@ public class VshredFatLossExtremeHerProgramPage extends BaseProgramPage {
     public VshredFatLossExtremeHerProgramPage(WebDriver driver) {
         super(driver);
         // Set the purchase button locator specific to this program's page
+        //vsClickToPurchaseLocator = By.cssSelector("body > section.section-30 > div > div > p:nth-child(1) > a");
         vsClickToPurchaseLocator = By.xpath("/html/body/section[31]/div/div/p[1]/a");
     }
 
