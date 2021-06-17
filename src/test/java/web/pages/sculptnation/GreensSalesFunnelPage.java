@@ -25,9 +25,19 @@ public class GreensSalesFunnelPage extends BasePage {
     private By greensMultiCsPro154PgHeaderTextLocator = By.xpath("//*[text()='Congratulations! You’ve Just Upgraded Your Microbiome.']");
     private By grnMultEnz156PgHeaderTextLocator = By.xpath("//b[text()='Congratulations On Leveling Up Your Digestive System!']");
     private By greenMulti110PgImageLocator = By.xpath("//*[@class='col-12 col-md-4 col-lg-4 offset-lg-1']");
+    private By greens3BottlePg130ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/greens-ds/img/b-2.png?')]");
+
 
 
     //// Methods ////
+    @Step("Is Green 3 Bottle Image Page 130 Displayed")
+    private boolean isGreens130Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(greens3BottlePg130ImageLocator));
+        WebElement greens130Pg3BottleImage = driver.findElement(greens3BottlePg130ImageLocator);
+        highlightElement(greens130Pg3BottleImage);
+        return greens130Pg3BottleImage.isDisplayed();
+    }
+
     @Step("Is Green Multi Image Displayed")
     private boolean isGreenMultiImageDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(greenMulti110PgImageLocator));
@@ -88,6 +98,11 @@ public class GreensSalesFunnelPage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
+    @Step("Verify the Green Multi image Is Displayed")
+    public void verifyGreens130Pg3BottleImageIsDisplayed() {
+        assertTrue(isGreens130Pg3BottleImageDisplayed(), "Greens 3 Bottle Image Page 130 NOT Displayed");
+    }
+
     @Step("Verify the Green Multi image Is Displayed")
     public void verifyGreenMultiImageIsDisplayed() {
         assertTrue(isGreenMultiImageDisplayed(), "Green Multi Image NOT Displayed");
