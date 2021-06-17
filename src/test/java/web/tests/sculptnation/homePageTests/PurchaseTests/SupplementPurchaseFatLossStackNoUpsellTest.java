@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Fat Loss Stack Test")
+@Story("Supplement Purchase Fat Loss Stack No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseFatLossStackTest extends BaseTest {
+public class SupplementPurchaseFatLossStackNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -37,8 +37,8 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Fat Loss Stack supplement purchase")
-    @Test()//UUID=9D86E3C3-E766-4695-9223-4A16F3ADB9D5
+    @Description("Verify Fat Loss Stack supplement purchase no upsell")
+    @Test()//UUID=8805B3D5-8785-45A0-B785-F4066B04CAD5
     public void purchaseFatLossStackSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
@@ -58,23 +58,22 @@ public class SupplementPurchaseFatLossStackTest extends BaseTest {
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-us?f=109");
         burnSlsFunlPg.verifyBurnEvolved6BottleImageIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickYesUpgradeButton();
+        burnSlsFunlPg.pageUpByKeys();
+        burnSlsFunlPg.clickNoThanksRedLink();
         hghSlsFunlPg.verifyCurrentPageURLEndsWith("/hgh-cs?f=111");
         hghSlsFunlPg.verifyHghBoost6BottleImageIsDisplayed();
         hghSlsFunlPg.scrollToBottomOfPageByKeys();
-        hghSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        hghSlsFunlPg.clickAddToCartLinkByIndex(0);
-        hghSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=110");
+        hghSlsFunlPg.clickNoThanksRedLink2();
+        grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=110");
         grnsSlsFunlPg.verifyGreenMultiImageIsDisplayed();
         grnsSlsFunlPg.scrollToBottomOfPageByKeys();
-        grnsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        grnsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        grnsSlsFunlPg.clickNoThanksRedLink();
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-testboost?f=219");
         cupnSlsFunlPg.verifyTestBoostPgCouponIsDisplayed();
-        cupnSlsFunlPg.scrollToBottomOfPageByKeys();
-        cupnSlsFunlPg.clickYesUpgradeButton();
+        cupnSlsFunlPg.pageDownByKeys();
+        cupnSlsFunlPg.clickNoThanksRedLink2();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$400.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$119.95");
     }
 }

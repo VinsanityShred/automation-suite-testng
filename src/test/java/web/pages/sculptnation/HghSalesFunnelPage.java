@@ -18,7 +18,7 @@ public class HghSalesFunnelPage extends BasePage {
 
     //// Locators ////
     private By HghCsPg108ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?v=1622589211']");
-    private By hghBoostPgImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?v=1622481188']");
+    private By hghBoost6BottlePg111ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?')]");
     private By hgh116PgImageLocator = By.xpath("//*[@alt='HGH 6 Bottles']");
     private By hghVslCsPg83VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By hghVslCs87PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
@@ -48,12 +48,12 @@ public class HghSalesFunnelPage extends BasePage {
         return hgh116PgImage.isDisplayed();
     }
 
-    @Step("Is Hgh Boost Image Displayed")
-    private boolean isHghBoostImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(hghBoostPgImageLocator));
-        WebElement hghBoostImage = driver.findElement(hghBoostPgImageLocator);
-        highlightElement(hghBoostImage);
-        return hghBoostImage.isDisplayed();
+    @Step("Is Hgh Boost 6 Bottle Image Displayed")
+    private boolean isHghBoost6BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(hghBoost6BottlePg111ImageLocator));
+        WebElement hghBoost6BottleImage = driver.findElement(hghBoost6BottlePg111ImageLocator);
+        highlightElement(hghBoost6BottleImage);
+        return hghBoost6BottleImage.isDisplayed();
     }
 
     @Step("Is HGH CS Page 108 Image Displayed")
@@ -84,9 +84,9 @@ public class HghSalesFunnelPage extends BasePage {
         assertTrue(isHgh116PgImageDisplayed(), "HGH Page 116 Image NOT Displayed");
     }
 
-    @Step("Verify the Hgh Boost image Is Displayed")
-    public void verifyHghBoostImageIsDisplayed() {
-        assertTrue(isHghBoostImageDisplayed(), "Hgh Boost Image NOT Displayed");
+    @Step("Verify the Hgh Boost 6 Bottle image Is Displayed")
+    public void verifyHghBoost6BottleImageIsDisplayed() {
+        assertTrue(isHghBoost6BottleImageDisplayed(), "Hgh Boost 6 Bottle Image NOT Displayed");
     }
 
     @Step("Verify the HGH CS Page 108 Image Is Displayed")
