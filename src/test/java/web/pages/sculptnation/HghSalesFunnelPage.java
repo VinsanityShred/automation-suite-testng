@@ -19,11 +19,20 @@ public class HghSalesFunnelPage extends BasePage {
     //// Locators ////
     private By HghCsPg108ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?v=1622589211']");
     private By hghBoost6BottlePg111ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?')]");
-    private By hgh116PgImageLocator = By.xpath("//*[@alt='HGH 6 Bottles']");
+    private By hgh6BottleImage116PgImageLocator = By.xpath("//*[@alt='HGH 6 Bottles']");
     private By hghVslCsPg83VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By hghVslCs87PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
+    private By hghDs3BottlePg117ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-ds/img/b-2.png?')]");
 
     //// Methods ////
+    @Step("Is HGH 3 Bottle Image Page 117 Image Displayed")
+    private boolean isHgh3Bottle117PgImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(hghDs3BottlePg117ImageLocator));
+        WebElement hgh3Bottle117PgImage = driver.findElement(hghDs3BottlePg117ImageLocator);
+        highlightElement(hgh3Bottle117PgImage);
+        return hgh3Bottle117PgImage.isDisplayed();
+    }
+
     @Step("Is HGH VSL CS Page 87 Video Displayed")
     private boolean isHghVslCsPg87VideoDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(hghVslCs87PgVideoLocator));
@@ -40,12 +49,12 @@ public class HghSalesFunnelPage extends BasePage {
         return hghVslCsPg83Video.isDisplayed();
     }
 
-    @Step("Is HGH Page 116 Image Displayed")
-    private boolean isHgh116PgImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(hgh116PgImageLocator));
-        WebElement hgh116PgImage = driver.findElement(hgh116PgImageLocator);
-        highlightElement(hgh116PgImage);
-        return hgh116PgImage.isDisplayed();
+    @Step("Is HGH 6 Bottle Image Page 116 Image Displayed")
+    private boolean isHgh6Bottle116PgImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(hgh6BottleImage116PgImageLocator));
+        WebElement hgh6Bottle116PgImage = driver.findElement(hgh6BottleImage116PgImageLocator);
+        highlightElement(hgh6Bottle116PgImage);
+        return hgh6Bottle116PgImage.isDisplayed();
     }
 
     @Step("Is Hgh Boost 6 Bottle Image Displayed")
@@ -69,6 +78,11 @@ public class HghSalesFunnelPage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
+    @Step("Verify the HGH 3 Bottle Page 117 Image Is Displayed")
+    public void verifyHgh3BottlePg117ImageIsDisplayed() {
+        assertTrue(isHgh3Bottle117PgImageDisplayed(), "HGH 3 Bottle Page 117 Image NOT Displayed");
+    }
+
     @Step("Verify the HGH VSL CS Page 87 Video Is Displayed")
     public void verifyHghVslCsPg87VideoIsDisplayed() {
         assertTrue(isHghVslCsPg87VideoDisplayed(), "HGH VSL CS Page 87 Video NOT Displayed");
@@ -79,9 +93,9 @@ public class HghSalesFunnelPage extends BasePage {
         assertTrue(isHghVslCsPg83VideoDisplayed(), "HGH VSL CS Page 83 Video NOT Displayed");
     }
 
-    @Step("Verify the HGH Page 116 Image Is Displayed")
-    public void verifyHghPg116ImageIsDisplayed() {
-        assertTrue(isHgh116PgImageDisplayed(), "HGH Page 116 Image NOT Displayed");
+    @Step("Verify the HGH 6 Bottle Page 116 Image Is Displayed")
+    public void verifyHgh6BottlePg116ImageIsDisplayed() {
+        assertTrue(isHgh6Bottle116PgImageDisplayed(), "HGH 6 Bottle Page 116 Image NOT Displayed");
     }
 
     @Step("Verify the Hgh Boost 6 Bottle image Is Displayed")

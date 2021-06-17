@@ -20,7 +20,7 @@ public class BurnSalesFunnelPage extends BasePage {
     //// Locators ////
     private By burnCross2PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnCross2AddToCartLocator = By.xpath("//a[text()='Add To Cart']");
-    private By burnCs118PgImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?v=1622581155']");
+    private By burnCs118PgImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?')]");
     private By burnUpsellPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnUs109Pg6BoxImageLocator = By.xpath("//*[@alt='Burn Evolved 6 Bottle']");
     private By burnCs103PgBurnEvolvedImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?v=1621872093']");
