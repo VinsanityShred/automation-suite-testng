@@ -1,5 +1,6 @@
 package web.tests.sculptnation.homePageTests.PurchaseTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -11,9 +12,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Enzymes Test")
+@Story("Supplement Purchase Enzymes No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseEnzymesTest extends BaseTest {
+public class SupplementPurchaseEnzymesNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -37,9 +38,9 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Enzymes Fruit Punch supplement purchase")
-    @Test()//UUID=FC360F50-EC3C-4623-B6B0-2BFF0EDC774C
-    public void purchaseEnzymesSupplement() throws Exception {
+    @Description("Verify Enzymes supplement No Upsell purchase")
+    @Test()//UUID=BF943BC5-B352-4BAB-99EC-44267AB1C536
+    public void purchaseEnzymesSupplementNoUpsell() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -58,25 +59,28 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         chckPg.clickPlaceOrderButton();
         enzymsSlsFunlPg.verifyCurrentPageURLEndsWith("/enzymes-us?f=157");
         enzymsSlsFunlPg.verifyEnzymesImageIsDisplayed();
-        enzymsSlsFunlPg.clickYesUpgradeButton();
+        enzymsSlsFunlPg.scrollToBottomOfPageByKeys();
+        enzymsSlsFunlPg.clickNoThanksRedLink();
+        enzymsSlsFunlPg.verifyCurrentPageURLEndsWith("/enzymes-ds?f=158");
+        enzymsSlsFunlPg.verifyEnzymes3BottleImageIsDisplayed();
+        enzymsSlsFunlPg.scrollToBottomOfPageByKeys();
+        enzymsSlsFunlPg.clickNoThanksRedLink();
         prbtcsSlsFunlPg.verifyCurrentPageURLEndsWith("/probiotics-cs-enzymes?f=155");
         prbtcsSlsFunlPg.verifyProbioticsEnzymesVideoIsDisplayed();
         prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
-        prbtcsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prbtcsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prbtcsSlsFunlPg.clickNoThanksRedLink();
         grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs-enz?f=156");
         grnsSlsFunlPg.verifyGreensMultiEnzymesHeaderTextIsDisplayed();
         grnsSlsFunlPg.scrollToBottomOfPageByKeys();
-        grnsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        grnsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        grnsSlsFunlPg.clickNoThanksRedLink();
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-turmeric?f=221");
         cupnSlsFunlPg.verifyTurmericBlackPgCouponIsDisplayed();
         cupnSlsFunlPg.scrollToBottomOfPageByKeys();
-        cupnSlsFunlPg.clickTurmericBlackYesButton();
+        cupnSlsFunlPg.pageUpByKeys();
+        cupnSlsFunlPg.clickNoThanksRedLink();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$58.95");
     }
 }
