@@ -20,7 +20,7 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
     CheckoutPage chckPg;
     ReceiptPage RcptPg;
     EnzymesSalesFunnelPage enzymsSlsFunlPg;
-    ProbioticsSalesFunnelPage prbtcsEnzyms155Pg;
+    ProbioticsSalesFunnelPage prbtcsSlsFunlPg;
     GreensSalesFunnelPage grnsSlsFunlPg;
     CouponSalesFunnelPage cupnSlsFunlPg;
 
@@ -32,7 +32,7 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         chckPg = new CheckoutPage(driver);
         RcptPg = new ReceiptPage(driver);
         enzymsSlsFunlPg = new EnzymesSalesFunnelPage(driver);
-        prbtcsEnzyms155Pg = new ProbioticsSalesFunnelPage(driver);
+        prbtcsSlsFunlPg = new ProbioticsSalesFunnelPage(driver);
         grnsSlsFunlPg = new GreensSalesFunnelPage(driver);
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
@@ -42,6 +42,7 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
     public void purchaseEnzymesSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.pageDownByKeys();
         sNLndPg.clickProductSupplement("enzymes");
@@ -58,13 +59,13 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         enzymsSlsFunlPg.verifyCurrentPageURLEndsWith("/enzymes-us?f=157");
         enzymsSlsFunlPg.verifyEnzymesImageIsDisplayed();
         enzymsSlsFunlPg.clickYesUpgradeButton();
-        prbtcsEnzyms155Pg.verifyCurrentPageURLEndsWith("/probiotics-cs-enzymes?f=155");
-        prbtcsEnzyms155Pg.verifyProbioticsEnzymesVideoIsDisplayed();
-        prbtcsEnzyms155Pg.scrollToBottomOfPageByKeys();
+        prbtcsSlsFunlPg.verifyCurrentPageURLEndsWith("/probiotics-cs-enzymes?f=155");
+        prbtcsSlsFunlPg.verifyProbioticsEnzymesVideoIsDisplayed();
+        prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        prbtcsEnzyms155Pg.scrollToBottomOfPageByKeys();
-        prbtcsEnzyms155Pg.clickOneTimeDeliveryPriceLabel();
-        prbtcsEnzyms155Pg.clickAddToCartLinkByIndex(0);
+        prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
+        prbtcsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
+        prbtcsSlsFunlPg.clickAddToCartLinkByIndex(0);
         grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs-enz?f=156");
         grnsSlsFunlPg.verifyGreensMultiEnzymesHeaderTextIsDisplayed();
         grnsSlsFunlPg.scrollToBottomOfPageByKeys();
