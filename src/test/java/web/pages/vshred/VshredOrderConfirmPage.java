@@ -29,7 +29,7 @@ public class VshredOrderConfirmPage extends BasePage {
 
     //// Locators ////
     private By vsThanksForOrderSelector = By.xpath("/html/body/div[4]/section/div/h2");
-    private By vsFillQuestionnaireSelector = By.xpath("//*[@id=\"questionnaire\"]"); // TODO: wait for visibility to move on
+    private By vsFillQuestionnaireSelector = By.xpath("//*[@id=\"questionnaire\"]");
 
     //// Methods ////
     @Step("Click on Questionnaire link")

@@ -13,7 +13,7 @@ public class VshredFatLossExtremeHerProgramPage extends BaseProgramPage {
         vsClickToPurchaseLocator = By.xpath("/html/body/section[31]/div/div/p[1]/a");
     }
 
-    public static void createVSFatLossExtremeHerPage(WebDriver driver) {
+  public static void createVSFatLossExtremeHerPage(WebDriver driver) {
         //// Create Login Page objects to test ////
         vsFatLossExtremeHerPage = new VshredFatLossExtremeHerProgramPage(driver);
     }
