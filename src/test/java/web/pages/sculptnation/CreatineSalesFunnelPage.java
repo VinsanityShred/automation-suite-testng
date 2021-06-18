@@ -18,7 +18,7 @@ public class CreatineSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By creatineCsPg88ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/21/Creatine_three/Creatine_three.png?v=1622589211']");
+    private By creatineCsPg88ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/21/Creatine_three/Creatine_three.png?')]");
     private By crtn122PgBottleImageLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
     private By creatineUsF112PgHeaderTextLocator = By.xpath("//h1[@class='text-center']");
     private By creatineVslCsV2Pg84VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
@@ -49,8 +49,8 @@ public class CreatineSalesFunnelPage extends BasePage {
         return creatineBottleImage.isDisplayed();
     }
 
-    @Step("Is Creatine Page 88 Image Displayed")
-    private boolean isCreatinePg88ImageDisplayed() {
+    @Step("Is Creatine Page 88 3 bottle Image Displayed")
+    private boolean isCreatinePg883BottleImageDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(creatineCsPg88ImageLocator));
         WebElement creatinePg88Image = driver.findElement(creatineCsPg88ImageLocator);
         highlightElement(creatinePg88Image);
@@ -89,8 +89,8 @@ public class CreatineSalesFunnelPage extends BasePage {
         assertTrue(isCreatineBottleImageDisplayed(), "Creatine Bottle Image Is NOT Displayed");
     }
 
-    @Step("Verify the Creatine Page 88 Image Is Displayed")
-    public void verifyCreatinePg88ImageIsDisplayed() {
-        assertTrue(isCreatinePg88ImageDisplayed(), "Creatine Page 88 Image NOT Displayed");
+    @Step("Verify the Creatine Page 88 3 Bottle Image Is Displayed")
+    public void verifyCreatine88Pg3BottleImageIsDisplayed() {
+        assertTrue(isCreatinePg883BottleImageDisplayed(), "Creatine Page 88 3 Bottle Image NOT Displayed");
     }
 }

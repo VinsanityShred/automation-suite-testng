@@ -35,11 +35,20 @@ public class BasePage {
     private By subscribeNowButtonLocator = By.xpath("//*[text()='Subscribe Now']");
     private By noThanksRedLinkLocator = By.xpath("//*[contains(text(),'No thanks')]");
     private By noThanksRedLinkLocator2 = By.xpath("//*[contains(text(),'No Thanks')]");
+    private By iUnderstandLinkLocator = By.xpath("//*[contains(text(),'I understand that this is my only opportunity')]");
 
     //// Methods ////
+    @Step("Click the I understand that this is my only opportunity...")
+    public void clickIUnderstandLink() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(iUnderstandLinkLocator));
+        WebElement iUnderstandLink = driver.findElement(iUnderstandLinkLocator);
+        highlightElement(iUnderstandLink);
+        iUnderstandLink.click();
+    }
+
     @Step("Click the No Thanks Red link")
     public void clickNoThanksRedLink2() {
-        driver.findElement(By.xpath("//*[contains(text(),'No Thanks')]")).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(noThanksRedLinkLocator2));
         WebElement noThanksRedLink2 = driver.findElement(noThanksRedLinkLocator2);
         highlightElement(noThanksRedLink2);
         noThanksRedLink2.click();
@@ -47,7 +56,7 @@ public class BasePage {
 
     @Step("Click the No thanks Red link")
     public void clickNoThanksRedLink() {
-        driver.findElement(By.xpath("//*[contains(text(),'No thanks')]")).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(noThanksRedLinkLocator));
         WebElement noThanksRedLink = driver.findElement(noThanksRedLinkLocator);
         highlightElement(noThanksRedLink);
         noThanksRedLink.click();
