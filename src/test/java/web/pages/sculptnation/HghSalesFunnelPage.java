@@ -20,8 +20,7 @@ public class HghSalesFunnelPage extends BasePage {
     private By HghCsPg108ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?v=1622589211']");
     private By hghBoost6BottlePg111ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?')]");
     private By hgh6BottleImage116PgImageLocator = By.xpath("//*[@alt='HGH 6 Bottles']");
-    private By hghVslCsPg83VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-    private By hghVslCs87PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
+    private By hghVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By hghDs3BottlePg117ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-ds/img/b-2.png?')]");
 
     //// Methods ////
@@ -35,16 +34,16 @@ public class HghSalesFunnelPage extends BasePage {
 
     @Step("Is HGH VSL CS Page 87 Video Displayed")
     private boolean isHghVslCsPg87VideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(hghVslCs87PgVideoLocator));
-        WebElement hghVslCsPg87Video = driver.findElement(hghVslCs87PgVideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(hghVideoLocator));
+        WebElement hghVslCsPg87Video = driver.findElement(hghVideoLocator);
         highlightElement(hghVslCsPg87Video);
         return hghVslCsPg87Video.isDisplayed();
     }
 
     @Step("Is HGH VSL CS Page 83 Video Displayed")
     private boolean isHghVslCsPg83VideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(hghVslCsPg83VideoLocator));
-        WebElement hghVslCsPg83Video = driver.findElement(hghVslCsPg83VideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(hghVideoLocator));
+        WebElement hghVslCsPg83Video = driver.findElement(hghVideoLocator);
         highlightElement(hghVslCsPg83Video);
         return hghVslCsPg83Video.isDisplayed();
     }

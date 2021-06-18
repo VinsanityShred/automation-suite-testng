@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Muscle Building Stack Test")
+@Story("Supplement Purchase Muscle Building Stack No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
+public class SupplementPurchaseMuscleBuildingStackNoUpsell extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -37,9 +37,9 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Muscle Building Stack supplement purchase")
-    @Test()//UUID=4B01E24F-6BE1-4FCE-B988-9E55218E72F9
-    public void purchaseMuscleBuildingStackSupplement() throws Exception {
+    @Description("Verify Muscle Building Stack supplement purchase no upsell")
+    @Test()//UUID=0205052D-6496-4509-A329-0C670307D07A
+    public void purchaseMuscleBuildingStackSupplementNoUpsell() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -60,24 +60,30 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
         tstBstSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         tstBstSlsFunlPg.scrollToBottomOfPageByKeys();
-        tstBstSlsFunlPg.clickYesUpgradeButton();
-        tstBstSlsFunlPg.verifyCurrentPageURLEndsWith("/hgh-vsl-cs?f=87");
+        tstBstSlsFunlPg.clickIUnderstandLink();
+        tstBstSlsFunlPg.verifyCurrentPageURLEndsWith("/testboost-ds?f=86");
+        tstBstSlsFunlPg.verifyHghVslCsPg86VideoIsDisplayed();
+        tstBstSlsFunlPg.scrollToBottomOfPageByKeys();
+        sNLndPg.clickCopyRightLogo();
+        tstBstSlsFunlPg.scrollToBottomOfPageByKeys();
+        tstBstSlsFunlPg.clickNoThanksRedLink();
+        hghSlsFunlPg.verifyCurrentPageURLEndsWith("hgh-vsl-cs?f=87");
         hghSlsFunlPg.verifyHghVslCsPg87VideoIsDisplayed();
         hghSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
-        hghSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        hghSlsFunlPg.clickAddToCartLinkByIndex(0);
+        hghSlsFunlPg.scrollToBottomOfPageByKeys();
+        hghSlsFunlPg.clickNoThanksRedLink();
         crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=88");
         crtnSlsFunlPg.verifyCreatine88Pg3BottleImageIsDisplayed();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
-        crtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        crtnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        crtnSlsFunlPg.pageUpByKeys();
+        crtnSlsFunlPg.clickNoThanksRedLink2();
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
         cupnSlsFunlPg.pageDownByKeys();
-        cupnSlsFunlPg.clickYesUpgradeButton();
+        cupnSlsFunlPg.clickNoThanksRedLink();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$388.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$119.95");
     }
 }
