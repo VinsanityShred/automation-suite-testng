@@ -18,7 +18,7 @@ public class GreensSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By greensMultiCSPg107ImageLocator = By.xpath("//*[@class='Neuroctane 6 Bottles']");
+    private By greensMultiCSPg107ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/greens-multi-cs/img/b-1-v2.png?')]");
     private By greensPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By greensPgFlavorDropDownLocator = By.xpath("//*[@id='__BVID__13']");
     private By greensPgYesUpgradeButtonLocator = By.xpath("//*[contains(@class,'site-btn scroll') and contains(text(),'Yes! Upgrade My Order!')]");

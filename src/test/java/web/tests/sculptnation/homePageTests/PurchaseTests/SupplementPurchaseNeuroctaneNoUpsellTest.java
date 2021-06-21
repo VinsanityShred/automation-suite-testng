@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Neuroctane Test")
+@Story("Supplement Purchase Neuroctane No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseNeuroctaneTest extends BaseTest {
+public class SupplementPurchaseNeuroctaneNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +35,9 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
         hghCs108Pg = new HghSalesFunnelPage(driver);
     }
 
-    @Description("Verify Neurocatane supplement purchase")
-    @Test()//UUID=AB3EF306-BFEC-4EAE-AC34-E43BD9ED30CE
-    public void purchaseNeuroctaneSupplement() throws Exception {
+    @Description("Verify Neurocatane supplement purchase no upsell")
+    @Test()//UUID=2A33F5BF-2780-44E6-B524-7336E22E4641
+    public void purchaseNeuroctaneSupplementNoUpsell() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -57,20 +57,24 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
         nurctnSlsFunlPg.verifyCurrentPageURLEndsWith("/neuroctane-us?f=105");
         nurctnSlsFunlPg.verifyNeuroctanePg105ImageIsDisplayed();
         nurctnSlsFunlPg.scrollToBottomOfPageByKeys();
-        nurctnSlsFunlPg.clickYesUpgradeButton();
+        nurctnSlsFunlPg.pageUpByKeys();
+        nurctnSlsFunlPg.clickNoThanksRedLink();
+        nurctnSlsFunlPg.verifyCurrentPageURLEndsWith("/neuroctane-ds?f=106");
+        nurctnSlsFunlPg.verifyNeuroctane106Pg3BottleImageIsDisplayed();
+        nurctnSlsFunlPg.scrollToBottomOfPageByKeys();
+        nurctnSlsFunlPg.pageUpByKeys();
+        nurctnSlsFunlPg.clickNoThanksRedLink();
         grnsMultCs107Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=107");
         grnsMultCs107Pg.verifyGreensMultiCsPg107ImageIsDisplayed();
         grnsMultCs107Pg.scrollToBottomOfPageByKeys();
-        grnsMultCs107Pg.clickOneTimeDeliveryPriceLabel();
-        grnsMultCs107Pg.clickAddToCartLinkByIndex(0);
+        grnsMultCs107Pg.clickNoThanksRedLink();
         hghCs108Pg.verifyCurrentPageURLEndsWith("/hgh-cs?f=108");
         hghCs108Pg.verifyHghCS108Pg6BottleImageIsDisplayed();
         hghCs108Pg.scrollToBottomOfPageByKeys();
-        hghCs108Pg.clickOneTimeDeliveryPriceLabel();
-        hghCs108Pg.clickAddToCartLinkByIndex(0);
+        hghCs108Pg.pageUpByKeys();
+        hghCs108Pg.clickNoThanksRedLink2();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$300.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$58.95");
     }
-
 }
