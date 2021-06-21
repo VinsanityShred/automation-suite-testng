@@ -17,7 +17,7 @@ public class HghSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By HghCsPg108ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?v=1622589211']");
+    private By HghCsPg108ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?')]");
     private By hghBoost6BottlePg111ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/hgh-cs/img/b-4-v2.png?')]");
     private By hgh6BottleImage116PgImageLocator = By.xpath("//*[@alt='HGH 6 Bottles']");
     private By hghVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
@@ -64,12 +64,12 @@ public class HghSalesFunnelPage extends BasePage {
         return hghBoost6BottleImage.isDisplayed();
     }
 
-    @Step("Is HGH CS Page 108 Image Displayed")
-    private boolean isHghCSPg108ImageDisplayed() {
+    @Step("Is HGH CS Page 108 6 Bottle Image Displayed")
+    private boolean isHghCS108Pg6BottleImageDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(HghCsPg108ImageLocator));
-        WebElement hghCSPg108Image = driver.findElement(HghCsPg108ImageLocator);
-        highlightElement(hghCSPg108Image);
-        return hghCSPg108Image.isDisplayed();
+        WebElement hghCS108Pg6BottleImage = driver.findElement(HghCsPg108ImageLocator);
+        highlightElement(hghCS108Pg6BottleImage);
+        return hghCS108Pg6BottleImage.isDisplayed();
     }
 
     //// Setters ////
@@ -102,8 +102,8 @@ public class HghSalesFunnelPage extends BasePage {
         assertTrue(isHghBoost6BottleImageDisplayed(), "Hgh Boost 6 Bottle Image NOT Displayed");
     }
 
-    @Step("Verify the HGH CS Page 108 Image Is Displayed")
-    public void verifyHghCSPg108ImageIsDisplayed() {
-        assertTrue(isHghCSPg108ImageDisplayed(), "HGH CS Page 108 Image NOT Displayed");
+    @Step("Verify the HGH CS Page 108 6 Bottle Image Is Displayed")
+    public void verifyHghCS108Pg6BottleImageIsDisplayed() {
+        assertTrue(isHghCS108Pg6BottleImageDisplayed(), "HGH CS Page 108 6 Bottle Image NOT Displayed");
     }
 }
