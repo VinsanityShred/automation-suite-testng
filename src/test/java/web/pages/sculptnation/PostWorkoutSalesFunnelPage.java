@@ -18,15 +18,24 @@ public class PostWorkoutSalesFunnelPage extends BasePage {
 
     //// Locators ////
     private By postWorkoutCsPg76ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/post-workout-cs/img/pw_six.png?v=1622589211']");
-    private By  postWorkoutUs78PgImageLocator = By.xpath("//*[@alt='Post Workout 6 Bottles']");
+    private By  postWorkoutUs78Pg6BottleImageLocator = By.xpath("//*[@alt='Post Workout 6 Bottles']");
+    private By  postWorkoutUs79Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/post-workout-ds/img/b-2.png?')]");
 
     //// Methods ////
-    @Step("Is Post Workout Page 78 Image Displayed")
-    private boolean isPostWorkoutPg78ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(postWorkoutUs78PgImageLocator));
-        WebElement postWorkoutPg78Image = driver.findElement(postWorkoutUs78PgImageLocator);
-        highlightElement(postWorkoutPg78Image);
-        return postWorkoutPg78Image.isDisplayed();
+    @Step("Is Post Workout Page 79 3 Bottle Image Displayed")
+    private boolean isPostWorkout79Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(postWorkoutUs79Pg3BottleImageLocator));
+        WebElement postWorkout79Pg3BottleImage = driver.findElement(postWorkoutUs79Pg3BottleImageLocator);
+        highlightElement(postWorkout79Pg3BottleImage);
+        return postWorkout79Pg3BottleImage.isDisplayed();
+    }
+
+    @Step("Is Post Workout Page 78 6 Bottle Image Displayed")
+    private boolean isPostWorkout78Pg6BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(postWorkoutUs78Pg6BottleImageLocator));
+        WebElement postWorkout78Pg6BottleImage = driver.findElement(postWorkoutUs78Pg6BottleImageLocator);
+        highlightElement(postWorkout78Pg6BottleImage);
+        return postWorkout78Pg6BottleImage.isDisplayed();
     }
 
     @Step("Is Post Workout CS Page 76 Image Displayed")
@@ -42,9 +51,14 @@ public class PostWorkoutSalesFunnelPage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
-    @Step("Verify the Post Workout Page 78 Image Is Displayed")
-    public void verifyPostWorkoutPg78ImageIsDisplayed() {
-        assertTrue(isPostWorkoutPg78ImageDisplayed(), "Post Workout Page 78 Image NOT Displayed");
+    @Step("Verify the Post Workout Page 79 3 Bottle Image Is Displayed")
+    public void verifyPostWorkout79Pp3BottleImageIsDisplayed() {
+        assertTrue(isPostWorkout79Pg3BottleImageDisplayed(), "Post Workout Page 79 3 Bottle Image NOT Displayed");
+    }
+
+    @Step("Verify the Post Workout Page 78 6 Bottle Image Is Displayed")
+    public void verifyPostWorkout78Pg6BottleImageIsDisplayed() {
+        assertTrue(isPostWorkout78Pg6BottleImageDisplayed(), "Post Workout Page 78 6 Bottle Image NOT Displayed");
     }
 
     @Step("Verify the Post Workout CS Page 76 Image Is Displayed")
