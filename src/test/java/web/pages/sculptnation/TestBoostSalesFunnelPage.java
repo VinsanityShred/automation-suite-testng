@@ -20,6 +20,14 @@ public class TestBoostSalesFunnelPage extends BasePage {
     private By testBoostVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
 
     //// Methods ////
+    @Step("Is HGH DS Page 82 Video Displayed")
+    private boolean isTestBoostDsPg82VideoDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(testBoostVideoLocator));
+        WebElement hghVslCsPg82Video = driver.findElement(testBoostVideoLocator);
+        highlightElement(hghVslCsPg82Video);
+        return hghVslCsPg82Video.isDisplayed();
+    }
+
     @Step("Is HGH DS Page 86 Video Displayed")
     private boolean isTestBoostDsPg86VideoDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(testBoostVideoLocator));
@@ -49,6 +57,11 @@ public class TestBoostSalesFunnelPage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
+    @Step("Verify the Test Boost DS Page 82 Video Is Displayed")
+    public void verifyTestBoostDsPg82VideoIsDisplayed() {
+        assertTrue(isTestBoostDsPg82VideoDisplayed(), "Test Boost DS Page 82 Video NOT Displayed");
+    }
+
     @Step("Verify the Test Boost DS Page 86 Video Is Displayed")
     public void verifyHghVslCsPg86VideoIsDisplayed() {
         assertTrue(isTestBoostDsPg86VideoDisplayed(), "Test Boost DS Page 86 Video NOT Displayed");
