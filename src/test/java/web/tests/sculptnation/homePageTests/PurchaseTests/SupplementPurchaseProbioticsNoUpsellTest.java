@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Probiotics Test")
+@Story("Supplement Purchase Probiotics No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseProbioticsTest extends BaseTest {
+public class SupplementPurchaseProbioticsNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -38,7 +38,7 @@ public class SupplementPurchaseProbioticsTest extends BaseTest {
     }
 
     @Description("Verify Probiotics supplement purchase")
-    @Test()//UUID=3783AFE5-31D8-480E-B431-112184EFA933
+    @Test()//UUID=47505A3F-72D9-4292-9B77-0D285ACD470A
     public void purchaseProbioticsSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
@@ -58,25 +58,28 @@ public class SupplementPurchaseProbioticsTest extends BaseTest {
         chckPg.clickPlaceOrderButton();
         prbtcsSlsFunlPg.verifyCurrentPageURLEndsWith("/probiotics-us?f=159");
         prbtcsSlsFunlPg.verifyProbioticsUs159Pg6BottleImageIsDisplayed();
-        prbtcsSlsFunlPg.clickYesUpgradeButton();
+        prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
+        prbtcsSlsFunlPg.clickNoThanksRedLink2();
+        prbtcsSlsFunlPg.verifyCurrentPageURLEndsWith("/probiotics-ds?f=160");
+        prbtcsSlsFunlPg.verifyProbioticsUs160Pg3BottleImageIsDisplayed();
+        prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
+        prbtcsSlsFunlPg.clickNoThanksRedLink2();
         enzymsCsPrbtcs152Pg.verifyCurrentPageURLEndsWith("/enzymes-cs-probiotics?f=152");
         enzymsCsPrbtcs152Pg.verifyEnzymesCsProbioticsPg152VideoIsDisplayed();
         enzymsCsPrbtcs152Pg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         enzymsCsPrbtcs152Pg.pageDownByKeys();
-        enzymsCsPrbtcs152Pg.clickOneTimeDeliveryPriceLabel();
-        enzymsCsPrbtcs152Pg.clickAddToCartLinkByIndex(0);
+        enzymsCsPrbtcs152Pg.clickNoThanksRedLink();
         grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs-pro?f=154");
         grnsSlsFunlPg.verifyGreensPg154HeaderTextIsDisplayed();
         grnsSlsFunlPg.scrollToBottomOfPageByKeys();
-        grnsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        grnsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        grnsSlsFunlPg.clickNoThanksRedLink();
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-turmeric?f=221");
         cupnSlsFunlPg.verifyTurmericBlackPgCouponIsDisplayed();
         cupnSlsFunlPg.pageDownByKeys();
-        cupnSlsFunlPg.clickYesUpgradeButton();
+        cupnSlsFunlPg.clickNoThanksRedLink();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$58.95");
     }
 }
