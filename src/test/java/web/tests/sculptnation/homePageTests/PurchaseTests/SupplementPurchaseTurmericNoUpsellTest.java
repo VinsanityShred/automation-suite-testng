@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Turmeric Black Test")
+@Story("Supplement Purchase Turmeric Black No Upsell Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseTurmericBlackTest extends BaseTest {
+public class SupplementPurchaseTurmericNoUpsellTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +35,9 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Turmeric Black supplement purchase")
-    @Test()//UUID=E387AEF7-5A2E-4FA1-8894-38AF33D1B07D
-    public void purchaseTurmericBlackSupplement() throws Exception {
+    @Description("Verify Turmeric Black supplement purchase no upsell")
+    @Test()//UUID=50E53F72-ADA2-440E-80E5-96BBA920380E
+    public void purchaseTurmericBlackSupplementNoUpsell() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -59,27 +59,32 @@ public class SupplementPurchaseTurmericBlackTest extends BaseTest {
         trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
-        trmrcSlsFunlPg.clickYesUpgradeButton();
+        trmrcSlsFunlPg.pageUpByKeys();
+        trmrcSlsFunlPg.clickNoThanksRedLink();
+        trmrcSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-ds?f=68");
+        trmrcSlsFunlPg.verifyTurmericUs68Pg3BottleImageIsDisplayed();
+        trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
+        trmrcSlsFunlPg.pageUpByKeys();
+        trmrcSlsFunlPg.clickNoThanksRedLink();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v5?f=69");
         burnSlsFunlPg.verifyBurnLgCs1V5Pg69VideoIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(0);
+        burnSlsFunlPg.pageUpByKeys();
+        burnSlsFunlPg.clickNoThanksRedLink2();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-pm-cs2-v4?f=70");
         burnSlsFunlPg.verifyBurnPmCs2V4Page70VideoIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         burnSlsFunlPg.pageDownByKeys();
-        burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        burnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        burnSlsFunlPg.clickNoThanksRedLink2();
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
         cupnSlsFunlPg.verifyCouponGreensV2Pg217ImageIsDisplayed();
         cupnSlsFunlPg.pageDownByKeys();
-        cupnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        cupnSlsFunlPg.clickNoThanksRedLink();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$58.95");
     }
 }
