@@ -19,7 +19,7 @@ public class ProteinSalesFunnelPage extends BasePage {
 
     //// Locators ////
     private By proteinMultiCs80Pg3BottleImageLocator = By.xpath("//*[@alt='protein']");
-    private By proteinMultiCs100PgImageLocator = By.xpath("//*[@alt='protein']");
+    private By proteinMultiCs100Pg3BottleImageLocator = By.xpath("//*[@alt='protein']");
     private By prtnMultCs115PgChocolateImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-cs/img/b-2.png?')]");
     private By proteinMultiUsPg73ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-us/img/prod_protein_multi_6-v2.png?v=1622589211']");
     private By proteinMultiUsPg73FlavorDropDownLocator = By.xpath("//*[@id='__BVID__5']");
@@ -58,12 +58,12 @@ public class ProteinSalesFunnelPage extends BasePage {
         return proteinChocolateImage.isDisplayed();
     }
 
-    @Step("Is Protein Multi CS Page 100 Image Displayed")
-    private boolean isProteinMultiCsPg100ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(proteinMultiCs100PgImageLocator));
-        WebElement burnPg118Image = driver.findElement(proteinMultiCs100PgImageLocator);
-        highlightElement(burnPg118Image);
-        return burnPg118Image.isDisplayed();
+    @Step("Is Protein Multi CS Page 100 3 Bottle Image Displayed")
+    private boolean isProteinMultiCs100Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(proteinMultiCs100Pg3BottleImageLocator));
+        WebElement burn100Pg3BottleImage = driver.findElement(proteinMultiCs100Pg3BottleImageLocator);
+        highlightElement(burn100Pg3BottleImage);
+        return burn100Pg3BottleImage.isDisplayed();
     }
 
     @Step("Is Protein Multi CS Page 80 3 Bottle Image Displayed")
@@ -94,9 +94,9 @@ public class ProteinSalesFunnelPage extends BasePage {
         assertTrue(isProteinChocolateImageDisplayed(), "Protein Chocolate 3 Bottles Image NOT Displayed");
     }
 
-    @Step("Verify the Protein Multi CS Page 100 Image Is Displayed")
-    public void verifyProteinMultiCsPg100ImageIsDisplayed() {
-        assertTrue(isProteinMultiCsPg100ImageDisplayed(), "Protein Multi CS Page 100 Image NOT Displayed");
+    @Step("Verify the Protein Multi CS Page 100 3 Bottle Image Is Displayed")
+    public void verifyProteinMultiCs100Pg3BottleImageIsDisplayed() {
+        assertTrue(isProteinMultiCs100Pg3BottleImageDisplayed(), "Protein Multi CS Page 100 3 Bottle Image NOT Displayed");
     }
 
     @Step("Verify the Protein Multi CS Page 80 3 Bottle Image Is Displayed")
