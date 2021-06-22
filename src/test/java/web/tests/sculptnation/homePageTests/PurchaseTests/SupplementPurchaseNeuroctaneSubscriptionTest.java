@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Neuroctane Test")
+@Story("Supplement Purchase Neuroctane Subscription Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseNeuroctaneTest extends BaseTest {
+public class SupplementPurchaseNeuroctaneSubscriptionTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +35,9 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
         hghCs108Pg = new HghSalesFunnelPage(driver);
     }
 
-    @Description("Verify Neurocatane supplement purchase")
-    @Test()//UUID=AB3EF306-BFEC-4EAE-AC34-E43BD9ED30CE
-    public void purchaseNeuroctaneSupplement() throws Exception {
+    @Description("Verify Neurocatane supplement purchase subscription ")
+    @Test()//UUID=7C323814-9828-4C86-A50D-75DD425E347A
+    public void purchaseNeuroctaneSupplementSubscription() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -46,30 +46,25 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
         sNLndPg.clickProductSupplement("neuroctane");
         sNLndPg.verifyCurrentPageURLEndsWith("/products/neuroctane");
         sNLndPg.clickBuyNowButton();
-        sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(0);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=neuroctane-us-neuroctaneFunnel");
+        sNLndPg.clickSubscribeNowButton();
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=greens-multi-cs-neuroctaneFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        nurctnSlsFunlPg.verifyCurrentPageURLEndsWith("/neuroctane-us?f=105");
-        nurctnSlsFunlPg.verifyNeuroctanePg105ImageIsDisplayed();
-        nurctnSlsFunlPg.scrollToBottomOfPageByKeys();
-        nurctnSlsFunlPg.clickYesUpgradeButton();
         grnsMultCs107Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=107");
         grnsMultCs107Pg.verifyGreensMultiCsPg107ImageIsDisplayed();
         grnsMultCs107Pg.scrollToBottomOfPageByKeys();
-        grnsMultCs107Pg.clickOneTimeDeliveryPriceLabel();
-        grnsMultCs107Pg.clickAddToCartLinkByIndex(0);
+        grnsMultCs107Pg.pageUpByKeys();
+        grnsMultCs107Pg.clickSubscribeNowButton();
         hghCs108Pg.verifyCurrentPageURLEndsWith("/hgh-cs?f=108");
         hghCs108Pg.verifyHghCS108Pg6BottleImageIsDisplayed();
         hghCs108Pg.scrollToBottomOfPageByKeys();
-        hghCs108Pg.clickOneTimeDeliveryPriceLabel();
-        hghCs108Pg.clickAddToCartLinkByIndex(0);
+        hghCs108Pg.pageUpByKeys();
+        hghCs108Pg.clickSubscribeNowButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$300.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$132.95");
     }
 }
