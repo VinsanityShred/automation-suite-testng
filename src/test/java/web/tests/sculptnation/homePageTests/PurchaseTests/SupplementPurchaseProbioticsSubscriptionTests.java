@@ -40,7 +40,7 @@ public class SupplementPurchaseProbioticsSubscriptionTests extends BaseTest {
 
     @Description("Verify Probiotics supplement purchase subscription")
     @Test()//UUID=CBA28486-B6B1-4AE1-9DDE-FA37FD210C2D
-    public void purchaseProbioticsSupplement() throws Exception {
+    public void purchaseProbioticsSupplementSubscription() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();

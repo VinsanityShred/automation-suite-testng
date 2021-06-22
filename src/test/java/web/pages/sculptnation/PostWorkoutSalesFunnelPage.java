@@ -17,7 +17,7 @@ public class PostWorkoutSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By postWorkoutCsPg76ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/post-workout-cs/img/pw_six.png?v=1622589211']");
+    private By postWorkoutCs76Pg6BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/post-workout-cs/img/pw_six.png?')]");
     private By  postWorkoutUs78Pg6BottleImageLocator = By.xpath("//*[@alt='Post Workout 6 Bottles']");
     private By  postWorkoutUs79Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/post-workout-ds/img/b-2.png?')]");
 
@@ -38,12 +38,12 @@ public class PostWorkoutSalesFunnelPage extends BasePage {
         return postWorkout78Pg6BottleImage.isDisplayed();
     }
 
-    @Step("Is Post Workout CS Page 76 Image Displayed")
-    private boolean isPostWorkoutCsPg76ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(postWorkoutCsPg76ImageLocator));
-        WebElement postWorkoutCsPg76Image = driver.findElement(postWorkoutCsPg76ImageLocator);
-        highlightElement(postWorkoutCsPg76Image);
-        return postWorkoutCsPg76Image.isDisplayed();
+    @Step("Is Post Workout CS Page 76 6 Bottle Image Displayed")
+    private boolean isPostWorkoutCs76Pg6BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(postWorkoutCs76Pg6BottleImageLocator));
+        WebElement postWorkoutCs76Pg6BottleImage = driver.findElement(postWorkoutCs76Pg6BottleImageLocator);
+        highlightElement(postWorkoutCs76Pg6BottleImage);
+        return postWorkoutCs76Pg6BottleImage.isDisplayed();
     }
 
     //// Setters ////
@@ -61,8 +61,8 @@ public class PostWorkoutSalesFunnelPage extends BasePage {
         assertTrue(isPostWorkout78Pg6BottleImageDisplayed(), "Post Workout Page 78 6 Bottle Image NOT Displayed");
     }
 
-    @Step("Verify the Post Workout CS Page 76 Image Is Displayed")
-    public void verifyPostWorkoutCsPg76ImageIsDisplayed() {
-        assertTrue(isPostWorkoutCsPg76ImageDisplayed(), "Post Workout CS Page 76 Image NOT Displayed");
+    @Step("Verify the Post Workout CS Page 76 6 Bottle Image Is Displayed")
+    public void verifyPostWorkoutCs76Pg6BottleImageIsDisplayed() {
+        assertTrue(isPostWorkoutCs76Pg6BottleImageDisplayed(), "Post Workout CS Page 76 6 Bottle Image NOT Displayed");
     }
 }

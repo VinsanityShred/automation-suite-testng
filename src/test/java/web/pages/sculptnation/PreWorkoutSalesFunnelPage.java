@@ -18,7 +18,7 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By preWorkoutMultiCsPg75ImageLocator = By.xpath("//*[@alt='Pre Workout']");
+    private By preWorkoutMultiCs75Pg3BottleImageLocator = By.xpath("//*[@alt='Pre Workout']");
     private By preWorkoutMultiCs77Pg3BottleImageLocator = By.xpath("//*[@alt='Pre Workout']");
     private By preWorkoutMultiPg119PgEnzymesImageLocator = By.xpath("//*[@alt='Pre Workout']");
     private By preWorkoutMultiUs97Pg6BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/pre-workout-multi-us/img/pre-workout-multipack-6-v2.png?')]");
@@ -74,12 +74,12 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
         return preWorkout77Pg3BottleImage.isDisplayed();
     }
 
-    @Step("Is Pre-Workout Multi CS Page 75 Image Displayed")
-    private boolean isPreWorkoutPg75ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(preWorkoutMultiCsPg75ImageLocator));
-        WebElement preWorkoutPg75Image = driver.findElement(preWorkoutMultiCsPg75ImageLocator);
-        highlightElement(preWorkoutPg75Image);
-        return preWorkoutPg75Image.isDisplayed();
+    @Step("Is Pre-Workout Multi CS Page 75 3 Bottle Image Displayed")
+    private boolean isPreWorkout75Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(preWorkoutMultiCs75Pg3BottleImageLocator));
+        WebElement preWorkout75Pg3BottleImage = driver.findElement(preWorkoutMultiCs75Pg3BottleImageLocator);
+        highlightElement(preWorkout75Pg3BottleImage);
+        return preWorkout75Pg3BottleImage.isDisplayed();
     }
 
     //// Setters ////
@@ -107,8 +107,8 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
         assertTrue(isPreWorkout77Pg3BottleImageDisplayed(), "Pre-Workout Page 77 3 Bottle Image NOT Displayed");
     }
 
-    @Step("Verify the Pre-Workout Multi CS Page 75 Image Is Displayed")
-    public void verifyPreWorkoutPg75ImageIsDisplayed() {
-        assertTrue(isPreWorkoutPg75ImageDisplayed(), "Pre-Workout Multi CS Page 75 Image NOT Displayed");
+    @Step("Verify the Pre-Workout Multi CS Page 75 3 Bottle Image Is Displayed")
+    public void verifyPreWorkout75Pg3BottleImageIsDisplayed() {
+        assertTrue(isPreWorkout75Pg3BottleImageDisplayed(), "Pre-Workout Multi CS Page 75 3 Bottle Image NOT Displayed");
     }
 }
