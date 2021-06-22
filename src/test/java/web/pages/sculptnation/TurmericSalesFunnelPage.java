@@ -17,40 +17,46 @@ public class TurmericSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By turmericPg131VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-    private By turmericCs104PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-    private By TurmericCsVsPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-    private By turmericUsPg67VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
+    private By turmericVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
+    private By turmeric68Pg3BottleImageLocator = By.xpath("//*[@alt='Turmeric Black 3 Bottles']");
 
     //// Methods ////
+    @Step("Is Turmeric Black Page 68 3 Bottle Image Displayed")
+    private boolean isTurmericDs68Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(turmeric68Pg3BottleImageLocator));
+        WebElement turmericDs68Pg3BottleImage = driver.findElement(turmeric68Pg3BottleImageLocator);
+        highlightElement(turmericDs68Pg3BottleImage);
+        return turmericDs68Pg3BottleImage.isDisplayed();
+    }
+
     @Step("Is Turmeric Black Page 67 Video Displayed")
     private boolean isTurmericUsPg67VideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(turmericUsPg67VideoLocator));
-        WebElement turmericUsPg67Video = driver.findElement(turmericUsPg67VideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(turmericVideoLocator));
+        WebElement turmericUsPg67Video = driver.findElement(turmericVideoLocator);
         highlightElement(turmericUsPg67Video);
         return turmericUsPg67Video.isDisplayed();
     }
 
     @Step("Is Burn Video Displayed")
     private boolean isTurmericCsVsPgVideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(TurmericCsVsPgVideoLocator));
-        WebElement burnVideo = driver.findElement(TurmericCsVsPgVideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(turmericVideoLocator));
+        WebElement burnVideo = driver.findElement(turmericVideoLocator);
         highlightElement(burnVideo);
         return burnVideo.isDisplayed();
     }
 
     @Step("Is Burn Video Displayed")
     private boolean isTurmericCs104PgVideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(turmericCs104PgVideoLocator));
-        WebElement burnVideo = driver.findElement(turmericCs104PgVideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(turmericVideoLocator));
+        WebElement burnVideo = driver.findElement(turmericVideoLocator);
         highlightElement(burnVideo);
         return burnVideo.isDisplayed();
     }
 
     @Step("Is Greens Video Displayed")
     private boolean isTurmericPg131VideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(turmericPg131VideoLocator));
-        WebElement turmericPg131Video = driver.findElement(turmericPg131VideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(turmericVideoLocator));
+        WebElement turmericPg131Video = driver.findElement(turmericVideoLocator);
         highlightElement(turmericPg131Video);
         return turmericPg131Video.isDisplayed();
     }
@@ -60,6 +66,11 @@ public class TurmericSalesFunnelPage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
+    @Step("Verify the Turmeric Black Page 68 3 Bottle Image Is Displayed")
+    public void verifyTurmericUs68Pg3BottleImageIsDisplayed() {
+        assertTrue(isTurmericDs68Pg3BottleImageDisplayed(), "Turmeric Black Page 68 3 Bottle Image NOT Displayed");
+    }
+
     @Step("Verify the Turmeric Black Page 67 Video Is Displayed")
     public void verifyTurmericUsPg67VideoVideoIsDisplayed() {
         assertTrue(isTurmericUsPg67VideoDisplayed(), "Turmeric Black Page 67 Video NOT Displayed");
