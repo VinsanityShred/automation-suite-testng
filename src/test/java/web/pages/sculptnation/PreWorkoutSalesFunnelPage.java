@@ -21,11 +21,20 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
     private By preWorkoutMultiCsPg75ImageLocator = By.xpath("//*[@alt='Pre Workout']");
     private By preWorkoutMultiCs77Pg3BottleImageLocator = By.xpath("//*[@alt='Pre Workout']");
     private By preWorkoutMultiPg119PgEnzymesImageLocator = By.xpath("//*[@alt='Pre Workout']");
-    private By preWorkoutMultiUsPg97ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/pre-workout-multi-us/img/pre-workout-multipack-6-v2.png?v=1622589211']");
+    private By preWorkoutMultiUs97Pg6BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/pre-workout-multi-us/img/pre-workout-multipack-6-v2.png?')]");
     private By preWorkoutMultiUsPg97FlavorDropDownLocator = By.xpath("//*[@id='__BVID__7']");
     private By preWorkoutMultiUsPg97YesUpgradeButtonLocator = By.xpath("//*[contains(@class,'site-btn scroll') and contains(text(),'Yes! Upgrade My Order!')]");
+    private By preWorkoutMultiDs98Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/pre-workout-multi-ds/img/b-5-3-2-600x457.png?')]");
 
     //// Methods ////
+    @Step("Is Pre-Workout Multi DS Page 98 3 Bottle Image Displayed")
+    private boolean isPreWorkoutMultiDs98Page3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(preWorkoutMultiDs98Pg3BottleImageLocator));
+        WebElement preWorkoutMultiDs98Page3BottleImage = driver.findElement(preWorkoutMultiDs98Pg3BottleImageLocator);
+        highlightElement(preWorkoutMultiDs98Page3BottleImage);
+        return preWorkoutMultiDs98Page3BottleImage.isDisplayed();
+    }
+
     @Step("Click Yes Upgrade button")
     public void clickYesUpgradeButton() {
         WebElement yesUpgradeButton = driver.findElement(preWorkoutMultiUsPg97YesUpgradeButtonLocator);
@@ -41,12 +50,12 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
         flavorOption.selectByVisibleText(selector);
     }
 
-    @Step("Is Pre-Workout Multi US Page 97 Image Displayed")
-    private boolean isPreWorkoutMultiUsPage97ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(preWorkoutMultiUsPg97ImageLocator));
-        WebElement preWorkoutMultiUsPage97Image = driver.findElement(preWorkoutMultiUsPg97ImageLocator);
-        highlightElement(preWorkoutMultiUsPage97Image);
-        return preWorkoutMultiUsPage97Image.isDisplayed();
+    @Step("Is Pre-Workout Multi US Page 97 6 Bottle Image Displayed")
+    private boolean isPreWorkoutMultiUs97Page6BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(preWorkoutMultiUs97Pg6BottleImageLocator));
+        WebElement preWorkoutMultiUs97Page6BottleImage = driver.findElement(preWorkoutMultiUs97Pg6BottleImageLocator);
+        highlightElement(preWorkoutMultiUs97Page6BottleImage);
+        return preWorkoutMultiUs97Page6BottleImage.isDisplayed();
     }
 
     @Step("Is Pre-Workout Multi Page 119 Image Displayed")
@@ -78,9 +87,14 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
     //// Getters ////
 
     //// Verifiers ////
-    @Step("Verify the Pre-Workout Multi US Page 97 Image Is Displayed")
-    public void verifyPreWorkoutMultiUSPg97ImageIsDisplayed() {
-        assertTrue(isPreWorkoutMultiUsPage97ImageDisplayed(), "Pre-Workout Multi US Page 97 Image NOT Displayed");
+    @Step("Verify the Pre-Workout Multi US Page 98 3 Bottle Image Is Displayed")
+    public void verifyPreWorkoutMultiUS98Pg3BottleImageIsDisplayed() {
+        assertTrue(isPreWorkoutMultiDs98Page3BottleImageDisplayed(), "Pre-Workout Multi US Page 98 3 Bottle Image NOT Displayed");
+    }
+
+    @Step("Verify the Pre-Workout Multi US Page 97 6 Bottle Image Is Displayed")
+    public void verifyPreWorkoutMultiUS97Pg6BottleImageIsDisplayed() {
+        assertTrue(isPreWorkoutMultiUs97Page6BottleImageDisplayed(), "Pre-Workout Multi US Page 97 6 Bottle Image NOT Displayed");
     }
     
     @Step("Verify the Pre-Workout Multi Page 119 Image Is Displayed")

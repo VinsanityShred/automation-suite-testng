@@ -17,7 +17,7 @@ public class BcaasSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By bcaaCsPg99ImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?v=1622589211']");
+    private By bcaaCs99Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?')]");
     private By bcaasCs114PgImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?')]");
     private By bcca120PgBcaaImageLocator = By.xpath("//img[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAs - Back/BCAAs---Back.png?v=1620766109']");
     private By bccaaUs120Pg6BottleImageLocator = By.xpath("//img[contains(@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAS_six/BCAAS_six.png?'])");
@@ -46,12 +46,12 @@ public class BcaasSalesFunnelPage extends BasePage {
         return bcaasImage.isDisplayed();
     }
 
-    @Step("Is Bcaas Page 99 Image Displayed")
-    private boolean isBcaasPg99ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(bcaaCsPg99ImageLocator));
-        WebElement bcaasPg99Image = driver.findElement(bcaaCsPg99ImageLocator);
-        highlightElement(bcaasPg99Image);
-        return bcaasPg99Image.isDisplayed();
+    @Step("Is Bcaas Page 99 3 Bottle Image Displayed")
+    private boolean isBcaas99Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(bcaaCs99Pg3BottleImageLocator));
+        WebElement bcaas99Pg3BottleImage = driver.findElement(bcaaCs99Pg3BottleImageLocator);
+        highlightElement(bcaas99Pg3BottleImage);
+        return bcaas99Pg3BottleImage.isDisplayed();
     }
 
     //// Setters ////
@@ -74,8 +74,8 @@ public class BcaasSalesFunnelPage extends BasePage {
         assertTrue(isBcaasImageDisplayed(), "Bcaas 3 Bottles Image NOT Displayed");
     }
 
-    @Step("Verify the Bcaas Page 99 Image Is Displayed")
-    public void verifyBcaasPg99ImageIsDisplayed() {
-        assertTrue(isBcaasPg99ImageDisplayed(), "Bcaas Page 99 Image NOT Displayed");
+    @Step("Verify the Bcaas Page 99 3 Bottle Image Is Displayed")
+    public void verifyBcaas99Pg3BottleImageIsDisplayed() {
+        assertTrue(isBcaas99Pg3BottleImageDisplayed(), "Bcaas Page 99 3 Bottle Image NOT Displayed");
     }
 }
