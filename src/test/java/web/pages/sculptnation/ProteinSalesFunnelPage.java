@@ -24,7 +24,7 @@ public class ProteinSalesFunnelPage extends BasePage {
     private By proteinMultiUs73Pg6BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-us/img/prod_protein_multi_6-v2.png?')]");
     private By proteinMultiUsPg73FlavorDropDownLocator = By.xpath("//*[@id='__BVID__5']");
     private By proteinMultiUs74Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-ds/img/prod_protein_multi_3.png?')]");
-    private By protnPg123ChocolateBottleImageLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
+    private By protnPg123Protein3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/protein-multi-cs/img/b-2.png?')]");
 
     //// Methods ////
     @Step("Is Protein Multi DS Page 74 3 Bottle Image Displayed")
@@ -35,12 +35,12 @@ public class ProteinSalesFunnelPage extends BasePage {
         return protein74Pg3BottleImage.isDisplayed();
     }
 
-    @Step("Is Protein Multi CS Page 123 Bottle Image Displayed")
-    public boolean isProteinChocolateBottleImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(protnPg123ChocolateBottleImageLocator));
-        WebElement proteinChocolateBottleImage = driver.findElement(protnPg123ChocolateBottleImageLocator);
-        wait.until(ExpectedConditions.visibilityOfAllElements(proteinChocolateBottleImage));
-        return proteinChocolateBottleImage.isDisplayed();
+    @Step("Is Protein Multi CS Page 123 3 Bottle Image Displayed")
+    public boolean isProtein123Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(protnPg123Protein3BottleImageLocator));
+        WebElement protein123Pg3BottleImage = driver.findElement(protnPg123Protein3BottleImageLocator);
+        wait.until(ExpectedConditions.visibilityOfAllElements(protein123Pg3BottleImage));
+        return protein123Pg3BottleImage.isDisplayed();
     }
 
     @Step("Select flavor from drop down")
@@ -93,9 +93,9 @@ public class ProteinSalesFunnelPage extends BasePage {
         assertTrue(isProtein74Pg3BottleImageDisplayed(), "Protein Multi CS Page 74 3 Bottle Image Is NOT Displayed");
     }
 
-    @Step("Verify the Protein Multi CS Page 123 Bottle Image Is Displayed")
-    public void verifyProteinMultiPg123BottleImageIsDisplayed() {
-        assertTrue(isProteinChocolateBottleImageDisplayed(), "Protein Multi CS Page 123 Bottle Image Is NOT Displayed");
+    @Step("Verify the Protein Multi CS Page 123 3 Bottle Image Is Displayed")
+    public void verifyProteinMulti123Pg3BottleImageIsDisplayed() {
+        assertTrue(isProtein123Pg3BottleImageDisplayed(), "Protein Multi CS Page 123 3 Bottle Image Is NOT Displayed");
     }
 
     @Step("Verify the Protein Multi US Page 73 6 Bottle Image Is Displayed")

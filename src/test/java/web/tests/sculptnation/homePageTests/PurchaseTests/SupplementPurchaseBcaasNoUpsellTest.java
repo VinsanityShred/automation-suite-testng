@@ -66,12 +66,15 @@ public class SupplementPurchaseBcaasNoUpsellTest extends BaseTest {
         bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
         bcaasSlsFunlPg.clickNoThanksRedLink();
         crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
+        crtnSlsFunlPg.verifyCreatine122Pg3BottleImageIsDisplayed();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
         crtnSlsFunlPg.clickNoThanksRedLink();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
+        prtnSlsFunlPg.verifyProteinMulti123Pg3BottleImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
         prtnSlsFunlPg.clickNoThanksRedLink();
         couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
+        couponPg218.verifyEvolvedPgCouponIsDisplayed();
         couponPg218.scrollToBottomOfPageByKeys();
         couponPg218.clickNoThanksRedLink();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");

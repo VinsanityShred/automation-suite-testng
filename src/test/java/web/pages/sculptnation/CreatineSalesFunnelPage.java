@@ -19,7 +19,7 @@ public class CreatineSalesFunnelPage extends BasePage {
 
     //// Locators ////
     private By creatineCsPg88ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/21/Creatine_three/Creatine_three.png?')]");
-    private By crtn122PgBottleImageLocator = By.xpath("//*[text()='No Thanks, I am perfectly happy waiting to see how things go.']");
+    private By crtn122Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/21/Creatine_three/Creatine_three.png?')]");
     private By creatineUsF112PgHeaderTextLocator = By.xpath("//h1[@class='text-center']");
     private By creatineVslCsV2Pg84VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By creatineDS113Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/23/Creatine_three/Creatine_three.png?')]");
@@ -41,12 +41,12 @@ public class CreatineSalesFunnelPage extends BasePage {
         return creatineVslCsV2Pg84Video.isDisplayed();
     }
 
-    @Step("Is Creatine Bottle Image Displayed")
-    public boolean isCreatineBottleImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(crtn122PgBottleImageLocator));
-        WebElement creatineBottleImage = driver.findElement(crtn122PgBottleImageLocator);
-        wait.until(ExpectedConditions.visibilityOfAllElements(creatineBottleImage));
-        return creatineBottleImage.isDisplayed();
+    @Step("Is Creatine Page 122 3 Bottle Image Displayed")
+    public boolean isCreatine122Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(crtn122Pg3BottleImageLocator));
+        WebElement creatine122Pg3BottleImage = driver.findElement(crtn122Pg3BottleImageLocator);
+        wait.until(ExpectedConditions.visibilityOfAllElements(creatine122Pg3BottleImage));
+        return creatine122Pg3BottleImage.isDisplayed();
     }
 
     @Step("Is Creatine Page 88 3 bottle Image Displayed")
@@ -85,8 +85,8 @@ public class CreatineSalesFunnelPage extends BasePage {
     }
 
     @Step("Verify the Creatine Bottle Image Is Displayed")
-    public void verifyCreatineBottleImageIsDisplayed() {
-        assertTrue(isCreatineBottleImageDisplayed(), "Creatine Bottle Image Is NOT Displayed");
+    public void verifyCreatine122Pg3BottleImageIsDisplayed() {
+        assertTrue(isCreatine122Pg3BottleImageDisplayed(), "Creatine Page 122 3 BottleImage Is NOT Displayed");
     }
 
     @Step("Verify the Creatine Page 88 3 Bottle Image Is Displayed")

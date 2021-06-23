@@ -20,7 +20,7 @@ public class BcaasSalesFunnelPage extends BasePage {
     private By bcaaCs99Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?')]");
     private By bcaasCs114PgImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/3/BCAAs_three/BCAAs_three.png?')]");
     private By bcca120PgBcaaImageLocator = By.xpath("//img[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAs - Back/BCAAs---Back.png?v=1620766109']");
-    private By bccaaUs120Pg6BottleImageLocator = By.xpath("//img[contains(@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAS_six/BCAAS_six.png?'])");
+    private By bccaaUs120Pg6BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/6/BCAAS_six/BCAAS_six.png?')]");
 
 
     //// Methods ////

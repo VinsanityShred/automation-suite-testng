@@ -56,11 +56,11 @@ public class SupplementPurchaseBcaasSubscriptionTest extends BaseTest {
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
         crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
-        crtnSlsFunlPg.verifyCreatineBottleImageIsDisplayed();
+        crtnSlsFunlPg.verifyCreatine122Pg3BottleImageIsDisplayed();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
         crtnSlsFunlPg.clickSubscribeNowButton();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
-        prtnSlsFunlPg.verifyProteinMultiPg123BottleImageIsDisplayed();
+        prtnSlsFunlPg.verifyProteinMulti123Pg3BottleImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
         prtnSlsFunlPg.clickSubscribeNowButton();
         couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
