@@ -1,5 +1,6 @@
 package web.tests.sculptnation.homePageTests.PurchaseTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -11,9 +12,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Burn Evolved 3 Bottle Test")
+@Story("Supplement Purchase Burn Evolved 6 Bottle Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseBurnEvolved3BottleTest extends BaseTest {
+public class SupplementPurchaseBurnEvolved6BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +36,9 @@ public class SupplementPurchaseBurnEvolved3BottleTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Burn Evolved 3 bottle supplement")
-    @Test()//UUID=F24FAD60-FA9F-4A8A-B60A-4E75F553C9A4
-    public void purchaseBurnEvolved3BottleSupplement() throws Exception {
+    @Description("Verify Burn Evolved 6 bottle supplement")
+    @Test()//UUID=9F2BE9E3-3D77-462C-BCC5-601D46FF1BD9
+    public void purchaseBurnEvolved6BottleSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -46,25 +47,13 @@ public class SupplementPurchaseBurnEvolved3BottleTest extends BaseTest {
         sNLndPg.verifyCurrentPageURLEndsWith("/products/burn-evolved");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickSpeedUpMyMetabolismLinkByIndex(2);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-us-burnFunnel");
+        sNLndPg.clickSpeedUpMyMetabolismLinkByIndex(1);
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-pm-cs-burnFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/fl-burn-burn-lg-us-v2?f=34");
-        burnSlsFunlPg.verifyBurnUpsellVideoIsDisplayed();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        sNLndPg.clickCopyRightLogo();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickYesUpgradeButton();
-        burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-ds?f=35");
-        burnSlsFunlPg.verifyBurnDownsellVideoIsDisplayed();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        sNLndPg.clickCopyRightLogo();
-        burnSlsFunlPg.scrollToBottomOfPageByKeys();
-        burnSlsFunlPg.clickYesUpgradeButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-lg-cs1-v1?f=36");
         burnSlsFunlPg.verifyBurnCross2VideoIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
@@ -72,7 +61,7 @@ public class SupplementPurchaseBurnEvolved3BottleTest extends BaseTest {
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.pageUpByKeys();
         burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        burnSlsFunlPg.clickAddToCartLinkByIndex(2);
+        burnSlsFunlPg.clickAddToCartLinkByIndex(1);
         trmrcSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=37");
         trmrcSlsFunlPg.verifyTurmericCsVsPgVideoIsDisplayed();
         trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
@@ -80,12 +69,12 @@ public class SupplementPurchaseBurnEvolved3BottleTest extends BaseTest {
         trmrcSlsFunlPg.scrollToBottomOfPageByKeys();
         trmrcSlsFunlPg.pageUpByKeys();
         trmrcSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        trmrcSlsFunlPg.clickAddToCartLinkByIndex(2);
+        trmrcSlsFunlPg.clickAddToCartLinkByIndex(1);
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-greens-v2?f=217");
         cupnSlsFunlPg.pageDownByKeys();
         cupnSlsFunlPg.clickAddToCartLinkByIndex(0);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$660.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$633.95");
     }
 }
