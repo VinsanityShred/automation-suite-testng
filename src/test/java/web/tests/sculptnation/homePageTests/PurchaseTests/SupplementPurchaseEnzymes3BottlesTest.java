@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Enzymes Test")
+@Story("Supplement Purchase Enzymes 3 Bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseEnzymesTest extends BaseTest {
+public class SupplementPurchaseEnzymes3BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -38,7 +38,7 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
     }
 
     @Description("Verify Enzymes Fruit Punch supplement purchase")
-    @Test()//UUID=FC360F50-EC3C-4623-B6B0-2BFF0EDC774C
+    @Test()//UUID=8F81A34C-D7AF-4D01-AD3E-885B3ADE1754
     public void purchaseEnzymesSupplement() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
@@ -49,7 +49,7 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         sNLndPg.verifyCurrentPageURLEndsWith("/products/enzymes");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(0);
+        sNLndPg.clickAddToCartLinkByIndex(2);
         cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=enzymes-us-enzymesMiniVSLFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
@@ -64,20 +64,21 @@ public class SupplementPurchaseEnzymesTest extends BaseTest {
         prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         prbtcsSlsFunlPg.scrollToBottomOfPageByKeys();
+        prbtcsSlsFunlPg.pageUpByKeys();
         prbtcsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prbtcsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prbtcsSlsFunlPg.clickAddToCartLinkByIndex(2);
         grnsSlsFunlPg.verifyCurrentPageURLEndsWith("/greens-multi-cs-enz?f=156");
         grnsSlsFunlPg.verifyGreensMultiEnzymesHeaderTextIsDisplayed();
         grnsSlsFunlPg.scrollToBottomOfPageByKeys();
         grnsSlsFunlPg.pageUpByKeys();
         grnsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        grnsSlsFunlPg.clickAddToCartLinkByIndex(0);
+        grnsSlsFunlPg.clickAddToCartLinkByIndex(2);
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-turmeric?f=221");
         cupnSlsFunlPg.verifyTurmericBlackPgCouponIsDisplayed();
         cupnSlsFunlPg.pageDownByKeys();
         cupnSlsFunlPg.clickTurmericBlackYesButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$588.95");
     }
 }

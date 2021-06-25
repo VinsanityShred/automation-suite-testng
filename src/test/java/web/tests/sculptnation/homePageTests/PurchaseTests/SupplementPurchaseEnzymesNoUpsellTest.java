@@ -57,7 +57,7 @@ public class SupplementPurchaseEnzymesNoUpsellTest extends BaseTest {
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
         enzymsSlsFunlPg.verifyCurrentPageURLEndsWith("/enzymes-us?f=157");
-        enzymsSlsFunlPg.verifyEnzymesImageIsDisplayed();
+        enzymsSlsFunlPg.verifyEnzymes157Pg6BottleImageIsDisplayed();
         enzymsSlsFunlPg.scrollToBottomOfPageByKeys();
         enzymsSlsFunlPg.clickNoThanksRedLink();
         enzymsSlsFunlPg.verifyCurrentPageURLEndsWith("/enzymes-ds?f=158");
