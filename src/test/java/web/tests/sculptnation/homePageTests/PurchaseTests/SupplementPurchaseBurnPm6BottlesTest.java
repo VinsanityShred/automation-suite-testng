@@ -40,7 +40,7 @@ public class SupplementPurchaseBurnPm6BottlesTest extends BaseTest {
     }
 
     @Description("Verify Burn PM supplement 6 Bottles purchase")
-    @Test()//UUID=A21BC81A-6BDC-4163-B866-F45716A5A767
+    @Test()//UUID=632BDB0E-9E7F-4B98-8860-076E58C3B30A
     public void purchaseBurnPMSupplement6Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
