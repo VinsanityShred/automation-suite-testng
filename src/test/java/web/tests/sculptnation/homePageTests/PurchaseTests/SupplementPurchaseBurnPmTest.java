@@ -57,7 +57,7 @@ public class SupplementPurchaseBurnPmTest extends BaseTest {
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-pm-us?f=101");
-        burnSlsFunlPg.verifyBurnPmIMageIsDisplayed();
+        burnSlsFunlPg.verifyBurn101PgPm6BottleImageIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.clickYesUpgradeButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-cs?f=103");
