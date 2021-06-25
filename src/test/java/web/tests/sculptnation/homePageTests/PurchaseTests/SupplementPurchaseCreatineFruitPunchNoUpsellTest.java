@@ -64,12 +64,12 @@ public class SupplementPurchaseCreatineFruitPunchNoUpsellTest extends BaseTest {
         crtnSlsFunlPg.pageUpByKeys();
         crtnSlsFunlPg.clickNoThanksRedLink();
         bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-cs?f=114");
-        bcaasSlsFunlPg.verifyBcaasImageIsDisplayed();
+        bcaasSlsFunlPg.verifyBcaas114Pg3BottleImageIsDisplayed();
         bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
         bcaasSlsFunlPg.pageUpByKeys();
         bcaasSlsFunlPg.clickNoThanksRedLink2();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
-        prtnSlsFunlPg.verifyProteinChocolateImageIsDisplayed();
+        prtnSlsFunlPg.verifyProtein115Pg3BottleImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
         prtnSlsFunlPg.pageUpByKeys();
         prtnSlsFunlPg.clickNoThanksRedLink2();
