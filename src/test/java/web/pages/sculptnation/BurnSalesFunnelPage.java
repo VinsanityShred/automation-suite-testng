@@ -26,7 +26,7 @@ public class BurnSalesFunnelPage extends BasePage {
     private By burnCs103PgBurnEvolvedImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?v=1621872093']");
     private By burnCs103PgOneTimePriceLocator = By.className("au-a1-1");
     private By burnCs103PgAddToCartLocator = By.xpath("//a[text()='Speed Up My Metabolism']");
-    private By burnPm101PgBurnPmImageLocator = By.xpath("//img[@alt='Burn PM 6 Bottle']");
+    private By burnPm101Pg6BottleImageLocator = By.xpath("//img[@alt='Burn PM 6 Bottle']");
     private By burnPmCs2V4Page70VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnLgCs1V5Pg69VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnDownsellPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
@@ -82,12 +82,12 @@ public class BurnSalesFunnelPage extends BasePage {
         return burnPmCs2V4Page70Video.isDisplayed();
     }
 
-    @Step("Is Burn PM Image Displayed")
-    private boolean isBurnPmImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(burnPm101PgBurnPmImageLocator));
-        WebElement burnPmImage = driver.findElement(burnPm101PgBurnPmImageLocator);
-        highlightElement(burnPmImage);
-        return burnPmImage.isDisplayed();
+    @Step("Is Burn PM 6 Bottle Image Displayed")
+    private boolean isBurn101PgPm6BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnPm101Pg6BottleImageLocator));
+        WebElement burn101PgPm6BottleImage = driver.findElement(burnPm101Pg6BottleImageLocator);
+        highlightElement(burn101PgPm6BottleImage);
+        return burn101PgPm6BottleImage.isDisplayed();
     }
 
     @Step("Click on the Speed Up My Metabolism link")
@@ -190,8 +190,8 @@ public class BurnSalesFunnelPage extends BasePage {
     }
 
     @Step("Verify the Burn PM image Is Displayed")
-    public void verifyBurnPmIMageIsDisplayed() {
-        assertTrue(isBurnPmImageDisplayed(), "Burn PM Image NOT Displayed");
+    public void verifyBurn101PgPm6BottleImageIsDisplayed() {
+        assertTrue(isBurn101PgPm6BottleImageDisplayed(), "Burn PM 6 Bottle Image NOT Displayed");
     }
 
     @Step("Verify the Burn Evolved Image Is Displayed")
