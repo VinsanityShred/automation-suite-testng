@@ -18,20 +18,16 @@ public class BurnSalesFunnelPage extends BasePage {
     }
 
     //// Locators ////
-    private By burnCross2PgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnCross2AddToCartLocator = By.xpath("//a[text()='Add To Cart']");
     private By burnCs118PgImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?')]");
-    private By burnUpsellPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnUs109Pg6BoxImageLocator = By.xpath("//*[@alt='Burn Evolved 6 Bottle']");
-    private By burnCs103PgBurnEvolvedImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?v=1621872093']");
+    private By burnCs103PgBurnEvolvedImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?')]");
     private By burnCs103PgOneTimePriceLocator = By.className("au-a1-1");
     private By burnCs103PgAddToCartLocator = By.xpath("//a[text()='Speed Up My Metabolism']");
     private By burnPm101Pg6BottleImageLocator = By.xpath("//img[@alt='Burn PM 6 Bottle']");
-    private By burnPmCs2V4Page70VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-    private By burnLgCs1V5Pg69VideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
-    private By burnDownsellPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
+    private By burnVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By burnDownsellPgYesUpgradeButtonLocator = By.xpath("//*[@class='site-btn scroll']");
-    private By burnPm3BottleImageLocator = By.xpath("//*[@src='https://d1rolxk7wi0t82.cloudfront.net/media/offers/17/Burn PM_three/Burn-PM_three.png?v=1623083960']");
+    private By burnPm3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/media/offers/17/Burn PM_three/Burn-PM_three.png?')]");
     private By burnEvolved1BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/burn-evolved/img/be-1.png?')]");
 
     //// Methods ////
@@ -60,24 +56,24 @@ public class BurnSalesFunnelPage extends BasePage {
 
     @Step("Is Burn Video Displayed")
     private boolean isBurnDownsellVideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(burnDownsellPgVideoLocator));
-        WebElement burnVideo = driver.findElement(burnDownsellPgVideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnVideoLocator));
+        WebElement burnVideo = driver.findElement(burnVideoLocator);
         highlightElement(burnVideo);
         return burnVideo.isDisplayed();
     }
 
     @Step("Is Burn LG CS1 V5 Page 69 Video Displayed")
     private boolean isBurnLgCs1V5Pg69VideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(burnLgCs1V5Pg69VideoLocator));
-        WebElement burnLgCs1V5Pg69Video = driver.findElement(burnLgCs1V5Pg69VideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnVideoLocator));
+        WebElement burnLgCs1V5Pg69Video = driver.findElement(burnVideoLocator);
         highlightElement(burnLgCs1V5Pg69Video);
         return burnLgCs1V5Pg69Video.isDisplayed();
     }
 
     @Step("Is Burn PM CS2 V4 Page 70 Video Displayed")
     private boolean isBurnPmCs2V4Page70VideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(burnPmCs2V4Page70VideoLocator));
-        WebElement burnPmCs2V4Page70Video = driver.findElement(burnPmCs2V4Page70VideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnVideoLocator));
+        WebElement burnPmCs2V4Page70Video = driver.findElement(burnVideoLocator);
         highlightElement(burnPmCs2V4Page70Video);
         return burnPmCs2V4Page70Video.isDisplayed();
     }
@@ -127,8 +123,8 @@ public class BurnSalesFunnelPage extends BasePage {
 
     @Step("Is Burn Video Displayed")
     private boolean isBurnUpsellVideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(burnUpsellPgVideoLocator));
-        WebElement burnVideo = driver.findElement(burnUpsellPgVideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnVideoLocator));
+        WebElement burnVideo = driver.findElement(burnVideoLocator);
         highlightElement(burnVideo);
         return burnVideo.isDisplayed();
     }
@@ -153,8 +149,8 @@ public class BurnSalesFunnelPage extends BasePage {
 
     @Step("Is Burn Video Displayed")
     private boolean isBurnCross2VideoDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(burnCross2PgVideoLocator));
-        WebElement burnVideo = driver.findElement(burnCross2PgVideoLocator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burnVideoLocator));
+        WebElement burnVideo = driver.findElement(burnVideoLocator);
         highlightElement(burnVideo);
         return burnVideo.isDisplayed();
     }
