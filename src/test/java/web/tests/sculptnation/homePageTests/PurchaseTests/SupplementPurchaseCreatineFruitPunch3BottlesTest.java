@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Creatine Fruit Punch Test")
+@Story("Supplement Purchase Creatine Fruit Punch 3 Bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
+public class SupplementPurchaseCreatineFruitPunch3BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +35,9 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
         prtnSlsFunlPg = new ProteinSalesFunnelPage(driver);
     }
 
-    @Description("Verify Creatine Fruit Punch supplement purchase")
-    @Test()//UUID=17E9586F-D713-4E91-ADEF-FE24D7297987
-    public void purchaseCreatineFruitPunchSupplement() throws Exception {
+    @Description("Verify Creatine Fruit Punch supplement 3 Bottles purchase")
+    @Test()//UUID=EE2E587F-3C34-40BF-B41A-2A83FAF32F61
+    public void purchaseCreatineFruitPunchSupplement3Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -46,7 +46,7 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
         sNLndPg.verifyCurrentPageURLEndsWith("/products/creatine");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(0);
+        sNLndPg.clickAddToCartLinkByIndex(2);
         cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=creatine-us-creatineFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
@@ -63,15 +63,15 @@ public class SupplementPurchaseCreatineFruitPunchTest extends BaseTest {
         bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
         bcaasSlsFunlPg.pageUpByKeys();
         bcaasSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        bcaasSlsFunlPg.clickAddToCartLinkByIndex(0);
+        bcaasSlsFunlPg.clickAddToCartLinkByIndex(2);
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
         prtnSlsFunlPg.verifyProtein115Pg3BottleImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
         prtnSlsFunlPg.pageUpByKeys();
         prtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prtnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prtnSlsFunlPg.clickAddToCartLinkByIndex(2);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$274.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$471.95");
     }
 }

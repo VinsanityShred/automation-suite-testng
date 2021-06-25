@@ -54,12 +54,12 @@ public class SupplementPurchaseCreatineFruitPunchSubscriptionTest extends BaseTe
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
         bcaasSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-cs?f=114");
-        bcaasSlsFunlPg.verifyBcaasImageIsDisplayed();
+        bcaasSlsFunlPg.verifyBcaas114Pg3BottleImageIsDisplayed();
         bcaasSlsFunlPg.scrollToBottomOfPageByKeys();
         bcaasSlsFunlPg.pageDownByKeys();
         bcaasSlsFunlPg.clickSubscribeNowButton();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=115");
-        prtnSlsFunlPg.verifyProteinChocolateImageIsDisplayed();
+        prtnSlsFunlPg.verifyProtein115Pg3BottleImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
         prtnSlsFunlPg.pageUpByKeys();
         prtnSlsFunlPg.clickSubscribeNowButton();
