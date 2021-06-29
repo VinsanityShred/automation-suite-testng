@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Muscle Building Stack 3 Bottles Test")
+@Story("Supplement Purchase Muscle Building Stack 6 Bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseMuscleBuildingStack3BottlesTest extends BaseTest {
+public class SupplementPurchaseMuscleBuildingStack6BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -37,9 +37,9 @@ public class SupplementPurchaseMuscleBuildingStack3BottlesTest extends BaseTest 
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Muscle Building Stack 3 Bottles supplement purchase")
-    @Test()//UUID=0C986ED8-BEC3-4A20-8BE4-B4A4CBE54466
-    public void purchaseMuscleBuildingStackSupplement3Bottles() throws Exception {
+    @Description("Verify Muscle Building Stack 6 Bottles supplement purchase")
+    @Test()//UUID=EA239C1C-54FA-407A-A822-E98B5F4AA178
+    public void purchaseMuscleBuildingStackSupplement6Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -67,18 +67,18 @@ public class SupplementPurchaseMuscleBuildingStack3BottlesTest extends BaseTest 
         sNLndPg.clickCopyRightLogo();
         hghSlsFunlPg.pageDownByKeys();
         hghSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        hghSlsFunlPg.clickAddToCartLinkByIndex(2);
+        hghSlsFunlPg.clickAddToCartLinkByIndex(1);
         crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=88");
         crtnSlsFunlPg.verifyCreatine88Pg3BottleImageIsDisplayed();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
         crtnSlsFunlPg.pageUpByKeys();
         crtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        crtnSlsFunlPg.clickAddToCartLinkByIndex(2);
+        crtnSlsFunlPg.clickAddToCartLinkByIndex(1);
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
         cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$533.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$680.95");
     }
 }
