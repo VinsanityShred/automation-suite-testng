@@ -1,5 +1,6 @@
 package web.tests.sculptnation.homePageTests.PurchaseTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -11,9 +12,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Muscle Building Stack Test")
+@Story("Supplement Purchase Muscle Building Stack 3 Bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
+public class SupplementPurchaseMuscleBuildingStack3BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -37,9 +38,9 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Muscle Building Stack supplement purchase")
-    @Test()//UUID=4B01E24F-6BE1-4FCE-B988-9E55218E72F9
-    public void purchaseMuscleBuildingStackSupplement() throws Exception {
+    @Description("Verify Muscle Building Stack 3 Bottles supplement purchase")
+    @Test()//UUID=0C986ED8-BEC3-4A20-8BE4-B4A4CBE54466
+    public void purchaseMuscleBuildingStackSupplement3Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -65,19 +66,20 @@ public class SupplementPurchaseMuscleBuildingStackTest extends BaseTest {
         hghSlsFunlPg.verifyHghVslCsPg87VideoIsDisplayed();
         hghSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
+        hghSlsFunlPg.pageDownByKeys();
         hghSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        hghSlsFunlPg.clickAddToCartLinkByIndex(0);
+        hghSlsFunlPg.clickAddToCartLinkByIndex(2);
         crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=88");
         crtnSlsFunlPg.verifyCreatine88Pg3BottleImageIsDisplayed();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        crtnSlsFunlPg.pageUpByKeys();
         crtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        crtnSlsFunlPg.clickAddToCartLinkByIndex(0);
+        crtnSlsFunlPg.clickAddToCartLinkByIndex(2);
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
-        cupnSlsFunlPg.pageDownByKeys();
         cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$388.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$533.95");
     }
 }
