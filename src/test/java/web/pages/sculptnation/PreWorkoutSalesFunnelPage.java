@@ -20,7 +20,7 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
     //// Locators ////
     private By preWorkoutMultiCs75Pg3BottleImageLocator = By.xpath("//*[@alt='Pre Workout']");
     private By preWorkoutMultiCs77Pg3BottleImageLocator = By.xpath("//*[@alt='Pre Workout']");
-    private By preWorkoutMultiPg119PgEnzymesImageLocator = By.xpath("//*[@alt='Pre Workout']");
+    private By preWorkoutMultiPg1193BottlesImageLocator = By.xpath("//*[@alt='Pre Workout']");
     private By preWorkoutMultiUs97Pg6BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/pre-workout-multi-us/img/pre-workout-multipack-6-v2.png?')]");
     private By preWorkoutMultiUsPg97FlavorDropDownLocator = By.xpath("//*[@id='__BVID__7']");
     private By preWorkoutMultiUsPg97YesUpgradeButtonLocator = By.xpath("//*[contains(@class,'site-btn scroll') and contains(text(),'Yes! Upgrade My Order!')]");
@@ -58,12 +58,12 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
         return preWorkoutMultiUs97Page6BottleImage.isDisplayed();
     }
 
-    @Step("Is Pre-Workout Multi Page 119 Image Displayed")
-    private boolean isPreWorkoutMultiPg119ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(preWorkoutMultiPg119PgEnzymesImageLocator));
-        WebElement preWorkoutMultiPg119Image = driver.findElement(preWorkoutMultiPg119PgEnzymesImageLocator);
-        highlightElement(preWorkoutMultiPg119Image);
-        return preWorkoutMultiPg119Image.isDisplayed();
+    @Step("Is Pre-Workout Multi Page 119 3 Bottles Image Displayed")
+    private boolean isPreWorkoutMulti119Pg3BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(preWorkoutMultiPg1193BottlesImageLocator));
+        WebElement preWorkoutMulti119Pg3BottleImage = driver.findElement(preWorkoutMultiPg1193BottlesImageLocator);
+        highlightElement(preWorkoutMulti119Pg3BottleImage);
+        return preWorkoutMulti119Pg3BottleImage.isDisplayed();
     }
 
     @Step("Is Pre-Workout Page 77 3 Bottle Image Displayed")
@@ -97,9 +97,9 @@ public class PreWorkoutSalesFunnelPage extends BasePage {
         assertTrue(isPreWorkoutMultiUs97Page6BottleImageDisplayed(), "Pre-Workout Multi US Page 97 6 Bottle Image NOT Displayed");
     }
     
-    @Step("Verify the Pre-Workout Multi Page 119 Image Is Displayed")
-    public void verifyPreWorkoutMultiPg119ImageIsDisplayed() {
-        assertTrue(isPreWorkoutMultiPg119ImageDisplayed(), "Pre-Workout Multi Page 119 Image NOT Displayed");
+    @Step("Verify the Pre-Workout Multi Page 119 3 Bottles Image Is Displayed")
+    public void verifyPreWorkoutMulti119Pg3BottleImageIsDisplayed() {
+        assertTrue(isPreWorkoutMulti119Pg3BottleImageDisplayed(), "Pre-Workout Multi Page 119 Image NOT Displayed");
     }
 
     @Step("Verify the Pre-Workout Page 77 3 Bottle Image Is Displayed")
