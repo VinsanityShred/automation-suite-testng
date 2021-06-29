@@ -69,7 +69,7 @@ public class SupplementPurchaseHghBoostNoUpsellTest extends BaseTest {
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.clickNoThanksRedLink2();
         prWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=119");
-        prWrktSlsFunlPg.verifyPreWorkoutMultiPg119ImageIsDisplayed();
+        prWrktSlsFunlPg.verifyPreWorkoutMulti119Pg3BottleImageIsDisplayed();
         prWrktSlsFunlPg.scrollToBottomOfPageByKeys();
         prWrktSlsFunlPg.pageUpByKeys();
         prWrktSlsFunlPg.clickNoThanksRedLink2();
