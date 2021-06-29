@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Hgh Boost 3 Bottles Test")
+@Story("Supplement Purchase Hgh Boost 6 Bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseHghBoost3BottlesTest extends BaseTest {
+public class SupplementPurchaseHghBoost6BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -37,9 +37,9 @@ public class SupplementPurchaseHghBoost3BottlesTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify HGH Boost supplement 3 bottles purchase")
-    @Test()//UUID=9DF5293A-F703-4714-9F53-F02B4E12BD7A
-    public void purchaseHghBoostSupplement3Bottles() throws Exception {
+    @Description("Verify HGH Boost supplement 6 bottles purchase")
+    @Test()//UUID=378A3B35-6D99-4D2D-BCC5-BCA3FC3DAA06
+    public void purchaseHghBoostSupplement6Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -48,35 +48,30 @@ public class SupplementPurchaseHghBoost3BottlesTest extends BaseTest {
         sNLndPg.verifyCurrentPageURLEndsWith("/products/hgh-boost");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(2);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=hgh-us-hghFunnel");
+        sNLndPg.clickAddToCartLinkByIndex(1);
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=burn-cs-hghFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        hghSlsFunlPg.verifyCurrentPageURLEndsWith("/hgh-us?f=116");
-        hghSlsFunlPg.verifyHgh6BottlePg116ImageIsDisplayed();
-        hghSlsFunlPg.scrollToBottomOfPageByKeys();
-        hghSlsFunlPg.pageUpByKeys();
-        hghSlsFunlPg.clickYesUpgradeButton();
         burnSlsFunlPg.verifyCurrentPageURLEndsWith("/burn-cs?f=118");
         burnSlsFunlPg.verifyBurnPg118ImageIsDisplayed();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         burnSlsFunlPg.pageUpByKeys();
         burnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(2);
+        burnSlsFunlPg.clickSpeedUpMyMetabolismLinkByIndex(1);
         prWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=119");
         prWrktSlsFunlPg.verifyPreWorkoutMulti119Pg3BottleImageIsDisplayed();
         prWrktSlsFunlPg.scrollToBottomOfPageByKeys();
         prWrktSlsFunlPg.pageUpByKeys();
         prWrktSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prWrktSlsFunlPg.clickAddToCartLinkByIndex(2);
+        prWrktSlsFunlPg.clickAddToCartLinkByIndex(1);
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burnpm?f=220");
         cupnSlsFunlPg.verifyBurnPmCouponPg220ImageIsDisplayed();
         cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$555.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$621.95");
     }
 }
