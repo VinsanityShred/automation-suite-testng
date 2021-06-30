@@ -55,7 +55,7 @@ public class SupplementPurchaseNeuroctaneTest extends BaseTest {
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
         nurctnSlsFunlPg.verifyCurrentPageURLEndsWith("/neuroctane-us?f=105");
-        nurctnSlsFunlPg.verifyNeuroctanePg105ImageIsDisplayed();
+        nurctnSlsFunlPg.verifyNeuroctane105Pg6BottleImageIsDisplayed();
         nurctnSlsFunlPg.scrollToBottomOfPageByKeys();
         nurctnSlsFunlPg.clickYesUpgradeButton();
         grnsMultCs107Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=107");

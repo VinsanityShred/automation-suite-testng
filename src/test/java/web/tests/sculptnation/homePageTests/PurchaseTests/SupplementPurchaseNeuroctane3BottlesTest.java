@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Neuroctane No Upsell Test")
+@Story("Supplement Purchase Neuroctane 3 bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchaseNeuroctaneNoUpsellTest extends BaseTest {
+public class SupplementPurchaseNeuroctane3BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +35,9 @@ public class SupplementPurchaseNeuroctaneNoUpsellTest extends BaseTest {
         hghCs108Pg = new HghSalesFunnelPage(driver);
     }
 
-    @Description("Verify Neurocatane supplement purchase no upsell")
-    @Test()//UUID=2A33F5BF-2780-44E6-B524-7336E22E4641
-    public void purchaseNeuroctaneSupplementNoUpsell() throws Exception {
+    @Description("Verify Neurocatane 3 Bottles supplement purchase")
+    @Test()//UUID=9174B610-5E4F-4289-AF92-5CEEC2D6463B
+    public void purchaseNeuroctaneSupplement3Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -47,7 +47,7 @@ public class SupplementPurchaseNeuroctaneNoUpsellTest extends BaseTest {
         sNLndPg.verifyCurrentPageURLEndsWith("/products/neuroctane");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(0);
+        sNLndPg.clickAddToCartLinkByIndex(2);
         cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=neuroctane-us-neuroctaneFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
@@ -58,23 +58,21 @@ public class SupplementPurchaseNeuroctaneNoUpsellTest extends BaseTest {
         nurctnSlsFunlPg.verifyNeuroctane105Pg6BottleImageIsDisplayed();
         nurctnSlsFunlPg.scrollToBottomOfPageByKeys();
         nurctnSlsFunlPg.pageUpByKeys();
-        nurctnSlsFunlPg.clickNoThanksRedLink();
-        nurctnSlsFunlPg.verifyCurrentPageURLEndsWith("/neuroctane-ds?f=106");
-        nurctnSlsFunlPg.verifyNeuroctane106Pg3BottleImageIsDisplayed();
-        nurctnSlsFunlPg.scrollToBottomOfPageByKeys();
-        nurctnSlsFunlPg.pageUpByKeys();
-        nurctnSlsFunlPg.clickNoThanksRedLink();
+        nurctnSlsFunlPg.clickYesUpgradeButton();
         grnsMultCs107Pg.verifyCurrentPageURLEndsWith("/greens-multi-cs?f=107");
         grnsMultCs107Pg.verifyGreensMultiCsPg107ImageIsDisplayed();
         grnsMultCs107Pg.scrollToBottomOfPageByKeys();
-        grnsMultCs107Pg.clickNoThanksRedLink();
+        grnsMultCs107Pg.pageUpByKeys();
+        grnsMultCs107Pg.clickOneTimeDeliveryPriceLabel();
+        grnsMultCs107Pg.clickAddToCartLinkByIndex(2);
         hghCs108Pg.verifyCurrentPageURLEndsWith("/hgh-cs?f=108");
         hghCs108Pg.verifyHghCS108Pg6BottleImageIsDisplayed();
         hghCs108Pg.scrollToBottomOfPageByKeys();
         hghCs108Pg.pageUpByKeys();
-        hghCs108Pg.clickNoThanksRedLink2();
+        hghCs108Pg.clickOneTimeDeliveryPriceLabel();
+        hghCs108Pg.clickAddToCartLinkByIndex(2);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$58.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$549.95");
     }
 }
