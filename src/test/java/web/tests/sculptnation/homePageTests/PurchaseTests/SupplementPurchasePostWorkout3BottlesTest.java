@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Post Workout Test")
+@Story("Supplement Purchase Post Workout 3 Bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchasePostWorkoutTest extends BaseTest {
+public class SupplementPurchasePostWorkout3BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -35,9 +35,9 @@ public class SupplementPurchasePostWorkoutTest extends BaseTest {
         prtnMultSlsFunlPg = new ProteinSalesFunnelPage(driver);
     }
 
-    @Description("Verify Post Workout Fruit Punch supplement purchase")
-    @Test()//UUID=6BFB2B3F-6F83-4C86-AFB6-B3C7DD45115A
-    public void purchasePostWorkFruitPunchSupplement() throws Exception {
+    @Description("Verify Post Workout Fruit Punch 3 Bottles supplement purchase")
+    @Test()//UUID=DB0C8C3D-0E1D-4B85-8F10-335198DDB5A6
+    public void purchasePostWorkFruitPunchSupplement3Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -47,7 +47,7 @@ public class SupplementPurchasePostWorkoutTest extends BaseTest {
         sNLndPg.verifyCurrentPageURLEndsWith("/products/post-workout-fruit-punch");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(0);
+        sNLndPg.clickAddToCartLinkByIndex(2);
         cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=post-workout-us-postWorkoutFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
@@ -57,19 +57,22 @@ public class SupplementPurchasePostWorkoutTest extends BaseTest {
         pstWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/post-workout-us?f=78");
         pstWrktSlsFunlPg.verifyPostWorkout78Pg6BottleImageIsDisplayed();
         pstWrktSlsFunlPg.scrollToBottomOfPageByKeys();
+        pstWrktSlsFunlPg.pageUpByKeys();
         pstWrktSlsFunlPg.clickYesUpgradeButton();
         pstWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/pre-workout-multi-cs?f=77");
         prWrktSlsFunlPg.verifyPreWorkout77Pg3BottleImageIsDisplayed();
         prWrktSlsFunlPg.scrollToBottomOfPageByKeys();
+        prWrktSlsFunlPg.pageUpByKeys();
         prWrktSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prWrktSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prWrktSlsFunlPg.clickAddToCartLinkByIndex(2);
         prtnMultSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=80");
         prtnMultSlsFunlPg.verifyProteinMultiCs80Pg3BottleImageIsDisplayed();
         prtnMultSlsFunlPg.scrollToBottomOfPageByKeys();
+        prtnMultSlsFunlPg.pageUpByKeys();
         prtnMultSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prtnMultSlsFunlPg.clickAddToCartLinkByIndex(0);
+        prtnMultSlsFunlPg.clickAddToCartLinkByIndex(2);
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$274.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$471.95");
     }
 }
