@@ -18,7 +18,7 @@ public class NeuroctaneSalesFunnelPage extends BasePage {
 
     //// Locators ////
     private By nuroct132PgImageLocator = By.xpath("//*[@alt='Neuroctane']");
-    private By neuroctanePg105ImageLocator = By.xpath("//*[@alt='Neuroctane 6 Bottles']");
+    private By neuroctane105Pg6BottlesImageLocator = By.xpath("//*[@alt='Neuroctane 6 Bottles']");
     private By neuroctane106Pg3BottleImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/neuroctane-ds/img/b-2.png?')]");
 
 
@@ -31,12 +31,12 @@ public class NeuroctaneSalesFunnelPage extends BasePage {
         return neuroctane106Pg3BottleImage.isDisplayed();
     }
 
-    @Step("Is Neuroctane Page 105 Image Displayed")
-    private boolean isNeuroctanePg105ImageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(neuroctanePg105ImageLocator));
-        WebElement neuroctanePg105Image = driver.findElement(neuroctanePg105ImageLocator);
-        highlightElement(neuroctanePg105Image);
-        return neuroctanePg105Image.isDisplayed();
+    @Step("Is Neuroctane Page 105 6 Bottles Image Displayed")
+    private boolean isNeuroctane105Pg6BottleImageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(neuroctane105Pg6BottlesImageLocator));
+        WebElement neuroctane105Pg6BottleImage = driver.findElement(neuroctane105Pg6BottlesImageLocator);
+        highlightElement(neuroctane105Pg6BottleImage);
+        return neuroctane105Pg6BottleImage.isDisplayed();
     }
 
     @Step("Is Neuroctane Image Displayed")
@@ -57,9 +57,9 @@ public class NeuroctaneSalesFunnelPage extends BasePage {
         assertTrue(isNeuroctane106Pg3BottleImageDisplayed(), "Neuroctane Page 106 3 Bottle Image NOT Displayed");
     }
 
-    @Step("Verify the Neuroctane Page 105 Image Is Displayed")
-    public void verifyNeuroctanePg105ImageIsDisplayed() {
-        assertTrue(isNeuroctanePg105ImageDisplayed(), "Neuroctane Page 105 Image NOT Displayed");
+    @Step("Verify the Neuroctane Page 105 6 Bottles Image Is Displayed")
+    public void verifyNeuroctane105Pg6BottleImageIsDisplayed() {
+        assertTrue(isNeuroctane105Pg6BottleImageDisplayed(), "Neuroctane Page 105 6 Bottles Image NOT Displayed");
     }
 
     @Step("Verify the Neuroctane Image Is Displayed")
