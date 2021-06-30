@@ -11,9 +11,9 @@ import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
 @Feature("Home Page Tests")
-@Story("Supplement Purchase Pre-Workout 3 Bottles Test")
+@Story("Supplement Purchase Pre-Workout 6 Bottles Test")
 @Listeners( framework.testng.AllureScreenshots.class )
-public class SupplementPurchasePreWorkout3BottlesTest extends BaseTest {
+public class SupplementPurchasePreWorkout6BottlesTest extends BaseTest {
 
     SNLandingPage sNLndPg;
     CartPage cartPg;
@@ -37,9 +37,9 @@ public class SupplementPurchasePreWorkout3BottlesTest extends BaseTest {
         cupnSlsFunlPg = new CouponSalesFunnelPage(driver);
     }
 
-    @Description("Verify Pre-Workout supplement 3 Bottles purchase")
-    @Test()//UUID=7084DE59-16FD-4602-ADCB-C55F59818C46
-    public void purchasePreWorkoutSupplement3Bottles() throws Exception {
+    @Description("Verify Pre-Workout supplement 6 Bottles purchase")
+    @Test()//UUID=8CAACA73-60BA-4174-A0E5-0EA917D60412
+    public void purchasePreWorkoutSupplement6Bottles() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
@@ -49,36 +49,30 @@ public class SupplementPurchasePreWorkout3BottlesTest extends BaseTest {
         sNLndPg.verifyCurrentPageURLEndsWith("/products/pre-workout");
         sNLndPg.clickBuyNowButton();
         sNLndPg.clickOneTimeDeliveryPriceLabel();
-        sNLndPg.clickAddToCartLinkByIndex(2);
-        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=pre-workout-fruit-punch-us-preWorkoutFruitPunchFunnel");
+        sNLndPg.clickAddToCartLinkByIndex(1);
+        cartPg.verifyCurrentPageURLEndsWith("/cart?funnel=bcaa-cs-preWorkoutFruitPunchFunnel");
         cartPg.verifyCartTableIsDisplayed();
         cartPg.clickProceedToCheckoutButton();
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        prWrktSlsFunlPg.verifyCurrentPageURLEndsWith("/pre-workout-multi-us?f=97");
-        prWrktSlsFunlPg.verifyPreWorkoutMultiUS97Pg6BottleImageIsDisplayed();
-        prWrktSlsFunlPg.scrollToBottomOfPageByKeys();
-        prWrktSlsFunlPg.pageUpByKeys();
-        prWrktSlsFunlPg.selectFlavorFromDropDown("Peach");
-        prWrktSlsFunlPg.clickYesUpgradeButton();
         bcaaCsSlsFunlPg.verifyCurrentPageURLEndsWith("/bcaa-cs?f=99");
         bcaaCsSlsFunlPg.verifyBcaas99Pg3BottleImageIsDisplayed();
         bcaaCsSlsFunlPg.scrollToBottomOfPageByKeys();
         bcaaCsSlsFunlPg.pageUpByKeys();
         bcaaCsSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        bcaaCsSlsFunlPg.clickAddToCartLinkByIndex(2);
+        bcaaCsSlsFunlPg.clickAddToCartLinkByIndex(1);
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=100");
         prtnSlsFunlPg.verifyProteinMultiCs100Pg3BottleImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
         prtnSlsFunlPg.pageUpByKeys();
         prtnSlsFunlPg.clickOneTimeDeliveryPriceLabel();
-        prtnSlsFunlPg.clickAddToCartLinkByIndex(2);
+        prtnSlsFunlPg.clickAddToCartLinkByIndex(1);
         cupnSlsFunlPg.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         cupnSlsFunlPg.verifyBurnCouponPg218ImageIsDisplayed();
         cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$510.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$642.95");
     }
 }
