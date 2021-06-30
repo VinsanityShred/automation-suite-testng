@@ -1,6 +1,5 @@
 package web.tests.sculptnation.homePageTests.PurchaseTests;
 
-import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -57,7 +56,6 @@ public class SupplementPurchaseProbiotics3BottlesTest extends BaseTest {
         chckPg.verifyCurrentPageURLEndsWith("/checkout");
         chckPg.setCheckoutField();
         chckPg.clickPlaceOrderButton();
-        Util.waitMilliseconds(5000000);
         prbtcsSlsFunlPg.verifyCurrentPageURLEndsWith("/probiotics-us?f=159");
         prbtcsSlsFunlPg.verifyProbioticsUs159Pg6BottleImageIsDisplayed();
         prbtcsSlsFunlPg.clickYesUpgradeButton();
@@ -79,6 +77,6 @@ public class SupplementPurchaseProbiotics3BottlesTest extends BaseTest {
         cupnSlsFunlPg.clickYesUpgradeButton();
         RcptPg.verifyCurrentPageURLEndsWith("/receipt");
         RcptPg.verifyReceiptPgHeaderIsDisplayed();
-        RcptPg.verifyReceiptPgTotalsMatch("$339.95");
+        RcptPg.verifyReceiptPgTotalsMatch("$588.95");
     }
 }
