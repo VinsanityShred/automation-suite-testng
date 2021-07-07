@@ -29,6 +29,7 @@ public class BcaasNoUpsellTest extends BaseTest {
     @BeforeMethod
     public void setUp() {
         WebDriver driver = getDriver();
+        System.out.printf("Window Size: " + driver.manage().window().getSize());
         sNLndPg = new SNLandingPage(driver);
         bcaasPg = new BcaasProductPage(driver);
         cartPg = new CartPage(driver);
@@ -68,6 +69,7 @@ public class BcaasNoUpsellTest extends BaseTest {
         crtnSlsFunlPg.verifyCurrentPageURLEndsWith("/creatine-cs?f=122");
         crtnSlsFunlPg.verifyCreatine122Pg3BottleImageIsDisplayed();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
+        crtnSlsFunlPg.pageUpByKeys();
         crtnSlsFunlPg.clickNoThanksRedLink();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
         prtnSlsFunlPg.verifyProteinMulti123Pg3BottleImageIsDisplayed();

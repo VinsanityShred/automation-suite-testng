@@ -30,7 +30,7 @@ public class TermsConditionsTest extends BaseTest {
     @Test()//UUID=6BC81A7C-2672-4F45-9635-2FD92DCABE5F
     public void TermsConditionsHeadersTests() throws Exception {
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickOKButton();
         sNLndPg.clickFooterTermsConditionsLink();
         sNLndPg.verifyCurrentPageURLEndsWith("/terms-and-conditions");

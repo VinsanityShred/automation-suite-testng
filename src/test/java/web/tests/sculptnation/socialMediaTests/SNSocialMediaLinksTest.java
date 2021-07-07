@@ -39,7 +39,7 @@ public class SNSocialMediaLinksTest extends BaseTest {
     public void instagramLinkTest() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickInstagramMediaLink();
         sNLndPg.verifyInstagramLogoIsDisplayed();
         sNLndPg.driverNavigateBack();

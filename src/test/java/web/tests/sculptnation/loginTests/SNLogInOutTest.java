@@ -33,7 +33,7 @@ public class SNLogInOutTest extends BaseTest {
     public void loginLogoutTest() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.clickMyAccountLink();
         sNlp.setEmailAddress(Auth.mainUserEmail());
         sNlp.setPassword(Auth.mainUserPassword());

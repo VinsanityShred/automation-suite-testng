@@ -57,6 +57,7 @@ public class BurnEvolvedSubscriptionTest extends BaseTest {
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
         burnSlsFunlPg.scrollToBottomOfPageByKeys();
+        burnSlsFunlPg.pageUpByKeys();
         burnSlsFunlPg.clickSubscribeNowButton();
         trmrcSlsFunlPg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=37");
         trmrcSlsFunlPg.verifyTurmericCsVsPgVideoIsDisplayed();

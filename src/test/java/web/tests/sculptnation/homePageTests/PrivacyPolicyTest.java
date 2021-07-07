@@ -31,7 +31,7 @@ public class PrivacyPolicyTest extends BaseTest {
     public void privacyPolicyHeadersTests() throws Exception {
 
         sNLndPg.verifyLandingPgLogoIsDisplayed();
-//        sNLndPg.closeDiscountModal();
+        sNLndPg.closeDiscountModal();
         sNLndPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickFooterPrivacyCookiePolicyLink();
         sNLndPg.verifyCurrentPageURLEndsWith("/privacy-policy");

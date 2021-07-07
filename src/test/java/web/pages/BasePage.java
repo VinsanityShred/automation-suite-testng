@@ -110,6 +110,7 @@ public class BasePage {
         WebElement yesUpgradeButton = driver.findElement(yesUpgradeButtonLocator);
         highlightElement(yesUpgradeButton);
         yesUpgradeButton.click();
+        wait.until(ExpectedConditions.invisibilityOf(yesUpgradeButton));
     }
 
     public void gotoUrl(String endOfUrl){

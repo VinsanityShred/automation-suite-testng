@@ -22,8 +22,9 @@ public class BaseTest {
             case "headless":
                 System.out.println("Headless Chrome browser");
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless", "--window-size=1200,900");
+                chromeOptions.addArguments("--headless", "--window-size=1920,1200");
                 driver = new ChromeDriver(chromeOptions);
+                System.out.printf("Window Size: " + driver.manage().window().getSize());
                 break;
             case "chrome":
                 System.out.println("Launching Chrome browser");
