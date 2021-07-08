@@ -315,6 +315,7 @@ public class SNLandingPage extends BasePage {
     //// Getters ////
     @Step("Get the Instagram page logo")
     public boolean getInstagramLogoImage() {
+        Util.waitMilliseconds(500);
         final WebElement instagramLogo = driver.findElement(InstgrmPgLogoLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).
