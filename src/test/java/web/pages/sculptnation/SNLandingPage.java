@@ -23,11 +23,11 @@ public class SNLandingPage extends BasePage {
     By sNLdnPgLogoLocator = By.cssSelector("#app > div > header > nav > div > a > img");
     By sNLdnPgDiscountModalCloseButtonLocator = By.cssSelector("#closeIconContainer");
     By sNLdnPgMyAccountLinkLocator = By.xpath("//*[@href='/my-account']");
-    By sNLdnPgFBMediaLinkLocator = By.xpath("//*[@class='fab fa-facebook-f mx-1']");
-    By sNLdnPgInstagramMediaLinkLocator = By.xpath("//*[@class='fab fa-instagram mx-1']");
+    By sNLdnPgFBMediaLinkLocator = By.xpath("//*[@href='https://www.facebook.com/sculptnation/']");
+    By sNLdnPgInstagramMediaLinkLocator = By.xpath("//*[@href='https://www.instagram.com/sculptnation/']");
     By FBPgLogoLocator = By.xpath("//*[@alt='Facebook']");
     By FBPgLogoLocator2 = By.xpath("//*[@title='Go to Facebook Home']");
-    By InstgrmPgLogoLocator = By.xpath("//h1[text()='Instagram']");
+    By InstgrmPgLogoLocator = By.xpath("//*[@src='/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png']");
     By sNLdnPgContactUsLocator = By.xpath("//*[@class='fas fa-envelope']");
     By sNLdnPgPhoneIconLocator = By.xpath("//*[@class='fas fa-phone']");
     By sNLandPgCartIconLocator = By.xpath("//*[@class='fas fa-shopping-cart']");
