@@ -175,6 +175,7 @@ public class SNLandingPage extends BasePage {
 
     @Step("Click on Phone icon")
     public void clickPhoneIcon() {
+        Util.waitMilliseconds(500);
         final WebElement phoneIcon = driver.findElement(sNLdnPgPhoneIconLocator);
         highlightElement(phoneIcon);
         phoneIcon.isEnabled();
@@ -315,7 +316,7 @@ public class SNLandingPage extends BasePage {
     //// Getters ////
     @Step("Get the Instagram page logo")
     public boolean getInstagramLogoImage() {
-        Util.waitMilliseconds(500);
+        Util.waitMilliseconds(3000);
         final WebElement instagramLogo = driver.findElement(InstgrmPgLogoLocator);
         new WebDriverWait(driver, 10).
                 pollingEvery(Duration.ofMillis(100)).

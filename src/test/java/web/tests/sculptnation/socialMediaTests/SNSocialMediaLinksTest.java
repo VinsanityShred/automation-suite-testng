@@ -30,11 +30,12 @@ public class SNSocialMediaLinksTest extends BaseTest {
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
         sNLndPg.clickFBMediaLink();
+        sNLndPg.verifyCurrentPageURLEndsWith("/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsculptnation%2F");
         sNLndPg.verifyFBLogoIsDisplayed();
         sNLndPg.driverNavigateBack();
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.clickInstagramMediaLink();
-        sNLndPg.verifyInstagramLogoIsDisplayed();
+        sNLndPg.verifyCurrentPageURLEndsWith("/accounts/login/");
         sNLndPg.driverNavigateBack();
     }
 }
