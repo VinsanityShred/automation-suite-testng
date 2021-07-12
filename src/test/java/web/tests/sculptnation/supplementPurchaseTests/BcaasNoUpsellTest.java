@@ -70,11 +70,11 @@ public class BcaasNoUpsellTest extends BaseTest {
         crtnSlsFunlPg.verifyCreatine122Pg3BottleImageIsDisplayed();
         crtnSlsFunlPg.scrollToBottomOfPageByKeys();
         crtnSlsFunlPg.pageUpByKeys();
-        crtnSlsFunlPg.clickNoThanksRedLink();
+        crtnSlsFunlPg.clickNoThanksRedLink2();
         prtnSlsFunlPg.verifyCurrentPageURLEndsWith("/protein-multi-cs?f=123");
         prtnSlsFunlPg.verifyProteinMulti123Pg3BottleImageIsDisplayed();
         prtnSlsFunlPg.scrollToBottomOfPageByKeys();
-        prtnSlsFunlPg.clickNoThanksRedLink();
+        prtnSlsFunlPg.clickNoThanksRedLink2();
         couponPg218.verifyCurrentPageURLEndsWith("/coupon-burn?f=218");
         couponPg218.verifyEvolvedPgCouponIsDisplayed();
         couponPg218.scrollToBottomOfPageByKeys();
