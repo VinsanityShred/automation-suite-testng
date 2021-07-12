@@ -1,4 +1,4 @@
-package web.tests.sculptnation.homePageTests;
+package web.tests.sculptnation.landingPageTests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
