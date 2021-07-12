@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
-@Feature("Landing Page")
+@Feature("Header Page Tests")
 @Story("Header test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class HeaderTests extends BaseTest {

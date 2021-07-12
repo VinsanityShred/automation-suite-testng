@@ -11,7 +11,7 @@ import web.pages.sculptnation.ContactUsPage;
 import web.pages.sculptnation.SNLandingPage;
 import web.tests.BaseTest;
 
-@Feature("Header Tests")
+@Feature("Contact Links Tests")
 @Story("Contact links tests")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class ContactTests extends BaseTest {

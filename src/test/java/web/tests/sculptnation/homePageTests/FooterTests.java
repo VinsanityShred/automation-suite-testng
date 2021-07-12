@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
-@Feature("Home Page Tests")
+@Feature("Footer Page Tests")
 @Story("Footer links test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class FooterTests extends BaseTest {

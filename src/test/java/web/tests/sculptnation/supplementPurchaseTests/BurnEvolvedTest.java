@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
-@Feature("Home Page Tests")
+@Feature("Supplement Purchase Tests")
 @Story("Supplement Purchase Burn Evolved Test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class BurnEvolvedTest extends BaseTest {

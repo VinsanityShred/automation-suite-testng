@@ -1,5 +1,6 @@
 package web.tests.sculptnation.socialMediaTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -10,7 +11,7 @@ import org.testng.annotations.Test;
 import web.pages.sculptnation.SNLandingPage;
 import web.tests.BaseTest;
 
-@Feature("Header Tests")
+@Feature("Social Media Tests")
 @Story("Social media links test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class SNSocialMediaLinksTest extends BaseTest {
@@ -30,12 +31,12 @@ public class SNSocialMediaLinksTest extends BaseTest {
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.closeDiscountModal();
         sNLndPg.clickFBMediaLink();
-        sNLndPg.verifyCurrentPageURLEndsWith("/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsculptnation%2F");
+        sNLndPg.verifyCurrentPageURL("https://www.facebook.com/sculptnation/");
         sNLndPg.verifyFBLogoIsDisplayed();
         sNLndPg.driverNavigateBack();
         sNLndPg.verifyLandingPgLogoIsDisplayed();
         sNLndPg.clickInstagramMediaLink();
-        sNLndPg.verifyCurrentPageURLEndsWith("/accounts/login/");
+        sNLndPg.verifyCurrentPageURL("https://www.instagram.com/accounts/login/");
         sNLndPg.driverNavigateBack();
     }
 }

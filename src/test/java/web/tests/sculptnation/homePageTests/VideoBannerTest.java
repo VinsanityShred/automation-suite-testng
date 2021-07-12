@@ -11,7 +11,7 @@ import web.pages.sculptnation.BurnVideoPage;
 import web.pages.sculptnation.SNLandingPage;
 import web.tests.BaseTest;
 
-@Feature("Home Page Tests")
+@Feature("Video Tests")
 @Story("Video Banner test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class VideoBannerTest extends BaseTest {

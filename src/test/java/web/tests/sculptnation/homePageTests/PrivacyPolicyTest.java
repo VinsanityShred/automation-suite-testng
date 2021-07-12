@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
-@Feature("Home Page Tests")
+@Feature("Policy Page Tests")
 @Story("Privacy Policy test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class PrivacyPolicyTest extends BaseTest {

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import web.pages.sculptnation.*;
 import web.tests.BaseTest;
 
-@Feature("Home Page Tests")
+@Feature("Terms and Conditions Page Tests")
 @Story("Terms and Conditions Page test")
 @Listeners( framework.testng.AllureScreenshots.class )
 public class TermsConditionsTest extends BaseTest {
