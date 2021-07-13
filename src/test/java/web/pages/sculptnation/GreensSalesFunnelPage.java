@@ -1,5 +1,6 @@
 package web.pages.sculptnation;
 
+import framework.utility.Util;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -73,7 +74,7 @@ public class GreensSalesFunnelPage extends BasePage {
     @Step("Select flavor from drop down")
     public void selectFlavorFromDropDown(String selector){
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(greensPgFlavorDropDownLocator2));
+            Util.waitMilliseconds(1000);
             WebElement flavorDropDown2 = driver.findElement(greensPgFlavorDropDownLocator2);
             Select flavorOption2 = new Select (flavorDropDown2);
             flavorOption2.selectByVisibleText(selector);
@@ -82,7 +83,7 @@ public class GreensSalesFunnelPage extends BasePage {
         }
 
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(greensPgFlavorDropDownLocator));
+            Util.waitMilliseconds(1000);
             WebElement flavorDropDown = driver.findElement(greensPgFlavorDropDownLocator);
             Select flavorOption = new Select (flavorDropDown);
             flavorOption.selectByVisibleText(selector);
