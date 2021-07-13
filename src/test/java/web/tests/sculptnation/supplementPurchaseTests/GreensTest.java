@@ -1,5 +1,6 @@
 package web.tests.sculptnation.supplementPurchaseTests;
 
+import framework.utility.Util;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -60,6 +61,8 @@ public class GreensTest extends BaseTest {
         grnsSlsFunlPg.verifyGreensVideoIsDisplayed();
         grnsSlsFunlPg.scrollToBottomOfPageByKeys();
         sNLndPg.clickCopyRightLogo();
+        grnsSlsFunlPg.scrollToBottomOfPageByKeys();
+        grnsSlsFunlPg.pageUpByKeys();
         grnsSlsFunlPg.selectFlavorFromDropDown("Original");
         grnsSlsFunlPg.clickYesUpgradeButton();
         trmrc131Pg.verifyCurrentPageURLEndsWith("/turmeric-cs?f=131");

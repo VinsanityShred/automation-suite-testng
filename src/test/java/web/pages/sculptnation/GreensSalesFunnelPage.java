@@ -21,6 +21,7 @@ public class GreensSalesFunnelPage extends BasePage {
     private By greensMultiCSPg107ImageLocator = By.xpath("//*[contains(@src,'https://d1rolxk7wi0t82.cloudfront.net/cms/sales-pages/greens-multi-cs/img/b-1-v2.png?')]");
     private By greensPgVideoLocator = By.xpath("//*[@class='jw-video jw-reset']");
     private By greensPgFlavorDropDownLocator = By.xpath("//*[@id='__BVID__13']");
+    private By greensPgFlavorDropDownLocator2 = By.xpath("//*[@id='__BVID__11']");
     private By greensPgYesUpgradeButtonLocator = By.xpath("//*[contains(@class,'site-btn scroll') and contains(text(),'Yes! Upgrade My Order!')]");
     private By greensMultiCsPro154PgHeaderTextLocator = By.xpath("//*[text()='Congratulations! You’ve Just Upgraded Your Microbiome.']");
     private By grnMultEnz156PgHeaderTextLocator = By.xpath("//b[text()='Congratulations On Leveling Up Your Digestive System!']");
@@ -71,10 +72,23 @@ public class GreensSalesFunnelPage extends BasePage {
 
     @Step("Select flavor from drop down")
     public void selectFlavorFromDropDown(String selector){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(greensPgFlavorDropDownLocator));
-        WebElement flavorDropDown = driver.findElement(greensPgFlavorDropDownLocator);
-        Select flavorOption = new Select (flavorDropDown);
-        flavorOption.selectByVisibleText(selector);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(greensPgFlavorDropDownLocator2));
+            WebElement flavorDropDown2 = driver.findElement(greensPgFlavorDropDownLocator2);
+            Select flavorOption2 = new Select (flavorDropDown2);
+            flavorOption2.selectByVisibleText(selector);
+        } catch (Exception e) {
+            System.out.println("Flavor drop down option 2 not displayed" + e);
+        }
+
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(greensPgFlavorDropDownLocator));
+            WebElement flavorDropDown = driver.findElement(greensPgFlavorDropDownLocator);
+            Select flavorOption = new Select (flavorDropDown);
+            flavorOption.selectByVisibleText(selector);
+        } catch (Exception e) {
+            System.out.println("Flavor drop down option 1 not displayed" + e);
+        }
     }
 
     @Step("Is Greens Video Displayed")
